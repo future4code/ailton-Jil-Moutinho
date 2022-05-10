@@ -52,11 +52,13 @@ console.log(somaEx3); */
 
 let age = prompt("Qual sua idade?");
 let bestFriendsAge = prompt("Qual a idade da sua melhor amiga(o)?");
-let idadeMaior1 = age > bestFriendsAge;
 let idadeMaior = Number(age) > Number(bestFriendsAge);
 
 console.log(
 "Sua idade é maior do que a da sua melhor amiga?", idadeMaior);
+
+let diferencaIdade = Number(bestFriendsAge) - Number(age);
+console.log("A diferença de idade é de", diferencaIdade);
 
 /* 2. Faça um programa que:
     
@@ -68,10 +70,10 @@ console.log(
     
     d) O que acontece se o usuário inserir um número ímpar? Escreva em um comentário de código */
 
-let value1 = prompt("Insira um número par");
+let value1 = prompt("Insira um número par.");
 console.log((Number(value1)) % 2);
 
-//R: c. O valor deverá ser sempre zero pois numeros pares não tem resto na divisão por 2.
+//R: c. O valor deverá ser sempre zero pois números pares não tem resto na divisão por 2.
 //R: d. Haverá resto, o resultado será diferente de zero, será 1.
 
 /* 3. Faça um programa que pergunte ao usuário sua idade em anos. Depois, imprima no console 
@@ -117,6 +119,7 @@ console.log("O segundo numero é divisível pelo primeiro?", fourthQuestion);
     (KELVIN) = (GRAUS_FAHRENHEIT - 32)*(5/9) + 273.15
     - Graus Celsius(°C) para Graus Fahrenheit (°C)
     (GRAUS_FAHRENHEIT) = (GRAUS_CELSIUS)*(9/5) + 32
+    
     a) Calcule e mostre o valor de 77°F em  K, mostrando a unidade no console também.*/
 
 let KelvinTempA = (77 - 32) * (5 / 9) + 273.15;
@@ -124,7 +127,7 @@ console.log("Desafio a =", KelvinTempA, "Kelvin");
 
 //b) Calcule e mostre o valor de 80°C em °F, mostrando a unidade no console também
 
-let FahrenTempB = 80 * (9/5) + 32;
+let FahrenTempB = 80 * (9 / 5) + 32;
 console.log("Desafio b =", FahrenTempB, "Fahrenheit");
 
 //c) Calcule e mostre o valor de 30°C em °F e K, mostrando as unidades no console também
