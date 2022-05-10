@@ -10,15 +10,15 @@ console.log(b) */
 console.log(a, b) */
 //R: 10 5
 
-//2. Analise o programa abaixo e diga o que será impresso no console, SEM EXECUTAR o programa.
-/* let a = 10
+/* 2. Analise o programa abaixo e diga o que será impresso no console, SEM EXECUTAR o programa.
+let a = 10
 let b = 20
 c = a
 b = c
 a = b
 
 console.log(a, b, c) */
-//R: 10 10 10
+//R: 10 10 10. Até imprimi o c como 10, porém a boa prática é que essa variável seja antes declarada. 
 
 /*3. Analise o programa abaixo, entenda o que ele faz e sugira melhores nomes para as variáveis. Lembre-se que devemos escolher nomes significativos, usar o padrão camelCase. Alem disso, os nomes não podem começar com números ou caracteres especiais.
 let p = prompt("Quantas horas você trabalha por dia?")
