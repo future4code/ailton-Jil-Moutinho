@@ -3,7 +3,7 @@ console.log("Hello world!");
 
 //Exercícios de interpretação de código
 //1. Leia o código abaixo. Indique todas as mensagens impressas no console, SEM EXECUTAR o programa.
-const bool1 = true
+/* const bool1 = true
 const bool2 = false
 const bool3 = !bool2
 
@@ -20,15 +20,15 @@ console.log("c. ", resultado)
 //R: c. true
 
 console.log("d. ", typeof resultado)
-//R: d. boolean
+//R: d. boolean */
 
 //2. Seu colega se aproxima de você falando que o código dele não funciona como devia.  Vamos ajudá-lo: consegue perceber algum problema? O que será impresso no console? 
-let primeiroNumero = prompt("Digite um numero!");
+/* let primeiroNumero = prompt("Digite um numero!");
 let segundoNumero = prompt("Digite outro numero!");
 
 const soma = primeiroNumero + segundoNumero
 
-console.log(soma)
+console.log(soma) */
 
 // O prompt sempre tem saídas de formato string, mesmo que o conteúdo seja um número, portanto, o sinal de + será entendido como concatenação e irá imprimir o primeiro número e depois o segundo.
 
