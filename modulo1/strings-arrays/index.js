@@ -43,6 +43,13 @@ const comidasPreferidas = ["Brócolis", "Japonesa", "Quejo, de qqr jeito", "Sorv
 console.log(comidasPreferidas);
 
 // b) Imprima no console a mensagem "Essas são as minhas comidas preferidas: ", seguida por cada uma das comidas, **uma embaixo da outra**.
+console.log(`Essas são as minhas comidas preferidas:,
+${comidasPreferidas[0]},
+${comidasPreferidas[1]},
+${comidasPreferidas[2]},
+${comidasPreferidas[3]},
+${comidasPreferidas[4]}`);
+
 console.log(`Essas são as minhas comidas preferidas:`);
 console.log(comidasPreferidas[0]);
 console.log(comidasPreferidas[1]);
