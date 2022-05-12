@@ -114,9 +114,7 @@ const imprima = parametro => {
 console.log(imprima("desafio1"));
 
 //b) Escreva outra arrow function que recebe dois valores como parâmetros mas nenhum retorno. Faça a soma entre esses valores e chame a sua primeira função mandando este resultado da soma como entrada para imprimi-lo
-let somaDesafio1 = (num1, num2) => {
-    num1 + num2;
-};
+let somaDesafio1 = (num1, num2) => num1 + num2;
 console.log(imprima(somaDesafio1(3,5)));
 
 //2. Faça uma função que execute o teorema de Pitágoras, recebendo dois catetos e calculando o valor da hipotenusa. Retorne este valor, invoque a função e imprima o resultado no console. 
