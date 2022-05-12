@@ -18,17 +18,18 @@ console.log('d. ', array[i])
 
 array[i+1] = 19
 console.log('e. ', array)
-//r: e .
+//r: e .[3, 19, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 const valor = array[i+6]
 console.log('f. ', valor)
 //r: f. 9
 
-//SOBRE O CÓDIGO ABAIXO. Qual será o valor impresso no console se a entrada do usuário for: "Subi num ônibus em Marrocos"? 
-const frase = prompt("Digite uma frase")
+//SOBRE O CÓDIGO ABAIXO. Qual será o valor impresso no console se a entrada do usuário for: "Subi num ônibus em Marrocos"? */
+/* const frase1 = prompt("Digite uma frase")
 
-console.log(frase.toUpperCase().replaceAll("A", "I"), frase.length)
-//r: SUBI NUM ÔNIBUS EM MIRROCOS 26 */
+console.log(frase1.toUpperCase().replaceAll("A", "I"), frase1.length)
+ */
+//SUBI NUM ÔNIBUS EM MIRROCOS 27
 
 //Exercícios de escrita de código
 /* 1 1. Faça um programa que pergunte ao usuário seu nome e seu e-mail. Em seguida, Imprima no console a seguinte mensagem:  
@@ -61,6 +62,7 @@ console.log(comidasPreferidas[4]);
 const usuarioComida = prompt("Qual sua comida preferida?");
 
 comidasPreferidas.splice(1,1, usuarioComida);
+// tbm poderia só renomear: comidasPreferidas[1] = usuarioComida
 console.log(comidasPreferidas);
 
 //3. Faça um programa, seguindo os passos:a) Crie um array vazio e guarde-o em uma variável, chamada `listaDeTarefas`
@@ -92,6 +94,7 @@ const frase = prompt("Digite uma frase.");
 const arrayDesafio1 = [];
 
 arrayDesafio1.push(frase.replaceAll(" ",","));
+// Poderia ser arrayDesafio1 = frase.split(" ")
 
 console.log(arrayDesafio1);
 
