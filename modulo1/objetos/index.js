@@ -150,6 +150,7 @@ function exercicio3(obj, arrayEx3) {
 exercicio3(melancia, carrinho);
 exercicio3(coco, carrinho);
 exercicio3(uva, carrinho);
+//Neste caso não precisaria declarar o parametro arrayEx3 pq só temos o carrinho, porém se tivessemos carrinhoDaJil e carrinhoDoVitor, sim.
 
 //d) Imprima a variável carrinho e garanta que ela agora seja um array preenchido com três objetos. 
 console.log(carrinho);
@@ -204,3 +205,4 @@ function estoque(fruta) {
     }
 }
 console.log(estoque(melancia));
+
