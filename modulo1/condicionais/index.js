@@ -159,13 +159,11 @@ const etapa = prompt('Qual etapa? Note que: SF indica semi-final; DT indica deci
 const categoria = prompt('Qual categoria? Há apenas 1, 2, 3 ou 4.');
 const qtdd = Number(prompt('Quantidade de ingressos? Digite numeral'));
 const dol = 4.1;
+let preco2 = 0;
 
 function Vendas(tipo, etapa, categoria, qtdd) {
-    let preco2 = 0;
-    console.log(etapa);
-    console.log(categoria);
     if (etapa === 'SF') {
-        if (categoria === 1){
+        if (categoria === '1'){
         preco2 = 1320;
         console.log(preco2);
         } else if (categoria === '2') {
@@ -207,7 +205,8 @@ console.log(preco2);
         etapaImpresso = 'Semifinais'
     }
     if (tipo === 'IN'){
-        total1 = total1 * dol;
+        total1 = total1 / dol;
+        preco2 = preco2 / dol;
         console.log(`---Dados da compra--- 
         Nome do cliente:  ${nome} 
         Tipo do jogo:  Internacional 
@@ -232,91 +231,3 @@ console.log(preco2);
     }
 }
 Vendas(tipo, etapa, categoria, qtdd);
-
-/* if (tipo === 'IN' && etapa === 'SF') {
-    if (categoria === '1'){
-    preco2 = 1320 * dol;
-    } else if (categoria === '2') {
-    preco2 = 880 * dol;
-    } else if (categoria === '3') {
-    preco2 = 550 * dol;
-    } else if (categoria === '4') {
-    preco2 = 220 * dol;
-} else if (tipo === 'IN' && etapa === 'DT') {
-    if (categoria === '1') {
-        preco2 = 660 * dol;
-    } else if (categoria === '2') {
-        preco2 = 440 * dol;
-    } else if (categoria === '3') {
-        preco2 = 330 * dol;
-    } else if (categoria === '4') {
-        preco2 = 170 * dol;
-    }
-} else if (tipo === 'IN' && etapa === 'FI') {
-    if (categoria === '1') {
-        preco2 = 1980 * dol;
-    } else if (categoria === '2') {
-        preco2 = 1320 * dol;
-    } else if (categoria === '3') {
-        preco2 = 880 * dol;
-    } else if (categoria === '4') {
-        preco2 = 330
-} else if (tipo === 'DO' && etapa === 'SF') {
-    if (categoria === '1'){
-    preco2 = 1320 * dol;
-    } else if (categoria === '2') {
-    preco2 = 880 * dol;
-    } else if (categoria === '3') {
-    preco2 = 550 * dol;
-    } else if (categoria === '4') {
-    preco2 = 220 * dol;
-} else if (tipo === 'DO' && etapa === 'DT') {
-    if (categoria === '1') {
-        preco2 = 660 * dol;
-    } else if (categoria === '2') {
-        preco2 = 440 * dol;
-    } else if (categoria === '3') {
-        preco2 = 330 * dol;
-    } else if (categoria === '4') {
-        preco2 = 170 * dol;
-    }
-} else if (tipo === 'DO' && etapa === 'FI') {
-    if (categoria === '1') {
-        preco2 = 1980 * dol;
-    } else if (categoria === '2') {
-        preco2 = 1320 * dol;
-    } else if (categoria === '3') {
-        preco2 = 880 * dol;
-    } else if (categoria === '4') {
-        preco2 = 330 */
-
-
-/* } else if (tipo === 'IN' && etapa === 'SF' && categoria === '2') {
-    preco2 = 880 * dol;
-} else if (tipo === 'IN' && etapa === 'SF' && categoria === '3') {
-    preco2 = 550 * dol;
-} else if (tipo === 'IN' && etapa === 'SF' && categoria === '4') {
-    preco2 = 220 * dol;
-} else if (tipo === 'IN' && etapa === 'DT' && categoria === '1') {
-        preco2 = 880 * dol;
-} else if (tipo === 'IN' && etapa === 'DT' && categoria === '2') {
-        preco2 = 550 * dol;
-} else if (tipo === 'IN' && etapa === 'DT' && categoria === '3') {
-            preco2 = 220 * dol;
-} else if (tipo === 'IN' && etapa === 'DT' && categoria === '4') {
-            preco2 = 880 * dol;
-} else if (tipo === 'IN' && etapa === 'FI' && categoria === '1') {
-            preco2 = 550 * dol;
-} else if (tipo === 'IN' && etapa === 'FI' && categoria === '2') {
-                preco2 = 220 * dol;
-} else if (tipo === 'IN' && etapa === 'FI' && categoria === '3') {
-                preco2 = 880 * dol;
-} else if (tipo === 'IN' && etapa === 'FI' && categoria === '4') {
-                preco2 = 550
-} else if (tipo === 'DO' && etapa === 'SF' && categoria === '1') {
-                    preco2 = 220
-} else if () {
-        }
-const total1 = qtdd * preco2;
-}
- */
