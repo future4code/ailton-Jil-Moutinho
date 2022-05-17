@@ -114,7 +114,7 @@ switch (turnoEx3) {
         console.log('Boa noite!');
         break;
     default:
-        console.log('Turno não encontrado. Você digiitou com letra maiuscula?');
+        console.log('Turno não encontrado. Você digitou com letra maiuscula?');
         break;
 }
 
@@ -194,7 +194,6 @@ function Vendas(tipo, etapa, categoria, qtdd) {
             preco2 = 330
         }
     }
-console.log(preco2);
     let total1 = qtdd * preco2;
     let etapaImpresso = '';
     if (etapa === 'FI'){
@@ -225,8 +224,8 @@ console.log(preco2);
         Categoria:  ${categoria}
         Quantidade de Ingressos:  ${qtdd} ingressos 
         ---Valores--- 
-        Valor do ingresso:  U$ ${preco2}
-        Valor total:  U$ ${total1}
+        Valor do ingresso:  R$ ${preco2}
+        Valor total:  R$ ${total1}
         `);
     }
 }
