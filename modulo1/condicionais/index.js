@@ -74,7 +74,7 @@ Ou se for a linha do if, esta testando se a variável numero é maior que zero*/
 //Exercícios de escrita de código
 /* 1. Faça um programa que pergunta ao usuário qual a idade dele e imprima no console se ele/ela pode dirigir (apenas maiores de idade).
 a) Faça um `prompt` para receber a idade do usuário e guarde em uma variável. */
-/* const idade = Number(prompt('Qual sua idade'));
+const idade = Number(prompt('Qual sua idade'));
 function podeDirigir(param) {
     if (param >= 18) {
         console.log('Você pode dirigir');
@@ -82,7 +82,7 @@ function podeDirigir(param) {
         console.log('Você não pode dirigir');
     }
 }
-podeDirigir(idade); */
+podeDirigir(idade);
 
 //b) Garanta que essa variável é do tipo Number, você deve usar o cast para number para isso.
 //r: Já esta.
@@ -91,7 +91,7 @@ podeDirigir(idade); */
 //r: Já esta.
 
 //2. Agora faça um programa que verifica que turno do dia um aluno estuda. Peça para digitar M (matutino) ou V (Vespertino) ou N (Noturno). Imprima no console a mensagem "Bom Dia!", "Boa Tarde!" ou "Boa Noite!". Utilize o bloco
-/* const turno = prompt('Qual turno você estuda? Favor digitar M (matutino) ou V (Vespertino) ou N (Noturno)');
+const turno = prompt('Qual turno você estuda? Favor digitar M (matutino) ou V (Vespertino) ou N (Noturno)');
 
 if (turno === 'M') {
     console.log('Bom dia!');
@@ -99,10 +99,10 @@ if (turno === 'M') {
     console.log('Boa tarde!')
         } else {
         console.log('Boa noite!')
-        } */
+        }
 
 //3. Repita o exercício anterior, mas utilizando a estrutura de switch case agora.
-/* const turnoEx3 = prompt('Qual turno você estuda? Favor digitar M (matutino) ou V (Vespertino) ou N (Noturno)');
+const turnoEx3 = prompt('Qual turno você estuda? Favor digitar M (matutino) ou V (Vespertino) ou N (Noturno)');
 switch (turnoEx3) {
     case 'M':
         console.log('Bom dia!');
@@ -116,26 +116,27 @@ switch (turnoEx3) {
     default:
         console.log('Turno não encontrado. Você digiitou com letra maiuscula?');
         break;
-} */
+}
 
 //4. Considere a situação: você vai ao cinema com um amigo ou amiga, porém ele/ela só assistirá a um filme com você se ele for do gênero fantasia e se o ingresso está abaixo de 15 reais. Faça um código que pergunta ao usuário qual o gênero de filme que vão assistir e outra pergunta sobre o preço do ingresso, então verifique se seu amigo ou amiga vai topar assistir o filme. Caso positivo, imprima no console a mensagem: "Bom filme!", caso contrário, imprima "Escolha outro filme :("
-/* const genero = prompt('O genero do filme é fantasia? Responda com S ou N -letra maiúscula-.');
+
+const genero = prompt('O genero do filme é fantasia? Responda com S ou N -letra maiúscula-.');
 const preco = Number(prompt('Qual o valor do ingresso?'));
 
 function vamosAoCinema(genero,preco) {
     if (genero === 'S' && preco < 15) {
         console.log("Bom filme!");
     } else {
-        console.log("Escolha outro filme!");
+        console.log("Escolha outro filme :(");
     }
 }
-vamosAoCinema(genero,preco); */
+vamosAoCinema(genero,preco);
 
 //Desafios
 //1. Modifique o código do exercício 4 de escrita de código para, antes de imprimir a mensagem "Bom filme!", pergunte ao usuário, pelo prompt qual lanchinho ele vai comprar (pipoca, chocolate, doces, etc) e imprima no console as mensagens "Bom filme!" e "Aproveite o seu [LANCHINHO]", trocando [LANCHINHO] pelo que o usuário colocou no input.
 
 
-/* function vamosAoCinemaDesafio(genero,preco) {
+function vamosAoCinemaDesafio(genero,preco) {
     if (genero !== 'S' || preco >= 15) {
         console.log("Escolha outro filme!");
     } else {
@@ -144,7 +145,7 @@ vamosAoCinema(genero,preco); */
         Aproveite o seu ${snack}`);
     }
 }
-vamosAoCinemaDesafio(genero,preco); */
+vamosAoCinemaDesafio(genero,preco);
 
 /* 2. Você foi contratado para criar um sistema de vendas de ingressos de jogos de um estádio de futebol. Para esta compra, o usuário deve fornecer algumas informações:
     - Nome completo;
@@ -165,7 +166,6 @@ function Vendas(tipo, etapa, categoria, qtdd) {
     if (etapa === 'SF') {
         if (categoria === '1'){
         preco2 = 1320;
-        console.log(preco2);
         } else if (categoria === '2') {
         preco2 = 880;
         } else if (categoria === '3') {
@@ -196,7 +196,7 @@ function Vendas(tipo, etapa, categoria, qtdd) {
     }
 console.log(preco2);
     let total1 = qtdd * preco2;
-    let etapaImpresso = 'Etapa X';
+    let etapaImpresso = '';
     if (etapa === 'FI'){
         etapaImpresso = 'Final';
     } else if (etapa === 'DT') {
