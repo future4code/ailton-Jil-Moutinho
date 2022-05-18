@@ -108,4 +108,46 @@ console.log(`Maior número é ${valorMaximo} e o menor número é ${valorMinimo}
 
 //Desafios
 /* 1. Neste exercício vocês vão implementar uma brincadeira muito simples: "Adivinhe o número que estou pensando". Ele deve ser jogado entre duas pessoas. 
-Inicialmente, uma das pessoas insere qual o número em que ela pensou. A outra pessoa tem que ficar chutando até acertar em cheio o número. Esta é uma tarefa difícil, então quem escolheu o número fica dando umas dicas para a outra pessoa, indicando se o número que ela pensou é maior ou menor do que o chute em si. Veja, abaixo, um exemplo de partida: */
+Inicialmente, uma das pessoas insere qual o número em que ela pensou. A outra pessoa tem que ficar chutando até acertar em cheio o número. Esta é uma tarefa difícil, então quem escolheu o número fica dando umas dicas para a outra pessoa, indicando se o número que ela pensou é maior ou menor do que o chute em si. Veja, abaixo, um exemplo de partida: 
+a) Solicitar que o primeiro jogador escolha um número, através do prompt. Neste momento, deve-se imprimir no console a mensagem Vamos jogar!*/
+let num1 = prompt('Escolha um número');
+console.log('Vamos jogar!');
+let num2 = prompt('Chute um número');
+let contador = 1;
+while (num2 !== num1){
+    console.log(`O número chutado foi: ${num2}`);
+    contador = contador + 1;
+    if (num2 > num1) {
+        console.log(`Errou. O número a ser adivinhado é menor`); 
+    } else {
+        console.log(`Errou. O número a ser adivinhado é maior`);
+    }
+    num2 = prompt('Chute um número');
+}
+if (num2 === num1){
+    console.log(`Acertou!
+    O número de tentativas foi : ${contador}`);
+};
+
+/* 2. Agora, ao invés de ter 2 jogadores, haverá um só; e o seu adversário será o computador. A ideia é: ao iniciar o jogo, você deve sortear um número aleatório (entre 1 e 100) e o usuário terá que ficar chutando o valor até acertar. Mantenha as demais funcionalidades e mensagens pedidas no exercício anterior.
+Quando resolver o exercício, pare e faça a seguinte reflexão: foi fácil fazer esta alteração? O que você poderia ter feito para que fosse mais fácil? **Deixe comentários no seu código sobre esta reflexão.** */
+let numComputador = Math.random().toFixed(2) * 100
+console.log(numComputador);
+console.log('Vamos jogar contra o computador!');
+let numusuario = Number(prompt('Chute um número contra o computador'));
+let contador2 = 1;
+while (numusuario != numComputador){
+    console.log(`O número chutado foi: ${numusuario}`);
+    contador2 = contador2 + 1;
+    if (numusuario > numComputador) {
+        console.log(`Errou. O número escolhido pelo computador é menor`); 
+    } else {
+        console.log(`Errou. O número escolhido  pelo computador é maior`);
+    }
+    numusuario = prompt('Chute outro número');
+}
+if (numusuario == numComputador){
+    console.log(`Acertou!
+    O número de tentativas foi : ${contador2}`);
+}; 
+//r: achei dificil a questão de deixar ambos os números como mesmo tipo de variavel, na verdade tive q tirar um dos = pra que o código considerasse iguais mesmo.
