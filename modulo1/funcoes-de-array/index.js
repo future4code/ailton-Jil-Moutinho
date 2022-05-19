@@ -92,7 +92,8 @@ const nomeProdutos = produtos.map((item, index, array) => {
 
 //b) Crie um novo array que contenha um objeto com o nome e o preço de cada item, aplicando 5% de desconto em todos eles
 const desconto = produtos.map((item, index, array) => {
-    return item.nome, item.preco * 0.95
+    return { nome : item.nome, 
+        preco : (item.preco * 0.95)}
  });
  console.log(desconto);
 
