@@ -43,6 +43,11 @@ function calculaIMC(peso, altura) {
   return imc;
 }
 
+/* Deveria ser só assim:
+function calculaIMC(peso, altura) {
+  return peso / (altura * altura)
+} */
+
 // EXERCÍCIO 04
 function imprimeInformacoesUsuario() {
   nome = prompt("Qual seu nome?");
