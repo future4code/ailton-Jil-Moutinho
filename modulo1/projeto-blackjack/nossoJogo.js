@@ -18,9 +18,7 @@ let computador2 = comprarCarta()
 let pontuacaoUsuario = usuario1.valor + usuario2.valor
 let pontuacaoPc = computador1.valor + computador2.valor
 
-console.log(`Usuário - cartas: ${usuario1
-.texto} ${usuario2
-.texto} - ${pontuacaoUsuario}`)
+console.log(`Usuário - cartas: ${usuario1.texto} ${usuario2.texto} - ${pontuacaoUsuario}`)
 console.log(`Computador - cartas: ${computador1.texto} ${computador2.texto} - ${pontuacaoPc}`)
 
 if (pontuacaoUsuario > pontuacaoPc) {
