@@ -1,4 +1,4 @@
-"use strict"
+/* "use strict"
 console.log("Hello world!");
 
 alert("Boas vindas ao jogo de Blackjack!");
@@ -28,5 +28,5 @@ if (pontuacaoUsuario > pontuacaoPc) {
 } else if (pontuacaoUsuario === pontuacaoPc) {
     console.log("Empate!")
 }
-}
+} */
 
