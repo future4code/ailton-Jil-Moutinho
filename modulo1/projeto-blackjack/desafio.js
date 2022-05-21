@@ -29,9 +29,129 @@ let arrayUsuarios = [usuario1, usuario2];
 let arrayComputador = [computador1, computador2];
 let computador3 = '';
 let usuarios3 = '';
-//computador1.texto + computador2.texto;
-console.log(computador3);
-if(!confirm(
+for (let cartas of arrayUsuarios){
+   usuarios3 += cartas.texto;
+}
+
+if(confirm(
+   `Suas cartas são ${usuario1.texto} ${usuario2.texto}. A carta revelada do computador é ${computador1.texto}.
+   Deseja comprar mais uma carta?`
+   )){
+      let usuarioNovas = comprarCarta();
+      arrayUsuarios.push(usuarioNovas);
+      pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
+      for (let cartas of arrayUsuarios){
+         usuarios3 += cartas.texto;
+      }
+      if (pontuacaoUsuario > 21) {
+            alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+            "\n"+
+            "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+            "\n"+
+            "O computador ganhou!");
+         } else while (pontuacaoUsuario <= 21){
+            if (confirm('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+            "\n"+
+            "Computador - cartas: " + computador1.texto + ' - ' + pontuacaoPc + 
+            "\n"+
+            "Deseja comprar mais uma carta?")){
+            let usuarioNovas = comprarCarta();
+            arrayUsuarios.push(usuarioNovas);
+            pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
+            for (let cartas of arrayUsuarios){
+               usuarios3 += cartas.texto;
+            }
+            }
+            }
+      } else {
+            while (pontuacaoPc < pontuacaoUsuario && pontuacaoPc < 22){
+               let computadorNovas = comprarCarta();
+               arrayComputador.push(computadorNovas);
+               pontuacaoPc = pontuacaoPc + computadorNovas.valor
+               };
+               for (let cartas of arrayComputador){
+                  computador3 += cartas.texto;
+               }
+               let resultadoDoJogo = '';
+               if (pontuacaoUsuario === pontuacaoPc) {
+                     resultadoDoJogo = "Empate!"
+                  } else if (pontuacaoPc > pontuacaoUsuario && pontuacaoPc <= 21) {
+                     resultadoDoJogo = "O computador ganhou!"
+                  } else if (pontuacaoPc > 21) {
+                     resultadoDoJogo = "O usuário ganhou!"
+                     };
+                     alert('Usuário - cartas: ' + usuario1.texto + usuario2.texto + ' - ' + pontuacaoUsuario +
+                     "\n"+
+                     "Computador - cartas: " + computador3 + ' - ' + pontuacaoPc + 
+                     "\n"+
+                     resultadoDoJogo
+                     );
+            }
+   }
+
+
+/*    console.log(pontuacaoPc);
+
+      console.log(`Usuário - cartas: ${usuario1.texto} ${usuario2.texto} - ${pontuacaoUsuario}`)
+      console.log(`Computador - cartas: ${computador3} - ${pontuacaoPc}`);
+
+
+
+      } else {
+         let usuarioNovas = comprarCarta();
+         arrayUsuarios.push(usuarioNovas);
+         pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
+         for (let cartas of arrayUsuarios){
+            usuarios3 += cartas.texto;
+         }
+         if (pontuacaoUsuario > 21) {
+               alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+               "\n"+
+               "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+               "\n"+
+               "O computador ganhou!"
+               )} else if (pontuacaoUsuario === 21 && pontuacaoUsuario === pontuacaoPc ) {
+                  alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+                  "\n"+
+                  "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+                  "\n"+
+                  "Empate!"
+                  )} else if (alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+                     "\n"+
+                     "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+                     "\n"+
+                     "Deseja comprar mais uma carta?")===true){
+                        usuarioNovas = comprarCarta();
+                        arrayUsuarios.push(usuarioNovas);
+                        pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
+                        for (let cartas of arrayUsuarios){
+                           usuarios3 += cartas.texto;
+                        }
+                     } else {
+                        let resultadoDoJogo2 = '';
+                        if (pontuacaoUsuario === pontuacaoPc) {
+                        resultadoDoJogo2 = "Empate!"
+                     } else if (pontuacaoUsuario > pontuacaoPc && pontuacaoUsuario <= 21) {
+                        resultadoDoJogo2 = "O usuario ganhou!"
+                        } else if (pontuacaoUsuario > 21) {
+                           resultadoDoJogo2 = "O computador ganhou!"
+                           };
+
+                     }
+         }
+}
+ */
+
+
+
+
+
+
+
+
+
+
+/* if(!confirm(
    `Suas cartas são ${usuario1.texto} ${usuario2.texto}. A carta revelada do computador é ${computador1.texto}.
    Deseja comprar mais uma carta?`
    )){
@@ -63,35 +183,45 @@ if(!confirm(
       resultadoDoJogo
       )
       } else {
-         {while (pontuacaoUsuario < 21){
-            let usuarioNovas = comprarCarta();
-            arrayUsuarios.push(usuarioNovas);
-            pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor
-            };
-         }
-         console.log(pontuacaoUsuario);
+         let usuarioNovas = comprarCarta();
+         arrayUsuarios.push(usuarioNovas);
+         pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
          for (let cartas of arrayUsuarios){
             usuarios3 += cartas.texto;
          }
-         let resultadoDoJogo2 = '';
-         if (pontuacaoUsuario === pontuacaoPc) {
-            resultadoDoJogo2 = "Empate!"
-         } else if (pontuacaoUsuario > pontuacaoPc && pontuacaoUsuario <= 21) {
-            resultadoDoJogo2 = "O usuário ganhou!"
-      } else if (pontuacaoUsuario > 21) {
-         resultadoDoJogo2 = "O computador ganhou!"
-         };
+         if (pontuacaoUsuario > 21) {
+               alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+               "\n"+
+               "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+               "\n"+
+               "O computador ganhou!"
+               )} else if (pontuacaoUsuario === 21 && pontuacaoUsuario === pontuacaoPc ) {
+                  alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+                  "\n"+
+                  "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+                  "\n"+
+                  "Empate!"
+                  )} else if (alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+                     "\n"+
+                     "Computador - cartas: " + computador1.texto + computador2.texto + ' - ' + pontuacaoPc + 
+                     "\n"+
+                     "Deseja comprar mais uma carta?")===true){
+                        usuarioNovas = comprarCarta();
+                        arrayUsuarios.push(usuarioNovas);
+                        pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
+                        for (let cartas of arrayUsuarios){
+                           usuarios3 += cartas.texto;
+                        }
+                     } else {
+                        let resultadoDoJogo2 = '';
+                        if (pontuacaoUsuario === pontuacaoPc) {
+                        resultadoDoJogo2 = "Empate!"
+                     } else if (pontuacaoUsuario > pontuacaoPc && pontuacaoUsuario <= 21) {
+                        resultadoDoJogo2 = "O usuario ganhou!"
+                        } else if (pontuacaoUsuario > 21) {
+                           resultadoDoJogo2 = "O computador ganhou!"
+                           };
 
-      alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
-      "\n"+
-      "Computador - cartas: " + computador3 + ' - ' + pontuacaoPc + 
-      "\n"+
-      resultadoDoJogo2
-      )
-   }
-}
-
-
-
-
-
+                     }
+         }
+} */
