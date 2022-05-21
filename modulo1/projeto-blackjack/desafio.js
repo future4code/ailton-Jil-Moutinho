@@ -28,12 +28,14 @@ while (pontuacaoUsuario > 21 || pontuacaoPc > 21) {
 let arrayUsuarios = [usuario1, usuario2];
 let arrayComputador = [computador1, computador2];
 let computador3 = '';
+let usuarios3 = '';
 //computador1.texto + computador2.texto;
 console.log(computador3);
 if(!confirm(
    `Suas cartas são ${usuario1.texto} ${usuario2.texto}. A carta revelada do computador é ${computador1.texto}.
    Deseja comprar mais uma carta?`
-   )){while (pontuacaoPc < pontuacaoUsuario && pontuacaoPc < 22){
+   )){
+      {while (pontuacaoPc < pontuacaoUsuario && pontuacaoPc < 22){
       let computadorNovas = comprarCarta();
       arrayComputador.push(computadorNovas);
       pontuacaoPc = pontuacaoPc + computadorNovas.valor
@@ -60,22 +62,35 @@ if(!confirm(
       "\n"+
       resultadoDoJogo
       )
+      } else {
+         {while (pontuacaoUsuario < 21){
+            let usuarioNovas = comprarCarta();
+            arrayUsuarios.push(usuarioNovas);
+            pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor
+            };
+         }
+         console.log(pontuacaoUsuario);
+         for (let cartas of arrayUsuarios){
+            usuarios3 += cartas.texto;
+         }
+         let resultadoDoJogo2 = '';
+         if (pontuacaoUsuario === pontuacaoPc) {
+            resultadoDoJogo2 = "Empate!"
+         } else if (pontuacaoUsuario > pontuacaoPc && pontuacaoUsuario <= 21) {
+            resultadoDoJogo2 = "O usuário ganhou!"
+      } else if (pontuacaoUsuario > 21) {
+         resultadoDoJogo2 = "O computador ganhou!"
+         };
+
+      alert('Usuário - cartas: ' + usuarios3 + ' - ' + pontuacaoUsuario +
+      "\n"+
+      "Computador - cartas: " + computador3 + ' - ' + pontuacaoPc + 
+      "\n"+
+      resultadoDoJogo2
+      )
+   }
 }
 
-   
-    /* else {
-      let usuarioNovas = comprarCarta();
-      arrayUsuarios.push(usuarioNovas);
-      console.log(arrayUsuarios);
-      pontuacaoUsuario = pontuacaoUsuario + usuarioNovas.valor;
-      let textos = arrayUsuarios.map(item) => {
-         return {...item.texto
-      }}
-      if(confirm(`Suas cartas são ${textos}. A carta revelada do computador é ${computador1.texto}.
-      Deseja comprar mais uma carta?`){
-         FUNCAO
-      }
- */
 
 
 
