@@ -113,40 +113,146 @@ console.log(classificaTriangulo(2,2,2));
 
 // EXERCÍCIO 10 Escreva uma função que receba um array de números e retorne um novo array com apenas 2 valores (NESTA ORDEM): o segundo maior e o segundo menor número do array original. 
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+    array.sort((a,b) => a-b);
+    let novo10 = [];
+    novo10.push(array[array.length-2], array[1]);
+    return novo10;
 }
+console.log(retornaSegundoMaiorESegundoMenor(arrayTeste));
 
 // EXERCÍCIO 11
+let teste = {
+    nome: 'O Diabo Veste Prada',
+    ano: 2006,
+    diretor: 'David Frankel',
+    atores: ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
+ }
 function retornaChamadaDeFilme(filme) {
-   
+    let chamada = `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores.join(', ')}.`
+    return chamada;
+}
+console.log(retornaChamadaDeFilme(teste));
+
+//join escreve o array com o que escrever entre aspas, neste caso (virgula e espaço)
+
+// EXERCÍCIO 12 Crie uma função que recebe um objeto com as propriedades nome, idade, endereco e email  e retorne um novo objeto com as mesmas propriedades, mas com o valor "ANÔNIMO" para a propriedade nome. 
+let pessoaTeste = {
+	nome: "Astrodev",
+	idade: 25,
+	email: "astrodev@labenu.com.br",
+	endereco: "Rua do Futuro, 4"
 }
 
-// EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   pessoa.nome = "ANÔNIMO"
+   return pessoa;
 }
+console.log(retornaPessoaAnonimizada(pessoaTeste));
 
 // EXERCÍCIO 13A
+/* Imagine que você trabalhe num parque de diversões, como pessoa desenvolvedora. As suas tarefas são sempre com o intuito de ajudar a automação de alguns processos internos do parque. Uma das atrações principais dele é a montanha russa do terror. As filas são muito grandes e todas as pessoas de várias idades insistem entrar no brinquedo, mesmo sabendo que não podem. As regras para entrar na montanha russa do terror são: 
+
+- Ter, no mínimo, 1.5m de altura;
+- Ser mais velho do que 14 anos e
+- Ser mais novo do que 60 anos.
+
+Dados esses requisitos, escreva: 
+
+A) uma **função** que receba um array e devolva outro contendo as pessoas que **tem permissão para entrar** no brinquedo */
+let arrayPessoasTeste = [{"nome":"A","idade":12,"altura":1.8},{"nome":"B","idade":20,"altura":1.3},{"nome":"C","idade":15,"altura":1.9},{"nome":"D","idade":22,"altura":1.8},{"nome":"E","idade":10,"altura":1.2},{"nome":"F","idade":70,"altura":1.9}]
+
+
 function retornaPessoasAutorizadas(pessoas) {
-   
+    let quemPode = pessoas.filter((obj, indice, array) => {
+        return obj.altura >= 1.5 && obj.idade > 14 && obj.idade < 60;
+    })
+    return quemPode;
 }
 
-// EXERCÍCIO 13B
+console.log(retornaPessoasAutorizadas(arrayPessoasTeste));
+
+// EXERCÍCIO 13B B) uma função que receba um array e devolva outro contendo as pessoas que não tem permissão para entrar no brinquedo
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    let quemNaoPode = pessoas.filter((obj, indice, array) => {
+        return obj.altura < 1.5 || obj.idade <= 14 || obj.idade >= 60;
+    })
+    return quemNaoPode;
 }
 
-// EXERCÍCIO 14
+console.log(retornaPessoasNaoAutorizadas(arrayPessoasTeste));
+
+// EXERCÍCIO 14 
+/* Agora, pediram para você ajudar a fazer uma funcionalidade de um banco digital. Antes de explicar a sua tarefa, você precisa entender como eles guardam as contas dos clientes. Basicamente, eles salvam o nome do clientes, o saldo total e uma lista contendo todas as compras realizadas pelo cliente. 
+A sua tarefa é: faça uma função que receba um array com os objetos do tipo acima como parâmetro e atualize o saldo total individual de cada um, sem criar um novo array. Retorne o array original.  */
+/* let contasTeste = [
+	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+];
+
+function calculaGasto(cliente) {
+    const comprinhas = cliente.compras;
+    let gasto = 0;
+    for (item of comprinhas){
+        gasto = gasto += item;
+    }
+    return gasto;
+  }
+
 function retornaContasComSaldoAtualizado(contas) {
+    let novo14 = contas.map((cliente, indice, array) => {cliente.saldoTotal = cliente.saldoTotal - gasto})
+}
+console.log(retornaContasComSaldoAtualizado(contasTeste)); */
 
+/* let Saldo = contas.map((cliente,) => {
+    return cliente.compras
+}) */
+
+
+
+// EXERCÍCIO 15A A sua tarefa é criar uma função que receba o array acima como parâmetro e retorne um array de consultas ordenado pelos nomes dos pacientes (em ordem alfabética)
+let clientesConsultas = [
+    { nome: "João", dataDaConsulta: "01/10/2021" },
+    { nome: "Pedro", dataDaConsulta: "02/07/2021" },
+    { nome: "Paula", dataDaConsulta: "03/11/2021" },
+    { nome: "Márcia", dataDaConsulta: "04/05/2021" }
+  ];
+
+function ordenarNome(a,b) {
+    if (a.nome < b.nome) {
+    return -1;
+    }
+    if (a.nome > b.nome){
+    return 1;
+    }
+    return 0;
 }
 
-// EXERCÍCIO 15A
+
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+  let clientesOrdenados = consultas.sort(ordenarNome);
+    return clientesOrdenados
 }
+
+console.log(retornaArrayOrdenadoAlfabeticamente(clientesConsultas));
 
 // EXERCÍCIO 15B
-function retornaArrayOrdenadoPorData(consultas) {
-   
+function ordenarDatas(a,b) {
+    if (a.dataDaConsulta < b.dataDaConsulta) {
+    return -1;
+    }
+    if (a.dataDaConsulta > b.dataDaConsulta){
+    return 1;
+    }
+    return 0;
 }
+
+function retornaArrayOrdenadoPorData(consultas) {
+    let clientesOrdenadosPorDatas = consultas.sort(ordenarDatas);
+    return clientesOrdenadosPorDatas;
+}
+
+console.log(retornaArrayOrdenadoPorData(clientesConsultas));
