@@ -184,7 +184,7 @@ console.log(retornaPessoasNaoAutorizadas(arrayPessoasTeste));
 // EXERCÍCIO 14 
 /* Agora, pediram para você ajudar a fazer uma funcionalidade de um banco digital. Antes de explicar a sua tarefa, você precisa entender como eles guardam as contas dos clientes. Basicamente, eles salvam o nome do clientes, o saldo total e uma lista contendo todas as compras realizadas pelo cliente. 
 A sua tarefa é: faça uma função que receba um array com os objetos do tipo acima como parâmetro e atualize o saldo total individual de cada um, sem criar um novo array. Retorne o array original.  */
-/* let contasTeste = [
+let contasTeste = [
 	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
 	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
 	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
@@ -193,23 +193,18 @@ A sua tarefa é: faça uma função que receba um array com os objetos do tipo a
 	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
 ];
 
-function calculaGasto(cliente) {
-    const comprinhas = cliente.compras;
-    let gasto = 0;
-    for (item of comprinhas){
-        gasto = gasto += item;
-    }
-    return gasto;
-  }
-
 function retornaContasComSaldoAtualizado(contas) {
-    let novo14 = contas.map((cliente, indice, array) => {cliente.saldoTotal = cliente.saldoTotal - gasto})
+    let comprinhas = contas.map((ObjCliente) => {
+        for (let compra of ObjCliente.compras){
+            ObjCliente.saldoTotal = ObjCliente.saldoTotal - compra; 
+        }
+        return {...ObjCliente,
+        saldoTotal: ObjCliente.saldoTotal,
+        compras: []
+        }
+    })
+    return comprinhas;
 }
-console.log(retornaContasComSaldoAtualizado(contasTeste)); */
-
-/* let Saldo = contas.map((cliente,) => {
-    return cliente.compras
-}) */
 
 
 
@@ -231,7 +226,6 @@ function ordenarNome(a,b) {
     return 0;
 }
 
-
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
   let clientesOrdenados = consultas.sort(ordenarNome);
     return clientesOrdenados
@@ -239,19 +233,25 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 console.log(retornaArrayOrdenadoAlfabeticamente(clientesConsultas));
 
-// EXERCÍCIO 15B
+// EXERCÍCIO 15B A sua segunda tarefa é criar uma função que receba o array acima como parâmetro e retorne um array de consultas ordenado pelas datas das consultas(da menor para a maior)
 function ordenarDatas(a,b) {
-    if (a.dataDaConsulta < b.dataDaConsulta) {
+    if (Date (a) < Date(b)) {
     return -1;
     }
-    if (a.dataDaConsulta > b.dataDaConsulta){
+    if (Date(a) > Date(b)){
     return 1;
     }
     return 0;
 }
+function ordenarDatas(a,b) {
+    let aCorreto = new Date(a.dataDaConsulta);
+    let bCorreto = new Date(b.dataDaConsulta);
+    return aCorreto - bCorret}
+
+console.log(ordenarDatas(10/01/2022, 01/01/2021));
 
 function retornaArrayOrdenadoPorData(consultas) {
-    let clientesOrdenadosPorDatas = consultas.sort(ordenarDatas);
+    let clientesOrdenadosPorDatas = consultas.dataDaConsulta.sort(ordenarDatas);
     return clientesOrdenadosPorDatas;
 }
 
