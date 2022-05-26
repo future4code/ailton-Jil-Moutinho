@@ -246,7 +246,7 @@ function ordenarDatas(a,b) {
 function ordenarDatas(a,b) {
     let aCorreto = new Date(a.dataDaConsulta);
     let bCorreto = new Date(b.dataDaConsulta);
-    return aCorreto - bCorret}
+    return aCorreto - bCorreto}
 
 console.log(ordenarDatas(10/01/2022, 01/01/2021));
 
