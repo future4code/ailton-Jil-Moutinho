@@ -34,7 +34,7 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    background: white;
 }
 
 .botao-amarelo {
@@ -56,9 +56,14 @@ div img {
 }
 
 .icone {
-    height: 15px;
+    height: 30px;
+    width: 30px;
+    background-color: white;
 }
 
+#chinelo{
+    background-color: white;  
+}
 
 /** 
   *
