@@ -66,6 +66,14 @@ div img {
     background-color: white;
 }
 
+.icone:hover{
+    opacity: 0.4;
+}
+
+.icone:active{
+    opacity: 1;
+}
+
 #chinelo{
     background-color: white;  
 }
@@ -81,8 +89,9 @@ div img {
     color: white;
 }
 
-#container-de-descricao>ol {
-    padding: 15px 0px;
+#container-de-descricao > ol {
+    padding: 15px 600px;
+
 }
 
 #container-para-comprar {
@@ -95,6 +104,9 @@ div img {
     font-size: 60px;
 }
 
+/* ol > li{
+    list-style-type: number;
+} */
 
 /**
   *
