@@ -89,10 +89,10 @@ div img {
     color: white;
 }
 
-#container-de-descricao > ol {
-    padding: 15px 600px;
-
-}
+#container-de-descricao>ol { 
+    padding: 15px; 
+    list-style-position: inside; 
+} 
 
 #container-para-comprar {
     background-color: #e7eb90;
