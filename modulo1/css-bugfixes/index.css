@@ -29,7 +29,8 @@ input {
 button:focus {
     color: white;
 }
-
+/* Quando coloca focus o que acontece não volta
+ */
 img {
     width: 100px;
 }
@@ -103,10 +104,6 @@ div img {
     padding: 100px 0;
     font-size: 60px;
 }
-
-/* ol > li{
-    list-style-type: number;
-} */
 
 /**
   *
