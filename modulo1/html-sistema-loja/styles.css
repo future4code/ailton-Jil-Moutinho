@@ -1,0 +1,112 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.cabecalho{
+    background-color: rgb(191, 250, 191);
+    display: inline;
+    margin-bottom: 4px;
+}
+
+.cabecalhoitalico{
+    background-color: rgb(191, 250, 191);
+    display: inline;
+    font-style: italic;
+}
+
+h1{
+    font-size: larger;
+    background-color: rgb(191, 250, 191);
+    display: block;
+    margin-top: 4px;
+}
+
+
+nav{
+    display: block;
+    color: black;
+}
+
+td{
+    border: dashed; 
+    border-width: 1px;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+}
+
+#botao{
+    color:rgb(191, 250, 191);
+    background-color: black;
+    border-radius: 10%;
+    margin-bottom: 10px;
+}
+
+#botao:hover{
+    color:rgb(191, 250, 191);
+    background-color: rgb(236, 117, 61);
+    border-radius: 10%;
+    margin-bottom: 10px;
+   }
+
+#botao:active{
+    color:rgb(191, 250, 191);
+    background-color: rgb(223, 118, 167);
+    border-radius: 10%;
+    margin-bottom: 10px;
+   }
+
+button{
+    color: whitesmoke;
+    background-color: black;
+    font-style: bold;
+    border-radius: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.botaonav{
+    border-radius: 9%;
+    margin: 20px;
+    margin-top: 10px;
+    padding: 4px;
+    border: solid;
+    border-width: 1px;
+    background-color: rgb(140, 214, 140);
+    color: black;
+}
+
+.botaonav:hover{
+    color:rgb(191, 250, 191);
+    background-color: rgb(236, 117, 61);
+   }
+
+.botaonav:active{
+    color:rgb(191, 250, 191);
+    background-color: rgb(223, 118, 167);
+   }
+
+
+footer{
+    background-color: rgb(191, 250, 191);
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+inicio{
+    background-color: rgb(191, 250, 191);
+    display: block;
+    width: 100%;
+    border: solid red;
+    position: fixed;
+    top: 6px;
+}
+
+main{
+    margin-top: 200px;
+}

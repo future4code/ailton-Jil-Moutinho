@@ -144,6 +144,13 @@ const nomePokemons = pokemons.map((item, index, array) => {
 const tipos = pokemons.map((item, index, array) => {
     return item.tipo;
  })
+ console.log(tipos);
 const tiposUnico = [...new Set(tipos)];
 
 console.log(tiposUnico);
+
+const tiposUnicos2 = pokemons.filter(function(item , index){
+    return pokemons.indexOf(item.tipo) === index;
+}) 
+console.log(tiposUnicos2);
+
