@@ -34,13 +34,12 @@ nav{
     color: white;
 }
 
-.imgredes{
-    width: 5%;
+.linhaacima{
+    border-top: solid 2px #489697;
 }
 
-.imgProjetos{
-    width: 30vw;
-    margin-left: 5vw;
+.imgredes{
+    width: 5%;
 }
 
 h1{
@@ -70,8 +69,19 @@ table{
     background-color: rgb(90, 42, 3);
 }
 
-formacao img{
-    width: 20vw;
+.icones{
+    width: 8vw;
+    display: inline;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 2px;
+    padding: 2px;
+}
+
+.textoicones{
+    position: relative;
+    margin-left: 10vw;
+    margin-top: 2%;
 }
 
 footer{
@@ -94,21 +104,40 @@ main{
     margin-top: 200px;
 }
 
+.imgPortifolio{
+    width: 30vw;
+    margin: 0 auto;
+    display: block;
+}
+
 .cxTextoPortifolio{
-    width: 40%;
     padding: 10px;
     text-align: center;
 }
 
 .botaoPortifolio{
     border-radius: 5px;
-    margin: 8px;
+    margin: 30%;
     margin-top: 10px;
-    margin-left: 15vw;
     padding: 4px;
-    border: solid;
-    border-width: 1px;
+    border: solid 2px;
     background-color: #489697;
     color: white;
 }
 
+/* .linha1{
+    display: block;
+    position: relative;
+    margin-left: 2%;
+    border: solid red;
+    width: 45%;
+}
+
+.linha2{
+    display: block;
+    position: relative;
+    margin-left: 52%;
+    margin-top: -50%;
+    border: solid red;
+    width: 45%;
+} */

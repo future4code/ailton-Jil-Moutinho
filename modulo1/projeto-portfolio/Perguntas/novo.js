@@ -13,7 +13,7 @@ if (qtddPets === 0){
 //b) Se a quantidade for maior que 0, solicite que o usuário digite os nomes deles, um por um, e guarde esses nomes em um array
 let pet = ""
 if (qtddPets != 0){
-    prompt('Se vc tiver, Qual o nome deles? - escreva apenas um por vez, ok?')
+    pet = prompt('Qual o nome deles? - escreva apenas um por vez, ok? Nome => enter, nome => enter... rs')
 }
 let arrayPets = [pet];
 if (qtddPets != 0){
