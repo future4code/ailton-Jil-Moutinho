@@ -30,7 +30,7 @@ header p {
 }
 
 .item1 {
-    align-items: flex-start;    background-color: #f2d0e0;
+   background-color: #f2d0e0;
     flex-direction: column;
     flex-grow: 1;
     display: flex;
@@ -66,21 +66,24 @@ header p {
     align-items: center;
     text-align: center;
     gap: 10px;
+    font-size: small;
     /* flex: 1 0 200px; */
-    justify-content: space-between;
+/*     justify-content: space-between; */
 }
 
 .item2 img{
     margin: 0 auto;
 }
+
 .card{
-    width: 200px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     gap: 16px;
     flex-wrap: wrap;
     box-shadow: 5px 5px 5px darkgray;
     margin: 6px;
+    padding-bottom: 4px;
 }
 
 img{
@@ -92,5 +95,5 @@ footer{
     background-color: mediumvioletred;
     text-align: center;
     color: black;
-    padding: 8px;
+    padding-top: 15px;
 }
