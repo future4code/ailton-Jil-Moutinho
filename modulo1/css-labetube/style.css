@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'PT Sans', sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 10vh 80vh 10vh;
+}
+img{
+    width: 50px;
+}
+
+video {
+    width: 18vw;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header {
+    background-color:  yellowgreen;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.logo p{
+    flex-grow: 1;
+    margin-right: 50vw;
+}
+
+main {
+    background-color: bisque;
+    grid-column: 1 / -1;
+    display: grid;
+    padding: 16px;
+}
+
+section {
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    margin: 6px;
+}
+
+/* repeat(auto-fill, minmax(repeat(4, 1fr))); */
+.card {
+    border: 1px solid yellowgreen;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgb(131, 148, 107);
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: small;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-top: 4px;
+}
+
+
+footer {
+    background-color: yellowgreen;
+    grid-column: 1 / -1;
+    text-align: center;
+    grid-row: 3 / -1;  
+}
+
+sectionVideo {
+    padding: 8px;
+    border: 1px solid rgb(88, 182, 130);
+    display: grid;
+    margin: 6px;
+    text-align: left;
+}
+
+sectionVideo video{
+    width: 550px;
+    justify-content: center;
+}
