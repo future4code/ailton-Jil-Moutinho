@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========= aplicar propriedades dos flex items a partir daqui ========= */
+
+main{
+    display: flex;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: mediumvioletred;
+    text-align: left;
+}
+
+header img {
+    width: 5vh;
+}
+
+header p {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.item1 {
+   background-color: #f2d0e0;
+    flex-direction: column;
+    flex-grow: 1;
+    display: flex;
+    width: 25vw;
+    /* flex-shrink: 1; */
+    /* flex-basis: auto; */
+    /* flex: 1 1 auto; */
+}
+
+.item1 img{
+    width: 5vh;
+}
+
+.cardNav{
+    display: flex;
+    padding: 10px 15px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cardNav p {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 10px;
+    font-size: small;
+}
+
+.item2 {
+    flex-grow: 2;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 10px;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    font-size: small;
+    /* flex: 1 0 200px; */
+/*     justify-content: space-between; */
+}
+
+.item2 img{
+    margin: 0 auto;
+}
+
+.card{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 5px darkgray;
+    margin: 6px;
+    padding-bottom: 4px;
+}
+
+img{
+    width: 150px
+}
+
+footer{
+    height: 8vh;
+    background-color: mediumvioletred;
+    text-align: center;
+    color: black;
+    padding-top: 15px;
+}

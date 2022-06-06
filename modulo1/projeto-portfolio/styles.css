@@ -1,0 +1,143 @@
+* {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.cabecalho{
+    display: block;
+    margin-bottom: 4px;
+    width: 95vw;
+    size: 0 auto;
+    background-color: #489697;
+}
+
+video{
+    width: 95vw;
+    margin: 0 auto;
+    height: 400px;
+}
+
+nav{
+    display: block;
+    color: black;
+    text-align: right;
+    font-size: 18px;
+}
+
+.botaonav{
+    border-radius: 5px;
+    margin: 8px;
+    margin-top: 10px;
+    padding: 4px;
+    border: solid;
+    border-width: 1px;
+    background-color: #489697;
+    color: white;
+}
+
+.linhaacima{
+    border-top: solid 2px #489697;
+}
+
+.imgredes{
+    width: 5%;
+}
+
+h1{
+    font-size: larger;
+    background-color: rgb(191, 250, 191);
+    display: block;
+    margin-top: 4px;
+}
+
+td{
+    border: dashed; 
+    border-width: 1px;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+}
+
+.botaonav:hover{
+    color:rgb(90, 42, 3);
+    background-color: rgb(233, 137, 93);
+}
+
+.botaonav:active{
+    color:rgb(233, 137, 93);
+    background-color: rgb(90, 42, 3);
+}
+
+.icones{
+    width: 8vw;
+    display: inline;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 2px;
+    padding: 2px;
+}
+
+.textoicones{
+    position: relative;
+    margin-left: 10vw;
+    margin-top: 2%;
+}
+
+footer{
+    background-color: #489697;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 2px;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+inicio{
+    display: block;
+    width: 100%;
+    top: 6px;
+}
+
+main{
+    margin-top: 200px;
+}
+
+.imgPortifolio{
+    width: 30vw;
+    margin: 0 auto;
+    display: block;
+}
+
+.cxTextoPortifolio{
+    padding: 10px;
+    text-align: center;
+}
+
+.botaoPortifolio{
+    border-radius: 5px;
+    margin: 30%;
+    margin-top: 10px;
+    padding: 4px;
+    border: solid 2px;
+    background-color: #489697;
+    color: white;
+}
+
+/* .linha1{
+    display: block;
+    position: relative;
+    margin-left: 2%;
+    border: solid red;
+    width: 45%;
+}
+
+.linha2{
+    display: block;
+    position: relative;
+    margin-left: 52%;
+    margin-top: -50%;
+    border: solid red;
+    width: 45%;
+} */
