@@ -6,8 +6,10 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
-import salvoNao from '../../img/bookmarkNao.svg'
-import salvoSim from '../../img/sbookmarkSim.svg'
+import salvoNao from '../../img/Naobookmark.svg'
+import salvoSim from '../../img/bookmarkSim.svg'
+
+
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -110,7 +112,7 @@ class Post extends React.Component {
     if(this.state.salvo) {
       iconeSalvar = salvoSim
     } else {
-      iconeCurtida = salvoNao
+      iconeSalvar = salvoNao
     }
 
     return <PostContainer>
@@ -139,7 +141,6 @@ class Post extends React.Component {
         <IconeComContador
           icone={iconeSalvar}
           onClickIcone={this.onClickSalvar}
-          valorContador={null}
         />
       </PostFooter>
       {componenteComentario}

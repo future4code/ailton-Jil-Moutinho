@@ -36,7 +36,9 @@ export class SecaoComentario extends Component {
 				onChange={this.pegarComentario}
 			/>
 			<button onClick={this.props.aoEnviar}>Enviar</button>
+			
 			<p>{this.InputComentarioFeito}</p>
+			
 		</CommentContainer>
 		
 	}
