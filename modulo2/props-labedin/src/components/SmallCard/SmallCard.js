@@ -1,15 +1,15 @@
 import React from 'react';
-import './SmallCard.css'
+import {SmallCardStyle, SmallCardImage, InternSmallCardStyle, TituloInfo, Infos} from './SmallCard.style'
 
 function SmallCard(props) {
     return (
-        <div className="smallcard-container">
-            <img src={ props.imagem } />
-            <div>
-                <h4>{ props.tituloInfo }:</h4>
-                <p>{ props.info }</p>
-            </div>
-        </div>
+        <SmallCardStyle>
+            <SmallCardImage src={ props.imagem } />
+            <InternSmallCardStyle>
+                <TituloInfo>{ props.tituloInfo }:</TituloInfo>
+                <Infos>{ props.info }</Infos>
+            </InternSmallCardStyle>
+        </SmallCardStyle>
     )
 }
 

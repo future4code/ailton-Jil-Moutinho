@@ -1,15 +1,15 @@
 import React from 'react';
-import './CardGrande.css'
+import {GrandeContainer, BigImage, BigTitle, InternBigContainer} from "./CardGrande.style"
 
 function CardGrande(props) {
     return (
-        <div className="bigcard-container">
-            <img src={ props.imagem } />
-            <div>
-                <h4>{ props.nome }</h4>
+        <GrandeContainer>
+            <BigImage src={ props.imagem } />
+            <InternBigContainer>
+                <BigTitle>{ props.nome }</BigTitle>
                 <p>{ props.descricao }</p>
-            </div>
-        </div>
+            </InternBigContainer>
+        </GrandeContainer>
     )
 }
 

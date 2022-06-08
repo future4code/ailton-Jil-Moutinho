@@ -1,14 +1,15 @@
 import React from 'react';
-import './NavCard.css'
+import {NavCardContainer, NavCardImage} from "./NavCard.style"
+
 
 function NavCard(props) {
     return (
-        <div className="navcard-container">
-            <img src={ props.imagem } />
+        <NavCardContainer>
+            <NavCardImage src={ props.imagem } />
             <div>
                 <p>{ props.section }</p>
             </div>
-        </div>
+        </NavCardContainer>
     )
 }
 
