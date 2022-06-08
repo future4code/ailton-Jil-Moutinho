@@ -19,5 +19,4 @@ color: rgb(75, 75, 75);
 export const NavCardImage = styled.img`
 width: 70px;
 margin: 0 auto;
-border-radius: 50%;
 `
