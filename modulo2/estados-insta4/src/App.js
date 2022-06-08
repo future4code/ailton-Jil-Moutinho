@@ -30,9 +30,6 @@ class App extends React.Component {
           fotoUsuario={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAiN0BkR_SuKvlkQd6yCPHIDDblq7iWWTdq2rXxMLyUQ8feo2tZm775rU-bVjyO_i76i8&usqp=CAU'}
           fotoPost={'https://picsum.photos/200/150?random=3'}
         />
-
-
-
       </MainContainer>
     );
   }
