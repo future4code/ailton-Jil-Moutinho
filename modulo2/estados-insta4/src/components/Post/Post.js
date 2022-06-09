@@ -9,6 +9,7 @@ import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 import salvoNao from '../../img/Naobookmark.svg'
 import salvoSim from '../../img/bookmarkSim.svg'
 
+/* **************AULA RENDERIZACAO DE LISTAS************** */
 
 
 const PostContainer = styled.div`
