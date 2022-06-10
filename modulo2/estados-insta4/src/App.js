@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Post from './components/Post/Post';
+import Post02 from './components/Post/Post02';
 
 const MainContainer = styled.div`
   display: flex;
@@ -13,9 +14,10 @@ class App extends React.Component {
   render() {
     return (
       <MainContainer>
+        <Post02></Post02>
         <Post
           nomeUsuario={'paulo'}
-          fotoUsuario={'https://picsum.photos/50/50'}
+          fotoUsuario={'http://flimsy-scale.surge.sh/img/paulo.jpeg'}
           fotoPost={'https://picsum.photos/200/150?random=1'}
         />
 

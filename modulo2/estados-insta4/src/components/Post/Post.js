@@ -93,6 +93,9 @@ class Post extends React.Component {
 /* **************NOVOS ICONES************** */
 
 
+
+/* **************DIA 02************** */
+
   render() {
     let iconeCurtida
 
@@ -145,6 +148,7 @@ class Post extends React.Component {
         />
       </PostFooter>
       {componenteComentario}
+
     </PostContainer>
   }
 }
