@@ -35,11 +35,9 @@ const MessagesContainer = styled.div`
   overflor: scroll;
   `;
 
-
 const FormContainer = styled.div`
   display: flex;
   justify-content: space-between;
-
   height: 80%;
   width: 75%;
   border: 1px solid gray;
@@ -66,11 +64,14 @@ const InputsStyle2 = styled.input`
   border-radius: 5px;
 `;
 
-const SendButton = styled.img.hover`
-  opacity: 0.5;
+const SendButton = styled.img`
   box-shadow: 5px 5px rgb(150, 200, 200);
+  border: black solid 1px;
+  border-radius: 5px;
+  :hover{
+    opacity: 0.5;
+  }
 `
-
 
 class App extends React.Component {
   state = {
@@ -92,23 +93,33 @@ class App extends React.Component {
       user: this.state.user,
       content: this.state.content,
     };
+    if(this.state.content !== ""){
+      this.setState({
+        messages: [...this.state.messages, newMsn],
+        user: "",
+        content: ""
+      });
+    } else {
+      alert("Campo mensagem em branco!")
+    }
+  };
 
-    this.setState({
-      messages: [...this.state.messages, newMsn],
-      user: "",
-      content: ""
-    });
+  clickEnter = (event) => {
+    if (event.key === "Enter"){
+      this.addNewMsn ()
+    };
   };
 
   render() {
     const componentesMsnICQ = this.state.messages.map((eachMessage) => {
       return (
         <Icq
-          user= {eachMessage.user}          content= {eachMessage.content}
+          user= {eachMessage.user} content= {eachMessage.content}
         />
       );
     });
 
+    
     return (
       <AppContainer>
         <MessagesContainer>
@@ -124,6 +135,7 @@ class App extends React.Component {
             placeholder={"Mensagem. (Quer mandar mesmo?)"}
             value={this.state.content}
             onChange={this.changeContent}
+            onKeyPress={this.clickEnter}
           />
           <SendButton src={Enviar} alt="Aviao de enviar" onClick={this.addNewMsn}/>
         </FormContainer>

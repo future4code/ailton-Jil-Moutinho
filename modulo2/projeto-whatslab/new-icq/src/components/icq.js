@@ -27,7 +27,7 @@ const UsuariosAzul = styled.p`
   color: rgb(48, 48, 95);
   font-weight: bold;
   margin-right: 5px;
-`
+  `
 
 
 class Icq extends React.Component {
