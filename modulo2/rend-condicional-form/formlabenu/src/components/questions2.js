@@ -1,6 +1,4 @@
 import React from "react";
-import iconeCoracaoBranco from "../img/favorite-white.svg";
-import iconeCoracaoPreto from "../img/favorite.svg";
 import styled from "styled-components";
 
 const PostContainer = styled.div`
@@ -30,7 +28,7 @@ const UsuariosAzul = styled.p`
   `
 
 
-class Icq extends React.Component {
+class Questions2 extends React.Component {
   state = {
     curtido: false,
   };
@@ -42,14 +40,6 @@ class Icq extends React.Component {
   };
 
   render() {
-    let msnCurtida;
-
-    if (this.state.curtido) {
-      msnCurtida = iconeCoracaoPreto;
-    } else {
-      msnCurtida = iconeCoracaoBranco;
-    }
-
     let userName = ""
 
     if (this.props.user === ""){
@@ -63,11 +53,9 @@ class Icq extends React.Component {
         <PostHeader>
         <UsuariosAzul>{userName}: </UsuariosAzul>
         <p>{this.props.content}</p>
-        <IconImage alt={"Icone"} src={msnCurtida} onClick={this.onClickCurtida} 
-        />
         </PostHeader>
       </PostContainer>
     )  
   }
 }
-export default Icq;
+export default Questions2;
