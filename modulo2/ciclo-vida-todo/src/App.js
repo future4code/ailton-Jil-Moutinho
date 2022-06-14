@@ -21,15 +21,12 @@ const InputsContainer = styled.div`
 class App extends React.Component {
   state = {
     tarefas: [],
-    tarefasCopia: [],
     inputValue: "",
     filtro: "",
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if(prevState.inputValue === this.state.inputValue) {
-      localStorage.setItem("tarefas", JSON.stringify(this.state.tarefas))
-    }
+  componentDidUpdate() {
+    localStorage.setItem("tarefas", JSON.stringify(this.state.tarefas))
   }
 
   componentDidMount() {    
@@ -37,9 +34,7 @@ class App extends React.Component {
     if(tarefas) {
     const infoDasTarefas = localStorage.getItem("tarefas")
     const dadosConvertidos = JSON.parse(infoDasTarefas)
-    this.setState({id: dadosConvertidos[0]?.id })
-    this.setState({inputValue: dadosConvertidos[0]?.texto})
-    this.setState({completa: dadosConvertidos[0]?.completa})
+    this.setState({inputValue: dadosConvertidos})
   }
 }
 
