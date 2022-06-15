@@ -1,30 +1,50 @@
-import styled from "styled-components";
-import Questions1 from './components/questions1';
+import React from "react";
+import ReactDOM from "react-dom";
 
-const All = styled.div`
-  border: 1px solid rgb(250, 200, 300);
-  width: 90%;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background-color: rgb(150, 200, 200);
-  word-wrap: break-word;
-  text-align: center;
-  align-items: center;
-  display: column;
-`;
+import "./index.css";
+import Etapa1 from "./components/Etapa1";
+import Etapa2 from "./components/Etapa2";
+import Etapa3 from "./components/Etapa3";
+import Thanks from "./components/Thanks";
 
-function App() {
-  return (
-    <div>
-      <All>
-        <p>Fomulário LabeForms</p>
-        <input value="nome"></input>
-          <div>
-          {Questions1}
-          </div>        
-      </All>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+      etapa: 1
+  };
+
+  renderizaEtapa = () => {
+    switch (this.state.etapa) {
+      case 1:
+        return <Etapa1 />;
+      case 2:
+        return <Etapa2 />;
+      case 3:
+        return <Etapa3 />;
+      case 4:
+        return <Thanks />;
+      default:
+        return <Thanks />;
+    }
+  };
+
+  proximaEtapa = () => {
+    this.setState({ etapa: this.state.etapa + 1 });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {this.renderizaEtapa()}
+        <br />
+        {this.state.etapa !== 4 && (
+          <button onClick={this.proximaEtapa}>Próxima etapa</button>
+        )}
+      </div>
+    );
+  }
 }
 
-export default App;
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+export default App
