@@ -34,7 +34,7 @@ class App extends React.Component {
     if(tarefas) {
     const infoDasTarefas = localStorage.getItem("tarefas")
     const dadosConvertidos = JSON.parse(infoDasTarefas)
-    this.setState({inputValue: dadosConvertidos})
+    this.setState({tarefas: dadosConvertidos})
   }
 }
 

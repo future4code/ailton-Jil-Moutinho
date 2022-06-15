@@ -71,3 +71,61 @@ class Icq extends React.Component {
   }
 }
 export default Icq;
+
+/* addNewMsn = () => {
+  const newMsn = {
+    user: this.state.user,
+    content: this.state.content,
+  };
+  if(this.state.content !== ""){
+    this.setState({
+      messages: [...this.state.messages, newMsn],
+      user: "",
+      content: ""
+    });
+  } else {
+    alert("Campo mensagem em branco!")
+  }
+};
+
+clickEnter = (event) => {
+  if (event.key === "Enter"){
+    this.addNewMsn ()
+  };
+};
+
+render() {
+  const componentesMsnICQ = this.state.messages.map((eachMessage) => {
+    return (
+      <Icq
+        user= {eachMessage.user} content= {eachMessage.content}
+      />
+    );
+  });
+
+  
+  return (
+    <AppContainer>
+      <MessagesContainer>
+      {componentesMsnICQ}
+      </MessagesContainer>
+      <FormContainer>
+        <InputsStyle
+          placeholder={"Nome do Usuário"}
+          value={this.state.user}
+          onChange={this.changeUser}
+        />
+        <InputsStyle2
+          placeholder={"Mensagem. (Quer mandar mesmo?)"}
+          value={this.state.content}
+          onChange={this.changeContent}
+          onKeyPress={this.clickEnter}
+        />
+        <SendButton src={Enviar} alt="Aviao de enviar" onClick={this.addNewMsn}/>
+      </FormContainer>
+    </AppContainer>
+  );
+}
+}
+
+export default App; */
