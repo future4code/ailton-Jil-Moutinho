@@ -11,6 +11,8 @@ class App extends React.Component {
     switch (this.state.screen) {
       case "usersList":
         return <ScreenUsersList goToRegister={this.goToRegister} />;
+      case "register":
+          return <ScreenRegister goToList={this.goToList} />;
       default:
         return <ScreenRegister goToList={this.goToList} />;
     }
@@ -28,7 +30,7 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <p>Ola mundo</p>
+          <p>Teste</p>
         </header>
         <div>{this.changeScreen()}</div>
       </div>
