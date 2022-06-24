@@ -12,7 +12,7 @@ width: 20vh;
 `
 const Header = styled.div`
   background-color: black;
-  width: 100%;
+  width: 99%;
   height: 20%;
   color: white;
   padding: 10px;
@@ -20,9 +20,10 @@ const Header = styled.div`
 
 const Main = styled.div`
   background-color: darkgray;
+  display: flex;
+  flex-direction: column;
   align-content: center;
   color: white;
-  height: 80vh;
 `
 
 class App extends React.Component {
@@ -61,7 +62,7 @@ class App extends React.Component {
       <Header>
         <ImgLogo src={Logo} alt="logo" />
         <p>
-          Edit
+          Bora curtir um som?
         </p>
       </Header>
       <Main>

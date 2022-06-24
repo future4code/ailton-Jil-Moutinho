@@ -11,7 +11,11 @@ const Main = styled.div`
   background-color: #4e5754;
   align-content: center;
   color: white;
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 0 auto;
+  align-items: center;
 `;
 const InputStyle = styled.input`
   border-radius: 20px;
@@ -37,7 +41,7 @@ const PlaylistCard = styled.div`
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
-  width: 20%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
@@ -50,6 +54,7 @@ class ScreenSearch extends React.Component {
     screenUp: "searchList",
     screenDown: "list",
     playlistId: "",
+    namePlaylist: '',
   };
 
   componentDidMount() {
@@ -130,11 +135,11 @@ class ScreenSearch extends React.Component {
     }
   };
 
-  changeScreen = (playlistId) => {
+  changeScreen = (playlistId, namePlaylist) => {
     if (this.state.screenDown === "list") {
-      this.setState({ screenDown: "sreenDetails", playlistId: playlistId });
+      this.setState({ screenDown: "sreenDetails", playlistId: playlistId, namePlaylist: namePlaylist });
     } else {
-      this.setState({ screenDown: "list", playlistId: "" });
+      this.setState({ screenDown: "list", playlistId: "", namePlaylist:'' });
     }
   };
 
@@ -173,6 +178,7 @@ class ScreenSearch extends React.Component {
           ) : ( 
             <ScreenDetails
               playlistId={this.state.playlistId}
+              namePlaylist={this.state.namePlaylist}
               changeScreen={this.changeScreen}
             />
           )}
