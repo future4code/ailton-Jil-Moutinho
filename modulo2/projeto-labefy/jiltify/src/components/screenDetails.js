@@ -148,6 +148,7 @@ class ScreenDetails extends React.Component {
       return (
         <PlaylistCard key={item.id}>
           {item.name} - {item.artist}
+
           <iframe
             src={item.url}
             width="30%"
