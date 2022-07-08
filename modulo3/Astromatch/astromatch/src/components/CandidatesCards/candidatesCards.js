@@ -1,57 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Liked from "../img/Like.png";
-import Nop from "../img/nop.png";
-
-const InternalCard = styled.div`
-  color: white;
-  margin: 2px 2px;
-  height: 58vh;
-  p {
-    font-size: 2.5vh;
-  }
-  #photoProfile {
-    height: 30vh;
-    width: 18vw;
-    object-fit: cover;
-    object-position: top;
-    overflow-y: hidden;
-    border-radius: 10px;
-    box-shadow: 0 0 2em gold;
-    margin: 5px 25px auto;
-  }
-`;
-const ImgButton = styled.img`
-  height: 45px;
-  border-radius: 10px;
-  :hover {
-    height: 50px;
-    box-shadow: 0 0 2em gold;
-  }
-  :active {
-    opacity: 0.9;
-  }
-`;
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-`;
-const ButtonClear = styled.button`
-  color: red;
-  border-radius: 10px;
-  box-shadow: 0 0 2em red;
-  margin: 5px 46px;
-  align-items: center;
-  :hover {
-    color: white;
-    background-color: red;
-  }
-  :active {
-    opacity: 0.9;
-  }
-`;
+import Liked from "../../img/Like.png";
+import Nop from "../../img/nop.png";
+import Heart from "../../img/loadingHeart.gif";
+import {
+  InternalCard,
+  ImgButton,
+  ButtonContainer,
+  ButtonClear,
+  Loading,
+} from "./Styled";
 
 export default function CandidatesCard({ clear }) {
   const [currentProfile, setCurrentProfile] = useState({});
@@ -85,7 +43,6 @@ export default function CandidatesCard({ clear }) {
         body
       )
       .then((res) => {
-        console.log(res.data);
         if (res.data.isMatch) {
           alert("Deu match!");
         }
@@ -99,16 +56,22 @@ export default function CandidatesCard({ clear }) {
   return (
     <div>
       <InternalCard>
-        <img
-          id="photoProfile"
-          src={currentProfile.photo}
-          alt={currentProfile.photo_alt}
-        />
-        <br />
-        <p>
-          <strong>{currentProfile.name}</strong>, {currentProfile.age}
-        </p>
-        <p>{currentProfile.bio}</p>
+        {currentProfile ? (
+          <div>
+            <img
+              id="photoProfile"
+              src={currentProfile.photo}
+              alt={currentProfile.photo_alt}
+            />
+            <br />
+            <p>
+              <strong>{currentProfile.name}</strong>, {currentProfile.age}
+            </p>
+            <p>{currentProfile.bio}</p>
+          </div>
+        ) : (
+          <Loading src={Heart} alt={"Loading heart..."} />
+        )}
         <ButtonContainer>
           <ImgButton
             src={Nop}

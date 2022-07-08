@@ -1,44 +1,11 @@
-import styled from "styled-components";
 import React, { useState } from "react";
 import "./App.css";
 import Logo from "./img/Logo1.png";
 import Matchs from "./img/match.png";
-import Fundo from "./img/astronauta.jpeg";
-import CandidatesCard from "./components/candidatesCards.js";
-import ChoosenCard from "./components/choosenCards.js";
+import CandidatesCard from "./components/CandidatesCards/candidatesCards.js";
+import ChoosenCard from "./components/ChoosenCard/choosenCards.js";
 import axios from "axios";
-
-const General = styled.div`
-  background-image: url(${Fundo});
-  background-size: cover;
-  height: 100%;
-  display: flex;
-  flex-direction: end;
-`;
-const DrawCard = styled.div`
-  border: 5px solid silver;
-  border-radius: 20px;
-  margin: 5vh 5vw 10vh 70vw;
-  width: 22vw;
-  height: 80vh;
-  background-color: black;
-`;
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-const Imagem = styled.img`
-  height: 70px;
-  border-radius: 20px 20px 0 0;
-  :hover {
-    box-shadow: 0 0 2em gold;
-    height: 81px;
-  }
-  :active {
-    opacity: 0.9;
-  }
-`;
+import { General, DrawCard, Header, HeadersImagens } from "./Styled";
 
 function App(props) {
   const [page, setPage] = useState("Candidates");
@@ -92,8 +59,8 @@ function App(props) {
     <General>
       <DrawCard>
         <Header>
-          <Imagem src={Logo} onClick={() => setPage("Candidates")} />
-          <Imagem src={Matchs} onClick={() => setPage("Matches")} />
+          <HeadersImagens src={Logo} onClick={() => setPage("Candidates")} />
+          <HeadersImagens src={Matchs} onClick={() => setPage("Matches")} />
         </Header>
         <div>{changePage()}</div>
       </DrawCard>
