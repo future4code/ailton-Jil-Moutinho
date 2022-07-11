@@ -1,6 +1,6 @@
 import React from "react";
-import ScreenRegister from "./components/screenUsersRegister";
-import ScreenUsersList from "./components/screenUsersList";
+import PlaylistCreate from "./components/playlistcreat";
+import Playlists from "./components/playlists";
 import styled from "styled-components";
 
 const All = styled.div`
@@ -19,11 +19,11 @@ class App extends React.Component {
   changeScreen = () => {
     switch (this.state.screen) {
       case "usersList":
-        return <ScreenUsersList goToRegister={this.goToRegister} />;
+        return <Playlists goToRegister={this.goToRegister} />;
       case "register":
-          return <ScreenRegister goToList={this.goToList} />;
+          return <PlaylistCreate goToList={this.goToList} />;
       default:
-        return <ScreenRegister goToList={this.goToList} />;
+        return <PlaylistCreate goToList={this.goToList} />;
     }
   };
 

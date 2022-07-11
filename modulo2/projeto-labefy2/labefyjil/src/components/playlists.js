@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import ScreenDetails from "./screenDetails";
+import ScreenMusicsPlaylist from "./musicsPlaylist";
 
 const Main = styled.div`
   background-color: lightgrey;
@@ -57,58 +57,47 @@ const ButtonDelete = styled.button`
   border-radius: 10px;
 `;
 
-class ScreenUsersList extends React.Component {
+class Playlists extends React.Component {
   state = {
-    usersList: [],
-    screen: "userList",
+    playlistList: [],
+    screen: "list",
     findName: "",
     userId: "",
   };
 
   changeScreen = (userId) => {
-    if (this.state.screen === "userList") {
-      this.setState({ screen: "sreenDetails", userId: userId });
+    if (this.state.screen === "list") {
+      this.setState({ screen: "sreenMusics", userId: userId });
     } else {
-      this.setState({ screen: "userList", userId: "" });
+      this.setState({ screen: "list", userId: "" });
     }
   };
 
   componentDidMount() {
-    this.getUsers();
+    this.getPlaylists();
   }
 
-  getUsers = /* async */ () => {
-    const urlUsers =
-      "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
+  getPlaylists = () => {
+    const url =
+      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
 
     axios
-      .get(urlUsers, {
+      .get(url, {
         headers: {
           Authorization: "jil-moutinho-ailton",
         },
       })
       .then((res) => {
-        this.setState({ usersList: res.data });
+        this.setState({ playlistList: res.data });
       })
       .catch((err) => {
         alert("Ocorreu um problema, tente novamente: ", err);
       });
-    /* 
-        try {
-            const res = await axios.get(urlUsers, {
-                headers: {
-                    Authorization: 'jil-moutinho-ailton'
-                }
-            })
-            this.setState({ usersList: res.data })
-        } catch (err) {
-            alert('Ocorreu um problema, tente novamente: ', err)
-        } */
   };
 
   deletUser = (id) => {
     if (window.confirm("Esta certo disso? Ler com voz de Silvio Santos")) {
-      const urlDelete = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
+      const urlDelete = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`;
 
       axios
         .delete(urlDelete, {
@@ -118,15 +107,11 @@ class ScreenUsersList extends React.Component {
         })
         .then((res) => {
           alert("Usuário apagado com sucesso!");
-          {
-            this.getUsers();
-          }
+          {this.getPlaylists()}
         })
         .catch((err) => {
           alert("Ocorreu um problema, tente novamente: ", err);
         });
-    } else {
-      alert("Que bom que não apagou o usuário!");
     }
   };
 
@@ -135,7 +120,7 @@ class ScreenUsersList extends React.Component {
   };
 
   findUser = () => {
-    const urlGetByName = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${this.state.findName}&email=`;
+    const urlGetByName = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=${this.state.findName}`;
 
     axios
       .get(urlGetByName, {
@@ -144,7 +129,7 @@ class ScreenUsersList extends React.Component {
         },
       })
       .then((res) => {
-        this.setState({ usersList: res.data });
+        this.setState({ playlistList: res.data });
         console.log(res.data);
       })
       .catch((err) => {
@@ -153,7 +138,7 @@ class ScreenUsersList extends React.Component {
   };
 
   render() {
-    const usersListScreen = this.state.usersList.map((user) => {
+    const playlistListScreen = this.state.playlistList.map((user) => {
       return (
         <UserCard onClick={() => this.changeScreen(user.id)} key={user.id}>
           {user.name}
@@ -166,16 +151,16 @@ class ScreenUsersList extends React.Component {
 
     return (
       <div>
-        {this.state.screen === "userList" ? (
+        {this.state.screen === "list" ? (
           <div>
             <Header>
               <h2>Lista de usuários cadastrados</h2>
             </Header>
             <Main>
-              {this.state.usersList.length === 0 && (
+              {this.state.playlistList.length === 0 && (
                 <div>Nadinha...</div>
               )}
-              {usersListScreen}
+              {playlistListScreen}
               <h3>Procurando alguém específico?</h3>
               <InputStyle
                 placeholder="Nome"
@@ -190,7 +175,7 @@ class ScreenUsersList extends React.Component {
             </Main>
           </div>
         ) : (
-          <ScreenDetails
+          <ScreenMusicsPlaylist
             userId={this.state.userId}
             changeScreen={this.changeScreen}
           />
@@ -200,4 +185,4 @@ class ScreenUsersList extends React.Component {
   }
 }
 
-export default ScreenUsersList;
+export default Playlists;

@@ -41,7 +41,7 @@ const Button01 = styled.button`
   box-shadow: 10px 5px 5px black;
 `;
 
-class ScreenDetails extends React.Component {
+class ScreenMusicsPlaylist extends React.Component {
   state = {
     userData: {},
     userEdition: "editButton",
@@ -126,4 +126,4 @@ class ScreenDetails extends React.Component {
   }
 }
 
-export default ScreenDetails;
+export default ScreenMusicsPlaylist;
