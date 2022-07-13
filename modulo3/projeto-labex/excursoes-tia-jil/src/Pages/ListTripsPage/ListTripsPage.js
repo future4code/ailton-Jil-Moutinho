@@ -10,7 +10,7 @@ function ListTripsPage() {
   const navigate = useNavigate();
   const [trips, isLoading, error] = useRequestData(`${BASE_URL}/trips`);
 
-  const tripsList =
+  const tripsDataList =
     trips &&
     trips.map((item, index) => {
       return (
@@ -33,7 +33,7 @@ function ListTripsPage() {
         <button onClick={() => goToApplication(navigate)}>Se inscrever</button>
         {isLoading && <p>Loading...</p>}
         {!isLoading && error && <p>{error.message}</p>}
-        {!isLoading && trips && trips.length > 0 && tripsList}
+        {!isLoading && trips && trips.length > 0 && tripsDataList}
         {!isLoading && trips && trips.length === 0 && <p>Não há viagens</p>}
       </main>
     </div>

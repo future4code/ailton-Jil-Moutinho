@@ -1,18 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useRequestData = (url) => {
+export const useRequestDetails = (url) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
  
   useEffect(() => {
     setIsLoading(true);
+    const token = localStorage.getItem('token');
     axios
-      .get(url)
+      .get(url, 
+        {headers: {
+            auth: token,
+        }})
       .then((res) => {
         setIsLoading(false);
-        setData(res.data.trips);
+        setData(res);
+        console.log(res)
       })
       .catch((err) => {
         setIsLoading(false);
@@ -21,4 +26,4 @@ export const useRequestData = (url) => {
       });
   }, [url]);
   return [data, isLoading, error];
-}
+};

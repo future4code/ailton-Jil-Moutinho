@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { goBack } from "../../router/Coordinator";
-import { useRequestData } from "../../services/useRequestData";
-import { BASE_URL } from "../../constants/constants";
+import { useProtectedPage } from "../../components/Hook/customHook";
+/* import { useRequestData } from "../../services/useRequestData";
+import { BASE_URL } from "../../constants/constants"; */
 
 function CreateTripPage() {
-  /* const [trips, isLoading, error] = usePostData(`${BASE_URL}/trips`) */
+  const navigate = useNavigate();
+  useProtectedPage();
 
-const navigate = useNavigate()
+  /* const [trips, isLoading, error] = usePostData(`${BASE_URL}/trips`)
+
+const {name, planet, date, description, durationInDays} = newTrip */
 
   const [name, setName] = useState("");
   const [planet, setPlanet] = useState("");
@@ -15,14 +19,12 @@ const navigate = useNavigate()
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(0);
 
-  /*  const {name, planet, date, description, durationInDays} = newTrip */
-
   return (
     <div>
       <div>
         <h3>Create Trip</h3>
 
-        <input value={setName()} placeholder="Name"></input>
+        {/* <input value={setName()} placeholder="Name"></input>
         <select placeholder="Select a planet">
           <option onSelect={setPlanet()}>Terra1</option>
           <option onSelect={setPlanet()}>Terra 2</option>
@@ -36,7 +38,7 @@ const navigate = useNavigate()
         ></input>
         <input value={setDuration()} placeholder="Duration in days"></input>
         <input value={setName()} placeholder="Name"></input>
-        <div>
+        <div> */}
           <button>Create</button>
           <button
             onClick={() => {
@@ -45,7 +47,7 @@ const navigate = useNavigate()
           >
             Go back
           </button>
-        </div>
+
       </div>
     </div>
   );

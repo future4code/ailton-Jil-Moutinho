@@ -1,9 +1,10 @@
-import React from "react";
-import styled from 'styled-components'
+import React, { useState } from "react";
+import styled from "styled-components";
 import { BASE_URL } from "../../constants/constants";
-import { useRequestData } from "../../services/useRequestData";
+import { useRequestDetails } from "../../services/useRequestDetails.js";
 import { useNavigate } from "react-router-dom";
 import { goBack } from "../../router/Coordinator";
+import { useProtectedPage } from "../../components/Hook/customHook";
 
 const MainContainer = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const MainContainer = styled.div`
   align-items: center;
 `;
 const Main = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem auto;
@@ -44,51 +45,48 @@ display: flex;
 `;
 
 function TripDetailsPage(id) {
-const navigate = useNavigate()
+  const navigate = useNavigate();
+  useProtectedPage();
+  const [approvedByManager, setApprove] = useState(false);
 
-  const [trip, isLoading, error] = useRequestData(`${BASE_URL}/trip` / id);
+  const [trip, isLoading, error] = useRequestDetails(`${BASE_URL}/trip/${id}`);
 
-  const tripDetail = trip && (
-    <li>
-      {trip.name}
-      {trip.description}
-      {trip.planet}
-      {trip.durationInDays}
-      {trip.date}
-    </li>
-  );
+  console.log(trip);
 
-  /*   const [candidates, isLoading, error] = useRequestData(`${BASE_URL}/trip` / id);
-  const PendingCandidatesList = candidates && (
-    <li>
-      {trip.name}
-      {trip.description}
-      {trip.planet}
-      {trip.durationInDays}
-      {trip.date}
-    </li>
-  ); */
+  const candidates = trip.candidate.map((item, i) => {
+    return (
+      <li key={i}>
+        {item}
+        <button onClick={() => setApprove(true)}>Approve</button>
+        <button>Fail</button>
+      </li>
+    );
+  });
+
+  const approved = trip.approved.map((item, i) => {
+    return <li key={i}>{item}</li>;
+  });
 
   return (
     <MainContainer>
       <Main>
         <h3>Travels List</h3>
         <main>
-          {isLoading && <p>Loading...</p>}
-          {!isLoading && error && <p>{error.message}</p>}
-          {!isLoading && tripDetail && tripDetail}
+          <p>Descrição da viagem</p>
         </main>
         <button
-            onClick={() => {
-              goBack(navigate);
-            }}
-          >
-            Go back
-          </button>
+          onClick={() => {
+            goBack(navigate);
+          }}
+        >
+          Go back
+        </button>
         <h3>Pending Candidates</h3>
-        <p>Funcao candidatos pendentes</p>
+        {isLoading && <p>Loading...</p>}
+        {!isLoading && error && <p>{error.message}</p>}
+        {!isLoading && trip && candidates}
         <h3>Approved candidate</h3>
-        <p>Funcao candidatos pendentes</p>
+        {approved}
       </Main>
     </MainContainer>
   );

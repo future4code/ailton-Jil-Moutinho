@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {goBack, goToManagement} from '../../router/Coordinator'
-import styled from 'styled-components'
+import { goBack, goToManagement } from "../../router/Coordinator";
+import styled from "styled-components";
+import axios from "axios";
+import { BASE_URL } from "../../constants/constants";
+import { useLoginDone } from "../../components/Hook/customHook";
 
 const MainContainer = styled.div`
   display: flex;
@@ -9,7 +12,7 @@ const MainContainer = styled.div`
   align-items: center;
 `;
 const Main = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem auto;
@@ -41,33 +44,69 @@ display: flex;
   }
 `;
 
-function LoginPage () {
-  const navigate = useNavigate()
+function LoginPage() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  useLoginDone();
 
-    return (
-<MainContainer>
-    <Main>
+/*   const history = useHistory(); */
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const submitLogin = () => {
+    const body = {
+      email: email,
+      password: password,
+    };
+
+    axios
+      .post(`${BASE_URL}/login`, body)
+      .then((res) => {
+        console.log("Deus Certo! Seu token é: ", res.data.token);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', email);
+        goToManagement(navigate);
+      })
+      .catch((error) => {
+        console.log("Deu errado... O erro foi: ", error.response);
+      });
+  };
+
+  return (
+    <MainContainer>
+      <Main>
         <p>Login</p>
-        <input></input>
-        <input></input>
-        <button>Enviar</button>
+        <input placeholder="E-mail" value={email} onChange={onChangeEmail} />
+        <input
+          placeholder="Password"
+          value={password}
+          onChange={onChangePassword}
+        />
+        <button onClick={submitLogin}>Send</button>
         <button
-            onClick={() => {
-              goBack(navigate);
-            }}
-          >
-            Go back
-          </button>
-          <button
-            onClick={() => {
-              goToManagement(navigate);
-            }}
-          >
-            Management
-          </button>
-        </Main>
-        </MainContainer>
-        )
+          onClick={() => {
+            goBack(navigate);
+          }}
+        >
+          Go back
+        </button>
+        <button
+          onClick={() => {
+            goToManagement(navigate);
+          }}
+        >
+          Management
+        </button>
+      </Main>
+    </MainContainer>
+  );
 }
 
 export default LoginPage;

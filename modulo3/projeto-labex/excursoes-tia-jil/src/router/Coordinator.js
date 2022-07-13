@@ -10,7 +10,7 @@ export const goToLogin = (navigate) => {
 export const goToManagement = (navigate) => {
   navigate("/login/management/");
 };
-export const goToTripdetails = (navigate) => {
+export const goToTripDetails = (navigate) => {
   navigate("/login/management/tripdetails/");
 };
 export const goToCreatetrip = (navigate) => {

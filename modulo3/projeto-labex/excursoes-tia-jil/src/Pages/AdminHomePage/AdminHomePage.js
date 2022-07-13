@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BASE_URL } from "../../constants/constants";
 import { useRequestData } from "../../services/useRequestData";
-import { useDelTrips } from "../../services/useDelTrip";
+/* import { useDelTrips } from "../../services/useDelTrip"; */
+import { useProtectedPage } from "../../components/Hook/customHook"; 
 import styled from "styled-components";
-import { goToCreatetrip, goBack } from "../../router/Coordinator";
+import {
+  goToCreatetrip,
+  goBack,
+  goToTripDetails,
+  goToManagement,
+} from "../../router/Coordinator";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -46,32 +52,41 @@ const Main = styled.div`
 `;
 
 function ManagementPage() {
+
   const navigate = useNavigate();
+  useProtectedPage();
   const [trips, isLoading, error] = useRequestData(`${BASE_URL}/trips/`);
 
-  useEffect(() => {
-console.log('Teste');
+  /*   useEffect(() => {}, [trips.length]); */
 
-  }, [trips]);
-  
+  /*   if (window.confirm("Esta certo disso?"))  */
+
   const tripsList =
     trips &&
     trips.map((item, index) => {
       return (
         <li key={index}>
           {item.name}
-          <button>Details</button>
           <button
             onClick={() => {
-              if (window.confirm("Esta certo disso?")) {
-                axios
-                  .delete(`${BASE_URL}/trips/${item.id}`)
-                  .then((res) => {
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                  });
-              }
+              goToTripDetails(navigate, item.id);
+            }}
+          >
+            Details
+          </button>
+          <button
+            onClick={() => {
+              const token = localStorage.getItem("token");
+              axios
+                .delete(`${BASE_URL}/trips/${item.id}`, {
+                  headers: { auth: token },
+                })
+                .then((res) => {
+                  goToManagement(navigate);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }}
           >
             Delete
