@@ -8,13 +8,13 @@ export const goToLogin = (navigate) => {
   navigate("/login/");
 };
 export const goToManagement = (navigate) => {
-  navigate("/login/management/");
+  navigate("/management/");
 };
-export const goToTripDetails = (navigate) => {
-  navigate("/login/management/tripdetails/");
+export const goToTripDetails = (navigate, id) => {
+  navigate(`/management/tripdetails/${id}`);
 };
 export const goToCreatetrip = (navigate) => {
-  navigate("/login/management/createtrip/");
+  navigate("/management/createtrip/");
 };
 export const goBack = (navigate) => {
   navigate(-1);

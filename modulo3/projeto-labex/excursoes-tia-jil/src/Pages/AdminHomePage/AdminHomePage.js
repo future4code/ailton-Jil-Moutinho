@@ -1,19 +1,23 @@
 import React from "react";
+import axios from "axios";
+import styled from "styled-components";
 import { BASE_URL } from "../../constants/constants";
 import { useRequestData } from "../../services/useRequestData";
 /* import { useDelTrips } from "../../services/useDelTrip"; */
-import { useProtectedPage } from "../../components/Hook/customHook"; 
-import styled from "styled-components";
+import { useProtectedPage } from "../../components/Hook/customHook";
+import { useNavigate } from "react-router-dom";
 import {
   goToCreatetrip,
   goBack,
   goToTripDetails,
   goToManagement,
+  goToTripsList,
 } from "../../router/Coordinator";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const MainContainer = styled.div`
+  background-color: black;
+  height: 100vh;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +30,7 @@ const Main = styled.div`
   border: 4px solid grey;
   border-radius: 10px;
   padding: 2rem;
-  background-color: transparent grey;
+  background-color: lightblue;
   /* width: 40rem; */
   input {
     width: 35rem;
@@ -52,7 +56,6 @@ const Main = styled.div`
 `;
 
 function ManagementPage() {
-
   const navigate = useNavigate();
   useProtectedPage();
   const [trips, isLoading, error] = useRequestData(`${BASE_URL}/trips/`);
@@ -63,9 +66,9 @@ function ManagementPage() {
 
   const tripsList =
     trips &&
-    trips.map((item, index) => {
+    trips.map((item) => {
       return (
-        <li key={index}>
+        <li key={item.id}>
           {item.name}
           <button
             onClick={() => {
@@ -95,10 +98,16 @@ function ManagementPage() {
       );
     });
 
+const goLogout = () => {
+  localStorage.removeItem('token');
+  navigate('/')
+}
+
   return (
     <MainContainer>
       <Main>
         <h3>Travels List</h3>
+        <div>
         <button
           onClick={() => {
             goToCreatetrip(navigate);
@@ -108,12 +117,13 @@ function ManagementPage() {
         </button>
         <button
           onClick={() => {
-            goBack(navigate);
+            goToTripsList(navigate);
           }}
         >
           Go back
         </button>
-        <button>Logout</button>
+        <button onClick={goLogout}>Logout</button>
+        </div>
         <div>
           {isLoading && <p>Loading...</p>}
           {!isLoading && error && <p>{error.message}</p>}

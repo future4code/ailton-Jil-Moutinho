@@ -3,27 +3,24 @@ import { useEffect, useState } from "react";
 
 export const useRequestDetails = (url) => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
- 
-  useEffect(() => {
-    setIsLoading(true);
-    const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
+  const getDetails = (url) => {
     axios
-      .get(url, 
-        {headers: {
-            auth: token,
-        }})
+      .get(url, {
+        headers: {
+          auth: token,
+        },
+      })
       .then((res) => {
-        setIsLoading(false);
-        setData(res);
-        console.log(res)
+        setData(res.data.trip);
       })
       .catch((err) => {
-        setIsLoading(false);
-        setError(err);
         console.log(err);
       });
+  };
+
+  useEffect(() => {
+    getDetails(url);
   }, [url]);
-  return [data, isLoading, error];
+  return [data, getDetails];
 };

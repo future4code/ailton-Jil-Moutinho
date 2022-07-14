@@ -7,6 +7,9 @@ import { BASE_URL } from "../../constants/constants";
 import { useLoginDone } from "../../components/Hook/customHook";
 
 const MainContainer = styled.div`
+  background-color: black;
+  height: 100vh;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +22,7 @@ const Main = styled.div`
   border: 4px solid grey;
   border-radius: 10px;
   padding: 2rem;
-  background-color: transparent grey;
+  background-color: lightblue;
   /* width: 40rem; */
   input {
     width: 35rem;
@@ -50,8 +53,6 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   useLoginDone();
 
-/*   const history = useHistory(); */
-
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -70,8 +71,8 @@ function LoginPage() {
       .post(`${BASE_URL}/login`, body)
       .then((res) => {
         console.log("Deus Certo! Seu token é: ", res.data.token);
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', email);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", email);
         goToManagement(navigate);
       })
       .catch((error) => {
@@ -83,11 +84,18 @@ function LoginPage() {
     <MainContainer>
       <Main>
         <p>Login</p>
-        <input placeholder="E-mail" value={email} onChange={onChangeEmail} />
+        <input
+          placeholder="E-mail"
+          type={email}
+          value={email}
+          onChange={onChangeEmail}
+          required
+        />
         <input
           placeholder="Password"
           value={password}
           onChange={onChangePassword}
+          required
         />
         <button onClick={submitLogin}>Send</button>
         <button

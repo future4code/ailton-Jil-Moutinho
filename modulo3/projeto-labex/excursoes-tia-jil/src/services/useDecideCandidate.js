@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+/* import { useRequestDetails } from "./useRequestDetails"; */
 
 export const useDecideCandidate = (url) => {
  
@@ -16,10 +17,12 @@ export const useDecideCandidate = (url) => {
             auth: token,
         }})
       .then((res) => {
+        window.alert('Candidato registrado como aprovado!');
+        /* useRequestDetails(); */
       })
       .catch((err) => {
         console.log(err);
       });
   }, [url]);
-  return [data];
+  
 };

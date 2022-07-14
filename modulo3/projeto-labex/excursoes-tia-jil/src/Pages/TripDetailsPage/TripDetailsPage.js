@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { BASE_URL } from "../../constants/constants";
-import { useRequestDetails } from "../../services/useRequestDetails.js";
-import { useNavigate } from "react-router-dom";
+import { useRequestDetails } from "../../services/useRequestDetails";
+/* import { useDecideCandidate } from "../../services/useDecideCandidate"; */
+import { useNavigate, useParams } from "react-router-dom";
 import { goBack } from "../../router/Coordinator";
 import { useProtectedPage } from "../../components/Hook/customHook";
+import axios from "axios";
 
 const MainContainer = styled.div`
+  background-color: lightblue;
+  height: 100vh;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,27 +49,60 @@ const Main = styled.div`
   }
 `;
 
-function TripDetailsPage(id) {
+function TripDetailsPage() {
   const navigate = useNavigate();
+  const params = useParams();
+  const token = localStorage.getItem("token");
+
   useProtectedPage();
-  const [approvedByManager, setApprove] = useState(false);
 
-  const [trip, isLoading, error] = useRequestDetails(`${BASE_URL}/trip/${id}`);
+  const [tripDetails, getDetails] = useRequestDetails(
+    `${BASE_URL}/trip/${params.id}`
+  );
 
-  console.log(trip);
+  const decisionYes = (item, yesOrNo) => {
+    const body = {
+      approve: yesOrNo,
+    };
+    axios
+      .put(
+        `${BASE_URL}/trips/${params.id}/candidates/${item.id}/decide`,
+        body,
+        {
+          headers: {
+            auth: token,
+          },
+        }
+      )
+      .then((res) => {
+        /* if */
+        window.alert("Candidato já analisado!");
+        getDetails(`${BASE_URL}/trip/${params.id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  const candidates = trip.candidate.map((item, i) => {
+  const candidates = tripDetails.candidates?.map((item) => {
     return (
-      <li key={i}>
-        {item}
-        <button onClick={() => setApprove(true)}>Approve</button>
-        <button>Fail</button>
-      </li>
+      <div key={item.id}>
+        <p>{item.name}</p>
+        {/* {item.age}</p>
+        {item.country}
+        {item.profession}
+        {item.applicationText} */}
+        <div>
+          <button onClick={() => decisionYes(item, true)}>Approve</button>
+
+          <button onClick={() => decisionYes(item, false)}>Fail</button>
+        </div>
+      </div>
     );
   });
 
-  const approved = trip.approved.map((item, i) => {
-    return <li key={i}>{item}</li>;
+  const approvedCandidates = tripDetails.approved?.map((item) => {
+    return <li key={item.id}>{item.name}</li>;
   });
 
   return (
@@ -72,7 +110,26 @@ function TripDetailsPage(id) {
       <Main>
         <h3>Travels List</h3>
         <main>
-          <p>Descrição da viagem</p>
+          <p>
+            <strong>Name: </strong>
+            {tripDetails.name}
+          </p>
+          <p>
+            <strong>Planet: </strong>
+            {tripDetails.planet}
+          </p>
+          <p>
+            <strong>Description: </strong>
+            {tripDetails.description}
+          </p>
+          <p>
+            <strong>Date: </strong>
+            {tripDetails.date}
+          </p>
+          <p>
+            <strong>DurationInDays: </strong>
+            {tripDetails.durationInDays}
+          </p>
         </main>
         <button
           onClick={() => {
@@ -82,11 +139,9 @@ function TripDetailsPage(id) {
           Go back
         </button>
         <h3>Pending Candidates</h3>
-        {isLoading && <p>Loading...</p>}
-        {!isLoading && error && <p>{error.message}</p>}
-        {!isLoading && trip && candidates}
+        {candidates}
         <h3>Approved candidate</h3>
-        {approved}
+        {approvedCandidates}
       </Main>
     </MainContainer>
   );
