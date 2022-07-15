@@ -10,19 +10,24 @@ import { BASE_URL, coutries } from "../../constants/constants";
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 100vh;
 `;
 const Main = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   margin: 5rem 10rem auto;
   border: 4px solid grey;
   border-radius: 10px;
   padding: 2rem;
   background-color: transparent grey;
   /* width: 40rem; */
-  input {
+  input,
+  select {
+    display: flex;
+    align-self: center;
     width: 35rem;
     border-radius: 10px;
     gap: 1rem;
@@ -34,7 +39,7 @@ const Main = styled.div`
     margin: 1rem;
     border-radius: 10px;
     background-color: lightgrey;
-    box-shadow: 5px 5px 5px blue;
+    box-shadow: 5px 5px 10px blue;
     :hover {
       height: 2.2rem;
       width: 8.2rem;
@@ -49,7 +54,6 @@ function ApplicationPage(params) {
   const navigate = useNavigate();
   const [tripId, setTripId] = useState("");
   const [trips] = useRequestData(`${BASE_URL}/trips`);
-  console.log(trips);
 
   const { form, onChangeForm, cleanFields } = useForm({
     name: "",
@@ -155,15 +159,17 @@ function ApplicationPage(params) {
               );
             })}
           </select>
-          <button>Enviar</button>
+          <div>
+            <button>Enviar</button>
+            <button
+              onClick={() => {
+                goBack(navigate);
+              }}
+            >
+              Voltar
+            </button>
+          </div>
         </form>
-        <button
-          onClick={() => {
-            goBack(navigate);
-          }}
-        >
-          Voltar
-        </button>
       </Main>
     </MainContainer>
   );

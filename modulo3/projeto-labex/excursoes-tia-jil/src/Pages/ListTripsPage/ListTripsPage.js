@@ -25,16 +25,33 @@ const GlobalList = styled.div`
     }
   }
 `;
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+
+`;
+
+const CardsContainer = styled.div`
+margin-top: 12px;
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+`
 const TripsCard = styled.div`
-  height: 15rem;
+  height: 17rem;
   width: 20rem;
-  background-color: lightblue;
+  color: black;
+  background-image: url(${'https://picsum.photos/200/150?random=1'});
+  background-size: cover;
+/*   background-color: lightblue; */
   border-radius: 15px;
   padding: 4px;
-  margin-top: 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  overflow-y: auto;
   /* img {
     width: 16rem;
     margin-left: 12px;
@@ -92,14 +109,16 @@ function ListTripsPage() {
   return (
     <GlobalList>
       <HeaderContainer />
-      <main>
-        <h3>Lista de pacotes</h3>
+      <Main>
+        <h3>Avaiable List</h3>
         <button onClick={() => goToApplication(navigate)}>Subscript</button>
-        {isLoading && <p>Loading...</p>}
-        {!isLoading && error && <p>{error.message}</p>}
-        {!isLoading && trips && trips.length > 0 && tripsDataList}
-        {!isLoading && trips && trips.length === 0 && <p>Não há viagens</p>}
-      </main>
+        <CardsContainer>
+          {isLoading && <p>Loading...</p>}
+          {!isLoading && error && <p>{error.message}</p>}
+          {!isLoading && trips && trips.length > 0 && tripsDataList}
+          {!isLoading && trips && trips.length === 0 && <p>Não há viagens</p>}
+        </CardsContainer>
+      </Main>
     </GlobalList>
   );
 }
