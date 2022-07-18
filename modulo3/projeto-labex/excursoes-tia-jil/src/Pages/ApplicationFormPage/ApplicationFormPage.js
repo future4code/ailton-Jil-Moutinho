@@ -5,37 +5,47 @@ import styled from "styled-components";
 import { goBack } from "../../router/Coordinator";
 import useForm from "../../components/Hook/useForm";
 import axios from "axios";
+import Fundo from "../../assets/img/fundoespaco.jpeg";
+import Fundo2 from "../../assets/img/fundoLogin.jpeg";
 import { BASE_URL, coutries } from "../../constants/constants";
 
 const MainContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  background-color: black;
+  background-image: url(${Fundo});
+  background-size: cover;
   height: 100vh;
 `;
 const Main = styled.div`
+  color: white;
+  text-shadow: 0.5rem 0.5rem 0.5rem #ff00ff;
+  background-image: url(${Fundo2});
+  background-size: contain;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 5rem 10rem auto;
+  align-items: center;
+  margin: 5vh auto;
   border: 4px solid grey;
   border-radius: 10px;
-  padding: 2rem;
-  background-color: transparent grey;
-  /* width: 40rem; */
+  box-shadow: 1rem 0.2rem 2rem #ff00ff;
+  padding-top: 2vh;
+  height: 70vh;
+  width: 50vw;
   input,
   select {
+    margin: 1vh;
     display: flex;
-    align-self: center;
-    width: 35rem;
-    border-radius: 10px;
-    gap: 1rem;
-    height: 2rem;
+    width: 35vw;
+    border-radius: 5px;
+    height: 4vh;
+    :hover {
+      box-shadow: 0.2rem 0.2rem 2rem #ff00ff, inset 0 0 0.5em #ff00ff;
+    }
   }
   button {
-    height: 2rem;
-    width: 8rem;
+    height: 5vh;
+    width: 8vw;
     margin: 1rem;
     border-radius: 10px;
     background-color: lightgrey;
@@ -48,6 +58,10 @@ const Main = styled.div`
       color: white;
     }
   }
+`;
+const DivButton = styled.div`
+  width: 100%;
+  display: flex;
 `;
 
 function ApplicationPage(params) {
@@ -98,6 +112,7 @@ function ApplicationPage(params) {
   return (
     <MainContainer>
       <Main>
+        <h2>Application Form</h2>
         <form onSubmit={usePostApply}>
           <select
             placeholder="Choose your travel"
@@ -159,17 +174,17 @@ function ApplicationPage(params) {
               );
             })}
           </select>
-          <div>
-            <button>Enviar</button>
-            <button
-              onClick={() => {
-                goBack(navigate);
-              }}
-            >
-              Voltar
-            </button>
-          </div>
+          <button>Enviar</button>
         </form>
+        <DivButton>
+          <button
+            onClick={() => {
+              goBack(navigate);
+            }}
+          >
+            Voltar
+          </button>
+        </DivButton>
       </Main>
     </MainContainer>
   );

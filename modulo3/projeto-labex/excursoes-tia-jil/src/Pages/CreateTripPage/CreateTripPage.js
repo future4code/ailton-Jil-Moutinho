@@ -7,47 +7,44 @@ import useForm from "../../components/Hook/useForm";
 /* import { useCreateTrip } from '../../services/useCreateTrip' */
 import axios from "axios";
 import { BASE_URL, planets } from "../../constants/constants";
+import Fundo from "../../assets/img/fundoespaco.jpeg";
+import Fundo2 from "../../assets/img/fundoLogin.jpeg";
 /* import { useRequestData } from "../../services/useRequestData";
 import { BASE_URL } from "../../constants/constants"; */
 
 const GlobalList = styled.div`
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  background-image: url(${Fundo});
+  background-size: cover;
   height: 100vh;
-  padding: 12px;
-  button {
-    height: 2rem;
-    width: 8rem;
-    border-radius: 10px;
-    background-color: lightgrey;
-    box-shadow: 5px 5px 5px blue;
-    :hover {
-      height: 2.2rem;
-      width: 8.2rem;
-      opacity: 1;
-      background-color: grey;
-      color: white;
-    }
-  }
 `;
-
 const Main = styled.div`
+  color: white;
+  text-shadow: 0.2rem 0.2rem 0.5rem #ff00ff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 5rem 10rem auto;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5vh auto;
   border: 4px solid lightblue;
   border-radius: 10px;
   padding: 2rem;
-  background-color: transparent grey;
-  /* width: 40rem; */
+  background-image: url(${Fundo2});
+  background-size: contain;
+  height: 70vh;
+  box-shadow: 1rem 0.2rem 2rem #ff00ff;
   input,
   select {
     display: flex;
     align-self: center;
-    width: 35rem;
+    width: 40rem;
     border-radius: 10px;
-    gap: 1rem;
+    margin: 1vh;
     height: 2rem;
+    :hover {
+      box-shadow: 0.2rem 0.2rem 2rem #ff00ff, inset 0 0 0.5em #ff00ff;
+    }
   }
   button {
     height: 2rem;
@@ -110,7 +107,7 @@ function CreateTripPage() {
   return (
     <GlobalList>
       <Main>
-        <h3>Create Trip</h3>
+        <h2>Create Trip</h2>
         <form onSubmit={useCreateTrip}>
           <input
             name="name"

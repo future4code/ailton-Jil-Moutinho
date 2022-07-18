@@ -1,37 +1,35 @@
 import React from "react";
+import axios from "axios";
 import styled from "styled-components";
+import Fundo from "../../assets/img/fundoneon.jpeg";
+import Yes from "../../assets/img/yes.jpeg";
+import No from "../../assets/img/no.jpeg";
+import Astro from "../../assets/img/astro.jpeg";
 import { BASE_URL } from "../../constants/constants";
 import { useRequestDetails } from "../../services/useRequestDetails";
-/* import { useDecideCandidate } from "../../services/useDecideCandidate"; */
 import { useNavigate, useParams } from "react-router-dom";
 import { goBack } from "../../router/Coordinator";
 import { useProtectedPage } from "../../components/Hook/customHook";
-import axios from "axios";
 
 const MainContainer = styled.div`
-  background-color: lightblue;
+  background-image: url(${Fundo});
+  background-size: cover;
+  display: flex;
+  justify-content: center;
   height: 100vh;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: white;
 `;
-const Main = styled.div`
+const MainCard = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 1rem auto;
+  justify-content: space-between;
+  height: 85vh;
+  overflow-y: auto;
+  margin: 2vh auto;
   border: 4px solid grey;
   border-radius: 10px;
-  padding: 2rem;
-  background-color: transparent grey;
-  /* width: 40rem; */
-  input {
-    width: 35rem;
-    border-radius: 10px;
-    gap: 1rem;
-    height: 2rem;
-  }
+  padding: 3vh;
+  background-color: black;
   button {
     height: 2rem;
     width: 8rem;
@@ -48,6 +46,30 @@ const Main = styled.div`
     }
   }
 `;
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5vh;
+  li {
+    /* list-style-image: url(${Astro}); */
+    list-style-type: none;
+  }
+  img {
+    height: 4vh;
+    border-radius: 5px;
+    border-right: solid 1px grey;
+    border-bottom: solid 1px grey;
+    margin-left: 4px;
+  }
+`;
+const Candidate = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  width: 100%;
+`;
 
 function TripDetailsPage() {
   const navigate = useNavigate();
@@ -60,7 +82,7 @@ function TripDetailsPage() {
     `${BASE_URL}/trip/${params.id}`
   );
 
-  const decisionYes = (item, yesOrNo) => {
+  const decision = (item, yesOrNo) => {
     const body = {
       approve: yesOrNo,
     };
@@ -76,7 +98,7 @@ function TripDetailsPage() {
       )
       .then((res) => {
         /* if */
-        window.alert("Candidato já analisado!");
+        window.alert("Candidato analisado!");
         getDetails(`${BASE_URL}/trip/${params.id}`);
       })
       .catch((err) => {
@@ -86,18 +108,17 @@ function TripDetailsPage() {
 
   const candidates = tripDetails.candidates?.map((item) => {
     return (
-      <div key={item.id}>
-        <p>{item.name}</p>
-        {/* {item.age}</p>
-        {item.country}
-        {item.profession}
-        {item.applicationText} */}
+      <Candidate key={item.id}>
+        {item.name}
         <div>
-          <button onClick={() => decisionYes(item, true)}>Approve</button>
-
-          <button onClick={() => decisionYes(item, false)}>Fail</button>
+          <img
+            src={Yes}
+            alt={"Check - Sim"}
+            onClick={() => decision(item, true)}
+          />
+          <img src={No} alt={"X - Nãp"} onClick={() => decision(item, false)} />
         </div>
-      </div>
+      </Candidate>
     );
   });
 
@@ -107,30 +128,37 @@ function TripDetailsPage() {
 
   return (
     <MainContainer>
-      <Main>
-        <h3>Travels List</h3>
-        <main>
-          <p>
-            <strong>Name: </strong>
-            {tripDetails.name}
-          </p>
-          <p>
-            <strong>Planet: </strong>
-            {tripDetails.planet}
-          </p>
-          <p>
-            <strong>Description: </strong>
-            {tripDetails.description}
-          </p>
-          <p>
-            <strong>Date: </strong>
-            {tripDetails.date}
-          </p>
-          <p>
-            <strong>DurationInDays: </strong>
-            {tripDetails.durationInDays}
-          </p>
-        </main>
+      <MainCard>
+        <Details>
+          <h3>Travel Details</h3>
+          <main>
+            <p>
+              <strong>Name: </strong>
+              {tripDetails.name}
+            </p>
+            <p>
+              <strong>Planet: </strong>
+              {tripDetails.planet}
+            </p>
+            <p>
+              <strong>Description: </strong>
+              {tripDetails.description}
+            </p>
+            <p>
+              <strong>Date: </strong>
+              {tripDetails.date}
+            </p>
+            <p>
+              <strong>DurationInDays: </strong>
+              {tripDetails.durationInDays}
+            </p>
+          </main>
+
+          <h3>Pending Candidates</h3>
+          {candidates}
+          <h3>Approved candidate</h3>
+          {approvedCandidates}
+        </Details>
         <button
           onClick={() => {
             goBack(navigate);
@@ -138,11 +166,7 @@ function TripDetailsPage() {
         >
           Go back
         </button>
-        <h3>Pending Candidates</h3>
-        {candidates}
-        <h3>Approved candidate</h3>
-        {approvedCandidates}
-      </Main>
+      </MainCard>
     </MainContainer>
   );
 }
