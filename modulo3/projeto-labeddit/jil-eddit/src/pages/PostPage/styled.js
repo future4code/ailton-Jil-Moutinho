@@ -30,6 +30,12 @@ export const PostContainer = styled.div`
   width: 98vw;
   margin-top: 15px;
   padding: 8px;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const PostsContain = styled.div`
   display: flex;

@@ -3,7 +3,6 @@ import { BASE_URL } from "../constants/urls";
 
 export const positivePostVote = (body, id, setIsLoading) => {
   setIsLoading(true);
-    console.log(id);
   axios
     .post(`${BASE_URL}/posts/${id}/votes`, {'direction': body}, {
       headers: {

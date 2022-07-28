@@ -7,10 +7,20 @@ import axios from "axios";
 import ComentCard from "../../components/ComentCard/ComendCard";
 import PostCard from "../../components/PostCard/PostCard";
 import Loading from "../../components/Loading/Loading";
+import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import { createComent } from "../../services/post";
-import { PostButton, PostContainer, InputComment, PostsContain } from "./styled";
+import {
+  positiveCommentVote,
+  negativeCommentVote,
+} from "../../services/couters";
+import {
+  PostButton,
+  PostContainer,
+  InputComment,
+  PostsContain,
+} from "./styled";
 
 const PostPage = () => {
   useProtectedPage();
@@ -24,7 +34,7 @@ const PostPage = () => {
   const [arrayComents, setArrayComents] = useState([]);
 
   const getArrayComents = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     axios
       .get(`${BASE_URL}/posts/${params.id}/comments`, {
         headers: {
@@ -33,26 +43,32 @@ const PostPage = () => {
       })
       .then((res) => {
         setArrayComents(res.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((err) => {
-        setIsLoading(false)
+        setIsLoading(false);
         console.log(err);
-        alert("Ocorreu um erro, tente novamente");
+        Swal.fire({
+          title: 'Error!',
+          text: `Ocorreu um erro, tente novamente. Erro ${err}`,
+          icon: 'error',
+          confirmButtonText: 'Sad, but ok!'
+        })
       });
   };
 
   useEffect(() => {
     getArrayComents();
-  }, []);
+  }, [arrayComents]);
 
   const comentsPost = arrayComents?.map((item, index) => {
     return (
       <ComentCard
         key={index}
-        body={item?.body}
+        item={item}
+        /* body={item?.body}
         voteSum={item?.voteSum}
-        username={item?.username}
+        username={item?.username} */
       />
     );
   });
@@ -88,7 +104,15 @@ const PostPage = () => {
             Continuar
           </PostButton>
         </form>
-        {!isLoading ? arrayComents.length == 0 ? <p>Não há comentários neste post. Seja o primeiro!</p> : <PostsContain>{comentsPost}</PostsContain> : <Loading />}
+        {!isLoading ? (
+          arrayComents.length == 0 ? (
+            <p>Não há comentários neste post. Seja o primeiro!</p>
+          ) : (
+            <PostsContain>{comentsPost}</PostsContain>
+          )
+        ) : (
+          <Loading />
+        )}
       </PostContainer>
     </div>
   );

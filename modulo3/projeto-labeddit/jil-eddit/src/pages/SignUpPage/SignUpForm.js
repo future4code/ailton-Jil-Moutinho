@@ -26,60 +26,60 @@ const SignUpForm = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer >
       <form onSubmit={onSubmitForm}>
-        <InputContainer>
-          <InputSignUp
-            name={"username"}
-            value={form.username}
-            onChange={onChange}
-            label={"Nome"}
-            variant={"outlined"}
-            fullwidth="true"
-            margin={"dense"}
-            required
-          />
-          <InputSignUp
-            name={"email"}
-            value={form.email}
-            onChange={onChange}
-            type={"email"}
-            label={"E-mail"}
-            variant={"outlined"}
-            fullwidth="true"
-            margin={"dense"}
-            required
-          />
-          <InputSignUp
-            name={"password"}
-            value={form.password}
-            onChange={onChange}
-            type={"password"}
-            label={"Senha"}
-            variant={"outlined"}
-            fullwidth="true"
-            margin={"dense"}
-            pattern={"^.{8,}"}
-            required
-          />
-        </InputContainer>
-        <p>
-          Ao continuar, você concorda com o nosso{" "}
-          <Span1>Contrato de usuário</Span1> e nossa{" "}
-          <Span1>Política de Privacidade</Span1>
-        </p>
-        <CheckContainer>
-          <Checkbox></Checkbox>
-          <p>Eu concordo em receber emails sobre coisas legais no Labeddit</p>
-        </CheckContainer>
-        <Button
-          type={"submit"}
-          variant="contained"
-          color="primary"
-          align-self="center"
-        >
-          Cadastrar
-        </Button>
+      <InputContainer>
+        <InputSignUp
+          name={"username"}
+          value={form.username}
+          onChange={onChange}
+          label={"Nome"}
+          variant={"outlined"}
+          fullwidth="true"
+          margin={"dense"}
+          required
+        />
+        <InputSignUp
+          name={"email"}
+          value={form.email}
+          onChange={onChange}
+          type={"email"}
+          label={"E-mail"}
+          variant={"outlined"}
+          fullwidth="true"
+          margin={"dense"}
+          required
+        />
+        <InputSignUp
+          name={"password"}
+          value={form.password}
+          onChange={onChange}
+          type={"password"}
+          label={"Senha"}
+          variant={"outlined"}
+          fullwidth="true"
+          margin={"dense"}
+          pattern={"^.{8,}"}
+          required
+        />
+      </InputContainer>
+      <p>
+        Ao continuar, você concorda com o nosso{" "}
+        <Span1>Contrato de usuário</Span1> e nossa{" "}
+        <Span1>Política de Privacidade</Span1>
+      </p>
+      <CheckContainer>
+        <Checkbox></Checkbox>
+        <p>Eu concordo em receber emails sobre coisas legais no Labeddit</p>
+      </CheckContainer>
+      <Button
+        type={"submit"}
+        variant="contained"
+        color="primary"
+        align-self="center"
+      >
+        Cadastrar
+      </Button>
       </form>
     </FormContainer>
   );

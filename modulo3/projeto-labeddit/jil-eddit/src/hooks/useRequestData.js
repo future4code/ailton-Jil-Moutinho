@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const useRequestData = (initialData, url) => {
   const [data, setData] = useState(initialData)
@@ -13,9 +14,15 @@ const useRequestData = (initialData, url) => {
       .then((response) => {
         setData(response.data)
       })
-      .catch((error) => {
-        console.log(error)
-        alert('Ocorreu um erro, tente novamente')
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          title: 'Error!',
+          text: `Ocorreu um erro, tente novamente. Erro ${err}`,
+          icon: 'error',
+          confirmButtonText: 'Sad, but ok!'
+        })
+        /* alert('Ocorreu um erro, tente novamente') */
       })
   }, [url])
 

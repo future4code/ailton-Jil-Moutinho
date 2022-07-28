@@ -20,36 +20,36 @@ const LoginForm = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer >
       <form onSubmit={onSubmitForm}>
-        <InputContainer>
-          <InputLogin
-            name={"email"}
-            value={form.email}
-            onChange={onChange}
-            type={"email"}
-            label={"E-mail"}
-            variant={"outlined"}
-            fullwidth="true"
-            margin={"dense"}
-            required
-          />
-          <InputLogin
-            name={"password"}
-            value={form.password}
-            onChange={onChange}
-            type={"password"}
-            label={"Senha"}
-            variant={"outlined"}
-            fullwidth="true"
-            margin={"normal"}
-            pattern={"^.{8,}"}
-            required
-          />
-        </InputContainer>
-        <LoginButton type={"submit"} variant="contained" background="primary">
-          Continuar
-        </LoginButton>
+      <InputContainer>
+        <InputLogin
+          name={"email"}
+          value={form.email}
+          onChange={onChange}
+          type={"email"}
+          label={"E-mail"}
+          variant={"outlined"}
+          fullwidth="true"
+          margin={"dense"}
+          required
+        />
+        <InputLogin
+          name={"password"}
+          value={form.password}
+          onChange={onChange}
+          type={"password"}
+          label={"Senha"}
+          variant={"outlined"}
+          fullwidth="true"
+          margin={"normal"}
+          pattern={"^.{8,}"}
+          required
+        />
+      </InputContainer>
+      <LoginButton type={"submit"} variant="contained" background="primary">
+        Continuar
+      </LoginButton>
       </form>
     </FormContainer>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Fundo from "../../assets/img/fundoTeste2.png";
 import { Button } from "@mui/material";
 
 export const LoginContainer = styled.div`
@@ -9,6 +10,14 @@ export const LoginContainer = styled.div`
   width: 98vw;
   margin-top: 10vh;
   padding: 8px;
+  background-image: url(${Fundo});
+  background-size: cover;
+  height: 88vh;
+  @media screen and (max-width: 480px) {
+    background-color: white;
+    background-image: none;
+    height: auto;
+  }
 `;
 
 export const LogoImgStyled = styled.img`
@@ -43,7 +52,14 @@ export const FormContainer = styled.div`
   height: 170px;
   max-width: 450px;
   margin-bottom: 20px;
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
+
 export const InputLogin = styled.input`
   height: 40px;
   width: 295px;
@@ -61,5 +77,6 @@ export const ContaiDesk = styled.div`
   padding: 15px;
   border: 1px solid grey;
   border-radius: 10px;
-  box-shadow: 10px 10px 10px #F27649;
+  box-shadow: 10px 10px 10px #f27649;
+  background-color: white;
 `;

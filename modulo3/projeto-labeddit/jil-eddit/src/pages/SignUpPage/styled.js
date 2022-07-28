@@ -40,6 +40,12 @@ export const FormContainer = styled.div`
   p {
     font-size: small;
   }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const InputSignUp = styled.input`
   height: 40px;

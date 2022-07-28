@@ -4,11 +4,10 @@ import useForm from "../../hooks/useForm";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import Header from "../../components/Header/Header";
 import PostCard from "../../components/PostCard/PostCard";
-import useRequestData from "../../hooks/useRequestData";
 import Loading from "../../components/Loading/Loading";
 import Pagination from "../../components/Pagination/Pagination";
+import Swal from "sweetalert2";
 import { createPost } from "../../services/post";
-import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import {
   FeedContainer,
@@ -18,12 +17,13 @@ import {
   InputFeedTitle,
   InputFeedPost,
   PostsContainer,
+  WelcomeContain
 } from "./styled";
 
 const FeedPage = () => {
   useProtectedPage();
-  const navigate = useNavigate();
-  const arrayPosts = useRequestData([], `${BASE_URL}/posts`);
+  /*   const navigate = useNavigate();
+  const arrayPosts = useRequestData([], `${BASE_URL}/posts`); */
   const [arrayPostsAll, setArrayPostsAll] = useState();
 
   const [form, onChange, clear] = useForm({ title: "", body: "" });
@@ -42,6 +42,12 @@ const FeedPage = () => {
       .catch((err) => {
         setIsLoading(false);
         console.log(err);
+        Swal.fire({
+          title: 'Error!',
+          text: `Ocorreu um erro, tente novamente. Erro ${err}`,
+          icon: 'error',
+          confirmButtonText: 'Sad, but ok!'
+        })
       });
   };
 
@@ -55,13 +61,19 @@ const FeedPage = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault(); //n mostra no navegador
-    createPost(form, clear, setIsLoading);
+    createPost(form, clear, setIsLoading, getArrayPosts);
   };
+
+  const userName = localStorage.getItem('user');
 
   return (
     <div>
       <Header />
       <FeedContainer>
+        <WelcomeContain>
+          <p>Olá {userName}!</p> 
+          <p>O que vamos postar hoje?</p>
+          </WelcomeContain>
         <FormContainer>
           <form onSubmit={onSubmitForm}>
             <InputContainer>
@@ -95,10 +107,8 @@ const FeedPage = () => {
             </FeedButton>
           </form>
         </FormContainer>
+        <PostsContainer>{!isLoading ? postsFeed : <Loading />}</PostsContainer>
         <Pagination getArrayPosts={getArrayPosts} setIsLoading={setIsLoading} />
-        <PostsContainer>
-          {!isLoading ? postsFeed : <Loading />}
-        </PostsContainer>
       </FeedContainer>
     </div>
   );

@@ -1,7 +1,8 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 import { BASE_URL } from "../constants/urls";
 
-export const createPost = (body, clear, setIsLoading) => {
+export const createPost = (body, clear, setIsLoading, getArrayPosts) => {
   setIsLoading(true);
   axios
     .post(`${BASE_URL}/posts`, body, {
@@ -11,12 +12,17 @@ export const createPost = (body, clear, setIsLoading) => {
     })
     .then((res) => {
       clear();
-      setIsLoading(false)
-      /* setLoginButton("Logout"); */
+      getArrayPosts()
+      setIsLoading(false);
     })
     .catch((err) => {
       console.log(err);
-      window.alert(`Erro no login${err.message}`);
+      Swal.fire({
+        title: 'Error!',
+        text: `Ocorreu um erro, tente novamente. Erro ${err}`,
+        icon: 'error',
+        confirmButtonText: 'Sad, but ok!'
+      })
       setIsLoading(false)
     });
 };
@@ -35,6 +41,12 @@ export const createComent = (body, clear, id, setIsLoading) => {
     })
     .catch((err) => {
       setIsLoading(false);
-      alert(err.response.data.message);
+      Swal.fire({
+        title: 'Error!',
+        text: `Ocorreu um erro, tente novamente. Erro ${err}`,
+        icon: 'error',
+        confirmButtonText: 'Sad, but ok!'
+      })
+      console.log(err.response.data.message);
     });
 };

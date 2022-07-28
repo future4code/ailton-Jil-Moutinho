@@ -27,8 +27,8 @@ export const InputContainer = styled.div`
   height: 110px;
   max-width: 450px;
   margin-bottom: 20px;
-  gap: 10px
-`
+  gap: 10px;
+`;
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,7 +38,13 @@ export const FormContainer = styled.div`
   height: 150px;
   max-width: 450px;
   margin-bottom: 20px;
-`
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 export const InputFeedTitle = styled.input`
   height: 100px;
   width: 80vw;
@@ -46,8 +52,8 @@ export const InputFeedTitle = styled.input`
   flex-direction: column;
   justify-content: space-around;
   border-radius: 5px;
-  background-color: #EDEDED;
-  border-color: #EDEDED;
+  background-color: #ededed;
+  border-color: #ededed;
 `;
 
 export const InputFeedPost = styled.input`
@@ -57,8 +63,8 @@ export const InputFeedPost = styled.input`
   flex-direction: column;
   justify-content: space-around;
   border-radius: 5px;
-  background-color: #EDEDED;
-  border-color: #EDEDED;
+  background-color: #ededed;
+  border-color: #ededed;
 `;
 export const PostsContainer = styled.div`
   display: flex;
@@ -69,4 +75,7 @@ export const PostsContainer = styled.div`
   /* height: 110px; */
   max-width: 450px;
   gap: 8px;
-`
+`;
+export const WelcomeContain = styled.div`
+  width: 80vw;
+`;
