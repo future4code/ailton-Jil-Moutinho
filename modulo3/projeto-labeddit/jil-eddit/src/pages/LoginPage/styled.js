@@ -4,34 +4,62 @@ import { Button } from "@mui/material";
 export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 90vw;
+  width: 98vw;
   margin-top: 10vh;
-  padding: 20px;
+  padding: 8px;
 `;
 
 export const LogoImgStyled = styled.img`
-  width: 75%;
+  width: 250px;
+  margin-bottom: 15px;
 `;
-
 export const LoginButton = styled(Button)`
   width: 300px;
   border-radius: 50px;
   margin-top: 10px;
+  margin-bottom: 5px;
+  background: linear-gradient(90deg, #ff6489 0%, #f9b24e 100%);
+  align-self: center;
+  justify-self: center;
+`;
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+  height: 110px;
+  max-width: 450px;
+  margin-bottom: 20px;
 `;
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  max-width: 450px;
+  justify-content: center;
   align-items: center;
+  width: 80vw;
+  height: 170px;
+  max-width: 450px;
   margin-bottom: 20px;
-`
+`;
 export const InputLogin = styled.input`
-  height: 20vh;
-  width: 300px;
+  height: 40px;
+  width: 295px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  
+  border-radius: 5px;
+  border: solid 1px gray;
+`;
+export const ContaiDesk = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px #F27649;
 `;

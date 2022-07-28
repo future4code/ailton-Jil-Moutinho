@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
-import { Button } from "@mui/material";
 import { login } from "../../services/user";
 import { useNavigate } from "react-router-dom";
-import { LoginButton, FormContainer } from "./styled";
+import {
+  LoginButton,
+  InputContainer,
+  InputLogin,
+  FormContainer,
+} from "./styled";
 
 const LoginForm = () => {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
@@ -16,10 +20,10 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <FormContainer>
       <form onSubmit={onSubmitForm}>
-        <FormContainer>
-          <input
+        <InputContainer>
+          <InputLogin
             name={"email"}
             value={form.email}
             onChange={onChange}
@@ -30,7 +34,7 @@ const LoginForm = () => {
             margin={"dense"}
             required
           />
-          <input
+          <InputLogin
             name={"password"}
             value={form.password}
             onChange={onChange}
@@ -39,15 +43,22 @@ const LoginForm = () => {
             variant={"outlined"}
             fullwidth="true"
             margin={"normal"}
+            pattern={"^.{8,}"}
             required
           />
-        </FormContainer>
-        <LoginButton type={"submit"} variant="contained" color="primary">
+        </InputContainer>
+        <LoginButton type={"submit"} variant="contained" background="primary">
           Continuar
         </LoginButton>
       </form>
-    </div>
+    </FormContainer>
   );
 };
 
 export default LoginForm;
+
+/* (?=.*\d)              // deve conter ao menos um dígito
+(?=.*[a-z])           // deve conter ao menos uma letra minúscula
+(?=.*[A-Z])           // deve conter ao menos uma letra maiúscula
+(?=.*[$*&@#])         // deve conter ao menos um caractere especial
+[0-9a-zA-Z$*&@#]{8,}  // deve conter ao menos 8 dos caracteres mencionados */

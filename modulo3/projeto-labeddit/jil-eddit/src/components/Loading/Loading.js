@@ -1,11 +1,13 @@
 import React from 'react'
 /* import CircularProgress from '@material-ui/core/CircularProgress' */
-import { LoadingContainer } from './styled'
+import LoadingImg from '../../assets/img/loading.gif'
+import { LoadingContainer, LoadingImgStyle, PLoading } from './styled'
 
 const Loading = () => {
   return (
     <LoadingContainer>
-      Loading
+      <PLoading>Loading</PLoading>
+      <LoadingImgStyle src={LoadingImg} alt='logovirando'/>
     </LoadingContainer>
   )
 }

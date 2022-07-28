@@ -32,6 +32,8 @@ export const signUp = (body, clear, navigate, setIsLoading) => {
   axios
     .post(`${BASE_URL}/users/signup`, body)
     .then((res) => {
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", body.username);
       clear();
   console.log(res);
       setIsLoading(false);

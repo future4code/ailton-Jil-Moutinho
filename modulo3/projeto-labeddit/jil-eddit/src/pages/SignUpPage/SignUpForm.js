@@ -3,6 +3,13 @@ import useForm from "../../hooks/useForm";
 import { Button, Checkbox } from "@mui/material";
 import { signUp } from "../../services/user";
 import { useNavigate } from "react-router-dom";
+import {
+  InputSignUp,
+  FormContainer,
+  CheckContainer,
+  InputContainer,
+  Span1,
+} from "./styled";
 
 const SignUpForm = () => {
   const [form, onChange, clear] = useForm({
@@ -10,8 +17,8 @@ const SignUpForm = () => {
     email: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmitForm = (event) => {
     event.preventDefault(); //n mostra no navegador
@@ -19,55 +26,65 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
+    <FormContainer>
       <form onSubmit={onSubmitForm}>
-        <input
-          name={"username"}
-          value={form.username}
-          onChange={onChange}
-          label={"Nome"}
-          variant={"outlined"}
-          fullwidth="true"
-          margin={"dense"}
-          required
-        />
-        <input
-          name={"email"}
-          value={form.email}
-          onChange={onChange}
-          type={"email"}
-          label={"E-mail"}
-          variant={"outlined"}
-          fullwidth="true"
-          margin={"dense"}
-          required
-        />
-        <input
-          name={"password"}
-          value={form.password}
-          onChange={onChange}
-          type={"password"}
-          label={"Senha"}
-          variant={"outlined"}
-          fullwidth="true"
-          margin={"dense"}
-          pattern={"^.{8,}"}
-          required
-        />
+        <InputContainer>
+          <InputSignUp
+            name={"username"}
+            value={form.username}
+            onChange={onChange}
+            label={"Nome"}
+            variant={"outlined"}
+            fullwidth="true"
+            margin={"dense"}
+            required
+          />
+          <InputSignUp
+            name={"email"}
+            value={form.email}
+            onChange={onChange}
+            type={"email"}
+            label={"E-mail"}
+            variant={"outlined"}
+            fullwidth="true"
+            margin={"dense"}
+            required
+          />
+          <InputSignUp
+            name={"password"}
+            value={form.password}
+            onChange={onChange}
+            type={"password"}
+            label={"Senha"}
+            variant={"outlined"}
+            fullwidth="true"
+            margin={"dense"}
+            pattern={"^.{8,}"}
+            required
+          />
+        </InputContainer>
         <p>
-          Ao continuar, você concorda com o nosso Contrato de usuário e nossa
-          Política de Privacidade
+          Ao continuar, você concorda com o nosso{" "}
+          <Span1>Contrato de usuário</Span1> e nossa{" "}
+          <Span1>Política de Privacidade</Span1>
         </p>
-        <Checkbox></Checkbox>
-        <span>
-          Eu concordo em receber emails sobre coisas legais no Labeddit
-        </span>
-        <Button type={"submit"} variant="contained" color="primary">
+        <CheckContainer>
+          <Checkbox></Checkbox>
+          <p>Eu concordo em receber emails sobre coisas legais no Labeddit</p>
+        </CheckContainer>
+        <Button
+          type={"submit"}
+          variant="contained"
+          color="primary"
+          align-self="center"
+        >
           Cadastrar
         </Button>
       </form>
-    </div>
+    </FormContainer>
   );
 };
 
 export default SignUpForm;
+
+//pattern="[0-9a-zA-Z]{8,30}"
