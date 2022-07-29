@@ -6,7 +6,11 @@ import {
   LikeContai,
   ComentContai,
 } from "./styled";
-import { positivePostVote, negativePostVote } from "../../services/couters";
+import {
+  positivePostVote,
+  negativePostVote,
+  delPostVote,
+} from "../../services/couters";
 import { useNavigate } from "react-router-dom";
 import { goToPost } from "../../routes/coordinator";
 import ArrowCircleDownSharpIcon from "@mui/icons-material/ArrowCircleDownSharp";
@@ -15,7 +19,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ArrowCircleUpTwoToneIcon from "@mui/icons-material/ArrowCircleUpTwoTone";
 import ArrowCircleDownTwoToneIcon from "@mui/icons-material/ArrowCircleDownTwoTone";
 
-const PostCard = ({ item, getArrayComents }) => {
+const PostCard = ({ item, getArrayPosts }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -31,34 +35,49 @@ const PostCard = ({ item, getArrayComents }) => {
           onClickPost(item);
         }}
       >
-        {item?.body}{" "}
+        {item?.body}
       </div>
       <CounterContainer>
         <LikeContai>
           {item?.userVote === 1 ? (
-            <ArrowCircleUpTwoToneIcon color="primary" />
+            <ArrowCircleUpTwoToneIcon
+              color="primary"
+              onClick={() => {
+                delPostVote(item?.id, setIsLoading, getArrayPosts);
+              }}
+            />
           ) : (
             <ArrowCircleUpOutlinedIcon
+              color="primary"
               onClick={() => {
-                positivePostVote(1, item?.id, setIsLoading);
-                /* getArrayComents(); */
+                positivePostVote(1, item?.id, setIsLoading, getArrayPosts);
               }}
             />
           )}
           {item?.voteSum ? item?.voteSum : 0}
           {item?.userVote === -1 ? (
-            <ArrowCircleDownTwoToneIcon color="primary" />
+            <ArrowCircleDownTwoToneIcon
+              color="primary"
+              onClick={() => {
+                delPostVote(item?.id, setIsLoading, getArrayPosts);
+              }}
+            />
           ) : (
             <ArrowCircleDownSharpIcon
+              color="primary"
               onClick={() => {
-                negativePostVote(-1, item?.id, setIsLoading);
-                /* getArrayComents(); */
+                negativePostVote(-1, item?.id, setIsLoading, getArrayPosts);
               }}
             />
           )}
         </LikeContai>
         <ComentContai>
-          <ChatBubbleOutlineOutlinedIcon />
+          <ChatBubbleOutlineOutlinedIcon
+            color="primary"
+            onClick={() => {
+              onClickPost(item);
+            }}
+          />
           {item?.commentCount ? item?.commentCount : 0}
         </ComentContai>
       </CounterContainer>

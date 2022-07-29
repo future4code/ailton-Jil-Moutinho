@@ -6,10 +6,11 @@ import ArrowCircleDownTwoToneIcon from "@mui/icons-material/ArrowCircleDownTwoTo
 import {
   positiveCommentVote,
   negativeCommentVote,
+  delCommentVote,
 } from "../../services/couters";
 import { CardContainer, LikeContai, EnviadoP } from "./styled";
 
-const ComentCard = ({ item }) => {
+const ComentCard = ({ item, getArrayComents }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -18,21 +19,33 @@ const ComentCard = ({ item }) => {
       <div> {item?.body} </div>
       <LikeContai>
         {item?.userVote === 1 ? (
-          <ArrowCircleUpTwoToneIcon color="primary" />
+          <ArrowCircleUpTwoToneIcon
+            color="primary"
+            onClick={() => {
+              delCommentVote(item?.id, setIsLoading, getArrayComents);
+            }}
+          />
         ) : (
           <ArrowCircleUpOutlinedIcon
+            color="primary"
             onClick={() => {
-              positiveCommentVote(1, item?.id, setIsLoading);
+              positiveCommentVote(1, item?.id, setIsLoading, getArrayComents);
             }}
           />
         )}
         {item.voteSum ? item.voteSum : 0}
         {item?.userVote === -1 ? (
-          <ArrowCircleDownTwoToneIcon />
+          <ArrowCircleDownTwoToneIcon
+            color="primary"
+            onClick={() => {
+              delCommentVote(item?.id, setIsLoading, getArrayComents);
+            }}
+          />
         ) : (
           <ArrowCircleDownSharpIcon
+            color="primary"
             onClick={() => {
-              negativeCommentVote(-1, item?.id, setIsLoading);
+              negativeCommentVote(-1, item?.id, setIsLoading, getArrayComents);
             }}
           />
         )}

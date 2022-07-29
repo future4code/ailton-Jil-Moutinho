@@ -59,24 +59,21 @@ const PostPage = () => {
 
   useEffect(() => {
     getArrayComents();
-  }, [arrayComents]);
+  }, []);
 
   const comentsPost = arrayComents?.map((item, index) => {
     return (
       <ComentCard
         key={index}
         item={item}
-        /* body={item?.body}
-        voteSum={item?.voteSum}
-        username={item?.username} */
+        getArrayComents={getArrayComents}
       />
     );
   });
 
   const onSubmitForm = (event) => {
     event.preventDefault(); //n mostra no navegador
-    createComent(form, clear, params.id, setIsLoading);
-    getArrayComents();
+    createComent(form, clear, params.id, setIsLoading, getArrayComents);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 import useForm from "../../hooks/useForm";
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -51,12 +51,12 @@ const FeedPage = () => {
       });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getArrayPosts();
   }, []);
 
   const postsFeed = arrayPostsAll?.map((item) => {
-    return <PostCard key={item.id} item={item} />;
+    return <PostCard key={item.id} item={item} getArrayPosts={getArrayPosts}/>;
   });
 
   const onSubmitForm = (event) => {

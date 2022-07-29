@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+<h2 align="center">🤖Projeto Labeddit🤖 </h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="justify">
+O projeto consiste na implementaão uma rede social realmente funcional. Uma rede real, com cadastro, login, posts, likes e comentários. Para isso, nos baseamos no reddit.com. 
+<h4/>
 
-## Available Scripts
+<h3 align="center"> Sumário  </h3>
 
-In the project directory, you can run:
+<h3 align="center"> 
 
-### `npm start`
+[🔗Surge](#link-surge) | [💻Projeto](#como-rodar-o-projeto-localmente) | [📚Bibliotecas](#bibliotecas-utilizadas) | 
+[🛠️Tecnologias](#tecnologias-utilizadas) | [👩🏻‍💻Equipe de Dev](#equipe-desenvolvedora) | [🖥️📱Imagens](#imagens) 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h3/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✔O que funciona
+-A página de login, ao fazer o login, o usuário deverá ser redirecionado para a página de feed. Há um botão "Cadastrar", que leva o usuário para a página de cadastro.
+- A página de cadastro onde após cadastro de nome, email e senha, o usuário é redirecionado para a página de feed, já estando logado (ou seja, com o token salvo no LocalStorage).
+- A página de feed mostra 10 posts, além de um formulário para a criação de novos. 
+- As páginas só pode ser acessada por um usuário logado. Caso o usuário não esteja logado, ele é redirecionado para a página de login.
+- Cada post mostra o nome do usuário que postou, o texto do post, o número de votos (positivo ou negativo) e o número de comentários. Caso o usuário tenha votado positiva ou negativamente, isso deverá estar indicado.
+- Quando o usuário clicar em um post, ele é redirecionado para a página do respectivo post onde pode comentar e votar (positiva ou negativamente) no post e nos comentários.
+- Paginação do feed
+- Responsividade em todas as páginas, usando media queries.
+- Funcionalidade de Logout.
+- Alerta de erro nas operações caso ocorram
+- Página de erro caso navegue por uma página não existente
+- Loading em todas as páginas
 
-### `npm test`
+## 🔗Link Surge
+https://guttural-run.surge.sh/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💻Como rodar o projeto localmente
+Siga o passo-a-passo abaixo:
 
-### `npm run build`
+| Passo                     | Comando            |
+| ------------------------- | ------------------ |
+| Faça o Clone              | `git clone`        |
+| Instale as Dependências   | `npm install`      |
+| Utilize o Script Start    | `npm start`        |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Por padrão a aplicação rodará localmente na porta 3000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📚Bibliotecas utilizadas
+- axios
+- react-icons
+- react-router-dom
+- styled-components
+- sweet-alert
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠Tecnologias utilizadas
+ <div style="display: inline_block"><br>
+  <img align="center" alt="React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+  <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  </div>
 
-### `npm run eject`
+## 👩🏻‍💻Equipe desenvolvedora 
+<a href="https://github.com/JilMayumiMoutinho"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/104766367?v=4" width="100px;" alt="Foto da desenvolvedora com linkque encaminha ao github pessoal"/><br /><b>Jil Mayumi Moutinho</b></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🖥📱Imagens

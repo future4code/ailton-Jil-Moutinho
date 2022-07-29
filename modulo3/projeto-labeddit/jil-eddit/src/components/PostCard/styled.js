@@ -38,4 +38,5 @@ padding: 2px;
 justify-content: space-around;
 align-items: center;
 font-size: small;
+word-wrap: break-word;
 `;

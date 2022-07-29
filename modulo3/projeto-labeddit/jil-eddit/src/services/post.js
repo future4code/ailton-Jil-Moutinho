@@ -27,7 +27,7 @@ export const createPost = (body, clear, setIsLoading, getArrayPosts) => {
     });
 };
 
-export const createComent = (body, clear, id, setIsLoading) => {
+export const createComent = (body, clear, id, setIsLoading, getArrayComents) => {
   setIsLoading(true);
   axios
     .post(`${BASE_URL}/posts/${id}/comments`, body, {
@@ -37,6 +37,7 @@ export const createComent = (body, clear, id, setIsLoading) => {
   })
     .then((res) => {
       clear();
+      getArrayComents();
       setIsLoading(false);
     })
     .catch((err) => {
