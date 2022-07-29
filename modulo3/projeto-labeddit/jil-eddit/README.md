@@ -59,3 +59,15 @@ Por padrão a aplicação rodará localmente na porta 3000.
 <a href="https://github.com/JilMayumiMoutinho"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/104766367?v=4" width="100px;" alt="Foto da desenvolvedora com linkque encaminha ao github pessoal"/><br /><b>Jil Mayumi Moutinho</b></a>
 
 ## 🖥📱Imagens
+ Página de login para tela desk
+ ![Captura de tela de 2022-07-29 12-02-50](https://user-images.githubusercontent.com/104766367/181831880-393cec7a-9cdb-4e8c-aa91-11241b07580a.png)
+ Página de login para tela mobile
+![Captura de tela de 2022-07-29 12-05-24](https://user-images.githubusercontent.com/104766367/181831069-eeaa2a0f-f572-405c-8457-bf04829e2dc8.png)
+ Página de cadastro para tela mobile
+![Captura de tela de 2022-07-29 12-05-39](https://user-images.githubusercontent.com/104766367/181831073-9fcc3ddc-dd71-4342-a7f3-8a0f9ce66670.png)
+ Efeito de loading
+![Captura de tela de 2022-07-29 12-06-44](https://user-images.githubusercontent.com/104766367/181831074-10d56f54-6493-4c99-bf46-bf0934737753.png)
+ Página de feed com indicação de voto positivo em cor mais alaranjada
+![Captura de tela de 2022-07-29 12-06-55](https://user-images.githubusercontent.com/104766367/181831075-f73e1ed2-2d2d-4258-b990-406d8fbfa539.png)
+ Página de post com comentários
+![Captura de tela de 2022-07-29 12-07-00](https://user-images.githubusercontent.com/104766367/181831078-1cd08ae5-7c3d-4b7f-85fc-d75ccc8a2ad2.png)
