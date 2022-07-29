@@ -1,7 +1,7 @@
 <h2 align="center">🤖Projeto Labeddit🤖 </h2>
 
 <h4 align="justify">
-O projeto consiste na implementaão uma rede social realmente funcional. Uma rede real, com cadastro, login, posts, likes e comentários. Para isso, nos baseamos no reddit.com. 
+O projeto consiste na implementaão de uma rede social realmente funcional. Uma rede real, com cadastro, login, posts, likes e comentários. Para isso, nos baseamos no reddit.com. 
 <h4/>
 
 <h3 align="center"> Sumário  </h3>
