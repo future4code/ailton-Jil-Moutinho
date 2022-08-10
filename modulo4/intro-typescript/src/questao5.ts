@@ -30,3 +30,7 @@ function checaRenovacaoRG(
     return "error";
   }
 }
+
+console.log(checaRenovacaoRG(2022, 2003, 2021));
+console.log(checaRenovacaoRG(2022, 1986, 2021));
+console.log(checaRenovacaoRG(2022, 1986, 2000));

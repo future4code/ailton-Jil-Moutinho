@@ -7,7 +7,15 @@
   "scripts": {
     "start": "tsc && node ./build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "questao1": "tsc && node ./build/questao1.js"
+    "questao1": "tsc && node ./build/questao1.js",
+    "questao2": "tsc && node ./build/questao2.js",
+    "questao3": "tsc && node ./build/questao3.js",
+    "questao4": "tsc && node ./build/questao4.js",
+    "questao5": "tsc && node ./build/questao5.js",
+    "questao6": "tsc && node ./build/questao6.js",
+    "questao7": "tsc && node ./build/questao7.js",
+    "questao8": "tsc && node ./build/questao8.js",
+    "questao9": "tsc && node ./build/questao9.js"
   },
   "keywords": [],
   "author": "Jil Mayumi Moutinho",

@@ -16,14 +16,31 @@ function canStudy(
   hightSchool: boolean,
   hours: number,
   time: string
-): string {
-  if (age > 18 && hightSchool === true) {
+): boolean {
+  /*   if (age >= 18 && hightSchool === true) {
     if (time === "Daytime" && hours >= 40) {
       return "Sim, a inscrição no curso é valida";
     } else if (time === "Night time" && hours >= 20) {
       return "Sim, a inscrição no curso é valida";
+    } else {
+      return "Não, a inscrição no curso não é valida";
     }
   } else {
     return "Não, a inscrição no curso não é valida";
+  } */
+  if (
+    (age >= 18 && hightSchool === true && time == "Daytime" && hours >= 40) ||
+    (time == "Night time" && hours >= 20)
+  ) {
+    return true;
+  } else {
+    return false;
   }
 }
+
+console.log(canStudy(20, true, 41, "Daytime"));
+console.log(canStudy(17, true, 41, "Daytime"));
+console.log(canStudy(20, false, 41, "Daytime"));
+console.log(canStudy(20, true, 38, "Daytime"));
+console.log(canStudy(20, true, 38, "Night time"));
+console.log(canStudy(20, true, 18, "Night time"));

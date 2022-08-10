@@ -10,9 +10,24 @@
 
 function dnaToRna(DNA: string): string {
   let RNA: string = "";
-  RNA = DNA.replace(/A/gi, "U")
+  for (let i of DNA) {
+    if (i === "A") {
+      RNA += "U";
+    } else if (i === "T") {
+      RNA += "A";
+    } else if (i === "G") {
+      RNA += "C";
+    } else if (i === "C") {
+      RNA += "G";
+    }
+  }
+
+  //Não da pq faz a palavra completa, o for faz a cada letra.
+  /* RNA = DNA.replace(/A/gi, "U")
     .replace(/T/gi, "A")
     .replace(/C/gi, "G")
-    .replace(/G/gi, "C");
+    .replace(/G/gi, "C"); */
   return RNA;
 }
+
+console.log(dnaToRna("ATTGCTGCGCATTAACGACGCGTA"));

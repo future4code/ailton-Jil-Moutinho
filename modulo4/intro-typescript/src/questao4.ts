@@ -12,7 +12,11 @@ function comparaDoisNumeros(num1: number, num2: number): number {
     menorNumero = num1;
   }
 
-  const diferenca:number = maiorNumero - menorNumero;
+  const diferenca: number = maiorNumero - menorNumero;
 
   return diferenca;
 }
+
+console.log(comparaDoisNumeros(1, 2));
+console.log(comparaDoisNumeros(2, 2));
+console.log(comparaDoisNumeros(2, 3));
