@@ -31,4 +31,4 @@ const pokemon3: pokemon = {
 //Temos que definir isso no arquivo tsconfig (root)
 
 //d) Existe alguma maneira de transpilar múltilplos arquivos de uma vez só? Caso conheça, explique como fazer.
-//Criando um script no package.json "ex4D":"tsc && node ./build/arquivo1.ts arquivo2.ts arquivo3.ts
+//Criando um script no package.json "todos": "tsc && node ./build/ex1.js tsc && node ./build/ex2.js tsc && node ./build/ex3.js"
