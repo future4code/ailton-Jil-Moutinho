@@ -23,7 +23,7 @@ let arrayEstoque = [
 
 const valor = (arrayEstoque: Produto[]): Produto[] => {
   arrayEstoque.forEach((item) => {
-    item.valorUnitario = ajustaPreco(item.valorUnitario as number);
+    item.valorUnitario = ajustaPreco(item.valorUnitario as number/* Number(item.valorUnitario) */);
   });
   const ordenadas: Produto[] = arrayEstoque.sort(
     (a, b) => a.quantidade - b.quantidade
@@ -32,3 +32,4 @@ const valor = (arrayEstoque: Produto[]): Produto[] => {
 };
 
 console.log(valor(arrayEstoque));
+console.table(valor(arrayEstoque));
