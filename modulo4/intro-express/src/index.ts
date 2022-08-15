@@ -56,10 +56,22 @@ app.delete("/delUser/:id", (request, response) => {
 app.post("/posts/new", (request, response) => {
   const newPost = request.body;
 
-  postsList.push(newPost)
-  
-  response.status(201).send({Mensagem:"Post adicionado com sucesso"});
+  postsList.push(newPost);
+
+  response.status(201).send({ Mensagem: "Post adicionado com sucesso" });
 });
+
+//Desafio pessoal - mudar usuário
+/* app.put("/usersEdit/:id", (request, response) => {
+  const userId = Number(request.params.id);
+  const userEdit = request.body;
+
+  const editUser: Users[] = usersList.filter((item) => {
+    return item.id !== userId;
+  }).editUser[0]
+
+  response.status(201).send({ Mensagem: "Post adicionado com sucesso" });
+}); */
 
 app.listen(3003, () => {
   console.log("Server is running in http://localhost:3003");
