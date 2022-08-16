@@ -102,9 +102,9 @@ app.get("/toDoAll/:userid", (req, res) => {
 //Ex11
 /* import fs from 'fs';
 
-function example1() {
+function storageData() {
   try {
-    const content = JSON.stringify(listAfazeres)
+    const content = JSON.stringify(toDoList)
     fs.writeFileSync('./test.txt', content);
   } catch (err) {
     console.log(err);
