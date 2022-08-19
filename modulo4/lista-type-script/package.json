@@ -1,0 +1,23 @@
+{
+  "name": "lista-type-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ex1": "tsc && node ./build/ex1.js",
+    "ex2": "tsc && node ./build/ex2.js",
+    "ex3": "tsc && node ./build/ex3.js",
+    "ex4": "tsc && node ./build/ex4.js",
+    "ex5": "tsc && node ./build/ex5.js",
+    "ex6": "tsc && node ./build/ex6.js",
+    "ex7": "tsc && node ./build/ex7.js",
+    "ex8": "tsc && node ./build/ex8.js",
+    "ex9": "tsc && node ./build/ex9.js",
+    "ex10": "tsc && node ./build/ex10.js",
+    "ex11": "tsc && node ./build/ex11.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
