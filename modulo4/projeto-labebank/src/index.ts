@@ -228,9 +228,9 @@ app.put("/clientByNameAndCPF/deposito", (req, res) => {
 
     if (clientByNameAndCPF !== undefined) {
       clientByNameAndCPF.spends = [...clientByNameAndCPF.spends, newDeposit];
-      clientByNameAndCPF.balance += deposit;
+      /* clientByNameAndCPF.balance += deposit; */
       res.status(200).send({
-        message: `Deposit added successfully. Balance: ${clientByNameAndCPF.balance}`,
+        message: `Deposit added successfully.`, //Balance: ${clientByNameAndCPF.balance}
         data: clientByNameAndCPF,
       });
     }
@@ -254,20 +254,7 @@ app.post("/clientByNameAndCPF/paybill", (req, res) => {
       throw new Error("List not found.");
     }
 
-    if (!name && !CPF && !dueDate && !description && !billValue) {
-      res.statusCode = 400; //bad request
-      throw new Error(
-        "Inform name, CPF, bill's due date, value and description."
-      );
-    }
-
-    if (
-      name === "" ||
-      CPF === "" ||
-      dueDate === "" ||
-      description === "" ||
-      billValue === ""
-    ) {
+    if (!name || !CPF || !dueDate || !description || !billValue) {
       res.statusCode = 400; //bad request
       throw new Error(
         "Inform name, CPF, bill's due date, value and description."
@@ -347,7 +334,9 @@ app.post("/clientByNameAndCPF/paybill", (req, res) => {
 
     if (clientByNameAndCPF !== undefined && hasBalanceToPay < 0) {
       res.statusCode = 401; //unauthorized
-      throw new Error("Client does not have enough balance");
+      throw new Error(
+        "Client does not have enough balance for this transaction."
+      );
     }
 
     if (clientByNameAndCPF !== undefined && hasBalanceToPay >= 0) {
@@ -418,19 +407,41 @@ app.put("/clientByCPF/saldo", (req, res) => {
       throw new Error("User with this name and CPF not found");
     }
     //Desafio 6 não fiz verificação para dias anteriores a hoje
-    /*     let timestampToday = new Date().getTime();
-    let diference =
-      timestampToday / 31536000000 - dateToTimeStamp() / 31536000000; */
+    const dateToTimeStamp = (data: string): number => {
+      const fullDate = data.split("/");
+      const year = Number(fullDate[2]);
+      const month = Number(fullDate[1]) - 1;
+      const day = Number(fullDate[0]);
+      return new Date(year, month, day).getTime();
+    };
+    let timestampToday = new Date().getTime();
+    let diference = (dateOfSpend: string): number => {
+      const difValue =
+        timestampToday / 31536000000 -
+        dateToTimeStamp(dateOfSpend) / 31536000000;
+      return difValue;
+    };
 
     if (clientByCPF !== undefined) {
       for (let item of clientByCPF?.spends) {
-        if (item.value < 0) {
+        if (diference(item.date) > 0) {
           clientByCPF.balance += item.value;
         }
       }
+
+      const oldSpends: Spend[] = clientByCPF?.spends.filter((item) => {
+        return diference(item.date) > 0;
+      });
+
+      const newSpends: Spend[] = clientByCPF?.spends.filter((item) => {
+        return diference(item.date) <= 0;
+      });
+      clientByCPF.spends = [...newSpends];
+
       res.status(200).send({
         message: `Balance updated successfully. Balance: ${clientByCPF.balance}`,
         data: clientByCPF,
+        oldExtract: oldSpends,
       });
     }
   } catch (error: any) {
@@ -439,13 +450,12 @@ app.put("/clientByCPF/saldo", (req, res) => {
 });
 
 //Desafio9 tranferência entre contas. Desafio10 Se há saldo suficiente. Desafio11 Verificar se existem
-app.post("/clientByNameAndCPF/paybill", (req, res) => {
+app.post("/clientByNameAndCPF/transfer", (req, res) => {
   const name1 = req.body.name as string;
   const name = name1.toLowerCase();
-  const CPF = req.body.CPF as string;
-  const dueDate = req.body.dueDate as string;
-  const description = req.body.description as string;
-  const billValue = req.body.billValue;
+  const { CPF, toCPF, amount } = req.body;
+  const toName1 = req.body.toName as string;
+  const toName = toName1.toLowerCase();
 
   try {
     if (!clientsList) {
@@ -453,23 +463,17 @@ app.post("/clientByNameAndCPF/paybill", (req, res) => {
       throw new Error("List not found.");
     }
 
-    if (!name && !CPF && !dueDate && !description && !billValue) {
+    if (!name || !CPF || !toName || !toCPF || !amount) {
       res.statusCode = 400; //bad request
       throw new Error(
-        "Inform name, CPF, bill's due date, value and description."
+        "Inform your name and CPF, the amount, name and CPF of the person you want to transfer for."
       );
     }
 
-    if (
-      name === "" ||
-      CPF === "" ||
-      dueDate === "" ||
-      description === "" ||
-      billValue === ""
-    ) {
-      res.statusCode = 400; //bad request
+    if (isNaN(Number(amount)) || Number(amount) < 0) {
+      res.statusCode = 422; //unprocessable entity
       throw new Error(
-        "Inform name, CPF, bill's due date, value and description."
+        "Inform a valid amont for billValue - type number bigger than U$0.00."
       );
     }
 
@@ -501,64 +505,75 @@ app.post("/clientByNameAndCPF/paybill", (req, res) => {
       throw new Error("Inform valid CPF - The format must be XXX.XXX.XXX-XX");
     }
 
-    if (isNaN(Number(billValue))) {
-      res.statusCode = 422; //unprocessable entity
-      throw new Error("Inform a valid amont for billValue - type number");
-    }
-
-    //Desafio7 Conta n deve estar vencida
-    const dateToTimeStamp = (data: string): number => {
-      const fullDate = data.split("/");
-      const year = Number(fullDate[2]);
-      const month = Number(fullDate[1]) - 1;
-      const day = Number(fullDate[0]);
-      return new Date(year, month, day).getTime();
-    };
-
-    let timestampToday = new Date().getTime();
-    let expirationDate = timestampToday - dateToTimeStamp(dueDate);
-
-    if (expirationDate > 0) {
-      res.statusCode = 422; //unprocessable entity
-      throw new Error("The bill's due date has expired");
-    }
-
+    //Desafio11
     const clientByNameAndCPF: Client | undefined = clientsList.find((item) => {
       return item.name.toLowerCase() === name && item.CPF === CPF;
     });
 
-    if (
-      name !== "" &&
-      CPF !== "" &&
-      formatOk &&
-      expirationDate <= 0 &&
-      !clientByNameAndCPF
-    ) {
+    const clientToSend: Client | undefined = clientsList.find((item) => {
+      return item.name.toLowerCase() === toName && item.CPF === toCPF;
+    });
+
+    if (!clientByNameAndCPF) {
       res.statusCode = 404; //not found
-      throw new Error("User with this name and CPF not found");
+      throw new Error("Client with this name and CPF not found");
     }
 
-    //Desafio 8
+    if (!clientToSend) {
+      res.statusCode = 404; //not found
+      throw new Error("Receiver client with this name and CPF not found");
+    }
+
+    //Desafio 10
     let hasBalanceToPay: number = 0;
-    if (clientByNameAndCPF !== undefined) {
-      hasBalanceToPay = clientByNameAndCPF?.balance - Number(billValue);
+    if (clientByNameAndCPF !== undefined && clientToSend !== undefined) {
+      hasBalanceToPay = clientByNameAndCPF?.balance - Number(amount);
     }
 
-    if (clientByNameAndCPF !== undefined && hasBalanceToPay < 0) {
+    if (
+      clientByNameAndCPF !== undefined &&
+      clientToSend !== undefined &&
+      hasBalanceToPay < 0
+    ) {
       res.statusCode = 401; //unauthorized
-      throw new Error("Client does not have enough balance");
+      throw new Error(
+        "Client does not have enough balance for this transaction."
+      );
     }
 
-    if (clientByNameAndCPF !== undefined && hasBalanceToPay >= 0) {
+    const today = new Date();
+    const newToday: string = `${today.getDate()}/${
+      today.getMonth() + 1
+    }/${today.getFullYear()}`;
+
+    if (
+      clientByNameAndCPF !== undefined &&
+      clientToSend !== undefined &&
+      hasBalanceToPay >= 0
+    ) {
       clientByNameAndCPF.spends = [
         ...clientByNameAndCPF.spends,
         {
-          value: -1 * Number(billValue),
-          date: dueDate,
-          description: description,
+          value: -1 * Number(amount),
+          date: newToday,
+          description: `Transfer to ${toName1}`,
         },
       ];
-      res.status(200).send(clientByNameAndCPF);
+
+      clientToSend.spends = [
+        ...clientToSend.spends,
+        {
+          value: Number(amount),
+          date: newToday,
+          description: `Transfer from ${name1}`,
+        },
+      ];
+
+      res.status(200).send({
+        message: "Transfer performed successfully",
+        data: clientByNameAndCPF.spends,
+        dataTo: clientToSend.spends,
+      });
     }
   } catch (error: any) {
     res.status(res.statusCode || 500).send({ message: error.message });

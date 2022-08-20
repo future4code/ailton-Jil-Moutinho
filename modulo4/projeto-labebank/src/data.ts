@@ -1,8 +1,8 @@
 //Ex3
 export type Spend = {
-  value: number,
-  date: string,
-  description: string
+  value: number;
+  date: string;
+  description: string;
 };
 
 //Ex1
@@ -11,7 +11,7 @@ export type Client = {
   CPF: string;
   birthDate: string;
   balance: number;
-//Ex4
+  //Ex4
   spends: Spend[];
 };
 
@@ -29,7 +29,7 @@ export let clientsList: Client[] = [
         description: "Whiskas sache",
       },
       {
-        value:-5,
+        value: -5,
         date: "11/08/2022",
         description: "Felix sache",
       },
@@ -50,6 +50,18 @@ export let clientsList: Client[] = [
     CPF: "123.123.123-02",
     birthDate: "01/02/2022",
     balance: 200,
-    spends: [],
+    spends: [
+      {
+        value: 100,
+        date: "12/08/2022",
+        description: "Depósito em dinheiro",
+      },
+
+      {
+        value: -10,
+        date: "20/08/2022",
+        description: "Royal",
+      },
+    ],
   },
 ];
