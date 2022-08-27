@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { taskByCreator } from "../data/taskByCreator";
+import taskByCreator from "../data/taskByCreator";
 
 export default async function taskByCreatorEnd(req: Request, res: Response) {
   try {
@@ -7,10 +7,10 @@ export default async function taskByCreatorEnd(req: Request, res: Response) {
 
     const listTasksByCreator = await taskByCreator(creator);
 
-    /* if (!taskToDisplay) {
+    if (!listTasksByCreator) {
       res.statusCode = 400;
-      throw new Error("There's no task with this id");
-    } */ //Tem q colocar? Pq se não existir o site quebra?
+      throw new Error("There's no task created by this user id.");
+    }
 
     res.status(200).send(listTasksByCreator);
   } catch (err: any) {
@@ -18,4 +18,4 @@ export default async function taskByCreatorEnd(req: Request, res: Response) {
       .status(res.statusCode || 500)
       .send({ message: err.message || err.sqlMessage });
   }
-}
+};

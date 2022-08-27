@@ -17,6 +17,8 @@ export default async function createUserEnd(req: Request, res: Response) {
       throw new Error("Inform all request data.");
     }
 
+/* if() */
+
     const newUser = await createUser(name, nickname, email);
 
     res.status(200).send(newUser);

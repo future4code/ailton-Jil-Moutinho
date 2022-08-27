@@ -6,4 +6,4 @@ export default async function userid(id: number) {
     .where({ id });
 
   return result[0];
-}
+};

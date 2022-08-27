@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { editUser } from "../data/editUser";
+import editUser from "../data/editUser";
 
 export async function editUserEnd(req: Request, res: Response) {
   try {
@@ -18,7 +18,7 @@ export async function editUserEnd(req: Request, res: Response) {
       throw new Error("There's no user with this id");
     }
 
-    res.status(200).send(updatedUser);
+    res.status(201).send(updatedUser);
   } catch (err: any) {
     res
       .status(res.statusCode || 500)

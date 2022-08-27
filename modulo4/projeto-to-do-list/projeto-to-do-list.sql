@@ -17,11 +17,16 @@ id INT(3) PRIMARY KEY AUTO_INCREMENT,
 title VARCHAR(255) NOT NULL,
 task_description VARCHAR(255) NOT NULL,
 limit_date DATE NOT NULL,
-task_status VARCHAR(255) NOT NULL DEFAULT "to_do",
+task_status ENUM("to_do", "doing", "done") NOT NULL DEFAULT "to_do",
 creator INT(3) NOT NULL,
-responsible INT(3),
-FOREIGN KEY (creator) REFERENCES UsersList(id),
-FOREIGN KEY (responsible) REFERENCES UsersList(id)
+FOREIGN KEY (creator) REFERENCES UsersList(id)
+);
+
+CREATE TABLE TaskWithResponsableUser (
+responsable_user INT(3),
+task_id INT(3),
+FOREIGN KEY (responsable_user) REFERENCES UsersList(id),
+FOREIGN KEY (task_id) REFERENCES TasksList(id)
 );
 
 INSERT INTO UsersList
@@ -49,17 +54,15 @@ VALUES(
 ALTER TABLE TasksList
 CHANGE COLUMN id id INT(3) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO TasksList (title, task_description, limit_date, creator, responsible)
+INSERT INTO TasksList (title, task_description, limit_date, creator)
 VALUES (
 "Wake up",
 "Wake up, stretch, change clothes",
 "2022-08-26",
-001,
 001
 );
 
-ALTER TABLE TasksList
-CHANGE COLUMN responsible responsible INT(3);
+-- ALTER TABLE TasksList CHANGE COLUMN responsible responsible INT(3);
 
 DROP TABLE TasksList;
 

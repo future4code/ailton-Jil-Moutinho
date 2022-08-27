@@ -22,9 +22,9 @@ export default async function createTaskEnd(req: Request, res: Response) {
     const dateBRToUS = (data: string): string => {
       const fullDate = data.split("/");
       const year = fullDate[2];
-      const month = Number(fullDate[1]) - 1;
+      const month = fullDate[1];
       const day = fullDate[0];
-      return `${year}-${String(month)}-${day}`;
+      return `${year}-${month}-${day}`;
     };
 
     const limit_date = dateBRToUS(limit_dateInitial);

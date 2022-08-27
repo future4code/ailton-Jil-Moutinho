@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { taskById } from "../data/taskById";
+import taskById from "../data/taskById";
 
 export default async function taskByIdEnd(req: Request, res: Response) {
   const id = Number(req.params.id);
@@ -12,23 +12,37 @@ export default async function taskByIdEnd(req: Request, res: Response) {
     }
 
     const dateToBR = (data: string): string => {
-      const fullDate = data.split("-");
-      console.log("all",fullDate);
-      
-      const year = fullDate[0];
+      const fullDate = data.split(" ");
+
+      const year = fullDate[3];
       const month = fullDate[1];
       const day = fullDate[2];
-      console.log(year);
-      
-      return `${year}-${month}-${day}`;
+
+      const arrayMonth = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+      const monthCorrect = (arrayMonth.indexOf(month))+1;
+
+      return `${day}/${monthCorrect}/${year}`;
     };
 
-    const newLimit_date = dateToBR(String(taskToDisplay.limit_date));
-    console.log(newLimit_date);
+    const newLimit_date = dateToBR(String(taskToDisplay[0].limit_date));
+  
+    const newTaskToDisplay = {...taskToDisplay[0],
+      limit_date: newLimit_date
+    };
 
-    /*     taskToDisplay.limit_date = newLimit_date; */
-
-    res.status(200).send(taskToDisplay);
+    res.status(200).send(newTaskToDisplay);
   } catch (err: any) {
     res
       .status(res.statusCode || 500)
