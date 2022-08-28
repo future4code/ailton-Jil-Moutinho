@@ -22,8 +22,8 @@ creator INT(3) NOT NULL,
 FOREIGN KEY (creator) REFERENCES UsersList(id)
 );
 
-CREATE TABLE TaskWithResponsableUser (
-responsable_user INT(3),
+CREATE TABLE TaskWithResponsibleUser (
+responsible_user INT(3),
 task_id INT(3),
 FOREIGN KEY (responsable_user) REFERENCES UsersList(id),
 FOREIGN KEY (task_id) REFERENCES TasksList(id)
@@ -56,17 +56,33 @@ CHANGE COLUMN id id INT(3) NOT NULL AUTO_INCREMENT;
 
 INSERT INTO TasksList (title, task_description, limit_date, creator)
 VALUES (
-"Wake up",
+"Wake",
 "Wake up, stretch, change clothes",
 "2022-08-26",
 001
 );
 
+INSERT INTO TasksList (title, task_description, limit_date, creator)
+VALUES (
+"Walking",
+"walk in the countryside",
+"2022-08-27",
+003
+);
 -- ALTER TABLE TasksList CHANGE COLUMN responsible responsible INT(3);
 
 DROP TABLE TasksList;
 
 DESCRIBE TasksList;
 
+INSERT INTO TaskWithResponsibleUser
+VALUES (
+3,
+2
+);
+
 SELECT * from TasksList;
 SELECT * from UsersList;
+SELECT * from TaskWithResponsibleUser;
+
+DESCRIBE TaskWithResponsibleUser;
