@@ -16,4 +16,4 @@ app.get("/usersOrdered", getUsersOrdered);
 
 app.get("/usersPage/:page", getUsersPage);
 
-app.get("/usersFilters/:page/", getUsersAllFilters)
+app.get("/usersFilters/", getUsersAllFilters)

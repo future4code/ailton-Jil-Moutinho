@@ -6,7 +6,7 @@ export const getUsersAllFilters = async (
   res: Response
 ): Promise<void> => {
   try {
-    const page = Number(req.params.page);
+    const page = Number(req.query.page);
     let search_name = req.query.search_name as string;
     let searchType = req.query.searchType as string;
     let orderBy = req.query.orderBy as string;
@@ -21,15 +21,11 @@ export const getUsersAllFilters = async (
     if (!search_name) {
       search_name = "";
     }
+
     if (!searchType) {
-        res.statusCode = 400;
-        throw new Error("Inform a type to search.");
-      }
-  
-      if (searchType !== "cx" && searchType !== "teacher" &&searchType !== "operations") {
-        res.statusCode = 400;
-        throw new Error("Inform a valid type to search.");
-      }
+      searchType = "";
+    }
+
     if (!orderBy) {
       orderBy = "name";
     }
