@@ -1,0 +1,17 @@
+GET http://localhost:3003/users
+
+###
+
+GET http://localhost:3003/userName?searchName=Maju
+
+###
+GET http://localhost:3003/usersByType/teacher
+
+###
+GET http://localhost:3003/usersOrdered?searchOrder=ns
+
+###
+GET http://localhost:3003/usersPage/3
+
+###
+GET http://localhost:3003/usersFilters/3/?searchType=operations
