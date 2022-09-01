@@ -21,3 +21,15 @@ DESCRIBE labecommerce_products;
 
 SELECT * FROM labecommerce_users;
 SELECT * FROM labecommerce_products;
+
+CREATE TABLE labecommerce_purchases (
+id INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT,
+product_id INT,
+quantity INT NOT NULL,
+total_price FLOAT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES labecommerce_users(id),
+FOREIGN KEY (product_id) REFERENCES labecommerce_products(id)
+);
+
+SELECT * FROM labecommerce_purchases;
