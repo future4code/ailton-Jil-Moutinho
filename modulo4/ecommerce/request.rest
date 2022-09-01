@@ -28,3 +28,19 @@ GET HTTP://localhost:3003/products
 ###
 
 GET http://localhost:3003/products?search=matcha
+###
+
+POST http://localhost:3003/purchase
+content-type: application/json
+
+{
+"user_id": 3,
+"product_id": 1,
+"quantity": 2
+}
+###
+
+GET http://localhost:3003/users/3/purchases
+###
+
+GET http://localhost:3003/usersPurchases
