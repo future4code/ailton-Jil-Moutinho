@@ -40,14 +40,10 @@ class UserAccount {
     return this.transactions;
   }
 
-  public postTransaction(spend: TransactionClass) {
+  public postTransaction(spend: TransactionClass): TransactionClass[] {
     this.transactions.push(spend);
+    return this.transactions;
   }
-
-  /*   public postTransaction(spend: TransactionClass): TransactionClass[] {
-    return (
-     this.transactions.push(spend);
-    )  */
 }
 
 const client1 = new UserAccount("123.123.123-01", "Mia", 7);
