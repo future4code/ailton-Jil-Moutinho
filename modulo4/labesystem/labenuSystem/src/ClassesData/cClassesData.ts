@@ -25,4 +25,12 @@ export class ClassesData extends BaseDataBase {
       .where("module", ">", 0);
     return result;
   }
+
+  async selectByClassId(id: number): Promise<Classes[]> {
+    const result = await this.getConnection()
+      .select("*")
+      .from("classes")
+      .where({ id });
+    return result;
+  }
 }

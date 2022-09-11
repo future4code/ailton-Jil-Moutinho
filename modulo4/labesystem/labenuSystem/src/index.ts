@@ -17,19 +17,6 @@ import { putStudentClass } from "./endpoints/Student/putStudentClass";
 import { putTeacherClass } from "./endpoints/Teacher/putTeacherClass";
  */
 
-import { ClassesEndpoint } from "./ClassesEndPoints/cClass";
-//Teste de classes: Depois não funciona mais porque tem new BaseDataBase q é abstract
-/* app.get("/showtables", async (req, res) => {
-  const base = new BaseDataBase();
-  const show = await base.getConnection().raw(`SHOW TABLES`);
-  res.send(show);
-}); */
-
-const classes = new ClassesEndpoint();
-app.post("/cclass", classes.create);
-app.get("/cclass", classes.selectActive);
-app.put("/cclass", classes.changeModule);
-
 //Test
 //app.get("/connectionTest", connectionTest);
 
@@ -61,3 +48,16 @@ app.get("/studentHobby/:hobby_name", getStudentByHobby);
 //Challenge - Student with the same hobby
 app.get("/teacher/:expertise_name", getTeacherbyExpertise);
  */
+
+import { ClassesEndpoint } from "./ClassesEndPoints/cClassEndpoint";
+//Teste de classes: Depois não funciona mais porque tem new BaseDataBase q é abstract
+/* app.get("/showtables", async (req, res) => {
+  const base = new BaseDataBase();
+  const show = await base.getConnection().raw(`SHOW TABLES`);
+  res.send(show);
+}); */
+
+const classes = new ClassesEndpoint();
+app.post("/cclass", classes.create);
+app.get("/cclass", classes.selectActive);
+app.put("/cclass", classes.changeModule);
