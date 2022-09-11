@@ -50,6 +50,8 @@ app.get("/teacher/:expertise_name", getTeacherbyExpertise);
  */
 
 import { ClassesEndpoint } from "./ClassesEndPoints/cClassEndpoint";
+import { StudentEndPoint } from "./ClassesEndPoints/cStudentEndpoint";
+import { TeacherEndoint } from "./ClassesEndPoints/cTeacherEndpoint";
 //Teste de classes: Depois não funciona mais porque tem new BaseDataBase q é abstract
 /* app.get("/showtables", async (req, res) => {
   const base = new BaseDataBase();
@@ -61,3 +63,13 @@ const classes = new ClassesEndpoint();
 app.post("/cclass", classes.create);
 app.get("/cclass", classes.selectActive);
 app.put("/cclass", classes.changeModule);
+
+const student = new StudentEndPoint();
+app.post("/cstudent", student.create);
+app.get("/cstudent/:student_name", student.selectByName);
+app.put("/cstudent", student.changeClass);
+
+const teacher = new TeacherEndoint();
+app.post("/cteacher", teacher.create);
+app.get("/cteacher", teacher.gelAll);
+app.put("/cteacher/:teacher_id", teacher.putTeachersClass);

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { ClassesData } from "../ClassesData/cClassesData";
 import { MissingFields } from "../error/MissingFields";
 import { ModuloNotPermit } from "../error/ModuleNotPermite";
+import { NonExistentClass } from "../error/NonExistentClass";
 import { Classes } from "../model/Classes";
 
 export class ClassesEndpoint {
@@ -44,8 +45,12 @@ export class ClassesEndpoint {
       }
 
       const classesData = new ClassesData();
+      const classExist = await classesData.selectByClassId(id);
+      if (!classExist.length) {
+        throw new NonExistentClass();
+      }
 
-      const result = await classesData.changeModule(id, module) 
+      const result = await classesData.changeModule(id, module);
 
       res.status(200).send({ message: result });
     } catch (error: any) {

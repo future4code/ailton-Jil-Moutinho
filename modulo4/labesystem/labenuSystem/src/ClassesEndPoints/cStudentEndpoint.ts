@@ -6,6 +6,7 @@ import { AlreadyExist } from "../error/AlreadyExist";
 import { ClassesData } from "../ClassesData/cClassesData";
 import { NonExistentClass } from "../error/NonExistentClass";
 import moment from "moment";
+import { NonExistentStudent } from "../error/NonExistentStudent";
 
 export class StudentEndPoint {
   async create(req: Request, res: Response) {
@@ -45,6 +46,65 @@ export class StudentEndPoint {
         class_id
       );
       const result = await newStudentData.createStudent(newStudent);
+
+      res.status(201).send({ message: result });
+    } catch (error: any) {
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+  }
+
+  async selectByName(req: Request, res: Response) {
+    try {
+      const student_name = req.params.student_name;
+
+      const studentData = new StudentData();
+      const result = await studentData.selectByStudentsName(student_name);
+
+      if (!result) {
+        throw new NonExistentStudent();
+      }
+
+      res.status(200).send({ message: result });
+    } catch (error: any) {
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+  }
+
+  async changeClass(req: Request, res: Response) {
+    try {
+      const { student_name, id, class_id } = req.body;
+
+      if (
+        !student_name ||
+        !id ||
+        !class_id ||
+        isNaN(Number(class_id)) ||
+        isNaN(Number(id))
+      ) {
+        throw new MissingFields();
+      }
+
+      const studentData = new StudentData();
+      const studentById = studentData.selectByStudentsId(id);
+      if (!studentById) {
+        throw new NonExistentStudent();
+      }
+
+      const newClassesData = new ClassesData();
+      const classExist = await newClassesData.selectByClassId(class_id);
+      if (!classExist.length) {
+        throw new NonExistentClass();
+      }
+
+      const result = await studentData.changeStudentClass(
+        class_id,
+        id,
+        student_name
+      );
 
       res.status(201).send({ message: result });
     } catch (error: any) {
