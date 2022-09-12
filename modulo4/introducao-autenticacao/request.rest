@@ -1,0 +1,27 @@
+GET HTTP://localhost:3003/showtables
+###
+
+POST HTTP://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "email": "raul@raul.com",
+   "password": "raul123"
+}
+###
+
+GET HTTP://localhost:3003/user/byemail
+Content-Type: application/json
+
+{
+"email": "raul@raul.com"
+}
+###
+
+GET HTTP://localhost:3003/user/login
+Content-Type: application/json
+
+{
+"email": "raul@raul.com",
+"password": "raul123"
+}
