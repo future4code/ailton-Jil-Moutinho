@@ -9,6 +9,7 @@ import { NonExistentEmail } from "../error/EmailDoensExist";
 import { HashManager } from "../services/HashManager";
 import { IncorrectPassword } from "../error/IncorrectPassword";
 import { PermissionDenied } from "../error/PermissionDenied";
+import { ExpiredToken } from "../error/ExpiredToken";
 
 export class userEndpoint {
   async create(req: Request, res: Response) {
@@ -142,22 +143,34 @@ export class userEndpoint {
     }
   }
 
-  async getById(req: Request, res: Response) {
+  async getByIdToken(req: Request, res: Response) {
     try {
       // const token = req.headers.authorization as string
       const token = req.headers.authorization!;
 
       const isOk = new TokenClass().verifyToken(token);
 
+      console.log(isOk);
+
+      if (isOk == false) {
+        throw new ExpiredToken();
+      }
+
       const newUserData = new UserData();
 
       const userById = await newUserData.getUserById(isOk.id);
 
-      res
-        .status(200)
-        .send({ message: { id: userById.id, email: userById.email, role: userById.role } });
+      res.status(200).send({
+        message: {
+          id: userById.id,
+          email: userById.email,
+          role: userById.role,
+        },
+      });
     } catch (error: any) {
-      res.status(error.statusCode || 500).send({ message: error.message });
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
     }
   }
 

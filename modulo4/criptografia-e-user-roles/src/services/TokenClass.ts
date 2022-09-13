@@ -23,11 +23,15 @@ export class TokenClass {
   }
 
   verifyToken(token: string) {
-    const verify = jwt.verify(token, process.env.JWT_KEY as string) as any;
+    try {
+      const verify = jwt.verify(token, process.env.JWT_KEY as string) as any;
 
-    const returnType: UserSystem = verify.userInfo;
+      const returnType = verify.userInfo;
 
-    return returnType;
+      return returnType;
+    } catch (error) {
+      return false;
+    }
   }
 }
 
