@@ -25,3 +25,9 @@ Content-Type: application/json
 "email": "raul@raul.com",
 "password": "raul123"
 }
+###
+
+GET http://localhost:3003/user/byId
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY1OTVhMjZjLTZkOGUtNGJkNi1iZTJhLWM3MmVmYzA0NTk4ZSIsImlhdCI6MTY2MzA3MjI3NiwiZXhwIjoxNjYzMDc1ODc2fQ.AMPalKTuAD5_E8pqG1D7enY1qMJMFdx2scpCog-sT4k
+// Gerar token em menos de 1hr

@@ -94,3 +94,4 @@ app.get("/user/login", newUser.login)
 // Linha 37
 
 // b) Crie o endpoint com as especificações passadas
+app.get("/user/byId", newUser.getById);
