@@ -15,21 +15,33 @@ GET HTTP://localhost:3003/user/login
 Content-Type: application/json
 
 {
-   "email": "mel@mel.com",
-   "password": "MelodyMelissa123"
+   "email": "mia100@mia.com",
+   "password": "Mia1234100"
 }
 ###
 
-
+{
+   "email": "mel@mel.com",
+   "password": "MelodyMelissa123"
+}
 {
    "email": "bela@bela.com",
    "password": "belinha123"
 }
 ###
 
-GET http://localhost:3003/user/byId
+GET http://localhost:3003/user/profile
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJpZCI6IjNhYzMzOTQ1LTA5NWItNDQ5NC1iZWI0LWJmOWU1NjFmZDg2YiIsInJvbGUiOiJub3JtYWwifSwiaWF0IjoxNjYzMDk1NzkyLCJleHAiOjE2NjMwOTkzOTJ9.zNmnzqe324mS9sDFRtF7nyf_--wfg0ZFKLgqLzwRtQA
 // Gerar token em menos de 1hr
+###
 
+GET http://localhost:3003/user/byId
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJpZCI6ImJmODM5YzRiLTllOWMtNGY3Zi1hYmYzLWQ0MTBjMjY1NTk5ZCIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NjMwOTY4NTYsImV4cCI6MTY2MzEwMDQ1Nn0.r3i_GFfylVPHAc5AuZd6Iy4R3VpR0hNXlVUPrbRsQo8
+
+{
+    "id": "da50f5bd-5027-402a-a971-7808bbb7b071"
+}
+###
 

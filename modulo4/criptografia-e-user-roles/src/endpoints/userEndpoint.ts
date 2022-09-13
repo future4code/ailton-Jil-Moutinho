@@ -118,10 +118,11 @@ export class userEndpoint {
     }
   }
 
-  async getById(req: Request, res: Response) {
+  async getByIdProfile(req: Request, res: Response) {
     try {
       // const token = req.headers.authorization as string
       const token = req.headers.authorization!;
+      const { id } = req.body;
 
       const isOk = new TokenClass().verifyToken(token);
 
@@ -131,11 +132,60 @@ export class userEndpoint {
 
       const newUserData = new UserData();
 
-      const userById = await newUserData.getUserById(isOk.id);
+      const userById = await newUserData.getUserById(id);
 
       res
         .status(200)
         .send({ message: { id: userById.id, "email:": userById.email } });
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message });
+    }
+  }
+
+  async getById(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const token = req.headers.authorization!;
+
+      const isOk = new TokenClass().verifyToken(token);
+
+      const newUserData = new UserData();
+
+      const userById = await newUserData.getUserById(isOk.id);
+
+      res
+        .status(200)
+        .send({ message: { id: userById.id, email: userById.email, role: userById.role } });
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message });
+    }
+  }
+
+  async delById(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const { id } = req.body;
+      const token = req.headers.authorization!;
+
+      if (!id) {
+        throw new InvalidCredentials();
+      }
+
+      const isOk = new TokenClass().verifyToken(token);
+
+      if (isOk.role === "normal") {
+        throw new PermissionDenied();
+      }
+
+      const newUserData = new UserData();
+      const userById = await newUserData.getUserById(id);
+      if (!userById) {
+        throw new NonExistentEmail();
+      }
+
+      const result = await newUserData.delUserById(id);
+
+      res.status(200).send({ message: result });
     } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message });
     }

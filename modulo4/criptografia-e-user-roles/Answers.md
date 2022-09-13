@@ -38,12 +38,24 @@ No arquivo TokenClass e no endpoint.
 
 d) Altere o login para criar o token com o role do usuário
 
-Ex4 Agora, vamos usar esse role no endpoint /user/byId. Somente o usuários "normais" podem acessar esse endpoint. 
+Ex4 Agora, vamos usar esse role no endpoint /user/profile. Somente o usuários "normais" podem acessar esse endpoint. 
 a) Altere o endpoint para que retorne um erro de Unauthorized para os usuários que "não sejam normais" e tentem acessar esse endpoint
 Modificado end point, adicionado role no data, criado novo erro, model adicionado getRole.
 
-Ex 5 Implemente o endpoint que realizará a deleção de um usuário. As especificações são:
+Endpoint: getByIdProfile
 
+Ex5 Implemente o endpoint que realizará a deleção de um usuário. As especificações são:
 - *Verbo/Método*: **DELETE**
 - *Path:* `/user/:id`
 - Somente admins podem acessar esse endpoint
+
+Endpoint: delUserById
+
+Ex6 Implemente o endpoint que retorne as informações (id e email) de um usuário a partir do seu id. As especificações são:
+- *Verbo/Método*: **GET**
+- *Path:* `/user`
+- Tanto admins como usuários normais conseguem usar essa funcionalidade
+
+Endpoint: getById
+
+Ex7 O nosso backend está com muito código repetido (é só ver o quão parecido o login e o signup estão). Faça um refactor do código criando uma estrutura que permita reutilizar melhor o código.

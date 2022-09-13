@@ -12,4 +12,6 @@ const newUser = new userEndpoint();
 
 app.post("/user/signup", newUser.create);
 app.get("/user/login", newUser.login);
+app.get("/user/profile", newUser.getByIdProfile);
+app.delete("/user/deletebyId", newUser.delById);
 app.get("/user/byId", newUser.getById);
