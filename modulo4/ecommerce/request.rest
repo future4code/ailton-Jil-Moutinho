@@ -1,0 +1,46 @@
+GET HTTP://localhost:3003/connectionTest
+###
+
+POST HTTP://localhost:3003/users
+content-type: application/json
+
+{
+"name":"Mia",
+"email":"mia2@mia2.com",
+"password":"Mia123"
+}
+###
+
+GET HTTP://localhost:3003/users
+###
+
+POST HTTP://localhost:3003/products
+content-type: application/json
+
+{
+"name_product":"Haagen-dazs matcha green tea",
+"price":"21.50",
+"image_url":"https://foodtouring.files.wordpress.com/2014/10/haagen-dazs-ice-cream-crispy-sandwich.jpg"
+}
+###
+
+GET HTTP://localhost:3003/products
+###
+
+GET http://localhost:3003/products?search=matcha
+###
+
+POST http://localhost:3003/purchase
+content-type: application/json
+
+{
+"user_id": 3,
+"product_id": 1,
+"quantity": 2
+}
+###
+
+GET http://localhost:3003/users/3/purchases
+###
+
+GET http://localhost:3003/usersPurchases
