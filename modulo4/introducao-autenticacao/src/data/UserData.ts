@@ -15,10 +15,6 @@ export class UserData extends BaseDataBase {
     return `User with email ${newUser.getEmail()} created successfully`;
   };
 
-  /* public async edit(id: string) {
-    await this.getConnection().update({ nickname }).into(userTableName).where({ id })
-} */
-
   public async getUserByEmail(email: string) {
     const result = await this.getConnection()
       .select("*")
@@ -38,4 +34,12 @@ export class UserData extends BaseDataBase {
     return result;
   }
 
+  public async getUserById(id: string) {
+    const result = await this.getConnection()
+      .select("*")
+      .from(userTableName)
+      .where({ id });
+
+    return result[0];
+  }
 }

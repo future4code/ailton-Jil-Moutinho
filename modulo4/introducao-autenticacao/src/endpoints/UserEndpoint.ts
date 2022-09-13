@@ -63,47 +63,44 @@ export class userEndpoint {
 
   async login(req: Request, res: Response) {
     try {
+      const { email, password } = req.body;
 
-        const { email, password } = req.body
+      if (!email || !password || !email.includes("@") || password.length < 6) {
+        throw new InvalidCredentials();
+      }
 
-        if (!email || !password || !email.includes("@") || password.length < 6) {
-          throw new InvalidCredentials();
-        }
+      const userData = new UserData();
 
-        const userData = new UserData()
+      const userValidLogin = await userData.getUserValidLogin(email, password);
 
-        const userValidLogin = await userData.getUserValidLogin(email, password)
+      if (!userValidLogin.length) {
+        throw new IncorrectPassword();
+      }
 
-        if (!userValidLogin.length) {
-            throw new IncorrectPassword();
-        }
+      const token = new TokenClass().generateToken(userValidLogin[0].id);
 
-        const token = new TokenClass().generateToken(userValidLogin[0].id)
-
-        res.status(200).send({ "token: ": token })
-
+      res.status(200).send({ "token: ": token });
     } catch (error: any) {
-        res.status(error.statusCode || 500).send({ message: error.message })
+      res.status(error.statusCode || 500).send({ message: error.message });
     }
-}
+  }
 
-/* async authenticationLogin(req: Request, res: Response) {
+  async getById (req: Request, res: Response) {
   try {
       // const token = req.headers.authorization as string
       const token = req.headers.authorization!
 
       const isOk = new TokenClass().verifyToken(token)
 
-      const userData = new UserData()
+      const newUserData = new UserData()
 
-      await userData.edit(id)
+      const userById = await newUserData.getUserById(isOk)
 
-      res.status(200).send("Atualizado com sucesso!")
+      res.status(200).send({message: { "id": userById.id,
+        "email:": userById.email,}})
 
   } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message })
   }
-} */
-
-
+}
 }

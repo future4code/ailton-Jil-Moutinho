@@ -1,14 +1,3 @@
-import { app } from "./app";
-import { BaseDataBase } from "./data/BaseDataBase";
-import { v4 } from "uuid";
-import { userEndpoint } from "./endpoints/UserEndpoint";
-
-/* app.get("/showtables", async (req, res) => {
-  const base = new BaseDataBase();
-  const show = await base.getConnection().raw(`SHOW TABLES`);
-  res.send(show);
-}); */
-
 // Ex 1 Na autenticação de usuários o elemento mais fundamental talvez seja o id. É muito importante encontrar um que seja fácil de guardar e que garanta unicidade. Para isso usaremos a versão v4 do UUID, uma das mais recomendadas para isso. O uso dele é simples, veja abaixo:
 const id = v4();
 
