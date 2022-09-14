@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
-
 export class TokenClass {
   generateToken(user_id: string) {
     const token = jwt.sign({ user_id }, process.env.JWT_KEY as string, {
@@ -15,11 +13,15 @@ export class TokenClass {
   }
 
   verifyToken(token: string) {
-    const verify = jwt.verify(token, process.env.JWT_KEY as string) as any;
+    try {
+      const verify = jwt.verify(token, process.env.JWT_KEY as string) as any;
 
-    const returnType: string = verify.user_id;
+      const returnType = verify.userInfo;
 
-    return returnType;
+      return returnType;
+    } catch (error) {
+      return false;
+    }
   }
 }
 /* export enum typeUser {

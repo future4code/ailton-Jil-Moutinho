@@ -1,9 +1,43 @@
-POST HTTP://localhost:3003/user/signup
+POST HTTP://localhost:3003/signup
 Content-Type: application/json
 
 {
-   "email": "mia@mia.com",
+   "email": "mia1@mia.com",
    "user_password": "Mia1234",
    "user_name": "Mia" 
 }
+###
+
+GET HTTP://localhost:3003/login
+Content-Type: application/json
+
+{
+   "email": "mia1@mia.com",
+   "user_password": "Mia1234"
+}
+###
+
+GET HTTP://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc1MzQ2LCJleHAiOjE2NjMxNzg5NDZ9.Is2BPxt9DqxPIek0Xg891aXq7sQuZBqc9YcGX7FvSlU
+###
+
+GET HTTP://localhost:3003/user/d9cd6b44-a558-49e4-b116-92917f11e284
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc1MzQ2LCJleHAiOjE2NjMxNzg5NDZ9.Is2BPxt9DqxPIek0Xg891aXq7sQuZBqc9YcGX7FvSlU
+###
+
+POST HTTP://localhost:3003/recipe
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc1MzQ2LCJleHAiOjE2NjMxNzg5NDZ9.Is2BPxt9DqxPIek0Xg891aXq7sQuZBqc9YcGX7FvSlU
+
+{
+   "title": "Moqueca",
+   "recipe_description": "Peixe, leite de coco, azeite de dende e tomate e pimentão"
+}
+###
+
+GET HTTP://localhost:3003/recipe/6a7c9e0e-1312-4678-aa9d-9d904622d20f
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc5NzQ0LCJleHAiOjE2NjMxODMzNDR9.GKEEKro_yfTh0GKAWb0S48PnBmLkZQZG6y1X97TNT3Y
 ###

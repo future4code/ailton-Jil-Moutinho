@@ -16,13 +16,23 @@ export class UserData extends BaseDataBase {
     return `User ${newUser.getName()} created successfully`;
   };
 
-  public async getUserByEmail(email: string) {
+  public async getUserByEmail(email: string): Promise<UserModel | undefined> {
     const result = await this.getConnection()
       .select("*")
       .from(userTableName)
       .where({ email });
 
-    return result;
+    if (!result.length) {
+      return undefined;
+    } else {
+      const newuser = new UserModel(
+        result[0].user_id,
+        result[0].user_name,
+        result[0].email,
+        result[0].user_password
+      );
+      return newuser;
+    }
   }
 
   public async getUserValidLogin(email: string, password: string) {
@@ -35,20 +45,31 @@ export class UserData extends BaseDataBase {
     return result;
   }
 
-  public async getUserById(id: string) {
+  public async getUserById(user_id: string) {
     const result = await this.getConnection()
       .select("*")
       .from(userTableName)
-      .where({ id });
+      .where({ user_id });
 
-    return result[0];
-  }
 
-  public async delUserById(id: string) {
+      if (!result.length) {
+        return undefined;
+      } else {
+        const newuser = new UserModel(
+          result[0].user_id,
+          result[0].user_name,
+          result[0].email,
+          result[0].user_password
+        );
+        return newuser;
+      }
+    }
+
+  public async delUserById(user_id: string) {
     const result = await this.getConnection()
       .delete("*")
       .from(userTableName)
-      .where({ id });
+      .where({ user_id });
 
     return `User deleted successfully`;
   }

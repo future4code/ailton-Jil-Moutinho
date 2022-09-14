@@ -2,7 +2,7 @@ export class RecipeModel {
   constructor(
     private recipe_id: string,
     private title: string,
-    private description: string,
+    private recipe_description: string,
     private creation_date: string,
     private creator_id: string
   ) {}
@@ -16,7 +16,7 @@ export class RecipeModel {
   }
 
   public getDescription() {
-    return this.description;
+    return this.recipe_description;
   }
 
   public getcCreationDate() {

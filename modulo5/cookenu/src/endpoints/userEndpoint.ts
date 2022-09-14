@@ -28,7 +28,7 @@ export class userEndpoint {
       const userDataBase = new UserData();
 
       const emailAlreadyExist = await userDataBase.getUserByEmail(email);
-      if (emailAlreadyExist.length) {
+      if (emailAlreadyExist) {
         throw new EmailAlreadyExists();
       }
 
@@ -62,11 +62,9 @@ export class userEndpoint {
       const userDataBase = new UserData();
 
       const userByEmail = await userDataBase.getUserByEmail(email);
-      if (!userByEmail.length) {
+      if (!userByEmail) {
         throw new EmailDoesntExist();
       }
-
-      console.log(userByEmail);
 
       res.status(201).send({ message: userByEmail });
     } catch (error: any) {
@@ -76,24 +74,31 @@ export class userEndpoint {
 
   async login(req: Request, res: Response) {
     try {
-      const { email, password } = req.body;
+      const { email, user_password } = req.body;
 
-      if (!email || !password || !email.includes("@") || password.length < 6) {
+      if (
+        !email ||
+        !user_password ||
+        !email.includes("@") ||
+        user_password.length < 6
+      ) {
         throw new InvalidCredentials();
       }
 
       const userData = new UserData();
 
-      const emailExist:UserModel[] = await userData.getUserByEmail(email);
+      const emailExist = await userData.getUserByEmail(email);
 
+      let correctPassword: boolean = false;
       if (!emailExist) {
         throw new EmailDoesntExist();
+      } else {
+        const hastTeste = emailExist.getPassword();
+        correctPassword = await new HashManager().compare(
+          user_password,
+          hastTeste
+        );
       }
-
-      const correctPassword: boolean = await new HashManager().compare(
-        password,
-        emailExist[0].getPassword()
-      );
 
       if (!correctPassword) {
         throw new IncorrectPassword();
@@ -107,9 +112,7 @@ export class userEndpoint {
       Não da mais pra usar, só se for comparando a senha criptografada.
       */
 
-      const token = new TokenClass().generateToken(
-        emailExist[0].getId()
-      );
+      const token = new TokenClass().generateToken(emailExist.getId());
       //, role: emailExist[0].role,
 
       res.status(200).send({ "token: ": token });
@@ -122,46 +125,67 @@ export class userEndpoint {
     try {
       // const token = req.headers.authorization as string
       const token = req.headers.authorization!;
-      const { id } = req.body;
 
       const isOk = new TokenClass().verifyToken(token);
 
-/*       if (isOk.role === "admin") {
+      /*       if (isOk.role === "admin") {
         throw new PermissionDenied();
       } */
 
+      if (!isOk) {
+        throw new PermissionDenied();
+      }
+
       const newUserData = new UserData();
 
-      const userById = await newUserData.getUserById(id);
+      const userById = await newUserData.getUserById(isOk);
 
       res
         .status(200)
-        .send({ message: { id: userById.id, "email:": userById.email } });
+        .send({
+          message: {
+            user_id: userById?.getId(),
+            "email:": userById?.getEmail(),
+            name: userById?.getName(),
+          },
+        });
     } catch (error: any) {
-      res.status(error.statusCode || 500).send({ message: error.message });
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
     }
   }
 
   async getById(req: Request, res: Response) {
     try {
       // const token = req.headers.authorization as string
+      const user_id = req.params.user_id;
       const token = req.headers.authorization!;
+      
+      if (!user_id) {
+        throw new InvalidCredentials();
+      }
 
       const isOk = new TokenClass().verifyToken(token);
+      if (!isOk) {
+        throw new PermissionDenied();
+      }
 
       const newUserData = new UserData();
 
-      const userById = await newUserData.getUserById(isOk);
+      const userById = await newUserData.getUserById(user_id);
 
       res.status(200).send({
         message: {
-          id: userById.id,
-          email: userById.email,
-          role: userById.role,
+          user_id: userById?.getId(),
+          email: userById?.getEmail(),
+          user_name: userById?.getName()
         },
       });
     } catch (error: any) {
-      res.status(error.statusCode || 500).send({ message: error.message });
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
     }
   }
 
