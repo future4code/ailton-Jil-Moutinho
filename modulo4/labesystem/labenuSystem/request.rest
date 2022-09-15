@@ -1,0 +1,183 @@
+GET HTTP://localhost:3003/connectionTest
+###
+
+POST HTTP://localhost:3003/class
+content-type: application/json
+
+{
+"class_name": "Alves",
+"module": "1"
+}
+###
+
+GET HTTP://localhost:3003/class
+###
+
+PUT HTTP://localhost:3003/class
+content-type: application/json
+
+{
+"id": 5,
+"module": 6
+}
+###
+
+POST HTTP://localhost:3003/student
+content-type: application/json
+
+{
+"student_name": "Jil",
+"student_email": "jil@gmail.com", 
+"birth_date": "1986-02-21", 
+"class_id": 1
+}
+{
+"student_name": "Mari Andrade",
+"student_email": "mari@gmail.com", 
+"birth_date": "1993-11-11", 
+"class_id": 1
+}
+{
+"student_name": "Talita Miguel",
+"student_email": "tali@gmail.com", 
+"birth_date": "1987-06-29", 
+"class_id": 1
+}
+###
+
+GET HTTP://localhost:3003/student/Talita
+###
+
+PUT HTTP://localhost:3003/student
+content-type: application/json
+
+{
+"id": 1,
+"class_id": 2
+}
+###
+
+POST HTTP://localhost:3003/teacher
+content-type: application/json
+
+{
+"teacher_id": 1,
+"teacher_name": "Ana Sue Sammi",
+"teacher_email": "ana@gmail.com", 
+"birth_date": "1986-05-25", 
+"class_id": 1,
+"expertise_name": "CSS"
+}
+###
+
+GET HTTP://localhost:3003/teacher
+###
+
+PUT HTTP://localhost:3003/teacher
+content-type: application/json
+
+{
+"teacher_name": 1,
+"class_name": 2
+}
+###
+
+POST HTTP://localhost:3003/hobby
+content-type: application/json
+
+{
+"hobby_name": "Travel"
+}
+###
+
+GET HTTP://localhost:3003/users/2
+###
+
+POST HTTP://localhost:3003/studentHobby
+content-type: application/json
+
+{ 
+"hobby_name": "Travel",
+"student_name": "Jil"
+}
+{ 
+"hobby_name": "Play video game",
+"student_name": "Maria Andrade"
+}
+{ 
+"hobby_name": "Walk",
+"student_name": "Talita"
+}
+###
+
+GET HTTP://localhost:3003/studentHobby/2
+###
+
+GET HTTP://localhost:3003/teacher/5
+###
+
+POST HTTP://localhost:3003/cclass
+content-type: application/json
+
+{
+"class_name": "Cruz",
+"module": 6
+}
+###
+
+GET HTTP://localhost:3003/cclass
+###
+
+PUT HTTP://localhost:3003/cclass
+content-type: application/json
+
+{
+"id": 2,
+"module": 6
+}
+###
+
+POST HTTP://localhost:3003/cstudent
+content-type: application/json
+
+{
+"student_name": "Mia",
+"student_email": "mia@mia.com",
+"birth_date": "01/02/2015", 
+"class_id": 1
+}
+###
+
+GET HTTP://localhost:3003/cstudent/Mia
+###
+
+PUT HTTP://localhost:3003/cstudent
+content-type: application/json
+
+{
+"id": 1,
+"student_name":"Talita Miguel",
+"class_id": 1
+}
+###
+
+POST HTTP://localhost:3003/cteacher
+content-type: application/json
+
+{
+"teacher_name": "Tayanne Novais",
+"teacher_email": "tayanne@tayanne.com", 
+"birth_date": "30/04/1986", 
+"class_id": 1
+}
+###
+
+GET HTTP://localhost:3003/cteacher
+###
+
+PUT HTTP://localhost:3003/cteacher/1
+content-type: application/json
+
+{
+"class_id": 1
+}
