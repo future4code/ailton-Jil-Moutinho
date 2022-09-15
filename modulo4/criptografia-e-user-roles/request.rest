@@ -1,0 +1,45 @@
+GET HTTP://localhost:3003/showtables
+###
+
+POST HTTP://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "email": "mia100@mia.com",
+   "password": "Mia1234100",
+   "role": "ADMIN" 
+}
+###
+
+GET HTTP://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "mia100@mia.com",
+   "password": "Mia1234100"
+}
+###
+
+{
+   "email": "mel@mel.com",
+   "password": "MelodyMelissa123"
+}
+{
+   "email": "bela@bela.com",
+   "password": "belinha123"
+}
+###
+
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJpZCI6IjNhYzMzOTQ1LTA5NWItNDQ5NC1iZWI0LWJmOWU1NjFmZDg2YiIsInJvbGUiOiJub3JtYWwifSwiaWF0IjoxNjYzMDk1NzkyLCJleHAiOjE2NjMwOTkzOTJ9.zNmnzqe324mS9sDFRtF7nyf_--wfg0ZFKLgqLzwRtQA
+// Gerar token em menos de 1hr
+###
+
+GET http://localhost:3003/user/byId
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJpZCI6ImJmODM5YzRiLTllOWMtNGY3Zi1hYmYzLWQ0MTBjMjY1NTk5ZCIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NjMxMTA0MjEsImV4cCI6MTY2MzExNDAyMX0.f3oCQ_aE7tUFHiyrftQF53m783NAOb3YjXZBwXVd9GI
+
+###
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJpZCI6IjNhYzMzOTQ1LTA5NWItNDQ5NC1iZWI0LWJmOWU1NjFmZDg2YiIsInJvbGUiOiJub3JtYWwifSwiaWF0IjoxNjYzMDk1NzkyLCJleHAiOjE2NjMwOTkzOTJ9.zNmnzqe324mS9sDFRtF7nyf_--wfg0ZFKLgqLzwRtQA
