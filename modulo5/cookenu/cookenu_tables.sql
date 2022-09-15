@@ -26,3 +26,5 @@ CREATE TABLE Followers (
     FOREIGN KEY (followed_id) REFERENCES UserCookenu(user_id),
     FOREIGN KEY (follower_id) REFERENCES UserCookenu(user_id)
 );
+
+SELECT * FROM Followers;
