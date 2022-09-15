@@ -6,7 +6,7 @@ export class HashManager {
     const rounds: number = Number(process.env.BCRYPT_COST);
     const salt: string = await bcrypt.genSalt(rounds);
     const result = await bcrypt.hash(user_password, salt);
-    console.log("encrypted message: ", result);
+
     return result;
   };
 

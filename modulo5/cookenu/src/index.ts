@@ -15,9 +15,14 @@ app.post("/signup", newUser.create);
 app.get("/login", newUser.login);
 app.get("/user/profile", newUser.getByIdProfile);
 app.get("/user/:user_id", newUser.getById);
+
+app.post("/user/follow", newUser.postFollow);
+app.delete("/user/unfollow", newUser.delUnfollow);
 //app.delete("/user/deletebyId", newUser.delById);
 
 const newRecipe = new recipeEndpoint();
 
 app.post("/recipe", newRecipe.create);
 app.get("/recipe/:recipe_id", newRecipe.getById);
+app.put("/recipe/edite", newRecipe.putEditeRecipe);
+app.delete("/recipe/delete", newRecipe.delRecipeAtentionRole);

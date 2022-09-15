@@ -18,7 +18,7 @@ export class recipeEndpoint {
 
       const token = req.headers.authorization!;
       const isOk = new TokenClass().verifyToken(token);
-      if (!isOk) {
+      if (isOk === false) {
         throw new PermissionDenied();
       }
 
@@ -35,7 +35,7 @@ export class recipeEndpoint {
         title,
         recipe_description,
         creation_date,
-        isOk
+        isOk.user_id
       );
 
       const result = await recipeDataBase.createRecipe(newRecipe);
@@ -72,6 +72,84 @@ export class recipeEndpoint {
           recipes_description: recipeById?.getDescription(),
           creation_date: recipeById?.getcCreationDate(),
         },
+      });
+    } catch (error: any) {
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+  }
+
+  async putEditeRecipe(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const { recipe_id, recipe_description } = req.body;
+      const token = req.headers.authorization!;
+
+      if (!recipe_description || !recipe_id) {
+        throw new MissingFields();
+      }
+
+      const isOk = new TokenClass().verifyToken(token);
+
+      if (isOk === false) {
+        throw new PermissionDenied();
+      }
+
+      const newRecipeData = new RecipeData();
+
+      const recipeById = await newRecipeData.getRecipeById(recipe_id);
+
+      let result: string = "";
+      if (recipeById?.getCreatorId() === isOk.user_id) {
+        result = await newRecipeData.editRecipeByCreatorId(
+          recipe_id,
+          recipe_description,
+          isOk.user_id
+        );
+      } else {
+        throw new PermissionDenied();
+      }
+
+      res.status(200).send({
+        message: result,
+      });
+    } catch (error: any) {
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+  }
+
+  async delRecipeAtentionRole(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const { recipe_id } = req.body;
+      const token = req.headers.authorization!;
+
+      if (!recipe_id) {
+        throw new MissingFields();
+      }
+
+      const isOk = new TokenClass().verifyToken(token);
+
+      if (isOk === false) {
+        throw new PermissionDenied();
+      }
+
+      const newRecipeData = new RecipeData();
+
+      const recipeById = await newRecipeData.getRecipeById(recipe_id);
+
+      let result: string = "";
+      if (recipeById?.getCreatorId() === isOk.user_id || isOk.role == "admin") {
+        result = await newRecipeData.delRecipe(recipe_id);
+      } else {
+        throw new PermissionDenied();
+      }
+
+      res.status(200).send({
+        message: result,
       });
     } catch (error: any) {
       res

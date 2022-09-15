@@ -7,20 +7,25 @@ import { IncorrectPassword } from "../error/IncorrectPassword";
 import { PermissionDenied } from "../error/PermissionDenied";
 import GenerateId from "../services/GeneratorId";
 import { TokenClass } from "../services/Authenticator";
-import UserModel from "../model/UserModel";
+import UserModel, { typeUser } from "../model/UserModel";
 import { EmailDoesntExist } from "../error/EmailDoesnExist";
+import { MissingFields } from "../error/MissinFields";
+import { AlreadyFollow } from "../error/AlreadyFollow";
+import { NotFollowing } from "../error/NotFollowing";
+import { RecipeData } from "../data/recipeData";
 
 export class userEndpoint {
   async create(req: Request, res: Response) {
     try {
-      const { email, user_password, user_name } = req.body;
+      const { email, user_password, user_name, role } = req.body;
 
       if (
         !email ||
         !user_password ||
         !user_name ||
         !email.includes("@") ||
-        user_password.length < 6
+        user_password.length < 6 ||
+        !role
       ) {
         throw new InvalidCredentials();
       }
@@ -39,11 +44,21 @@ export class userEndpoint {
       );
       /* const roleLower: typeUser = role.toLowerCase(); */
 
-      const newUser = new UserModel(user_id, user_name, email, hashPassword);
+      const newUser = new UserModel(
+        user_id,
+        user_name,
+        email,
+        hashPassword,
+        role
+      );
 
       const result = await userDataBase.createUser(newUser);
 
-      const token = new TokenClass().generateToken(user_id);
+      const roleLower: typeUser = role.toLowerCase();
+      const token = new TokenClass().generateToken({
+        user_id,
+        role: roleLower,
+      });
 
       res.status(201).send({ message: result, token });
     } catch (error: any) {
@@ -112,8 +127,10 @@ export class userEndpoint {
       Não da mais pra usar, só se for comparando a senha criptografada.
       */
 
-      const token = new TokenClass().generateToken(emailExist.getId());
-      //, role: emailExist[0].role,
+      const token = new TokenClass().generateToken({
+        user_id: emailExist.getId(),
+        role: emailExist.getRole(),
+      });
 
       res.status(200).send({ "token: ": token });
     } catch (error: any) {
@@ -138,17 +155,15 @@ export class userEndpoint {
 
       const newUserData = new UserData();
 
-      const userById = await newUserData.getUserById(isOk);
+      const userById = await newUserData.getUserById(isOk.user_id);
 
-      res
-        .status(200)
-        .send({
-          message: {
-            user_id: userById?.getId(),
-            "email:": userById?.getEmail(),
-            name: userById?.getName(),
-          },
-        });
+      res.status(200).send({
+        message: {
+          user_id: userById?.getId(),
+          "email:": userById?.getEmail(),
+          name: userById?.getName(),
+        },
+      });
     } catch (error: any) {
       res
         .status(error.statusCode || 500)
@@ -161,7 +176,7 @@ export class userEndpoint {
       // const token = req.headers.authorization as string
       const user_id = req.params.user_id;
       const token = req.headers.authorization!;
-      
+
       if (!user_id) {
         throw new InvalidCredentials();
       }
@@ -179,7 +194,7 @@ export class userEndpoint {
         message: {
           user_id: userById?.getId(),
           email: userById?.getEmail(),
-          user_name: userById?.getName()
+          user_name: userById?.getName(),
         },
       });
     } catch (error: any) {
@@ -201,21 +216,110 @@ export class userEndpoint {
 
       const isOk = new TokenClass().verifyToken(token);
 
-      /* if (isOk.role === "normal") {
+      if (isOk.role === "normal" || isOk === false) {
         throw new PermissionDenied();
-      } */
+      }
 
       const newUserData = new UserData();
       const userById = await newUserData.getUserById(id);
       if (!userById) {
         throw new EmailDoesntExist();
       }
-
+      const newRecipe = new RecipeData();
+      const resultFollows = await newUserData.delUnfollowToDelUser(id);
+      const resultRecipe = await newRecipe.delRecipe(id);
       const result = await newUserData.delUserById(id);
+
+      res.status(200).send({ message: result, resultFollows, resultRecipe });
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message });
+    }
+  }
+
+  async postFollow(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const { followedId } = req.body;
+      const token = req.headers.authorization!;
+
+      if (!followedId) {
+        throw new MissingFields();
+      }
+
+      const isOk = new TokenClass().verifyToken(token);
+
+      if (!isOk) {
+        throw new PermissionDenied();
+      }
+
+      const newUserData = new UserData();
+
+      const userById = await newUserData.getUserById(followedId);
+
+      if (!userById) {
+        throw new EmailDoesntExist();
+      }
+      const userAlreadyFollowing = await newUserData.isAlredyFollowing(
+        isOk.user_id,
+        followedId
+      );
+
+      if (userAlreadyFollowing) {
+        throw new AlreadyFollow();
+      }
+
+      const result = await newUserData.postFollowUser(isOk.user_id, followedId);
 
       res.status(200).send({ message: result });
     } catch (error: any) {
-      res.status(error.statusCode || 500).send({ message: error.message });
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+  }
+
+  async delUnfollow(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const { followedId } = req.body;
+      const token = req.headers.authorization!;
+
+      if (!followedId) {
+        throw new MissingFields();
+      }
+
+      const isOk = new TokenClass().verifyToken(token);
+
+      if (!isOk) {
+        throw new PermissionDenied();
+      }
+
+      const newUserData = new UserData();
+
+      const userById = await newUserData.getUserById(followedId);
+
+      if (!userById) {
+        throw new EmailDoesntExist();
+      }
+      const userAlreadyFollowing = await newUserData.isAlredyFollowing(
+        isOk.user_id,
+        followedId
+      );
+
+      if (!userAlreadyFollowing) {
+        throw new NotFollowing();
+      }
+
+      const result = await newUserData.delUnfollowUser(
+        isOk.user_id,
+        followedId
+      );
+
+      res.status(200).send({ message: result });
+    } catch (error: any) {
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
     }
   }
 }

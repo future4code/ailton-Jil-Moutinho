@@ -7,6 +7,8 @@ CREATE TABLE UserCookenu (
 
 SELECT * FROM UserCookenu;
 
+ALTER TABLE UserCookenu ADD COLUMN role VARCHAR(25) NOT NULL DEFAULT "normal";
+
 CREATE TABLE Recipes (
     recipe_id VARCHAR(255) NOT NULL PRIMARY KEY UNIQUE,
     title VARCHAR(255) NOT NULL,
@@ -17,3 +19,10 @@ CREATE TABLE Recipes (
 );
 
 SELECT * FROM Recipes;
+
+CREATE TABLE Followers (
+    followed_id VARCHAR(255) NOT NULL,
+    follower_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (followed_id) REFERENCES UserCookenu(user_id),
+    FOREIGN KEY (follower_id) REFERENCES UserCookenu(user_id)
+);

@@ -2,9 +2,10 @@ POST HTTP://localhost:3003/signup
 Content-Type: application/json
 
 {
-   "email": "mia1@mia.com",
+   "email": "raul@mia.com",
    "user_password": "Mia1234",
-   "user_name": "Mia" 
+   "user_name": "RaulNormal",
+   "role":"normal" 
 }
 ###
 
@@ -12,7 +13,7 @@ GET HTTP://localhost:3003/login
 Content-Type: application/json
 
 {
-   "email": "mia1@mia.com",
+   "email": "miaAdmin@mia.com",
    "user_password": "Mia1234"
 }
 ###
@@ -29,11 +30,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2Mt
 
 POST HTTP://localhost:3003/recipe
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc1MzQ2LCJleHAiOjE2NjMxNzg5NDZ9.Is2BPxt9DqxPIek0Xg891aXq7sQuZBqc9YcGX7FvSlU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiYzI1ZDIxM2YtMGE3Ny00Njc4LWFjYjgtZTJjMGM3ZjNiYTQ3Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY2MzIwMzQyMiwiZXhwIjoxNjYzMjA3MDIyfQ.72f8eKXr9IiKAENZoM3rWpMY49JNfAEC9HoD2ePODtw
 
 {
-   "title": "Moqueca",
-   "recipe_description": "Peixe, leite de coco, azeite de dende e tomate e pimentão"
+   "title": "Foundue com noz-moscada",
+   "recipe_description": "Costela com barbecue."
 }
 ###
 
@@ -41,3 +42,43 @@ GET HTTP://localhost:3003/recipe/6a7c9e0e-1312-4678-aa9d-9d904622d20f
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc5NzQ0LCJleHAiOjE2NjMxODMzNDR9.GKEEKro_yfTh0GKAWb0S48PnBmLkZQZG6y1X97TNT3Y
 ###
+
+POST HTTP://localhost:3003/user/follow
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTkwNDg0LCJleHAiOjE2NjMxOTQwODR9.ITGYlHqIBzvegD8md_edblueDa3N6nPJinwgZcEE9KQ
+
+{
+   "followedId": "d9cd6b44-a558-49e4-b116-92917f11e284"
+}
+###
+
+DELETE HTTP://localhost:3003/user/unfollow
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTk1NDYyLCJleHAiOjE2NjMxOTkwNjJ9.cUOFzcSaQSJNrz4qobypJx555Qqya1QZWTj7VcgH0B8
+
+{
+   "followedId": "d9cd6b44-a558-49e4-b116-92917f11e284"
+}
+###
+
+PUT HTTP://localhost:3003/recipe/edite
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiYzI1ZDIxM2YtMGE3Ny00Njc4LWFjYjgtZTJjMGM3ZjNiYTQ3Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY2MzIwMzQyMiwiZXhwIjoxNjYzMjA3MDIyfQ.72f8eKXr9IiKAENZoM3rWpMY49JNfAEC9HoD2ePODtw
+
+{
+   "recipe_id": "9aace847-79f3-46d4-8661-96c098572c29",
+   "recipe_description": "Queijos variados."
+}
+###
+
+DELETE HTTP://localhost:3003/recipe/delete
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiYzI1ZDIxM2YtMGE3Ny00Njc4LWFjYjgtZTJjMGM3ZjNiYTQ3Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY2MzIwNDQwOSwiZXhwIjoxNjYzMjA4MDA5fQ.OADlXYFQPeRFKFAyF83fmQBRY6RqP47AU_CH3vppgkU
+
+{
+   "recipe_id": "bf25ba4c-f210-4c36-8575-167799eabea9"
+}
+###
+
+normal:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiZGRkNGRiY2ItMWU4Ny00YTY1LTllNTktYWFmYzliYTAwNTU4Iiwicm9sZSI6Im5vcm1hbCJ9LCJpYXQiOjE2NjMyMDQyNTIsImV4cCI6MTY2MzIwNzg1Mn0.auPcge0lQmHEhWYzemY41gl_MzGu4y6CnitAg3uS-Uo
