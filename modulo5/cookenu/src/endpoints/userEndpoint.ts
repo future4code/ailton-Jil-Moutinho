@@ -322,4 +322,32 @@ export class userEndpoint {
         .send({ message: error.message || error.sqlMessage });
     }
   }
+
+  async getFeedByFollower(req: Request, res: Response) {
+    try {
+      // const token = req.headers.authorization as string
+      const token = req.headers.authorization!;
+
+      const isOk = new TokenClass().verifyToken(token);
+      console.log(isOk.user_id);
+
+      if (!isOk) {
+        throw new PermissionDenied();
+      }
+
+      const newRecipeData = new RecipeData();
+
+      const feed = await newRecipeData.getRecipeByFollowerId(isOk.user_id);
+
+      if (!feed) {
+        throw new NotFollowing();
+      }
+
+      res.status(200).send({ message: feed });
+    } catch (error: any) {
+      res
+        .status(error.statusCode || 500)
+        .send({ message: error.message || error.sqlMessage });
+    }
+  }
 }

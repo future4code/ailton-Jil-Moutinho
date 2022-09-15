@@ -40,28 +40,25 @@ export class RecipeData extends BaseDataBase {
     }
   }
 
-  /* public async getRecipeByCreatorId(
-    creator_id: string
-  ): Promise<RecipeModel | undefined> {
+  public async getRecipeByFollowerId(user_id: string): Promise<any> {
     const result = await this.getConnection()
-      .select("*")
+      .select(
+        "recipe_id",
+        "title",
+        "recipe_description",
+        "creation_date",
+        "creator_id",
+        "user_name"
+      )
       .from(tableName)
-      .where({ creator_id })
+      .join("UserCookenu", "user_id", "creator_id")
+      .join(tableFollow, "followed_id", "user_id")
+      .where({ follower_id: `${user_id}` })
+      .orderBy("creation_date");
+    console.log(result);
 
-    if (!result.length) {
-      return undefined;
-    } else {
-      const newRecipe = new RecipeModel(
-        result[0].recipe_id,
-        result[0].title,
-        result[0].recipe_description,
-        result[0].creation_date,
-        result[0].creator_id
-
-      );
-      return newRecipe;
-    }
-  } */
+    return result;
+  }
 
   public async editRecipeByCreatorId(
     recipe_id: string,

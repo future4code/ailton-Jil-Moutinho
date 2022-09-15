@@ -13,14 +13,14 @@ GET HTTP://localhost:3003/login
 Content-Type: application/json
 
 {
-   "email": "miaAdmin@mia.com",
+   "email": "miaNormal@mia.com",
    "user_password": "Mia1234"
 }
 ###
 
 GET HTTP://localhost:3003/user/profile
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTc1MzQ2LCJleHAiOjE2NjMxNzg5NDZ9.Is2BPxt9DqxPIek0Xg891aXq7sQuZBqc9YcGX7FvSlU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiNTIzMTEzNGUtMDU3NS00ZDhiLWE4YjUtZjNiYzc5NDFlYjcxIiwicm9sZSI6Im5vcm1hbCJ9LCJpYXQiOjE2NjMyNjgwNzIsImV4cCI6MTY2MzM1NDQ3Mn0.msEgnOVd04HScbLLUbmZarLR0z405LouDjRD_FEJqtQ
 ###
 
 GET HTTP://localhost:3003/user/d9cd6b44-a558-49e4-b116-92917f11e284
@@ -30,7 +30,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2Mt
 
 POST HTTP://localhost:3003/recipe
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiYzI1ZDIxM2YtMGE3Ny00Njc4LWFjYjgtZTJjMGM3ZjNiYTQ3Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY2MzIwMzQyMiwiZXhwIjoxNjYzMjA3MDIyfQ.72f8eKXr9IiKAENZoM3rWpMY49JNfAEC9HoD2ePODtw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiYzI1ZDIxM2YtMGE3Ny00Njc4LWFjYjgtZTJjMGM3ZjNiYTQ3Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTY2MzI0Nzc1NiwiZXhwIjoxNjYzMjUxMzU2fQ.FgpZOiUPUkGNbfIB_9K6fn3TYnYVRAy1nhguavZHmc0
 
 {
    "title": "Foundue com noz-moscada",
@@ -45,10 +45,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2Mt
 
 POST HTTP://localhost:3003/user/follow
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDg1ZWYyM2MtODIwMC00ZGZjLThhZmYtODFjZjY3ZTZhYjcwIiwiaWF0IjoxNjYzMTkwNDg0LCJleHAiOjE2NjMxOTQwODR9.ITGYlHqIBzvegD8md_edblueDa3N6nPJinwgZcEE9KQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiNTIzMTEzNGUtMDU3NS00ZDhiLWE4YjUtZjNiYzc5NDFlYjcxIiwicm9sZSI6Im5vcm1hbCJ9LCJpYXQiOjE2NjMyNjM0ODcsImV4cCI6MTY2MzI2NzA4N30.fSvNXgeUdyS8v9dSSi4qW8gsb8VJBG0Xfr1vtaV7xIY
 
 {
-   "followedId": "d9cd6b44-a558-49e4-b116-92917f11e284"
+   "followedId": "c25d213f-0a77-4678-acb8-e2c0c7f3ba47"
 }
 ###
 
@@ -78,7 +78,15 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lk
 {
    "recipe_id": "bf25ba4c-f210-4c36-8575-167799eabea9"
 }
+
 ###
 
-normal:
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiZGRkNGRiY2ItMWU4Ny00YTY1LTllNTktYWFmYzliYTAwNTU4Iiwicm9sZSI6Im5vcm1hbCJ9LCJpYXQiOjE2NjMyMDQyNTIsImV4cCI6MTY2MzIwNzg1Mn0.auPcge0lQmHEhWYzemY41gl_MzGu4y6CnitAg3uS-Uo
+GET HTTP://localhost:3003/user/feed
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VyX2lkIjoiNTIzMTEzNGUtMDU3NS00ZDhiLWE4YjUtZjNiYzc5NDFlYjcxIiwicm9sZSI6Im5vcm1hbCJ9LCJpYXQiOjE2NjMyNjgwNzIsImV4cCI6MTY2MzM1NDQ3Mn0.msEgnOVd04HScbLLUbmZarLR0z405LouDjRD_FEJqtQ
+
+{
+      "user_name": "RaulNormal"
+}
+###
+

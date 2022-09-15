@@ -12,7 +12,7 @@ interface UserSystem {
 export class TokenClass {
   generateToken(userInfo: UserSystem) {
     const token = jwt.sign({ userInfo }, process.env.JWT_KEY as string, {
-      expiresIn: "1hr",
+      expiresIn: "24hr",
     });
 
     return token;

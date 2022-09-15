@@ -14,6 +14,8 @@ const newUser = new userEndpoint();
 app.post("/signup", newUser.create);
 app.get("/login", newUser.login);
 app.get("/user/profile", newUser.getByIdProfile);
+app.get("/user/feed", newUser.getFeedByFollower);
+//Esse end point foifeito depois, mas tem que estar antes do user/:user_id pra não ter conflito
 app.get("/user/:user_id", newUser.getById);
 
 app.post("/user/follow", newUser.postFollow);
@@ -26,3 +28,5 @@ app.post("/recipe", newRecipe.create);
 app.get("/recipe/:recipe_id", newRecipe.getById);
 app.put("/recipe/edite", newRecipe.putEditeRecipe);
 app.delete("/recipe/delete", newRecipe.delRecipeAtentionRole);
+
+//Challenge
