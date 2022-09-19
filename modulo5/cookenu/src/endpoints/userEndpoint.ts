@@ -104,16 +104,16 @@ export class userEndpoint {
 
       const emailExist = await userData.getUserByEmail(email);
 
-      let correctPassword: boolean = false;
       if (!emailExist) {
         throw new EmailDoesntExist();
-      } else {
-        const hastTeste = emailExist.getPassword();
-        correctPassword = await new HashManager().compare(
+      } 
+
+      const hastTeste = emailExist.getPassword();
+
+      const correctPassword = await new HashManager().compare(
           user_password,
           hastTeste
         );
-      }
 
       if (!correctPassword) {
         throw new IncorrectPassword();
