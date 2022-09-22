@@ -1,0 +1,51 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Mia",
+    "email": "mia@gmail.com",
+    "password": "mia123"
+}
+###
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### 3) Post
+POST http://localhost:3003/posts/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2Mzg3MTM1OSwiZXhwIjoxNjYzOTU3NzU5fQ.agQ1TdUOBhjGg_cwA8D1BEARDF8EBkJ1Y6IYmU3dDq0
+
+{
+    "content": "Post de teste 01"
+}
+
+### 4) Retorna todos os post
+GET http://localhost:3003/posts/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2Mzg3MTM1OSwiZXhwIjoxNjYzOTU3NzU5fQ.agQ1TdUOBhjGg_cwA8D1BEARDF8EBkJ1Y6IYmU3dDq0
+
+
+### 5) Del post
+DELETE http://localhost:3003/posts/delPost/5c5600d7-4ede-4673-a7f8-9ba660d321f6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2Mzg4MTE3MSwiZXhwIjoxNjYzOTY3NTcxfQ.lCKU0kXfv_EmrLMHEy9i5ZSDpa4Y-5hwu0KICC8fvRQ
+
+### 6) Likar um post
+POST http://localhost:3003/posts/like/203
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2Mzg4MTE3MSwiZXhwIjoxNjYzOTY3NTcxfQ.lCKU0kXfv_EmrLMHEy9i5ZSDpa4Y-5hwu0KICC8fvRQ
+###
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2Mzg2NzI0NiwiZXhwIjoxNjYzOTUzNjQ2fQ.PPP2ggV1ctBk3DM5-M4WnrHitx8u_Zpc1lpdq6llr_A
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
