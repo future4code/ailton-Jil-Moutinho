@@ -28,8 +28,16 @@ export class PostDatabase extends BaseDatabase {
   public async getLikesByPost(post_id: string): Promise<ILikeDB[]> {
     const result = await this.getConnection()
       .select()
-      .from(PostDatabase.TABLE_POSTS)
+      .from(PostDatabase.TABLE_LIKES)
       .where({ post_id });
+
+    return result;
+  }
+
+  public async getAllPostUnique(): Promise<any[]> {
+    const result = await this.getConnection()
+      .select("*")
+      .from(PostDatabase.TABLE_POSTS);
 
     return result;
   }
@@ -91,5 +99,15 @@ export class PostDatabase extends BaseDatabase {
         user_id: search.user_id });
 
     return result;
+  }
+
+  public async delLike(search: IPostLikeDB) {
+    const result = await this.getConnection()
+      .del("*")
+      .from(PostDatabase.TABLE_LIKES)
+      .where({ post_id: search.post_id,
+        user_id: search.user_id });
+
+        return `Like deleted successfully`;
   }
 }

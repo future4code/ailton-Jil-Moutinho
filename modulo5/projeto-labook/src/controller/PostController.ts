@@ -69,4 +69,22 @@ export class PostController {
       res.status(400).send({ message: error.message || error.sqlMessage });
     }
   };
+
+  public deleteLike = async (req: Request, res: Response) => {
+    try {
+      const input: IPostToDelDB = {
+        token: req.headers.authorization!,
+        post_id: req.params.post_id,
+      };
+
+      // instanciar a classe userBussines - dependencia
+      // const userBusiness = new UserBusiness()
+      const response = await this.postBusiness.delLikeDB(input);
+
+      res.status(201).send(response);
+    } catch (error: any) {
+      res.status(400).send({ message: error.message || error.sqlMessage });
+    }
+  };
+
 }

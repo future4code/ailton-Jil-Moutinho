@@ -9,6 +9,7 @@ import {
   IPostLikeDB,
   ILikeDB,
 } from "../models/Post";
+import { User } from "../models/User";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 
@@ -61,62 +62,19 @@ export class PostBusiness {
 
     const allPosts: any[] = await this.postDatabase.getAllPost();
 
-    /*     const posts = allPosts.map((item) => {
-      return new Post(
-        item.getId(),
-        item.getContent(),
-        item.getUserId()
-      );
-    }); */
+    const posts = allPosts.map((eachPost) => {
+      return new Post(eachPost.id, eachPost.content, eachPost.user_id);
+    });
 
-    for (let post of allPosts) {
-      const postId = post.id;
-      const likes = await this.postDatabase.getLikesPost(postId);
+    for (let post of posts) {
+      const allLikes = await this.postDatabase.getLikesByPost(post.getId());
+      const likes = Number(allLikes.length);
       post.setLikes(likes);
     }
 
-    return allPosts;
+    return posts;
   };
 
-  /*   public getAllPosts = async (token: string) => {
-    if (!token || typeof token !== "string") {
-      throw new Error("You must inform your token as string");
-    }
-
-    const payload = this.authenticator.getTokenPayload(token);
-
-    if (!payload) {
-      throw new AuthorizationError();
-    }
-
-    // instanciar a classe PostDatabase, dependencia da classe
-    // const postDatabase = new PostDatabase()
-    const postsDB: IPostDB2[] | undefined =
-      await this.postDatabase.getAllPost();
-
-    let result: any[] = [];
-
-    if (!postsDB) {
-      throw new Error("You must inform your token as string");
-    } else {
-      postsDB.forEach(async (item) => {
-        let arrayOfLikes = await this.postDatabase.getLikesByPost(item.id);
-
-        let amount = Number(arrayOfLikes.length);
-
-        let result2 = result.push({
-          id: item.id,
-          content: item.content,
-          user_id: item.user_id,
-          likes: amount,
-        });
-
-        return result2;
-      });
-    }
-
-    return { message: result };
-  }; */
   public delPostFromDB = async (input: IPostToDelDB) => {
     const { token, post_id } = input;
 
@@ -186,5 +144,39 @@ export class PostBusiness {
     }
 
     return { message: "Post liked successfully" };
+  };
+
+  public delLikeDB = async (input: IPostToDelDB) => {
+    const { token, post_id } = input;
+
+    if (!post_id || !token) {
+      throw new Error("You must inform your token");
+    }
+
+    const payload = this.authenticator.getTokenPayload(token);
+
+    if (!payload) {
+      throw new AuthorizationError();
+    }
+
+    const postExist = await this.postDatabase.getPostById(post_id);
+    if (!postExist.length) {
+      throw new Error("There is no post with this id");
+    }
+    const postToFind: IPostLikeDB = {
+      post_id: post_id,
+      user_id: payload.id,
+    };
+    const postAlreadyLiked = await this.postDatabase.getLikeByIdAndUser(
+      postToFind
+    );
+
+    if (!postAlreadyLiked.length) {
+      throw new Error("You haven't liked this post yet.");
+    } else {
+      await this.postDatabase.delLike(postToFind);
+    }
+
+    return { message: "Like deleted successfully" };
   };
 }

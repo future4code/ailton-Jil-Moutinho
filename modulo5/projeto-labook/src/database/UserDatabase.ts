@@ -24,6 +24,4 @@ export class UserDatabase extends BaseDatabase {
 
     await BaseDatabase.connection(UserDatabase.TABLE_USERS).insert(userDB);
   };
-
-  
 }
