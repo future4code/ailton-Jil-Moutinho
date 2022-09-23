@@ -45,11 +45,11 @@ export class PostDatabase extends BaseDatabase {
   public getLikesPost = async (postId: string) => {
     const result = await this.getConnection()
       .select("*")
-      .count("id")
+      .count()
       .from(PostDatabase.TABLE_LIKES)
       .where({ post_id: postId });
 
-    return result[0]["count(`id`)"] as number;
+    return result[0]["count(*)"] as number;
   };
 
   public delPost = async (id: string): Promise<string> => {
