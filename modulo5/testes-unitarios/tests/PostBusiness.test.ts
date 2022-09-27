@@ -8,7 +8,6 @@ import {
 } from "../src/models/Post";
 import { AuthenticatorMock } from "./mocks/AuthenticatorMock";
 import { IdGeneratorMock } from "./mocks/IdGeneratorMock";
-
 import { PostDatabaseMock } from "./mocks/PostDatabaseMock";
 
 describe("Testando a PostBusiness", () => {
