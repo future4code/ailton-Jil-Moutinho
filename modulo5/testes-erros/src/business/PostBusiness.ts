@@ -125,7 +125,7 @@ export class PostBusiness {
         const postDB = await this.postDatabase.findPostById(postId)
 
         if (!postDB) {
-            throw new NotFoundError("Post não encontrado")
+            throw new NotFoundError()
         }
 
         const isAlreadyLiked = await this.postDatabase.findLike(

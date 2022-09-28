@@ -5,8 +5,8 @@ import {
   IGetPostsInputDTO,
   Post,
   IDeletePostInputDTO,
-  ICreatePostOutputDTO,
   IAddLikeInputDTO,
+  IRemoveLikeInputDTO,
 } from "../src/models/Post";
 import { AuthenticatorMock } from "./mocks/AuthenticatorMock";
 import { IdGeneratorMock } from "./mocks/IdGeneratorMock";
@@ -205,7 +205,85 @@ describe("Testando a PostBusiness", () => {
     }
   });
 
+  test("Likar post inexistente", async () => {
+    expect.assertions(2);
+    try {
+      const input: IAddLikeInputDTO = {
+        token: "token-mock-normal",
+        postId: "1000",
+      };
+      await postBusiness.addLike(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(404);
+        expect(error.message).toBe("Recurso não encontrado");
+      }
+    }
+  });
+
+  test("Likar post já likado", async () => {
+    expect.assertions(2);
+    try {
+      const input: IAddLikeInputDTO = {
+        token: "token-mock-normal",
+        postId: "201",
+      };
+      await postBusiness.addLike(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(409);
+        expect(error.message).toBe("Já deu like");
+      }
+    }
+  });
 
   //Desafios Teste de Erros para removeLike
+  test("Deslikar post com token inválido", async () => {
+    expect.assertions(2);
 
+    try {
+      const input: IRemoveLikeInputDTO = {
+        token: "token-mock-Anormal",
+        postId: "201",
+      };
+      await postBusiness.removeLike(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(401);
+        expect(error.message).toBe("Credenciais inválidas");
+      }
+    }
+  });
+
+  test("Deslikar post inexistente", async () => {
+    expect.assertions(2);
+    try {
+      const input: IRemoveLikeInputDTO = {
+        token: "token-mock-normal",
+        postId: "1000",
+      };
+      await postBusiness.removeLike(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(404);
+        expect(error.message).toBe("Post não encontrado");
+      }
+    }
+  });
+
+  test("Deslikar post não likado ainda", async () => {
+    expect.assertions(2);
+    try {
+      const input: IRemoveLikeInputDTO = {
+        token: "token-mock-normal",
+        postId: "202",
+      };
+      await postBusiness.removeLike(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(404);
+        expect(error.message).toBe("Ainda não deu like");
+      }
+    }
+  });
 });
