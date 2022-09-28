@@ -12,7 +12,6 @@ export class UserDatabaseMock extends BaseDatabase {
             password: user.getPassword(),
             role: user.getRole()
         }
-
         return userDB
     }
 
@@ -26,9 +25,7 @@ export class UserDatabaseMock extends BaseDatabase {
                     password: "hash-mock",
                     role: USER_ROLES.NORMAL
                 }
-
                 return normalUser
-
             case "astrodev@gmail.com":
                 const adminUser: IUserDB = {
                     id: "id-mock",
@@ -37,15 +34,11 @@ export class UserDatabaseMock extends BaseDatabase {
                     password: "hash-bananinha",
                     role: USER_ROLES.ADMIN
                 }
-
-                return adminUser
-            
+                return adminUser            
             default:
                 return undefined
         }
     }
-
-    public createUser = async (user: User): Promise<void> => {
-        
+    public createUser = async (user: User): Promise<void> => {        
     }
 }

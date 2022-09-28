@@ -101,20 +101,21 @@ describe("Testando a PostBusiness", () => {
     expect.assertions(2);
 
     try {
-      const input: ICreatePostInputDTO = {
+      const input: any = {
         token: "token-mock-normal",
-        content: "",
+        content: undefined,
       };
       await postBusiness.createPost(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
         expect(error.message).toBe(
-          "Parâmetro 'content' inválido: mínimo de 1 caracteres"
+          "Parâmetro 'content' inválido"
         );
       }
     }
   });
+  //Tipei como any para verificar o erro no caso da pessoa não informar nada, fiz assim pq com a tipagem correta, nem aceita escrito nada ou outro tipo, ex number e não string.
 
   //Ex4 Teste de Erros para getPost
   test("Postar com token inválido", async () => {

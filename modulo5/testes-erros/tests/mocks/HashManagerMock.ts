@@ -3,7 +3,6 @@ export class HashManagerMock {
         if (plaintext == "bananinha") {
             return "hash-bananinha"
         }
-
         return "hash-mock"
     }
 
@@ -11,7 +10,6 @@ export class HashManagerMock {
         if (plaintext == "bananinha" && hash == "hash-bananinha") {
             return true
         }
-
         return false
     }
 }

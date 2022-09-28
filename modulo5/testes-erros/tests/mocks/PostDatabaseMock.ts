@@ -4,14 +4,12 @@ import { ILikeDB, IPostDB, Post } from "../../src/models/Post";
 export class PostDatabaseMock extends BaseDatabase {
   public static TABLE_POSTS = "Labook_Posts";
   public static TABLE_LIKES = "Labook_Likes";
-
   public toPostDBModel = (post: Post): IPostDB => {
     const postDB: IPostDB = {
       id: post.getId(),
       content: post.getContent(),
       user_id: post.getUserId(),
     };
-
     return postDB;
   };
 
@@ -26,9 +24,7 @@ export class PostDatabaseMock extends BaseDatabase {
     // const postsDB: IPostDB[] = await BaseDatabase
     //     .connection(PostDatabase.TABLE_POSTS)
     //     .select()
-
     // return postsDB
-
     const postsDB: IPostDB[] = [
       {
         id: "201",
@@ -46,7 +42,6 @@ export class PostDatabaseMock extends BaseDatabase {
         user_id: "103",
       },
     ];
-
     return postsDB;
   };
 
@@ -56,11 +51,8 @@ export class PostDatabaseMock extends BaseDatabase {
     //     .select()
     //     .count("id AS likes")
     //     .where({ post_id: postId })
-
     // return result[0].likes as number
-
     if (postId == "201") return 1;
-
     return 0;
   };
 
@@ -71,9 +63,7 @@ export class PostDatabaseMock extends BaseDatabase {
     //     .connection(PostDatabase.TABLE_POSTS)
     //     .select()
     //     .where({ id: postId })
-
     // return postsDB[0]
-
     switch (postId) {
       case "201":
         return {
@@ -95,7 +85,6 @@ export class PostDatabaseMock extends BaseDatabase {
           content: "Receba!",
           user_id: "103",
         };
-
       default:
         return undefined;
     }
@@ -117,9 +106,7 @@ export class PostDatabaseMock extends BaseDatabase {
     //     .select()
     //     .where({ post_id: postId })
     //     .andWhere({ user_id: userId })
-
     // return likesDB[0]
-
     if (postId == "201" && userId == "id-mock") {
       return {
         id: "301",
@@ -127,7 +114,6 @@ export class PostDatabaseMock extends BaseDatabase {
         user_id: "id-mock",
       };
     }
-
     return undefined;
   };
 
