@@ -13,3 +13,5 @@ const showController = new ShowController(
 
 showRouter.post("/create", showController.post);
 showRouter.get("/all", showController.getAll);
+showRouter.post("/bookingTicket", showController.postBooking);
+showRouter.delete("/delBooking", showController.delBooking);

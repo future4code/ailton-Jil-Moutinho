@@ -26,5 +26,7 @@ export class AuthenticatorMock {
             default:
                 return null
         }
-    }
+    };
+
+    
 }

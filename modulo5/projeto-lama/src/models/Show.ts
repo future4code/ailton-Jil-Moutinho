@@ -10,9 +10,18 @@ export interface IShowDB {
   starts_at: Date;
   tickets: number;
 }
+export interface IBookTicketInputDB {
+  show_id: string;
+  token: string;
+}
 
 export interface ITicketDB {
   id: string;
+  show_id: string;
+  user_id: string;
+}
+
+export interface IDelTicketInputDB {
   show_id: string;
   user_id: string;
 }

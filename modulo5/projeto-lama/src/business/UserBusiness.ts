@@ -32,14 +32,10 @@ export class UserBusiness {
     }
 
     if (typeof name !== "string" || name.length < 3) {
-      throw new ParamsError("Parâmetro 'name' inválido");
+      throw new ParamsError("Parâmetro 'name' inválido: mínimo de 3 caracteres");
     }
 
-    if (typeof email !== "string" || email.length < 7) {
-      throw new ParamsError("Parâmetro 'email' inválido");
-    }
-
-    if (
+    if (email.length < 7 ||
       !email.match(
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
       )
@@ -47,8 +43,8 @@ export class UserBusiness {
       throw new ParamsError("Parâmetro 'email' inválido");
     }
 
-    if (typeof password !== "string" || password.length < 3) {
-      throw new ParamsError("Parâmetro 'password' inválido");
+    if (typeof password !== "string" || password.length < 6) {
+      throw new ParamsError("Parâmetro 'password' inválido: mínimo de 6 caracteres");
     }
 
     const userDB = await this.userDatabase.getUserByEmail(email);
@@ -87,11 +83,7 @@ export class UserBusiness {
       throw new ParamsError("Um ou mais parâmetros faltando");
     }
 
-    if (typeof email !== "string" || email.length < 3) {
-      throw new ParamsError("Parâmetro 'email' inválido");
-    }
-
-    if (
+    if (email.length < 7 ||
       !email.match(
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
       )
@@ -99,7 +91,7 @@ export class UserBusiness {
       throw new ParamsError("Parâmetro 'email' inválido");
     }
 
-    if (typeof password !== "string" || password.length < 3) {
+    if (typeof password !== "string" || password.length < 6) {
       throw new ParamsError("Parâmetro 'password' inválido");
     }
 
