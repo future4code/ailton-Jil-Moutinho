@@ -59,7 +59,7 @@ describe("Testando a UserBusiness", () => {
     }
   });
 
-    test("Usuário se cadastra com senha menor que 6 caracteres", async () => {
+  test("Usuário se cadastra com senha menor que 6 caracteres", async () => {
     expect.assertions(2);
 
     try {
@@ -79,7 +79,7 @@ describe("Testando a UserBusiness", () => {
     }
   });
 
-    test("Usuário se cadastra com email em formato invalido", async () => {
+  test("Usuário se cadastra com email em formato invalido", async () => {
     expect.assertions(2);
 
     try {
@@ -97,7 +97,7 @@ describe("Testando a UserBusiness", () => {
     }
   });
 
-    test("Usuário se cadastra com email ja cadastrado", async () => {
+  test("Usuário se cadastra com email ja cadastrado", async () => {
     expect.assertions(2);
 
     try {
