@@ -1,0 +1,40 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Mia",
+    "email": "mia@gmail.com",
+    "password": "mia123"
+}
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### 3) Post Show
+POST http://localhost:3003/shows/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ2MzA4OSwiZXhwIjoxNjY0NTQ5NDg5fQ.-dAOxjpzWrRdzYCX-PDf1c-uN41nJrBG5maWS2pqZ5A
+
+{
+    "band": "Manu Batidão",
+    "starts_at": "2022/10/05"
+}
+
+### 4) Gel All Shows with tickets
+GET http://localhost:3003/shows/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ2MzA4OSwiZXhwIjoxNjY0NTQ5NDg5fQ.-dAOxjpzWrRdzYCX-PDf1c-uN41nJrBG5maWS2pqZ5A
+
+### 5) Post tickets's book
+### 6) Del tickets's book
+### 7) Coverage = 51%
+### 8) Coverage = 80%
