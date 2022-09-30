@@ -1,4 +1,3 @@
-import { tickets } from "../database/migrations/data";
 import { ShowDatabase } from "../database/ShowDatabase";
 import { AuthenticationError } from "../errors/AuthenticationError";
 import { AuthorizationError } from "../errors/AuthorizationError";
@@ -15,7 +14,6 @@ import {
   Show,
 } from "../models/Show";
 import { Authenticator } from "../services/Authenticator";
-import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
 
 export class ShowBusiness {
@@ -29,7 +27,7 @@ export class ShowBusiness {
     const { band, starts_at, token } = input;
 
     if (!band || !starts_at) {
-      throw new ParamsError("You must inform show data");
+      throw new ParamsError("You must inform all show data");
     }
 
     if (typeof band !== "string" || band.length < 1) {
@@ -118,8 +116,8 @@ export class ShowBusiness {
       existShow.tickets
     );
 
-    if (show.getTickets() === 0) {
-      throw new Error("There are no tickets available");
+    if (show.getTickets() == 0) {
+      throw new UnprocessableError("There are no tickets available");
     }
     const result = await this.showDatabase.putTickets(
       show.getId(),

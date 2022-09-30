@@ -26,8 +26,8 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ4NDg0MSwiZXhwIjoxNjY0NTcxMjQxfQ.EYJMCAU7UyfJSOPDsqwRZP4-hxs9VYZ4gZriP2rkg18
 
 {
-    "band": "Teste",
-    "starts_at": "2022/12/22"
+    "band": "Teste2",
+    "starts_at": "2022/12/06"
 }
 
 ### 4) Gel All Shows with tickets

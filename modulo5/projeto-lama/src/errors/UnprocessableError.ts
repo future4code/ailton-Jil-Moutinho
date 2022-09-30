@@ -2,7 +2,7 @@ import { BaseError } from "./BaseError";
 
 export class UnprocessableError extends BaseError {
     constructor(
-        message: string = "Parâmetros válidos, porém com erros de semântica" 
+        message: string = "Valid parameters. But something went wrong" 
     ) {
         super(422, message)
     }
