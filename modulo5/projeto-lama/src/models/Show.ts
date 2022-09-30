@@ -26,6 +26,10 @@ export interface IDelTicketInputDB {
   user_id: string;
 }
 
+export interface IGetPostsInputDTO {
+  token: string
+}
+
 export class Show {
   constructor(
     private id: string,

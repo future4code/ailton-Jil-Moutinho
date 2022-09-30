@@ -92,13 +92,13 @@ export class UserBusiness {
     }
 
     if (typeof password !== "string" || password.length < 6) {
-      throw new ParamsError("Parâmetro 'password' inválido");
+      throw new ParamsError("Parâmetro 'password' inválido: mínimo de 6 caracteres");
     }
 
     const userDB = await this.userDatabase.getUserByEmail(email);
 
     if (!userDB) {
-      throw new NotFoundError("E-mail não cadastrado");
+      throw new NotFoundError("Email não cadastrado");
     }
 
     const user = new User(
@@ -115,7 +115,7 @@ export class UserBusiness {
     );
 
     if (!isPasswordCorrect) {
-      throw new AuthenticationError("Senha incorreta");
+      throw new AuthenticationError();
     }
 
     const payload: ITokenPayload = {

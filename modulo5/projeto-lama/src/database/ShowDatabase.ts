@@ -19,7 +19,9 @@ export class ShowDatabase extends BaseDatabase {
     return `${newShow.getBand()}'s show created successfully`;
   }
 
-  public getShowByDate = async (starts_at: Date) => {
+  public getShowByDate = async (
+    starts_at: Date
+  ): Promise<IShowDB | undefined> => {
     const ShowsDB: IShowDB[] = await this.getConnection()
       .select("*")
       .from(ShowDatabase.TABLE_SHOWS)
@@ -29,14 +31,14 @@ export class ShowDatabase extends BaseDatabase {
   };
 
   public getAllShow = async () => {
-    const ShowsDB: Show[] = await this.getConnection()
+    const ShowsDB: IShowDB[] = await this.getConnection()
       .select("*")
       .from(ShowDatabase.TABLE_SHOWS);
 
     return ShowsDB;
   };
 
-  public getShowById = async (id: string) => {
+  public getShowById = async (id: string): Promise<IShowDB | undefined> => {
     const ShowsDB: IShowDB[] = await this.getConnection()
       .select("*")
       .from(ShowDatabase.TABLE_SHOWS)
@@ -45,7 +47,10 @@ export class ShowDatabase extends BaseDatabase {
     return ShowsDB[0];
   };
 
-  public getTicketByUserId = async (show_id: string, user_id: string) => {
+  public getTicketByUserId = async (
+    show_id: string,
+    user_id: string
+  ): Promise<ITicketDB | undefined> => {
     const ShowsDB: ITicketDB[] = await this.getConnection()
       .select("*")
       .from(ShowDatabase.TABLE_TICKETS)
@@ -89,7 +94,7 @@ export class ShowDatabase extends BaseDatabase {
     return `Reservation canceled successfully`;
   };
 
-/*   deleteTicket = async (purchase: ICancelTicketDBDTO ) => {
+  /*   deleteTicket = async (purchase: ICancelTicketDBDTO ) => {
     const cancelTicketDB = {
         user_id: purchase.user_id,
         show_id: purchase.show_id,

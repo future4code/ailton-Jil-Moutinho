@@ -116,7 +116,7 @@ describe("Testando a UserBusiness", () => {
   });
 
   //Ex2 Teste de Erros para Login
-  /*   test("Usuário tenta logar com senha menor que 6 caracteres", async () => {
+  test("Usuário tenta logar com senha menor que 6 caracteres", async () => {
     expect.assertions(2);
 
     try {
@@ -133,9 +133,9 @@ describe("Testando a UserBusiness", () => {
         );
       }
     }
-  }); */
+  });
 
-  /*   test("Usuário tenta logar com email em formato inválido", async () => {
+  test("Usuário tenta logar com email em formato inválido", async () => {
     expect.assertions(2);
 
     try {
@@ -150,9 +150,9 @@ describe("Testando a UserBusiness", () => {
         expect(error.message).toBe("Parâmetro 'email' inválido");
       }
     }
-  }); */
+  });
 
-  /*   test("Usuário tenta logar com email não cadastrado", async () => {
+  test("Usuário tenta logar com email não cadastrado", async () => {
     expect.assertions(2);
 
     try {
@@ -167,22 +167,22 @@ describe("Testando a UserBusiness", () => {
         expect(error.message).toBe("Email não cadastrado");
       }
     }
-  }); */
+  });
 
-  /*   test("Usuário tenta logar com senha incorreta", async () => {
+  test("Usuário tenta logar com senha incorreta", async () => {
     expect.assertions(2);
 
     try {
       const input: ILoginInputDTO = {
-        email: "usermock@gmail.com",
+        email: "mia@gmail.com",
         password: "hash-MOCK",
       };
       await userBusiness.loginUser(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(401);
-        expect(error.message).toBe("Password incorreto");
+        expect(error.message).toBe("Invalid credentials");
       }
     }
-  }); */
+  });
 });

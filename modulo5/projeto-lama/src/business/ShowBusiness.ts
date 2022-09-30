@@ -9,6 +9,7 @@ import { UnprocessableError } from "../errors/UnprocessableError";
 import {
   IBookTicketInputDB,
   IDelTicketInputDB,
+  IShowDB,
   IShowInputDB,
   ITicketDB,
   Show,
@@ -76,7 +77,7 @@ export class ShowBusiness {
       throw new AuthenticationError();
     }
 
-    const allShows: Show[] = await this.showDatabase.getAllShow();
+    const allShows: IShowDB[] = await this.showDatabase.getAllShow();
 
     return allShows;
   };
