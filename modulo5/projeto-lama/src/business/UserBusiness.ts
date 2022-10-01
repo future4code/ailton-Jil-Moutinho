@@ -3,7 +3,6 @@ import { AuthenticationError } from "../errors/AuthenticationError";
 import { ConflictError } from "../errors/ConflictError";
 import { NotFoundError } from "../errors/NotFoundError";
 import { ParamsError } from "../errors/ParamsError";
-import { UnprocessableError } from "../errors/UnprocessableError";
 import {
   ILoginInputDTO,
   ISignupInputDTO,
