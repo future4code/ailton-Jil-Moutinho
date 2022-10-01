@@ -49,7 +49,7 @@ export class User {
     return this.role;
   };
 
-  public setId = (newId: string) => {
+  /* public setId = (newId: string) => {
     this.id = newId;
   };
 
@@ -67,5 +67,5 @@ export class User {
 
   public setRole = (newRole: USER_ROLES) => {
     this.role = newRole;
-  };
+  }; */
 }

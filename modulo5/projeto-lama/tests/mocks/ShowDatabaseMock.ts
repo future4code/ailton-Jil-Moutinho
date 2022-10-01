@@ -61,10 +61,8 @@ export class ShowDatabaseMock extends BaseDatabase {
   public getShowByDate = async (
     starts_at: Date
   ): Promise<IShowDB | undefined> => {
-
     const formatedDate = starts_at.toString();
     const formatedDate2 = formatedDate.slice(4, 15);
-
     switch (formatedDate2) {
       case "Dec 05 2022":
         return {
@@ -86,20 +84,6 @@ export class ShowDatabaseMock extends BaseDatabase {
           band: "Evanescence",
           starts_at: new Date("2022-12-07"),
           tickets: 5000,
-        };
-      case "Dec 10 2022":
-        return {
-          id: "44444379-43b8-4a82-ac8f-81627e446532",
-          band: "Kalipso",
-          starts_at: new Date("2022-12-10"),
-          tickets: 5000,
-        };
-      case "Dec 10 2022":
-        return {
-          id: "4d7a8934-23f3-4200-9d4e-041050bb6ce6",
-          band: "Manu Batidão",
-          starts_at: new Date("2022-10-10"),
-          tickets: 4995,
         };
       case "Dec 22 2022":
         return {
@@ -147,26 +131,12 @@ export class ShowDatabaseMock extends BaseDatabase {
           starts_at: new Date("2022-12-07"),
           tickets: 5000,
         };
-      case "44444379-43b8-4a82-ac8f-81627e446532":
-        return {
-          id: "44444379-43b8-4a82-ac8f-81627e446532",
-          band: "Kalipso",
-          starts_at: new Date("2022-12-10"),
-          tickets: 5000,
-        };
-      case "4d7a8934-23f3-4200-9d4e-041050bb6ce6":
-        return {
-          id: "4d7a8934-23f3-4200-9d4e-041050bb6ce6",
-          band: "Manu Batidão",
-          starts_at: new Date("2022-10-10"),
-          tickets: 4995,
-        };
       case "940f3071-1367-4c09-ad95-0353c974fd7e":
         return {
           id: "940f3071-1367-4c09-ad95-0353c974fd7e",
           band: "Teste",
           starts_at: new Date("2022-12-22"),
-          tickets: 5000,
+          tickets: 4999,
         };
       default:
         return undefined;
@@ -178,10 +148,10 @@ export class ShowDatabaseMock extends BaseDatabase {
     user_id: string
   ): Promise<ITicketDB | undefined> => {
     switch (user_id && show_id) {
-      case "101" && "201":
+      case "101" && "940f3071-1367-4c09-ad95-0353c974fd7e":
         return {
-          id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
-          show_id: "204",
+          id: "940f3071-1367-4c09-ad95-0353c974fd7e",
+          show_id: "203",
           user_id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
         };
       default:

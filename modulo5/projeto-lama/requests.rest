@@ -23,7 +23,7 @@ Content-Type: application/json
 ### 3) Post Show
 POST http://localhost:3003/shows/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ4NDg0MSwiZXhwIjoxNjY0NTcxMjQxfQ.EYJMCAU7UyfJSOPDsqwRZP4-hxs9VYZ4gZriP2rkg18
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDU3NDMxNCwiZXhwIjoxNjY0NjYwNzE0fQ.QZQokSGP_CILKvjk1bq5JdLbEF5Z2YFwdUQEGu1B4Vw
 
 {
     "band": "Teste2",

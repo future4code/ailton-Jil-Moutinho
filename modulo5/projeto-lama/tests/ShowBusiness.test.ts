@@ -52,7 +52,7 @@ describe("Testando a ShowBusiness", () => {
   //Cancel a booked ticket
   test("Should be able to cancel a booking a ticket", async () => {
     const input: IBookTicketInputDB = {
-      show_id: "201",
+      show_id: "940f3071-1367-4c09-ad95-0353c974fd7e",
       token: "token-mock-normal",
     };
     const response = await showBusiness.delBookingTicket(input);
@@ -136,7 +136,7 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-    test("Create a show in the same day as another", async () => {
+  test("Create a show in the same day as another", async () => {
     expect.assertions(2);
 
     try {
@@ -230,7 +230,7 @@ describe("Testando a ShowBusiness", () => {
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "201",
+        show_id: "940f3071-1367-4c09-ad95-0353c974fd7e",
         token: "token-mock-admin",
       };
 
@@ -320,13 +320,11 @@ describe("Testando a ShowBusiness", () => {
 
   test("Cancel a ticket that you didn't buy", async () => {
     expect.assertions(2);
-
     try {
       const input: IBookTicketInputDB = {
-        show_id: "4d7a8934-23f3-4200-9d4e-041050bb6ce6",
+        show_id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
         token: "token-mock-admin",
       };
-
       await showBusiness.delBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {

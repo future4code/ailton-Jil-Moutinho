@@ -54,7 +54,7 @@ export class Show {
     return this.tickets;
   };
 
-  public setId = (newId: string) => {
+  /* public setId = (newId: string) => {
     this.id = newId;
   };
 
@@ -64,7 +64,7 @@ export class Show {
 
   public setStartsAt = (newStartsAt: Date) => {
     this.startsAt = newStartsAt;
-  };
+  }; */
 
   public setTickets = (newTickets: number) => {
     this.tickets = newTickets;
