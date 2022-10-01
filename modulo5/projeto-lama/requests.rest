@@ -6,9 +6,9 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "name": "Raul11",
-    "email": "raul11@gmail.com",
-    "password": "raul123"
+    "name": "Mia1",
+    "email": "mia1@gmail.com",
+    "password": "mia123"
 }
 
 ### 2) Login
@@ -35,22 +35,17 @@ GET http://localhost:3003/shows/all
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ2MzA4OSwiZXhwIjoxNjY0NTQ5NDg5fQ.-dAOxjpzWrRdzYCX-PDf1c-uN41nJrBG5maWS2pqZ5A
 
 ### 5) Post tickets's book
-POST http://localhost:3003/shows/bookingTicket
+POST http://localhost:3003/shows/bookingTicket/4d7a8934-23f3-4200-9d4e-041050bb6ce6
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRmYzcwOTdlLTQ0YTMtNGQyOS04NTBmLTU3MTI2NGI1NGQ3YyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ0ODU0NzgsImV4cCI6MTY2NDU3MTg3OH0.5yiXsH7erWb5Mwtgp5k-YSnyPhauElq9f0LnYc3CuM0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
 
-{
-    "show_id": "4d7a8934-23f3-4200-9d4e-041050bb6ce6"
-}
 ### 6) Del tickets's book
-DELETE http://localhost:3003/shows/delBooking
+DELETE http://localhost:3003/shows/delBooking/4d7a8934-23f3-4200-9d4e-041050bb6ce6
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRmYzcwOTdlLTQ0YTMtNGQyOS04NTBmLTU3MTI2NGI1NGQ3YyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ0ODU0NzgsImV4cCI6MTY2NDU3MTg3OH0.5yiXsH7erWb5Mwtgp5k-YSnyPhauElq9f0LnYc3CuM0
-
-{
-    "show_id": "4d7a8934-23f3-4200-9d4e-041050bb6ce6"
-}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
 
 ### 7) Coverage = 51%
+//Ok
 
 ### 8) Coverage = 80%
+//Ok

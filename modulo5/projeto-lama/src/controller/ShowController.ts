@@ -37,7 +37,7 @@ export class ShowController {
   public postBooking = async (req: Request, res: Response) => {
     try {
       const input: IBookTicketInputDB = {
-        show_id: req.body.show_id!,
+        show_id: req.params.show_id!,
         token: req.headers.authorization!,
       };
 
@@ -52,7 +52,7 @@ export class ShowController {
   public delBooking = async (req: Request, res: Response) => {
     try {
       const input: IBookTicketInputDB = {
-        show_id: req.body.show_id!,
+        show_id: req.params.show_id!,
         token: req.headers.authorization!,
       };
 
