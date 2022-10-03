@@ -1,37 +1,29 @@
-import { USER_ROLES } from "../../src/models/User"
-import { ITokenPayload } from "../../src/services/Authenticator"
+import { IIdPayload } from "../../src/services/Authenticator";
 
 export class AuthenticatorMock {
-    public generateToken = (payload: ITokenPayload): string => {
-        switch (payload.role) {
-            case USER_ROLES.ADMIN:
-                return "token-mock-admin"
-            default:
-                return "token-mock-normal"
-        }
+  public generateToken = (id: IIdPayload): string => {
+    switch (id) {
+      case { id: "103" }:
+        return "token-mia";
+      default:
+        return "token-mock";
     }
+  };
 
-    public getTokenPayload = (token: string): ITokenPayload | null => {
-        switch (token) {
-            case "token-mock-admin":
-                const adminPayload: ITokenPayload = {
-                    id: "id-mock",
-                    role: USER_ROLES.ADMIN
-                }
-
-                return adminPayload
-
-            case "token-mock-normal":
-                const normalPayload: ITokenPayload = {
-                    id: "id-mock",
-                    role: USER_ROLES.NORMAL
-                }
-
-                return normalPayload
-               
-            default:
-                return null
-        }
+  public getIdByToken = (token: string): IIdPayload | null => {
+    switch (token) {
+      case "token-mock":
+        const payNormal: IIdPayload = {
+          id: "id-mock",
+        };
+        return payNormal;
+      case "token-mia":
+        const payMia: IIdPayload = {
+          id: "103"
+        };
+        return payMia;
+      default:
+        return null;
     }
-
+  };
 }

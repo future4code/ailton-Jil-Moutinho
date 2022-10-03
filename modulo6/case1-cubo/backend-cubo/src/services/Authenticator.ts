@@ -7,8 +7,6 @@ export interface IIdPayload {
   id: string;
 }
 
-
-
 export class Authenticator {
   generateToken = (id: IIdPayload): string => {
     const token = jwt.sign(id, process.env.JWT_KEY as string, {
@@ -20,7 +18,6 @@ export class Authenticator {
   getIdByToken = (token: string): IIdPayload | null => {
     try {
       const id = jwt.verify(token, process.env.JWT_KEY as string);
-
       return id as IIdPayload;
     } catch (error) {
       return null;

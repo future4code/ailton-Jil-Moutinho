@@ -10,10 +10,7 @@ import {
   ISignupInputDTO,
   User,
 } from "../models/User";
-import {
-  Authenticator,
-  IIdPayload,
-} from "../services/Authenticator";
+import { Authenticator, IIdPayload } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
 
@@ -48,8 +45,8 @@ export class UserBusiness {
     }
 
     const userDB = await this.userDatabase.getUserByFullName(
-      last_name,
-      first_name
+      first_name,
+      last_name
     );
 
     if (userDB) {
@@ -67,13 +64,13 @@ export class UserBusiness {
       hashedPassword
     );
 
-    await this.userDatabase.createUser(user);
+    const result = await this.userDatabase.createUser(user);
 
     const payload: IIdPayload = { id: user.getId() };
     const token = this.authenticator.generateToken(payload);
 
     const response = {
-      message: "member register successfuly",
+      message: result,
       token,
     };
 
@@ -172,15 +169,13 @@ export class UserBusiness {
     );
 
     const payload: IIdPayload = { id: user.getId() };
-    if (idFromValidToken !== payload) {
+
+    let response: string;
+    if (idFromValidToken.id !== payload.id) {
       throw new AuthorizationError();
     } else {
-      await this.userDatabase.delUser(user.getId());
+      response = await this.userDatabase.delUser(user.getId());
     }
-
-    const response = {
-      message: "You are not a member any more!",
-    };
 
     return response;
   };

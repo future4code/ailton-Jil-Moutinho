@@ -4,7 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class UserDatabase extends BaseDatabase {
   public static TABLE_USERS = "Cubo_Users";
 
-  public createUser = async (user: User) => {
+  public createUser = async (user: User): Promise<string> => {
     const userDB: IUserDB = {
       id: user.getId(),
       first_name: user.getFirstName(),
@@ -13,6 +13,7 @@ export class UserDatabase extends BaseDatabase {
       password: user.getPassword(),
     };
     await BaseDatabase.connection(UserDatabase.TABLE_USERS).insert(userDB);
+    return `Member ${user.getFirstName()} register successfully.`;
   };
 
   public getUserByFullName = async (
@@ -34,11 +35,11 @@ export class UserDatabase extends BaseDatabase {
     return usersDB;
   };
 
-  public delUser = async (id: string): Promise<IUserDB | undefined> => {
+  public delUser = async (id: string): Promise<string> => {
     const usersDB: IUserDB[] = await this.getConnection()
-      .select("*")
+      .delete("*")
       .from(UserDatabase.TABLE_USERS)
       .where({ id });
-    return usersDB[0];
+    return "You are not a member any more!";
   };
 }
