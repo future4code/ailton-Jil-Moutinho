@@ -1,0 +1,54 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "first_name": "Mia1",
+    "last_name": "Miazera1",
+    "partnership": 2,
+    "password": "mia123"
+}
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "first_name": "Mia",
+    "last_name": "Miazera",
+    "password": "mia123"
+}
+
+### 3) Cancel partnership
+DELETE  http://localhost:3003/users/cancelMembership
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkNWRkMGVhLTJlZWYtNGEyMy04MmU4LTBlN2Q4YmMzZTA0YiIsImlhdCI6MTY2NDgyODQyNiwiZXhwIjoxNjY0OTE0ODI2fQ.bTwxVX8iq-dZIhFZQaVfhEE_OIoQP44c9hQ0Hj6Dqjw
+
+{
+    "first_name": "Mia",
+    "last_name": "Miazera"
+}
+
+############################################################################
+### 4) Gel All Shows with tickets
+GET http://localhost:3003/shows/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ2MzA4OSwiZXhwIjoxNjY0NTQ5NDg5fQ.-dAOxjpzWrRdzYCX-PDf1c-uN41nJrBG5maWS2pqZ5A
+
+### 5) Post tickets's book
+POST http://localhost:3003/shows/bookingTicket/4d7a8934-23f3-4200-9d4e-041050bb6ce6
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
+
+### 6) Del tickets's book
+DELETE http://localhost:3003/shows/delBooking/4d7a8934-23f3-4200-9d4e-041050bb6ce6
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
+
+### 7) Coverage = 51%
+//Ok
+
+### 8) Coverage = 80%
+//Ok
