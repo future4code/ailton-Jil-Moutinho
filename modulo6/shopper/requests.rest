@@ -1,0 +1,65 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Get all products
+GET http://localhost:3003/product/all
+
+### 2) Get product by id
+GET http://localhost:3003/product/16
+
+### 2) PUT stock product by id
+PUT http://localhost:3003/product/16
+
+
+
+
+##############################
+
+### 1) Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Mia1",
+    "email": "mia1@gmail.com",
+    "password": "mia123"
+}
+
+### 2) Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### 3) Post Show
+POST http://localhost:3003/shows/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDU3NDMxNCwiZXhwIjoxNjY0NjYwNzE0fQ.QZQokSGP_CILKvjk1bq5JdLbEF5Z2YFwdUQEGu1B4Vw
+
+{
+    "band": "Teste2",
+    "starts_at": "2022/12/06"
+}
+
+### 4) Gel All Shows with tickets
+GET http://localhost:3003/shows/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ2MzA4OSwiZXhwIjoxNjY0NTQ5NDg5fQ.-dAOxjpzWrRdzYCX-PDf1c-uN41nJrBG5maWS2pqZ5A
+
+### 5) Post tickets's book
+POST http://localhost:3003/shows/bookingTicket/4d7a8934-23f3-4200-9d4e-041050bb6ce6
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
+
+### 6) Del tickets's book
+DELETE http://localhost:3003/shows/delBooking/4d7a8934-23f3-4200-9d4e-041050bb6ce6
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
+
+### 7) Coverage = 51%
+//Ok
+
+### 8) Coverage = 80%
+//Ok
