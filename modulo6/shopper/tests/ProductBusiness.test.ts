@@ -1,37 +1,33 @@
-import { ShowBusiness } from "../src/business/ShowBusiness";
+import { ProductBusiness } from "../src/business/ProductBusiness";
 import { BaseError } from "../src/errors/BaseError";
 import {
-  Show,
-  IShowDB,
-  IShowInputDB,
-  IBookTicketInputDB,
-} from "../src/models/Show";
-import { AuthenticatorMock } from "./mocks/AuthenticatorMock";
-import { IdGeneratorMock } from "./mocks/IdGeneratorMock";
-import { ShowDatabaseMock } from "./mocks/ShowDatabaseMock";
+  Product,
+  IProductDB,
+} from "../src/models/Products";
+import { IdGeneratorMock } from "./mocks/services/IdGeneratorMock";
+import { ProductDatabaseMock } from "./mocks/ProductDatabaseMock";
 
-describe("Testando a ShowBusiness", () => {
-  const showBusiness = new ShowBusiness(
-    new ShowDatabaseMock(),
-    new IdGeneratorMock(),
-    new AuthenticatorMock()
-  );
+/* describe("Testando a ProductBusiness", () => {
+  const productBusiness = new ProductBusiness(
+    new ProductDatabaseMock(),
+    new IdGeneratorMock()
+  ); */
 
-  //Create show
-  test("Should create a show", async () => {
-    const input: IShowInputDB = {
+  //Create Product
+/*   test("Should create a Product", async () => {
+    const input: IProductInputDB = {
       band: "Teste tenatndo",
       starts_at: new Date("2022-12-25"),
       token: "token-mock-admin",
     };
-    const response = await showBusiness.postShow(input);
-    expect(response.message).toBe("Show created successfully");
+    const response = await ProductBusiness.postProduct(input);
+    expect(response.message).toBe("Product created successfully");
   });
 
-  //Get all shows
-  test("Should return the list of all shows", async () => {
+  //Get all Products
+  test("Should return the list of all Products", async () => {
     const token: string = "token-mock-normal";
-    const response = await showBusiness.getAllShows(token);
+    const response = await ProductBusiness.getAllProducts(token);
     expect(response.length).toBe(7);
     expect(response[0]).toBeInstanceOf(Object);
   });
@@ -39,10 +35,10 @@ describe("Testando a ShowBusiness", () => {
   //Book a ticket
   test("Should be able to place a booking a ticket", async () => {
     const input: IBookTicketInputDB = {
-      show_id: "202",
+      Product_id: "202",
       token: "token-mock-normal",
     };
-    const response = await showBusiness.postBookingTicket(input);
+    const response = await ProductBusiness.postBookingTicket(input);
     expect(response.message).toBe(`Ticket booked successfully`);
     expect(response.ticketnumber).toBe("id-mock");
     expect(response.ticketsAvailable).toBe(4999);
@@ -52,46 +48,46 @@ describe("Testando a ShowBusiness", () => {
   //Cancel a booked ticket
   test("Should be able to cancel a booking a ticket", async () => {
     const input: IBookTicketInputDB = {
-      show_id: "940f3071-1367-4c09-ad95-0353c974fd7e",
+      Product_id: "940f3071-1367-4c09-ad95-0353c974fd7e",
       token: "token-mock-normal",
     };
-    const response = await showBusiness.delBookingTicket(input);
+    const response = await ProductBusiness.delBookingTicket(input);
     expect(response.message).toBe(`Reservation canceled successfully`);
     expect(response.ticketsAvailable).toBe(5000);
     expect(response.result).toBe(`Updated Successfully`);
   });
 
   //ERRORS
-  //Error - Create show
-  test("Create a show with no band name", async () => {
+  //Error - Create Product
+  test("Create a Product with no band name", async () => {
     expect.assertions(2);
 
     try {
-      const input: IShowInputDB = {
+      const input: IProductInputDB = {
         band: "",
         starts_at: new Date("2022-12-25"),
         token: "token-mock-admin",
       };
-      await showBusiness.postShow(input);
+      await ProductBusiness.postProduct(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
-        expect(error.message).toBe("You must inform all show data");
+        expect(error.message).toBe("You must inform all Product data");
       }
     }
   });
 
-  test("Create a show without a valid token", async () => {
+  test("Create a Product without a valid token", async () => {
     expect.assertions(2);
 
     try {
-      const input: IShowInputDB = {
+      const input: IProductInputDB = {
         band: "Bandanda",
         starts_at: new Date("2022-12-25"),
         token: "token-mock-adminISTRATOR",
       };
 
-      await showBusiness.postShow(input);
+      await ProductBusiness.postProduct(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(401);
@@ -100,16 +96,16 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  test("Create a show not being admin", async () => {
+  test("Create a Product not being admin", async () => {
     expect.assertions(2);
 
     try {
-      const input: IShowInputDB = {
+      const input: IProductInputDB = {
         band: "Bandanda",
         starts_at: new Date("2022-12-25"),
         token: "token-mock-normal",
       };
-      await showBusiness.postShow(input);
+      await ProductBusiness.postProduct(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(403);
@@ -118,16 +114,16 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  test("Create a show before the festival started", async () => {
+  test("Create a Product before the festival started", async () => {
     expect.assertions(2);
 
     try {
-      const input: IShowInputDB = {
+      const input: IProductInputDB = {
         band: "Bandanda",
         starts_at: new Date("2022-10-25"),
         token: "token-mock-admin",
       };
-      await showBusiness.postShow(input);
+      await ProductBusiness.postProduct(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
@@ -136,16 +132,16 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  test("Create a show in the same day as another", async () => {
+  test("Create a Product in the same day as another", async () => {
     expect.assertions(2);
 
     try {
-      const input: IShowInputDB = {
+      const input: IProductInputDB = {
         band: "Bandanda",
         starts_at: new Date("2022/12/05"),
         token: "token-mock-admin",
       };
-      await showBusiness.postShow(input);
+      await ProductBusiness.postProduct(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(409);
@@ -154,14 +150,14 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  //Error - Get all shows
-  test("Gel all shows without a valid token", async () => {
+  //Error - Get all Products
+  test("Gel all Products without a valid token", async () => {
     expect.assertions(2);
 
     try {
       const token: string = "token-mock-adminISTRATOR";
 
-      await showBusiness.getAllShows(token);
+      await ProductBusiness.getAllProducts(token);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(401);
@@ -170,35 +166,35 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  //Error - Booking a show
-  test("Booking a show without informing its id", async () => {
+  //Error - Booking a Product
+  test("Booking a Product without informing its id", async () => {
     expect.assertions(2);
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "",
+        Product_id: "",
         token: "token-mock-admin",
       };
 
-      await showBusiness.postBookingTicket(input);
+      await ProductBusiness.postBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
-        expect(error.message).toBe("You must inform show data");
+        expect(error.message).toBe("You must inform Product data");
       }
     }
   });
 
-  test("Booking a show without a valid token", async () => {
+  test("Booking a Product without a valid token", async () => {
     expect.assertions(2);
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "203",
+        Product_id: "203",
         token: "token-mock-adminISTRATOR",
       };
 
-      await showBusiness.postBookingTicket(input);
+      await ProductBusiness.postBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(401);
@@ -207,20 +203,20 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  test("Booking a show with an invalid id", async () => {
+  test("Booking a Product with an invalid id", async () => {
     expect.assertions(2);
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "10000",
+        Product_id: "10000",
         token: "token-mock-admin",
       };
 
-      await showBusiness.postBookingTicket(input);
+      await ProductBusiness.postBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(404);
-        expect(error.message).toBe("Show with this id not found");
+        expect(error.message).toBe("Product with this id not found");
       }
     }
   });
@@ -230,31 +226,31 @@ describe("Testando a ShowBusiness", () => {
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "940f3071-1367-4c09-ad95-0353c974fd7e",
+        Product_id: "940f3071-1367-4c09-ad95-0353c974fd7e",
         token: "token-mock-admin",
       };
 
-      await showBusiness.postBookingTicket(input);
+      await ProductBusiness.postBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(422);
         expect(error.message).toBe(
-          "You already bought a tickets for this show."
+          "You already bought a tickets for this Product."
         );
       }
     }
   });
 
-  test("Booking a show without available tickets", async () => {
+  test("Booking a Product without available tickets", async () => {
     expect.assertions(2);
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
+        Product_id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
         token: "token-mock-admin",
       };
 
-      await showBusiness.postBookingTicket(input);
+      await ProductBusiness.postBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(422);
@@ -269,15 +265,15 @@ describe("Testando a ShowBusiness", () => {
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "",
+        Product_id: "",
         token: "token-mock-admin",
       };
 
-      await showBusiness.delBookingTicket(input);
+      await ProductBusiness.delBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
-        expect(error.message).toBe("You must inform show data");
+        expect(error.message).toBe("You must inform Product data");
       }
     }
   });
@@ -287,11 +283,11 @@ describe("Testando a ShowBusiness", () => {
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "203",
+        Product_id: "203",
         token: "token-mock-adminISTRATOR",
       };
 
-      await showBusiness.delBookingTicket(input);
+      await ProductBusiness.delBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(401);
@@ -300,20 +296,20 @@ describe("Testando a ShowBusiness", () => {
     }
   });
 
-  test("Cancel a ticket with an invalid show id", async () => {
+  test("Cancel a ticket with an invalid Product id", async () => {
     expect.assertions(2);
 
     try {
       const input: IBookTicketInputDB = {
-        show_id: "10000",
+        Product_id: "10000",
         token: "token-mock-admin",
       };
 
-      await showBusiness.delBookingTicket(input);
+      await ProductBusiness.delBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(404);
-        expect(error.message).toBe("Show with this id not found");
+        expect(error.message).toBe("Product with this id not found");
       }
     }
   });
@@ -322,17 +318,16 @@ describe("Testando a ShowBusiness", () => {
     expect.assertions(2);
     try {
       const input: IBookTicketInputDB = {
-        show_id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
+        Product_id: "e5566f0b-89ee-4ad5-a0b9-6f507db97a71",
         token: "token-mock-admin",
       };
-      await showBusiness.delBookingTicket(input);
+      await ProductBusiness.delBookingTicket(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(422);
         expect(error.message).toBe(
-          "You haven't booked a tickets for this show."
+          "You haven't booked a tickets for this Product."
         );
       }
     }
-  });
-});
+  }); */

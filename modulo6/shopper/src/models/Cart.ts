@@ -1,27 +1,14 @@
-import { IProductDB } from "./Products";
-
-export interface IUserDB {
-  id_cart: string;
+export interface ICartInputDB {
   client_name: string;
   delivery_date: Date;
-  productsList: IProductDB[];
 }
-
-/* export interface ILoginInputDTO {
-  email: string;
-  password: string;
-}
-
-export interface ISignupInputDTO extends ILoginInputDTO {
-  name: string;
-} */
 
 export class Cart {
   constructor(
     private id_cart: string,
     private client_name: string,
     private delivery_date: Date,
-    private productsList: IProductDB[],
+    private total: number = 0
   ) {}
 
   public getIdCart = () => {
@@ -36,15 +23,7 @@ export class Cart {
     return this.delivery_date;
   };
 
-  public getProductsList = () => {
-    return this.productsList;
-  };
-
-  public setProductsList = (newProductsList: IProductDB[]) => {
-    this.productsList = newProductsList;
-  };
-
-  public setDelivery_date = (newDeliveryDate: Date) => {
-    this.delivery_date = newDeliveryDate;
+  public getTotal = () => {
+    return this.total;
   };
 }

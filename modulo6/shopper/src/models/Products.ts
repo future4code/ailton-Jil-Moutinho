@@ -1,16 +1,34 @@
-export interface IPutProductInputDB {
-  id: string;
-  qty_stock: number;
-}
-
-export interface IProductDB extends IPutProductInputDB {
+export interface IProductDB {
   id: string;
   qty_stock: number;
   name: string;
   price: number;
 }
 
-export interface IProductDTO {
+export interface IPutPurchaseInputDB {
+  id_product: string;
+  id_purchase: string;
+}
+
+export interface IPostInputDB {
+  id_cart: string,
+  id_product: string,
+  price: number
+}
+
+export interface IPostInputIdDB extends IPostInputDB{
+  id_purchase: string
+}
+
+export interface IPurchaseInputDB {
+  id_purchase: string;
+  id_cart: string;
+  id_product: string;
+  quantity: number;
+  price: number;
+}
+
+export interface ISearchProduct {
   search: string;
   order: string;
   limit: number;
@@ -41,9 +59,5 @@ export class Product {
 
   public getQtyStock = () => {
     return this.qty_stock;
-  };
-
-  public setQtyStock = (newQtyStock: number) => {
-    this.qty_stock = newQtyStock;
   };
 }

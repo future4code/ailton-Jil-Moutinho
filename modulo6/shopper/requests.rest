@@ -5,61 +5,72 @@ GET http://localhost:3003/ping
 GET http://localhost:3003/product/all
 
 ### 2) Get product by id
-GET http://localhost:3003/product/16
+GET http://localhost:3003/product/byId
+Content-Type: application/json
 
-### 2) PUT stock product by id
-PUT http://localhost:3003/product/16
+{
+    "id": "79"
+}
 
+### 3) POST cart
+POST http://localhost:3003/cart/create
+Content-Type: application/json
 
+{
+    "client_name": "Mia",
+    "delivery_date": "2022/11/10"
+}
 
+### 4) Post purchase
+POST http://localhost:3003/product/purchase
+Content-Type: application/json
+
+{
+"id_cart": "e25b2458-937f-4dc1-a7af-3d201c54fdbf",
+"id_product": "79",
+"price": 7.99
+}
+
+### 5) Put add purchase
+PUT http://localhost:3003/product/addOnPurchase
+Content-Type: application/json
+
+{
+"id_product": "16",
+"id_purchase": "a75f7f67-9474-4a5c-9a93-c89ccd4acd70"
+}
+
+### 6) Put sub purchase
+PUT http://localhost:3003/product/subOnPurchase
+Content-Type: application/json
+
+{
+"id_product": "16",
+"id_purchase": "4221e6e4-dc93-41b9-9381-651c06d14de6"
+}
+
+### 7) Get all purchase
+GET http://localhost:3003/product/allPurchase
+Content-Type: application/json
+
+{
+"id_cart": "e25b2458-937f-4dc1-a7af-3d201c54fdbf"
+}
+
+### 8) Put balance of all purchase
+PUT http://localhost:3003/cart/balance
+Content-Type: application/json
+
+{
+"id_cart": "44b5181c-32b6-436d-956b-3e0e75356443"
+}
+
+### 9) Del purchase
+DELETE http://localhost:3003/product/delPurchase
+Content-Type: application/json
+
+{
+"id_purchase": "67f5dc64-4ff0-4108-bcf3-1bb54ad318c7"
+}
 
 ##############################
-
-### 1) Signup
-POST http://localhost:3003/users/signup
-Content-Type: application/json
-
-{
-    "name": "Mia1",
-    "email": "mia1@gmail.com",
-    "password": "mia123"
-}
-
-### 2) Login
-POST http://localhost:3003/users/login
-Content-Type: application/json
-
-{
-    "email": "astrodev@gmail.com",
-    "password": "bananinha"
-}
-
-### 3) Post Show
-POST http://localhost:3003/shows/create
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDU3NDMxNCwiZXhwIjoxNjY0NjYwNzE0fQ.QZQokSGP_CILKvjk1bq5JdLbEF5Z2YFwdUQEGu1B4Vw
-
-{
-    "band": "Teste2",
-    "starts_at": "2022/12/06"
-}
-
-### 4) Gel All Shows with tickets
-GET http://localhost:3003/shows/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NDQ2MzA4OSwiZXhwIjoxNjY0NTQ5NDg5fQ.-dAOxjpzWrRdzYCX-PDf1c-uN41nJrBG5maWS2pqZ5A
-
-### 5) Post tickets's book
-POST http://localhost:3003/shows/bookingTicket/4d7a8934-23f3-4200-9d4e-041050bb6ce6
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
-
-### 6) Del tickets's book
-DELETE http://localhost:3003/shows/delBooking/4d7a8934-23f3-4200-9d4e-041050bb6ce6
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OGRhMDU4LWE5OWUtNDc1Ny05MDZkLTI0ZWE0OTBkNDg4MiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjQ2MzMxODgsImV4cCI6MTY2NDcxOTU4OH0.XLWPgGEkzH5uALWIBg8RO-a3rJ8d06XZ4aC6WN-U06A
-
-### 7) Coverage = 51%
-//Ok
-
-### 8) Coverage = 80%
-//Ok

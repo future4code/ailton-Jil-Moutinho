@@ -29,11 +29,11 @@ class Migrations extends BaseDatabase {
 
   createTables = async () => {
     await BaseDatabase.connection.raw(`
-        DROP TABLE IF EXISTS ${ProductDatabase.TABLE_PRODUCTS};
-        DROP TABLE IF EXISTS ${CartDatabase.TABLE_CART};
-        DROP TABLE IF EXISTS ${CartDatabase.TABLE_PURCHASES};
+    DROP TABLE IF EXISTS ${ProductDatabase.TABLE_PURCHASES};
+    DROP TABLE IF EXISTS ${ProductDatabase.TABLE_PRODUCTS};
+    DROP TABLE IF EXISTS ${CartDatabase.TABLE_CART};
         
-        CREATE TABLE IF NOT EXISTS ${ProductDatabase.TABLE_PRODUCTS}(
+      CREATE TABLE IF NOT EXISTS ${ProductDatabase.TABLE_PRODUCTS}(
             id VARCHAR(255) PRIMARY KEY,
             name VARCHAR(255) NOT NULL UNIQUE,
             price DOUBLE(4,2) NOT NULL,
@@ -43,11 +43,12 @@ class Migrations extends BaseDatabase {
         CREATE TABLE IF NOT EXISTS ${CartDatabase.TABLE_CART}(
             id_cart VARCHAR(255) PRIMARY KEY,
             client_name VARCHAR(255) NOT NULL,
-            delivery_date DATE NOT NULL
+            delivery_date DATE NOT NULL,
+            total DOUBLE(10,2) NOT NULL DEFAULT 0
         );
 
-        CREATE TABLE IF NOT EXISTS ${CartDatabase.TABLE_PURCHASES}(
-            id VARCHAR(255) PRIMARY KEY,
+        CREATE TABLE IF NOT EXISTS ${ProductDatabase.TABLE_PURCHASES}(
+            id_purchase VARCHAR(255) PRIMARY KEY,
             id_cart VARCHAR(255) NOT NULL,
             id_product VARCHAR(255) NOT NULL,
             quantity INT NOT NULL,

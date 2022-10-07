@@ -1,28 +1,27 @@
-
+/* import { IPutProductInputDB } from "../models/Cart"; */
+import { Cart } from "../models/Cart";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class CartDatabase extends BaseDatabase {
   public static TABLE_CART = "Shopper_Cart";
-  public static TABLE_PURCHASES = "Shopper_Purchases";
 
-/*   public createUser = async (user: User) => {
-    const userDB: IUserDB = {
-      id: user.getId(),
-      name: user.getName(),
-      email: user.getEmail(),
-      password: user.getPassword(),
-      role: user.getRole(),
-    };
+  public createCart = async (cart: Cart): Promise<string> => {
+    await BaseDatabase.connection(CartDatabase.TABLE_CART).insert({
+      id_cart: cart.getIdCart(),
+      client_name: cart.getName(),
+      delivery_date: cart.getDelivery_date()
+    });
 
-    await BaseDatabase.connection(UserDatabase.TABLE_CARTS).insert(userDB);
-  }; */
+    return `${cart.getName()} created successfully`;
+  };
 
-/*   public getUserByEmail = async (email: string) : Promise<IUserDB | undefined>=> {
-    const usersDB: IUserDB[] = await this.getConnection()
-      .select("*")
-      .from(UserDatabase.TABLE_CARTS)
-      .where({ email });
+  public putTotalCart = async (id_cart: string, total: number
+  ): Promise<string> => {
+    await this.getConnection()
+      .update({ total })
+      .where({ id_cart })
+      .from(CartDatabase.TABLE_CART);
 
-    return usersDB[0];
-  }; */
+    return `Total balance updated successfully`;
+  };
 }

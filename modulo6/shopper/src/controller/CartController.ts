@@ -1,37 +1,34 @@
 import { Request, Response } from "express";
 import { CartBusiness } from "../business/CartBusiness";
+import { ICartInputDB } from "../models/Cart";
 
 export class CartController {
-  constructor(private CartBusiness: CartBusiness,
-     ) {}
+  constructor(private cartBusiness: CartBusiness) {}
 
-  public signup = async (req: Request, res: Response) => {
-    /*     try {
-      const input: ISignupInputDTO = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
+  public createCart = async (req: Request, res: Response) => {
+        try {
+      const input: ICartInputDB = {
+        client_name: req.body.client_name!,
+        delivery_date: req.body.delivery_date,
       };
 
-      const response = await this.CartBusiness.signupCart(input);
+      const response = await this.cartBusiness.createNewCart(input);
+
+      res.status(201).send(response);
+    } catch (error: any) {      
+      res.status(error.statusCode || 400).send({ message: error.message || error.sqlMessage });
+    }
+  };
+
+  public updateBalance = async (req: Request, res: Response) => {
+    try {
+      const id_cart = req.body.id_cart!;
+
+      const response = await this.cartBusiness.putTotal(id_cart);
 
       res.status(201).send(response);
     } catch (error: any) {
-      res.status(400).send({ message: error.message || error.sqlMessage });
-    } */
-  };
-
-  public login = async (req: Request, res: Response) => {
-    /*     try {
-      const Cart: ILoginInputDTO = {
-        email: req.body.email,
-        password: req.body.password,
-      };
-
-      const response = await this.CartBusiness.loginCart(Cart);
-      res.status(201).send({ message: response });
-    } catch (error: any) {
-      res.status(400).send({ message: error.message });
-    } */
+      res.status(error.statusCode || 400).send({ message: error.message || error.sqlMessage });
+    }
   };
 }

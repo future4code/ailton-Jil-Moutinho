@@ -17,5 +17,5 @@ app.listen(process.env.PORT || 3003, () => {
 });
 
 app.use("/ping", pingRouter);
-app.use("/users", cartRouter);
+app.use("/cart", cartRouter);
 app.use("/product", productRouter);
