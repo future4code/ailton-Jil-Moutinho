@@ -16,8 +16,8 @@ export const ContaiRegister = styled.div`
   border: 1px solid ${lightGreyPersonare};
   border-radius: 2rem;
   box-shadow: 2px 2px 8px 0 ${lightGreyPersonare};
-  padding: 4%;
-  width: 70%;
+  padding: 3%;
+  width: 90%;
 `;
 
 export const ContainDraw = styled(ContaiRegister)`

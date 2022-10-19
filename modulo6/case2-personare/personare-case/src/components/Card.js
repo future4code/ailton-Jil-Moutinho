@@ -50,9 +50,12 @@ export const CardBack = () => {
               alt={`${cardChoise?.name}`}
             />
           </div>
-          <ButtonConst onClick={() => goToResult(navigate)}>
-            Interpretação
-          </ButtonConst>
+          <div>
+            <p>{cardChoise?.name}</p>
+            <ButtonConst onClick={() => goToResult(navigate)}>
+              Interpretação
+            </ButtonConst>
+          </div>
         </>
       )}
     </ContainerCards>

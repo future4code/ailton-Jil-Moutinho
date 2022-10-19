@@ -21,6 +21,7 @@ export const DrawPage = () => {
       <h1>TAROT DO DIA</h1>
       <ContaiRegister>
         <p>{name}, revisando: CONCENTRE-SE PROFUNDAMENTE NO SEU DIA!</p>
+        <br />
         <p>
           Escolha um momento tranquilo para o jogo e feche os olhos por alguns
           instantes. Concentre-se e peça mentalmente uma orientação para o seu
@@ -28,7 +29,6 @@ export const DrawPage = () => {
           preparado embaralhe as cartas.
         </p>
         <ButtonConst onClick={() => onClickButton()}>Embaralhar</ButtonConst>
-        <p>Não apertar sem nome. Ao apertar cartas viram.</p>
       </ContaiRegister>
       <ContaiRegister>
         <p>SELECIONE UMA CARTA DO BARALHO</p>

@@ -23,6 +23,7 @@ export const ContainerCards = styled.div`
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+  gap: 0.5%;
   padding: 3%;
   width: 100%;
   border: 1px solid ${lightGreyPersonare};

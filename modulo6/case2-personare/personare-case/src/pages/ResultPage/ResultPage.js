@@ -3,7 +3,7 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { imagesURL } from "../../constants/url";
 import { GlobalContext } from "../../global/GlobalContext";
-import { HomeContainer } from "../styles";
+import { HomeContainer, ContaiRegister } from "../styles";
 
 export const ResultPage = () => {
   const { name, cardChoise } = useContext(GlobalContext);
@@ -20,7 +20,7 @@ export const ResultPage = () => {
     <HomeContainer>
       <Header></Header>
       <h1>TAROT DO DIA</h1>
-      <div>
+      <ContaiRegister>
         <div key={cardChoise?.name}>
           <img
             src={`${imagesURL}/${cardChoise?.image}`}
@@ -29,7 +29,7 @@ export const ResultPage = () => {
         </div>
         <div>
           <h1>TAROT DO DIA</h1>
-          <h2>TÍTULO MÍSTICO</h2>
+          <h2>{cardChoise?.name}</h2>
           <h3>NOME DA CARTA</h3>
           <p>
             <strong>Conselho do dia {hoje}: </strong> Vá trabalhar meu filho!
@@ -56,11 +56,11 @@ export const ResultPage = () => {
           </p>
           <br />
           <p>
-            O que achou do Tarot do dia {hoje}?
+            O que achou do Tarot do dia {hoje}? 
             <a href="www.google.com">Conte para gente!</a>
           </p>
         </div>
-      </div>
+      </ContaiRegister>
       <Footer></Footer>
     </HomeContainer>
   );

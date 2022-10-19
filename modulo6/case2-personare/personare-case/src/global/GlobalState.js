@@ -8,6 +8,11 @@ export const GlobalState = (props) => {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  if (name === "") {
+    const getLocal = localStorage.getItem("name");
+    setName(getLocal && getLocal);
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
