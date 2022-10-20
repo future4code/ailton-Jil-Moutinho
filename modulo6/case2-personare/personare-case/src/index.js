@@ -1,7 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import { createGlobalStyle } from "styled-components";
+import { bluePersonare } from "./constants/colors";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -9,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   padding:0;
   box-sizing:border-box;
   font-family: 'Roboto';
+  color: ${bluePersonare};
 }
 #root, body{
   max-width:100vw;
@@ -20,10 +22,10 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GlobalStyle/>
+    <GlobalStyle />
     <App />
   </React.StrictMode>
 );

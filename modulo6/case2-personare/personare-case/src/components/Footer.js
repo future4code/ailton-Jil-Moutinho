@@ -1,6 +1,7 @@
 import React from "react";
-//import Face from "../../assets/faceIconShopper.png";
-//import Insta from "../../assets/instaIconShopper.png";
+import Face from "../assets/faceIcon.svg";
+import Insta from "../assets/instaIcon.svg";
+import Twitter from "../assets/twitterIcon.svg";
 import { ContainerFooter, DivContact, DivInfo } from "./styles";
 
 export const Footer = () => {
@@ -12,34 +13,46 @@ export const Footer = () => {
         <br />
         <div>
           <a
-            href="https://www.facebook.com/shopper.com.br/"
+            href="https://www.facebook.com/Personare.com.br/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               src={Face}
-              alt="face Shopper - https://icons8.com.br/icons/set/facebook--static--mint"
+              alt="face Personare - https://icons8.com.br/icons/set/facebook--static--mint"
             />
           </a>
           <a
-            href="https://www.instagram.com/shopper.com.br/"
+            href="https://www.instagram.com/Personare.com.br/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               src={Insta}
-              alt="instagram Shopper - https://icons8.com.br/icons/set/instagram--static--mint"
+              alt="instagram Personare - https://icons8.com.br/icons/set/instagram--static--mint"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/Personare.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={Insta}
+              alt="instagram Personare - https://icons8.com.br/icons/set/instagram--static--mint"
             />
           </a>
         </div>
-      </DivContact>
+      </DivContact> */}
       <DivInfo>
-        <p>Shopper Comércio Alimentos LTDA.</p>
-        <p>CNPJ: 00.000.000/0001-60</p>
-        <p>São Paulo -SP</p>
-        <p>Telefone: (11)1234-1234</p>
-        <p>contato123@shopper.cpm.br</p>
-      </DivInfo> */}
+        <p>Ajuda</p>
+        <p>WhatsApp</p>
+        <p>Horário de atendimento: de segunda a sexta, das 8h às 20h</p>
+        <p>Compra segura</p>
+        <p>Aceitamos cartões</p>
+                        <p>Aceitamos PIX</p>
+                <p>Emitimos boletos</p>
+      </DivInfo>
     </ContainerFooter>
   );
 };

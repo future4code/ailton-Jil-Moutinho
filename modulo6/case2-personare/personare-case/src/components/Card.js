@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { GlobalContext } from "../global/GlobalContext";
 import { imageBackCardURL } from "../constants/url";
 import { imagesURL } from "../constants/url";
-import { ContainerCards } from "./styles";
+import { ContainerCards, ContainResult, InterpreStyles } from "./styles";
+import Interpretacao from "../assets/Ler.jpeg";
 import { allCards } from "../constants/allCards";
 import { ButtonConst } from "../constants/buttonStyles";
 import { useNavigate } from "react-router-dom";
@@ -27,8 +28,7 @@ export const CardBack = () => {
 
   const onClickBack = () => {
     setIsChoosen(true);
-    const index = Math.floor(Math.random() * 77);
-    console.log(index);
+    const index = Math.floor(Math.random() * 77) + 1;
     setCardChoise(allCards[index]);
   };
 
@@ -39,6 +39,7 @@ export const CardBack = () => {
       </div>
     );
   });
+
   return (
     <ContainerCards>
       {!isChoosen && cardsBack}
@@ -50,12 +51,21 @@ export const CardBack = () => {
               alt={`${cardChoise?.name}`}
             />
           </div>
-          <div>
-            <p>{cardChoise?.name}</p>
+          <ContainResult>
+            <p>
+              <strong>{cardChoise?.name}</strong>
+            </p>
+            <br />
             <ButtonConst onClick={() => goToResult(navigate)}>
               Interpretação
             </ButtonConst>
-          </div>
+            <br />
+              <img
+                src={Interpretacao}
+                alt="Mão com duas cartas de tarot"
+                onClick={() => goToResult(navigate)}
+              />
+          </ContainResult>
         </>
       )}
     </ContainerCards>

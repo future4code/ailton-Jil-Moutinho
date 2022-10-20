@@ -4,7 +4,7 @@ import { GlobalContext } from "./GlobalContext";
 export const GlobalState = (props) => {
   const Provider = GlobalContext.Provider;
 
-  const [cardChoise, setCardChoise] = useState([]);
+  const [cardChoise, setCardChoise] = useState({});
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 

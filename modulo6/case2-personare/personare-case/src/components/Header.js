@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../global/GlobalContext";
-//import { ButtonConst } from "../constants/buttonStyles";
-import { Container } from "./styles";
+import Logo from "../assets/Logo.jpeg";
+import { Container, LogoStyles } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { goToRegister } from "../routes/coordinator";
 
 export const Header = () => {
   const { name } = useContext(GlobalContext);
-  console.log(name);
+  const navigate = useNavigate();
+
   return (
     <Container>
-      {!name && <p>Bem vindo ao Tarot on-line!</p>}
-      {name && <p>{name}, Bem vindo de volta ao Tarot on-line!</p>}
-      {/* <ButtonConst>Botão teste</ButtonConst> */}
+      <LogoStyles
+        src={Logo}
+        alt="Logo"
+        onClick={() => goToRegister(navigate)}
+      ></LogoStyles>
     </Container>
   );
 };

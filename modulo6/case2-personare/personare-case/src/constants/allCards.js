@@ -148,7 +148,7 @@ export const allCards = [
       "image": "arcano37.jpg"
     },
     {
-      "name": "2 DE ESPADAS ,",
+      "name": "2 DE ESPADAS",
       "image": "arcano38.jpg"
     },
     {
