@@ -2,19 +2,19 @@ import React, { useContext, useState } from "react";
 import { GlobalContext } from "../global/GlobalContext";
 import { imageBackCardURL } from "../constants/url";
 import { imagesURL } from "../constants/url";
-import { ContainerCards, ContainResult, InterpreStyles } from "./styles";
+import { ContainerCards, ContainResult, ContainCard } from "./styles";
 import Interpretacao from "../assets/Ler.jpeg";
 import { allCards } from "../constants/allCards";
-import { ButtonConst } from "../constants/buttonStyles";
 import { useNavigate } from "react-router-dom";
 import { goToResult } from "../routes/coordinator";
+import { SuffleDiv } from "../pages/styles";
 
 export const CardFront = () => {
   const cardsFront = allCards.map((item) => {
     return (
-      <div key={item?.name}>
+      <ContainCard key={item?.name}>
         <img src={`${imagesURL}/${item?.image}`} alt={`${item?.name}`} />
-      </div>
+      </ContainCard>
     );
   });
   return <ContainerCards>{cardsFront}</ContainerCards>;
@@ -34,9 +34,9 @@ export const CardBack = () => {
 
   const cardsBack = allCards.map((item) => {
     return (
-      <div key={item?.name} onClick={() => onClickBack()}>
+      <ContainCard key={item?.name} onClick={() => onClickBack()}>
         <img src={imageBackCardURL} alt="Back" />
-      </div>
+      </ContainCard>
     );
   });
 
@@ -56,15 +56,14 @@ export const CardBack = () => {
               <strong>{cardChoise?.name}</strong>
             </p>
             <br />
-            <ButtonConst onClick={() => goToResult(navigate)}>
-              Interpretação
-            </ButtonConst>
-            <br />
+            <SuffleDiv onClick={() => goToResult(navigate)}>
               <img
                 src={Interpretacao}
                 alt="Mão com duas cartas de tarot"
                 onClick={() => goToResult(navigate)}
               />
+              <p>Interpretação</p>
+              </SuffleDiv>
           </ContainResult>
         </>
       )}

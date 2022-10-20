@@ -1,9 +1,9 @@
-<h2 align="center">🛒🖱Projeto Teste Shopper🖥️🛒 </h2>
+<h2 align="center">🔮🃏✨ Projeto Teste Shopper 🕯🧿☪️ </h2>
 
 <h4 align="justify">
-Elaboração de site (frontend) com formulário de cadastro de usuário para poder realizar os pedidos. 
+Elaboração de site (frontend) com cadastro do nome do usuário para poder realizar o sorteio das cartas. 
 O sistema foi escrito em Javascript (node.js e/ou react.js).
-Foi recebido um arquivo products.csv, que é uma lista com produtos disponíveis e seus respectivos preços e estoque, porém sem fotos.
+Foi recebido um arquivo tarot.json, que é uma lista com as cartas, seus nomes e nome da imagem (em string) que concatenada com a url fornecida apresenta a imagem da carta.
 <h4/>
 
 <h3 align="center"> Sumário </h3>
@@ -16,17 +16,16 @@ Foi recebido um arquivo products.csv, que é uma lista com produtos disponíveis
 
 ## ✔O que funciona
 
-  - Na pagina home é possivel ver a lista de produtos, sua quantidade disponível em estoque e preço unitário. Dados vindos da API de backend.
-  - Os produtos podem ser adicionados no carrinho do cliente caso ele já tenha realizado o cadastro com nome e data de entrega.
-  - Alerta de erro caso tente realizar compras sem cadastro.
-  - No carrinho é possível adicionar unidades de cada produto.
-  - No carrinho é possível retirar unidades de cada produto ou retirar todas as unidades da lista de compras.
-  - O usúario recebe um alert caso tente adicionar mais itens do que há disponível em estoque.
-  - Paginação de produtos.
-  - Botão para retornar ao topo da tela.
-  - Após realizada a compra, o usuário é direcionado para página de confirmação com botão para retornar a home, onde o total do carrinho retorna a zero.
-  - Página de erro caso navegue por uma página não existente(/*)
-  - Loading na página de produtos
+  - Página de registro onde só é apresentado o botão que apresenta as cartas se o usuário houver digitado seu nome.
+  - Caso o usuário revisite p site a página recupera o nome mas há possibilidade de trocar o nome.
+  - Tela de apresentação exibindo todas as cartas com seu conteúdo visível, uma imagém que é um botão para iniciar o sorteio.
+  - Ao clicar, as cartas ficam com suas costas voltadas pro usuário e uma mensagem pro usuário selecionar ma carta aparece.
+  - Botão para retornar ao topo da tela quando mostrado as cartas.
+  - Ao clicar, a carta sorteada aparece em destaque, juntamente com seu nome e uuma imagem que é um botão que quando clicados levam a página de descrição.
+  - Na página de resultado, há descrição da carta juntamente com sua imagem.
+  - Link para retorno a home quando clicado no logo.
+  - Links para as redes sociais da página Personare clicado nas respectivas imagens.
+  - Página de erro caso navegue por uma página não existente(/*).
   - Responsividade para mobile.
 
 ## 🔗Link Surge
@@ -41,14 +40,12 @@ Siga o passo-a-passo abaixo:
 | ----------------------- | ------------- |
 | Faça o Clone            | `git clone`   |
 | Instale as Dependências | `npm install` |
-| Utilize o Script Start  | `npm start`   |
+| Utilize o script Start  | `npm start`   |
 
 Por padrão a aplicação rodará localmente na porta 3000.
 
 ## 📚Bibliotecas Utilizadas
 
-- axios
-- react-hooks
 - react-router-dom
 - styled-components
 - sweet-alert2

@@ -3,14 +3,17 @@ import { CardBack, CardFront } from "../../components/Card";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { GlobalContext } from "../../global/GlobalContext";
-import Embaralhar from "../../assets/Embaralhar.jpeg";
+import Embaralhar from "../../assets/EmbaralharButton.jpeg";
+import EmbaralharAnimation from "../../assets/Embaralhar1.gif";
 import {
   HomeContainer,
   ContaiRegister,
   SuffleStyles,
   SuffleDiv,
   InitialContain,
+  GifOut,
 } from "../styles";
+import { ButtonConst } from "../../constants/buttonStyles";
 
 export const DrawPage = () => {
   const { name } = useContext(GlobalContext);
@@ -18,6 +21,10 @@ export const DrawPage = () => {
 
   const onClickButton = () => {
     setCardDisplay(!cardDisplay);
+  };
+
+  const goToTop = () => {
+    window.screenTop(0);
   };
 
   return (
@@ -56,7 +63,13 @@ export const DrawPage = () => {
         )}
         <br />
         {cardDisplay && <CardFront />}
-        {!cardDisplay && <CardBack />}
+        {!cardDisplay && (
+          <>
+            <GifOut src={EmbaralharAnimation} alt="Tarot cards" />
+            <CardBack />
+          </>
+        )}
+        <ButtonConst onClick={() => goToTop()}>Voltar ao topo</ButtonConst>
       </ContaiRegister>
       <Footer></Footer>
     </HomeContainer>

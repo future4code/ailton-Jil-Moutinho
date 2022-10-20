@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { lightGreyPersonare } from "../constants/colors";
 
 export const Container = styled.header`
-  //background-image: linear-gradient(to top, #666666, #eaeaea, white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +23,15 @@ export const LogoStyles = styled.img`
 `;
 
 export const ContainerFooter = styled(Container)`
-  background-image: linear-gradient(to bottom, #666666, #eaeaea, white);
+  background-image: linear-gradient(to bottom, #666666, #eaeaea, white, white);
   margin-top: 2%;
+  padding-top: 2rem;
+  gap: 10%;
+  height: 140px;
+`;
+
+export const CopyStyles = styled.img`
+  width: 4%;
 `;
 
 export const ContainerCards = styled.div`
@@ -33,8 +39,28 @@ export const ContainerCards = styled.div`
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5%;
+  gap: 1.2%;
   width: 100%;
+`;
+
+export const ContainCard = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1%;
+  width: 10rem;
+  height: 18rem;
+  img {
+    height: 90%;
+    box-shadow: 2px 4px 10px 0 grey;
+  }
+  :hover {
+    img {
+      height: 95%;
+      box-shadow: 0 8px 20px 0 grey;
+      rotate: -10deg;
+    }
+  }
 `;
 
 export const ContainResult = styled.div`
