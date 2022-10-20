@@ -10,7 +10,7 @@ export const Alldescriptions = [
       "Está ai uma carta muito importante! O Mago nas cartas de tarot indica que os instrumentos para desbravar o mundo foram adquiridos. Ou seja, os seus desejos em si foram materializados tornando-o capaz de agarrar as novas oportunidade. Comunicação é sua principal mensagem, portanto a tirá-la significa há capacidade para novos aprendizados. O mais importante é que essa mensagem vale para diversos âmbitos da vida. Profissional, pessoal, saúde, seja qual for a área a sabedoria está ao seu favor. Use com abundância e comece a ir em direção do sucesso.",
   },
   {
-    name: "A PAPISA",
+    name: "A SACERDOTISA",
     description:
       "Atenção para a Papisa! Também conhecida como “Sacerdotisa” essa é uma das cartas de tarot mais importantes, porque representa sabedoria, intuição, fé e revelações. No entanto, ao mesmo tempo, há duas possíveis interpretações para ela. A primeira é positiva e indica preparo para lidar com as situações, portanto muito relevante. A segunda possibilidade não é lá tão boa assim. A Papisa também pose sinalizar dificuldades para expressar sentimentos. Isto é, a falta de afeto vem trazendo uma introspecção e isso pode prejudicar muito na autocompreensão. A própria imagem diz, pois o livro na mão representa sabedoria. Contudo o olhar a frente traz uma necessidade de encaixar a sua sabedoria no mundo. O resultado é portanto a “atenção”. Mantenha seus planos consigo mesmo e não saia por ai espalhando seus projetos. A prática ainda exige amadurecimento.",
   },
@@ -55,7 +55,7 @@ export const Alldescriptions = [
       "Quando falamos em justiça logo nos vem a imagem de uma balança, pois o bem e o mal são seus maiores Pesos. Mas, o que a mensagem dessa carta nos diz é que devemos ter equilíbrio. Portanto o julgamento a base das aparências e das primeiras impressões não valem para sua analogia. Os instrumentos para sua atuação é a ética e a justiça universal. O caminho da luz e da escuridão sempre estarão presentes em nossas vidas e é a partir deste centro, dessa balança que devemos enfrentá-los. A melhor bússola para tomar as decisões é o coração, pois nele habita todas as repostas.",
   },
   {
-    name: "O ENFORCADO",
+    name: "HOMEM PENDURADO",
     description:
       "A princípio, o Enforcado é uma das cartas do tarot que mais causam medo. A imagem em si é assustadora e representa o estar perto da morte. Mas, se parar para observar bem, em todas as cartas a feição do Enforcado é tranquila e serena. Essa analogia é sinal de esperança, porque não há nada que o prende a esta situação. Não há nenhum tipo de instrumento que esteja o obrigando a estar nessa situação. Mesmo se a causa de ter chegado a essa situação foi imposta, a possibilidade de sair dela é muito grande. Basta tomar a decisão.",
   },
@@ -104,4 +104,9 @@ export const Alldescriptions = [
     description:
       "Por fim, se paramos para entender melhor o caminho feito pela “Trajetória do Louco”, “O mundo” é a conclusão. É aqui que aparece as conquistas feitas, os aprendizados adquiridos, as barreiras rompidas e toda a batalha travada. Agora, é só aproveitar dos benefícios gerados pelo esforço e usufruir do autoconhecimento.",
   },
+  {
+    name: "O IMPERADOR",
+    description:
+      "Esta carta nos mostra que sem vontade e persistência nossos desejos não saem do campo das ideias. A energia que o Imperador nos passa é que ele supera qualquer problema que chegue até ele. A confiança e segurança do Imperador nos remete a simbologia de estar no controle das emoções, um exemplo das energias masculinas. Esta imagem é paterna que representa as estruturas de segurança. Criando regras claras e um sistema para repassar seu conhecimento. Esta carta nos mostra um governante forte que lidera firmemente transpassando grande respeito. Como governante, ele lidera com mão firme e exige respeito e autoridade. Com um planejamento cuidadoso, uma abordagem altamente organizada e perseverança.",
+  }
 ];
