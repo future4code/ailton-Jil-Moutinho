@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { lightGreyPersonare } from "../constants/colors";
+import { lightGreyPersonare, orangePersonare } from "../constants/colors";
 
 export const Container = styled.header`
   display: flex;
@@ -30,6 +30,30 @@ export const ContainerFooter = styled(Container)`
   height: 140px;
 `;
 
+export const FooterPainel = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 350px;
+  height: 110px;
+`;
+
+export const ContainIcons = styled.div`
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: start;
+  width: 240px;
+  img {
+    width: 75px;
+    border-radius: 50%;
+    :hover {
+      box-shadow: 0 0 1rem 0 ${orangePersonare};
+      cursor: pointer;
+    }
+  }
+`;
+
 export const CopyStyles = styled.img`
   width: 4%;
 `;
@@ -39,7 +63,7 @@ export const ContainerCards = styled.div`
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.2%;
+  gap: 1%;
   width: 100%;
 `;
 
@@ -53,6 +77,7 @@ export const ContainCard = styled.div`
   img {
     height: 90%;
     box-shadow: 2px 4px 10px 0 grey;
+    border-radius: 4px;
   }
   :hover {
     img {
@@ -74,7 +99,7 @@ export const ContainResult = styled.div`
   }
   :hover {
     img {
-      width: 90px;
+      width: 85px;
       cursor: pointer;
     }
   }

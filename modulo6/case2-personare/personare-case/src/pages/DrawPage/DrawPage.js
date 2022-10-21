@@ -24,12 +24,12 @@ export const DrawPage = () => {
   };
 
   const goToTop = () => {
-    window.screenTop(0);
+    window.scroll(0,0);
   };
 
   return (
     <HomeContainer>
-      <Header></Header>
+      <Header id="header"></Header>
       <InitialContain>
         <h1>TAROT DO DIA</h1>
       </InitialContain>

@@ -25,7 +25,7 @@ export const InitialContain = styled.div`
 export const ContaiRegister = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 3% auto 0;
+  margin: 2% auto 0;
   border: 1px solid ${lightGreyPersonare};
   border-radius: 2rem;
   box-shadow: 2px 2px 8px 0 ${lightGreyPersonare};
@@ -41,7 +41,6 @@ export const ContainDraw = styled(ContaiRegister)`
 export const SuffleDiv = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
   height: 120px;
   :hover {
@@ -58,6 +57,7 @@ export const SuffleStyles = styled.img`
 `;
 
 export const ContainResult = styled.div`
+border: 1px red solid;
   display: flex;
   align-items: center;
   justify-content: center;

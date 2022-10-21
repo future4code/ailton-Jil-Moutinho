@@ -1,4 +1,4 @@
-export const Alldescriptions = [
+export const allDescriptions = [
   {
     name: "O LOUCO",
     description:
@@ -108,5 +108,229 @@ export const Alldescriptions = [
     name: "O IMPERADOR",
     description:
       "Esta carta nos mostra que sem vontade e persistência nossos desejos não saem do campo das ideias. A energia que o Imperador nos passa é que ele supera qualquer problema que chegue até ele. A confiança e segurança do Imperador nos remete a simbologia de estar no controle das emoções, um exemplo das energias masculinas. Esta imagem é paterna que representa as estruturas de segurança. Criando regras claras e um sistema para repassar seu conhecimento. Esta carta nos mostra um governante forte que lidera firmemente transpassando grande respeito. Como governante, ele lidera com mão firme e exige respeito e autoridade. Com um planejamento cuidadoso, uma abordagem altamente organizada e perseverança.",
-  }
+  },
+  {
+    name: "ÀS DE COPAS",
+    description: "Esta é uma das cartas mais positivas de todo o baralho; é sinal de que você terá a proteção de Deus em relação à questão que você colocou.",
+  },
+  {
+    name: "2 DE COPAS",
+    description: "Se você já tiver um relacionamento amoroso, é sinal de que viverá um período de estabilidade, forte comunicação e sintonia com o seu par.",
+  },
+  {
+    name: "3 DE COPAS",
+    description: "arcano25.jpg",
+  },
+  {
+    name: "4 DE COPAS",
+    description: "arcano26.jpg",
+  },
+  {
+    name: "5 DE COPAS",
+    description: "arcano27.jpg",
+  },
+  {
+    name: "6 DE COPAS",
+    description: "arcano28.jpg",
+  },
+  {
+    name: "7 DE COPAS",
+    description: "arcano29.jpg",
+  },
+  {
+    name: "8 DE COPAS",
+    description: "arcano30.jpg",
+  },
+  {
+    name: "9 DE COPAS",
+    description: "arcano31.jpg",
+  },
+  {
+    name: "10 DE COPAS",
+    description: "arcano32.jpg",
+  },
+  {
+    name: "PRINCESA DE COPAS",
+    description: "arcano33.jpg",
+  },
+  {
+    name: "CAVALEIRO DE COPAS",
+    description: "arcano34.jpg",
+  },
+  {
+    name: "RAINHA DE COPAS",
+    description: "arcano35.jpg",
+  },
+  {
+    name: "REI DE COPAS",
+    description: "arcano36.jpg",
+  },
+  {
+    name: "ÀS DE ESPADAS",
+    description: "arcano37.jpg",
+  },
+  {
+    name: "2 DE ESPADAS",
+    description: "arcano38.jpg",
+  },
+  {
+    name: "3 DE ESPADAS",
+    description: "arcano39.jpg",
+  },
+  {
+    name: "4 DE ESPADAS",
+    description: "arcano40.jpg",
+  },
+  {
+    name: "5 DE ESPADAS",
+    description: "arcano41.jpg",
+  },
+  {
+    name: "6 DE ESPADAS",
+    description: "arcano42.jpg",
+  },
+  {
+    name: "7 DE ESPADAS",
+    description: "arcano43.jpg",
+  },
+  {
+    name: "8 DE ESPADAS",
+    description: "arcano44.jpg",
+  },
+  {
+    name: "9 DE ESPADAS",
+    description: "arcano45.jpg",
+  },
+  {
+    name: "10 DE ESPADAS",
+    description: "arcano46.jpg",
+  },
+  {
+    name: "PRINCESA DE ESPADAS",
+    description: "arcano47.jpg",
+  },
+  {
+    name: "CAVALEIRO DE ESPADAS",
+    description: "arcano48.jpg",
+  },
+  {
+    name: "RAINHA DE ESPADAS",
+    description: "arcano49.jpg",
+  },
+  {
+    name: "REI DE ESPADAS",
+    description: "arcano50.jpg",
+  },
+  {
+    name: "ÀS DE PAUS",
+    description: "arcano51.jpg",
+  },
+  {
+    name: "2 DE PAUS",
+    description: "arcano52.jpg",
+  },
+  {
+    name: "3 DE PAUS",
+    description: "arcano53.jpg",
+  },
+  {
+    name: "4 DE PAUS",
+    description: "arcano54.jpg",
+  },
+  {
+    name: "5 DE PAUS",
+    description: "arcano55.jpg",
+  },
+  {
+    name: "6 DE PAUS",
+    description: "arcano56.jpg",
+  },
+  {
+    name: "7 DE PAUS",
+    description: "arcano57.jpg",
+  },
+  {
+    name: "8 DE PAUS",
+    description: "arcano58.jpg",
+  },
+  {
+    name: "9 DE PAUS",
+    description: "arcano59.jpg",
+  },
+  {
+    name: "10 DE PAUS",
+    description: "arcano60.jpg",
+  },
+  {
+    name: "PRINCESA DE PAUS",
+    description: "arcano61.jpg",
+  },
+  {
+    name: "CAVALEIRO DE PAUS",
+    description: "arcano62.jpg",
+  },
+  {
+    name: "RAINHA DE PAUS",
+    description: "arcano63.jpg",
+  },
+  {
+    name: "REI DE PAUS",
+    description: "arcano64.jpg",
+  },
+  {
+    name: "ÀS DE OUROS",
+    description: "arcano65.jpg",
+  },
+  {
+    name: "2 DE OUROS",
+    description: "arcano66.jpg",
+  },
+  {
+    name: "3 DE OUROS",
+    description: "arcano67.jpg",
+  },
+  {
+    name: "4 DE OUROS",
+    description: "arcano68.jpg",
+  },
+  {
+    name: "5 DE OUROS",
+    description: "arcano69.jpg",
+  },
+  {
+    name: "6 DE OUROS",
+    description: "arcano70.jpg",
+  },
+  {
+    name: "7 DE OUROS",
+    description: "arcano71.jpg",
+  },
+  {
+    name: "8 DE OUROS",
+    description: "arcano72.jpg",
+  },
+  {
+    name: "9 DE OUROS",
+    description: "arcano73.jpg",
+  },
+  {
+    name: "10 DE OUROS",
+    description: "arcano74.jpg",
+  },
+  {
+    name: "PRINCESA DE OUROS",
+    description: "arcano75.jpg",
+  },
+  {
+    name: "CAVALEIRO DE OUROS",
+    description: "arcano76.jpg",
+  },
+  {
+    name: "RAINHA DE OUROS",
+    description: "arcano77.jpg",
+  },
+  {
+    name: "REI DE OUROS",
+    description: "arcano78.jpg",
+  },
 ];

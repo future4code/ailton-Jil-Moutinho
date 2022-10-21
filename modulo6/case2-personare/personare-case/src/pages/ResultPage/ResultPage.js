@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { imagesURL } from "../../constants/url";
+import { allDescriptions } from "../../constants/description";
 import { GlobalContext } from "../../global/GlobalContext";
 import {
   HomeContainer,
@@ -20,6 +21,10 @@ export const ResultPage = () => {
     (hojeISO.getMonth() + 1) +
     "/" +
     hojeISO.getFullYear();
+
+  const descriptionItem = allDescriptions.find(
+    (item) => item?.name === cardChoise.name
+  );
 
   return (
     <HomeContainer>
@@ -43,19 +48,8 @@ export const ResultPage = () => {
             </p>
             <br />
             <p>
-              <strong>Jogo de {name}: </strong> Esta carta do Tarot
-              como arcano conselheiro, sugerindo ser este o período mais do
-              que adequado para que você {name}, identifique as áreas da sua vida que
-              estejam paradas. É chegada a hora de romper com essa estagnação,
-              descobrindo no mais profundo da própria alma uma série de recursos
-              que lhe permitirão viver a vida com muito mais prazer. É provável
-              que você, por puro hobby, comece uma nova atividade e que isso lhe
-              dê novamente um desejo de viver com mais intensidade. Você também
-              poderia pensar em conhecer novos lugares e se abrir à amizades com
-              novas pessoas. Esta renovação, ainda que profissional ou
-              estudantil, termina afetando positivamente outras áreas mais
-              abstratas da sua vida, como a espiritual e principalmente a
-              afetiva.
+              <strong>Jogo de {name}: </strong> Esta carta, {name},{" "}
+              {descriptionItem.description}
             </p>
             <br />
             <p>
@@ -65,10 +59,6 @@ export const ResultPage = () => {
             <br />
           </div>
         </ContainResult>
-        <p>
-          O que achou do Tarot do dia {hoje}?{" "}
-          <a href="www.google.com">Conte para gente!</a>
-        </p>
       </ContaiRegister>
       <Footer></Footer>
     </HomeContainer>
