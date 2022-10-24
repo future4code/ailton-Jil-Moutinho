@@ -1,10 +1,11 @@
 export interface ILoginInputDTO {
-  first_name: string;
-  last_name: string;
+  nickname: string;
   password: string;
 }
 
 export interface ISignupInputDTO extends ILoginInputDTO {
+  first_name: string;
+  last_name: string;
   partnership: number;
 }
 
@@ -13,8 +14,7 @@ export interface IUserDB extends ISignupInputDTO {
 }
 
 export interface IDelUserInputDTO {
-  first_name: string;
-  last_name: string;
+  nickname: string;
   token: string;
 }
 
@@ -23,6 +23,7 @@ export class User {
     private id: string,
     private first_name: string,
     private last_name: string,
+    private nickname: string,
     private partnership: number,
     private password: string
   ) {}
@@ -41,6 +42,10 @@ export class User {
 
   public getPartnership = () => {
     return this.partnership;
+  };
+
+  public getNickname = () => {
+    return this.nickname;
   };
 
   public getPassword = () => {

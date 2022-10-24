@@ -12,10 +12,11 @@ export class UserController {
   public signup = async (req: Request, res: Response) => {
     try {
       const input: ISignupInputDTO = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        first_name: req.body.first_name!,
+        last_name: req.body.last_name!,
+        nickname: req.body.nickname!,
         partnership: Number(req.body.partnership),
-        password: req.body.password
+        password: req.body.password!
       };
       
       const response = await this.userBusiness.signupUser(input);
@@ -28,8 +29,7 @@ export class UserController {
   public login = async (req: Request, res: Response) => {
     try {
       const user: ILoginInputDTO = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        nickname: req.body.nickname,
         password: req.body.password,
       };
       const response = await this.userBusiness.loginUser(user);
@@ -53,8 +53,7 @@ export class UserController {
   public deleteUser = async (req: Request, res: Response) => {
     try {
       const user: IDelUserInputDTO = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        nickname: req.body.nickname!,
         token: req.headers.authorization!,
       };
       const response = await this.userBusiness.delPartnership(user);

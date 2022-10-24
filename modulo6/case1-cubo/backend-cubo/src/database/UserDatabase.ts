@@ -9,6 +9,7 @@ export class UserDatabase extends BaseDatabase {
       id: user.getId(),
       first_name: user.getFirstName(),
       last_name: user.getLastName(),
+      nickname: user.getNickname(),
       partnership: user.getPartnership(),
       password: user.getPassword(),
     };
@@ -16,15 +17,13 @@ export class UserDatabase extends BaseDatabase {
     return `Member ${user.getFirstName()} register successfully.`;
   };
 
-  public getUserByFullName = async (
-    first_name: string,
-    last_name: string
-  ): Promise<IUserDB | undefined> => {
+  public getUserByNickname = async (
+    nickname: string,
+   ): Promise<IUserDB | undefined> => {
     const usersDB: IUserDB[] = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_USERS)
-      .where({ first_name })
-      .andWhere({ last_name });
+      .where({ nickname });
     return usersDB[0];
   };
 

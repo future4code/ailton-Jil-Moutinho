@@ -23,10 +23,10 @@ export class UserBusiness {
   ) {}
 
   public signupUser = async (input: ISignupInputDTO) => {
-    const { first_name, last_name, password } = input;
+    const { first_name, last_name, nickname, password } = input;
     const partnership = Number(input.partnership);
 
-    if (!first_name || !last_name || !password || !partnership) {
+    if (!first_name || !last_name || !nickname || !password || !partnership) {
       throw new ParamsError();
     }
 
@@ -40,14 +40,11 @@ export class UserBusiness {
       );
     }
 
-    if (typeof password !== "string" || password.length < 6) {
+    if (password.length < 6) {
       throw new ParamsError("Your password must have at least 6 characters");
     }
 
-    const userDB = await this.userDatabase.getUserByFullName(
-      first_name,
-      last_name
-    );
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
 
     if (userDB) {
       throw new ConflictError("Member already registered");
@@ -60,6 +57,7 @@ export class UserBusiness {
       id,
       first_name,
       last_name,
+      nickname,
       partnership,
       hashedPassword
     );
@@ -78,22 +76,18 @@ export class UserBusiness {
   };
 
   public loginUser = async (input: ILoginInputDTO) => {
-    const first_name = input.first_name;
-    const last_name = input.last_name;
+    const nickname = input.nickname;
     const password = input.password;
 
-    if (!first_name || !last_name || !password) {
+    if (!nickname || !password) {
       throw new ParamsError();
     }
 
-    if (typeof password !== "string" || password.length < 6) {
+    if (password.length < 6) {
       throw new ParamsError("Your password must have at least 6 characters");
     }
 
-    const userDB = await this.userDatabase.getUserByFullName(
-      first_name,
-      last_name
-    );
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
 
     if (!userDB) {
       throw new NotFoundError("Member not found");
@@ -103,6 +97,7 @@ export class UserBusiness {
       userDB.id,
       userDB.first_name,
       userDB.last_name,
+      userDB.nickname,
       userDB.partnership,
       userDB.password
     );
@@ -120,7 +115,7 @@ export class UserBusiness {
     const token = this.authenticator.generateToken(payload);
 
     const response = {
-      message: "you are logged in!",
+      message: "You are logged in!",
       token,
     };
 
@@ -139,9 +134,9 @@ export class UserBusiness {
   };
 
   public delPartnership = async (input: IDelUserInputDTO) => {
-    const { first_name, last_name, token } = input;
+    const { nickname, token } = input;
 
-    if (!first_name || !last_name || !token) {
+    if (!nickname || !token) {
       throw new ParamsError();
     }
 
@@ -151,10 +146,7 @@ export class UserBusiness {
       throw new AuthenticationError();
     }
 
-    const userDB = await this.userDatabase.getUserByFullName(
-      first_name,
-      last_name
-    );
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
 
     if (!userDB) {
       throw new NotFoundError("Member not found");
@@ -164,6 +156,7 @@ export class UserBusiness {
       userDB.id,
       userDB.first_name,
       userDB.last_name,
+      userDB.nickname,
       userDB.partnership,
       userDB.password
     );
