@@ -40,7 +40,7 @@ export class RecipeData extends BaseDataBase {
     }
   }
 
-  public async getRecipeByFollowerId(user_id: string): Promise<any> {
+  public async getRecipeByFollowerId (user_id: string): Promise<any> {
     const result = await this.getConnection()
       .select(
         "recipe_id",
