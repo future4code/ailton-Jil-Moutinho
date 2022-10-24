@@ -40,7 +40,18 @@ describe("Testando a UserBusiness", () => {
     expect(response.token).toBe("token-mock");
   });
 
-  //Ex1 Teste de Erros para singUp
+ /*  test("Return when del user", async () => {
+    const input: ILoginInputDTO = {
+      nickname: "Mia",
+      password: "asdfg123",
+    };
+
+    const response = await userBusiness.loginUser(input);
+    expect(response.message).toBe("You are logged in!");
+    expect(response.token).toBe("token-mock");
+  }); */
+
+  //Teste de Erros para singUp
   /* test("Usuário se cadastra com tipo de partnership diferente de number", async () => {
     expect.assertions(2);
 
@@ -105,7 +116,7 @@ describe("Testando a UserBusiness", () => {
     }
   });
 
-  //Ex2 Teste de Erros para Login
+  //Teste de Erros para Login
   test("Usuário tenta logar com senha menor que 6 caracteres", async () => {
     expect.assertions(2);
 
@@ -157,4 +168,7 @@ describe("Testando a UserBusiness", () => {
       }
     }
   });
+
+  //Teste de Erros para deletar usuário
+
 });
