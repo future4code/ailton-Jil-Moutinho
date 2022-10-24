@@ -1,0 +1,76 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### 1) Get all products
+GET http://localhost:3003/product/all
+
+### 2) Get product by id
+GET http://localhost:3003/product/byId
+Content-Type: application/json
+
+{
+    "id": "79"
+}
+
+### 3) POST cart
+POST http://localhost:3003/cart/create
+Content-Type: application/json
+
+{
+    "client_name": "Mia",
+    "delivery_date": "2022/11/10"
+}
+
+### 4) Post purchase
+POST http://localhost:3003/product/purchase
+Content-Type: application/json
+
+{
+"id_cart": "e25b2458-937f-4dc1-a7af-3d201c54fdbf",
+"id_product": "79",
+"price": 7.99
+}
+
+### 5) Put add purchase
+PUT http://localhost:3003/product/addOnPurchase
+Content-Type: application/json
+
+{
+"id_product": "16",
+"id_purchase": "a75f7f67-9474-4a5c-9a93-c89ccd4acd70"
+}
+
+### 6) Put sub purchase
+PUT http://localhost:3003/product/subOnPurchase
+Content-Type: application/json
+
+{
+"id_product": "16",
+"id_purchase": "4221e6e4-dc93-41b9-9381-651c06d14de6"
+}
+
+### 7) Get all purchase
+GET http://localhost:3003/product/allPurchase
+Content-Type: application/json
+
+{
+"id_cart": "e25b2458-937f-4dc1-a7af-3d201c54fdbf"
+}
+
+### 8) Put balance of all purchase
+PUT http://localhost:3003/cart/balance
+Content-Type: application/json
+
+{
+"id_cart": "44b5181c-32b6-436d-956b-3e0e75356443"
+}
+
+### 9) Del purchase
+DELETE http://localhost:3003/product/delPurchase
+Content-Type: application/json
+
+{
+"id_purchase": "67f5dc64-4ff0-4108-bcf3-1bb54ad318c7"
+}
+
+##############################
