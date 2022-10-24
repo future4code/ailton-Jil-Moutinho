@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   lightGreyPersonare,
   pinkPersonare,
@@ -57,13 +57,16 @@ export const SuffleStyles = styled.img`
 `;
 
 export const ContainResult = styled.div`
-border: 1px red solid;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4%;
   gap: 10%;
   text-align: justify;
+  @media screen and (max-width: 480px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 `;
 
 export const GifOut = styled.img`

@@ -13,3 +13,7 @@
   export const goBack = (navigate) => {
     navigate(-1);
   };
+
+  export const goToTop = () => {
+    window.scroll(0, 0);
+  };

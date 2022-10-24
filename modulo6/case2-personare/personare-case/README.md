@@ -1,4 +1,4 @@
-<h2 align="center">🔮🃏✨ Projeto Teste Shopper 🕯🧿☪️ </h2>
+<h2 align="center">🔮🃏✨ Projeto Tarot 🕯🧿☪️ </h2>
 
 <h4 align="justify">
 Elaboração de site (frontend) com cadastro do nome do usuário para poder realizar o sorteio das cartas. 
@@ -30,17 +30,18 @@ Foi recebido um arquivo tarot.json, que é uma lista com as cartas, seus nomes e
 
 ## 🔗Link Surge
 
-- http://case-shopper.surge.sh
+- https://tarot-jil.surge.sh/
 
 ## 💻Como Rodar o Projeto Localmente
 
 Siga o passo-a-passo abaixo:
 
-| Tarefa                  | Comando       |
-| ----------------------- | ------------- |
-| Faça o Clone            | `git clone`   |
-| Instale as Dependências | `npm install` |
-| Utilize o script Start  | `npm start`   |
+| Tarefa                  | Comando        |
+| ----------------------- | -------------- |
+| Faça o Clone            | `git clone`    |
+| Entre na pasta          | `cd nomepasta` |
+| Instale as Dependências | `npm install`  |
+| Utilize o script Start  | `npm start`    |
 
 Por padrão a aplicação rodará localmente na porta 3000.
 

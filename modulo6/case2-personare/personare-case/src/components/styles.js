@@ -18,8 +18,11 @@ export const Container = styled.header`
 `;
 
 export const LogoStyles = styled.img`
-  width: 12%;
+  width: 10%;
   margin: 0 auto;
+  @media screen and (max-width: 480px) {
+    width: 34%;
+  }
 `;
 
 export const ContainerFooter = styled(Container)`
@@ -28,6 +31,9 @@ export const ContainerFooter = styled(Container)`
   padding-top: 2rem;
   gap: 10%;
   height: 140px;
+  @media screen and (max-width: 480px) {
+    height: fit-content;
+  }
 `;
 
 export const FooterPainel = styled.div`

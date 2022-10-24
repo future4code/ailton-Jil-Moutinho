@@ -5,6 +5,7 @@ import { Header } from "../../components/Header";
 import { GlobalContext } from "../../global/GlobalContext";
 import Embaralhar from "../../assets/EmbaralharButton.jpeg";
 import EmbaralharAnimation from "../../assets/Embaralhar1.gif";
+import { goToTop } from "../../routes/coordinator";
 import {
   HomeContainer,
   ContaiRegister,
@@ -21,10 +22,6 @@ export const DrawPage = () => {
 
   const onClickButton = () => {
     setCardDisplay(!cardDisplay);
-  };
-
-  const goToTop = () => {
-    window.scroll(0,0);
   };
 
   return (

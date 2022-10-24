@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../global/GlobalContext";
+import React from "react";
 import Logo from "../assets/Logo.jpeg";
 import { Container, LogoStyles } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { goToRegister } from "../routes/coordinator";
 
 export const Header = () => {
-  const { name } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   return (

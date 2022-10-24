@@ -6,7 +6,7 @@ import { ContainerCards, ContainResult, ContainCard } from "./styles";
 import Interpretacao from "../assets/Ler.jpeg";
 import { allCards } from "../constants/allCards";
 import { useNavigate } from "react-router-dom";
-import { goToResult } from "../routes/coordinator";
+import { goToResult, goToTop } from "../routes/coordinator";
 import { SuffleDiv } from "../pages/styles";
 
 export const CardFront = () => {
@@ -40,6 +40,11 @@ export const CardBack = () => {
     );
   });
 
+  const changePage = (navigate) => {
+    goToResult(navigate);
+    goToTop();
+  };
+
   return (
     <ContainerCards>
       {!isChoosen && cardsBack}
@@ -56,14 +61,10 @@ export const CardBack = () => {
               <strong>{cardChoise?.name}</strong>
             </p>
             <br />
-            <SuffleDiv onClick={() => goToResult(navigate)}>
-              <img
-                src={Interpretacao}
-                alt="Mão com duas cartas de tarot"
-                onClick={() => goToResult(navigate)}
-              />
+            <SuffleDiv onClick={() => changePage(navigate)}>
+              <img src={Interpretacao} alt="Mão com duas cartas de tarot" />
               <p>Interpretação</p>
-              </SuffleDiv>
+            </SuffleDiv>
           </ContainResult>
         </>
       )}

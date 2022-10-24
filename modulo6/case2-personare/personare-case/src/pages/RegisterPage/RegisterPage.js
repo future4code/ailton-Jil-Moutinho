@@ -4,15 +4,17 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { ButtonConst } from "../../constants/buttonStyles";
 import { GlobalContext } from "../../global/GlobalContext";
-import { goDraw } from "../../routes/coordinator";
+import { goDraw, goToTop } from "../../routes/coordinator";
 import Start from "../../assets/StartTarot.gif";
 import {
   HomeContainer,
   ContaiRegister,
   InitialContain,
   GifOutIntro,
-  NameInput
+  NameInput,
 } from "../styles";
+
+
 
 export const RegisterPage = () => {
   const { setName, name } = useContext(GlobalContext);
@@ -21,6 +23,11 @@ export const RegisterPage = () => {
   const handleName = (event, value) => {
     setName(event.target.value);
     localStorage.setItem("name", event.target.value);
+  };
+
+  const tst = (navigate) => {
+    goToTop();
+    goDraw(navigate);
   };
 
   return (
@@ -59,9 +66,7 @@ export const RegisterPage = () => {
         </p>
         <br />
         {name && (
-          <ButtonConst onClick={() => goDraw(navigate)}>
-            Ver as cartas
-          </ButtonConst>
+          <ButtonConst onClick={() => tst(navigate)}>Ver as cartas</ButtonConst>
         )}
       </ContaiRegister>
       <Footer></Footer>

@@ -111,226 +111,282 @@ export const allDescriptions = [
   },
   {
     name: "ÀS DE COPAS",
-    description: "Esta é uma das cartas mais positivas de todo o baralho; é sinal de que você terá a proteção de Deus em relação à questão que você colocou.",
+    description:
+      "O significado da carta de tarot Ás de Copas pode ser resumido como de amor puro e inócuo, trazendo alegria e felicidade para sua vida. Esta carta é incrivelmente lisonjeira para seus relacionamentos românticos, mas também é uma vitamina de positividade para todas as áreas da vida. Quando esta carta de Arcanos Menores aparece em uma leitura de tarot, você pode ter certeza de que grandes coisas estão vindo em sua direção. O Ás de Copas é o ponto de partida da nossa jornada através das Copas, que é um naipe associado ao elemento água. É um elemento de emoções, intuição e criatividade. Tal como acontece com todos os Ases no baralho de Tarot, este Ás representa uma janela de oportunidade à qual você precisa prestar atenção. Depende de você agarrar a chance e aproveitá-la ao máximo.",
   },
   {
     name: "2 DE COPAS",
-    description: "Se você já tiver um relacionamento amoroso, é sinal de que viverá um período de estabilidade, forte comunicação e sintonia com o seu par.",
+    description:
+      "O significado da carta do tarot Dois de Copas está intimamente ligado às relações humanas, como relacionamento e parcerias. Abrange compromissos e cooperação, bem como conexão e harmonia. Quando esta carta dos Arcanos Menores aparece em uma leitura de tarot, geralmente é interpretada de forma muito positiva. Representando as possibilidades de um novo amor e relacionamentos saudáveis, bem como harmonia e equilíbrio em suas interações consigo mesmo e com os outros.",
   },
   {
     name: "3 DE COPAS",
-    description: "arcano25.jpg",
+    description:
+      "O significado da carta do tarot Três de Copas traz conforto e alívio para uma pessoa que está procurando. Representa encontros sociais, comemorações, espírito de equipe elevado e abundância. Esta carta Arcanos Menores é um sinal de boas-vindas que encerra um período desafiador muitas vezes marcado por tensões e problemas. Agora é a hora de reunir seus amigos e comemorar. O vento finalmente está nas suas costas e está levando você para o sucesso.",
   },
   {
     name: "4 DE COPAS",
-    description: "arcano26.jpg",
+    description:
+      "O significado da carta do tarot Quatro de Copas demonstra a insatisfação com o estado atual das coisas e a necessidade de refletir sobre onde você está e para onde pretende ir. É uma carta de arcanos menores que indica a existência de coisas boas em nossas vidas que não podemos notar no momento. Portanto, sua aparência pode ser interpretada tanto como um sinal de alerta, quanto como um alerta para as oportunidades que nos cercam. ",
   },
   {
     name: "5 DE COPAS",
-    description: "arcano27.jpg",
+    description:
+      "A carta Cinco de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Cinco de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral é uma carta carregada de emoções negativas, ou foco excessivo em coisas negativas. ",
   },
   {
     name: "6 DE COPAS",
-    description: "arcano28.jpg",
+    description:
+      "A carta Seis de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Seis de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral é uma carta carregada de emoções de nostalgia, e se foca no passado do consulente. ",
   },
   {
     name: "7 DE COPAS",
-    description: "arcano29.jpg",
+    description:
+      "A carta Sete de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Sete de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral é uma carta que aparece quando seus sentimentos de desejo estão em desarmonia com sua força de vontade de alcançar o que almeja.",
   },
   {
     name: "8 DE COPAS",
-    description: "arcano30.jpg",
+    description:
+      "A carta Oito de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Oito de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral é uma carta que aparece quando seus sentimentos de abandono, seja em relação à pessoas, objetivos ou planos.",
   },
   {
     name: "9 DE COPAS",
-    description: "arcano31.jpg",
+    description:
+      "A carta Nove de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Nove de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral é uma carta que aparece quando seus mais profundos desejos estão prestes a se realizar.",
   },
   {
     name: "10 DE COPAS",
-    description: "arcano32.jpg",
+    description:
+      "A carta Dez de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Dez de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral ela representa um momento de extrema satisfação emocional e pessoal, em todos os aspectos da vida do consulente. ",
   },
   {
     name: "PRINCESA DE COPAS",
-    description: "arcano33.jpg",
+    description:
+      "A carta Valete de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Valete de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral ela representa um momento em que o consulente precisa acolher o seu lado infantil e liberar a sua criança interior. ",
   },
   {
     name: "CAVALEIRO DE COPAS",
-    description: "arcano34.jpg",
+    description:
+      "A carta Cavaleiro de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Cavaleiro de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral ela representa um momento em que o consulente pode receber propostas, boas notícias e convites. Pois há um seguimento bom em sua vida, mantendo sua integridade ao mesmo tempo em que progride.",
   },
   {
     name: "RAINHA DE COPAS",
-    description: "arcano35.jpg",
+    description:
+      "A carta Rainha de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, a Rainha de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral ela representa um momento sensibilidade, gentileza e afeição, especialmente de figuras femininas. ",
   },
   {
     name: "REI DE COPAS",
-    description: "arcano36.jpg",
+    description:
+      "A carta Rei de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, o Rei de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral ela representa um momento de honestidade, gentileza e calor humano na vida do consulente.",
   },
   {
     name: "ÀS DE ESPADAS",
-    description: "arcano37.jpg",
+    description:
+      "O Ás de Espadas é a primeira carta em nosso tour pelas Espadas, que é um naipe associado ao elemento Ar. É um elemento da mente, intelecto, comunicação, atitudes e estresse. Tal como acontece com todos os Ases no baralho de Tarot, este Ás incorpora uma janela de oportunidade que você precisa prestar atenção. Cabe a você aproveitar a oportunidade e usá-la em seu benefício.",
   },
   {
-    name: "2 DE ESPADAS",
-    description: "arcano38.jpg",
+    name: "2 DE ESPADAS ,",
+    description:
+      "Com o dois de Espadas você se encontra em uma encruzilhada e se sentindo confuso diante de uma decisão difícil. Você é solicitado a pesar os pontos positivos e negativos de uma situação e tomar uma decisão clara ou escolher o que resolverá a situação. Sua capacidade de pesar nas opções definirá o quão harmonioso é o resultado.",
   },
   {
     name: "3 DE ESPADAS",
-    description: "arcano39.jpg",
+    description:
+      "O Três de Espadas é uma carta do tarot do Arcanos Menores. Ela simboliza a dor, infelicidade e tristeza. É uma carta de perdas e dificuldades em superá-las. Ela aparece no jogo para fazer encarar a dor e superá-la para, então, seguir em frente. Ela nos ensina que a vida é cíclica e com ela também nossas emoções. Mesmo que hoje a dor parece rasgar o peito com sua espada, amanhã, com muita luta e fé, a felicidade retorna.",
   },
   {
     name: "4 DE ESPADAS",
-    description: "arcano40.jpg",
+    description:
+      "A quarta carta dos Arcanos Menores do naipe de espadas traz a mensagem de descanso e rejuvenescimento. Ela aparece no jogo para mostrar que é o momento de parar para cuidar de si mesmo e daqueles que amamos. Ela ensina que o descanso e a reclusão são as melhores armas contra o estresse, a ansiedade e o desespero causados pelos conflitos que aparecem na vida.",
   },
   {
     name: "5 DE ESPADAS",
-    description: "arcano41.jpg",
+    description:
+      "Esta carta traz consigo a força dos conflitos. A derrota é iminente e é preciso aceitá-la para poder sobreviver à próxima luta que ainda está por vir. Os ferimentos ainda estão abertos e a sensação de impotência toma conta de cada parte do corpo levando à descrença natural. É preciso agir, mas agir com cautela, sempre analisando cada passo dado para que o vencedor não acabe se transformando no derrotado.",
   },
   {
     name: "6 DE ESPADAS",
-    description: "arcano42.jpg",
+    description:
+      "É momento de deixar o passado para trás e empenhar todos os esforços no futuro maravilhoso que se descortina à sua frente. É muito importante enfrentar os sentimentos negativos que se acumularam dentro de si ao longo dos anos para conseguir seguir adiante. Ainda existem alguns obstáculos a enfrentar, mas eles se tornam mais fáceis quando aprendemos com os erros do passado. São estes erros que nos preparam para o futuro. ",
   },
   {
     name: "7 DE ESPADAS",
-    description: "arcano43.jpg",
+    description:
+      "A sétima carta dos Arcanos Menores traz consigo a força da deslealdade e desconfiança. É difícil acreditar naqueles que estão em seu círculo de convívio, pois as mentiras e trapaças acabam impondo restrições para conseguir se abrir ao outro. Os relacionamentos ficam abalados e os sentimentos se tornam pesados no peito, arrastando a pessoa para uma decepção indescritível. Às vezes você é o trapaceiro, às vezes a vítima, independentemente da sua posição nesta história, o momento é de colocar a mão na consciência, pesar as consequências e consertar o que está errado.",
   },
   {
     name: "8 DE ESPADAS",
-    description: "arcano44.jpg",
+    description:
+      "A oitava carta dos Arcanos Menores surge para mostrar que a pessoa está sendo sabotada pelos próprios medos e pensamentos. A frustração por não conseguir resolver todos os problemas no momento desejado acaba se acumulando e transformando-se em monstros que habitam a mente e aparecem a todo momento para inibir a pessoa e fazê-la acreditar que é fraca e impotente. A perda do autocontrole é iminente e corre-se o risco de não conseguir se concentrar novamente. É preciso se controlar. É preciso retirar as vendas dos olhos, enxergar a real situação em que se encontra, analisar as opções disponíveis e trabalhar para mudar o destino. Você é o único responsável por si mesmo.",
   },
   {
     name: "9 DE ESPADAS",
-    description: "arcano45.jpg",
+    description:
+      "O nove de espadas é uma carta dos Arcanos Menores e carrega consigo o peso da culpa e do arrependimento. Os medos irracionais atrapalham o sono, trazendo pesadelos e terrores noturnos que inibem a pessoa a continuar em frente. A angústia e o desespero são muito presentes na vida e se tornam a cada dia mais poderosos, com tal grandiosidade que é quase impossível se ver vivendo sem eles. É preciso ter cuidado para não se agarrar a esses sentimentos e acreditar que a sua vida está completamente ligada à eles. É possível voltar a respirar aliviado novamente, basta conseguir deixar para trás a culpa do passado e assumir o perdão como uma das formas de seguir em frente. ",
   },
   {
     name: "10 DE ESPADAS",
-    description: "arcano46.jpg",
+    description:
+      "A décima carta dos Arcanos Menores aparece com o poder do fim em suas previsões. É uma das muitas cartas desse naipe que representa o fracasso, mas, diferente das outras, ela vem com a força do desastre que não pode ser evitada. A ruína é fatal e a devastação pulsante dentro da alma, o que dificulta a recuperação do golpe recebido. Não há como fugir, apenas aceitar e permanecer forte para conseguir superar e se recuperar do impacto dos destroços ao seu redor.",
   },
   {
     name: "PRINCESA DE ESPADAS",
-    description: "arcano47.jpg",
+    description:
+      "O Valete de Espadas possui uma personalidade analítica e estratégica. Ele aparece no jogo para aprofundar questões que devem ser resolvidas com atenção e foco, e decisões importantes que não podem mais ser adiadas. Ela também alerta sobre mudanças trazidas com o vento, algumas já muito aguardadas. Sua natureza enérgica coloca a vida em um movimento mais rápido e é preciso pisar no freio para não acabar se perdendo no meio do caminho, deixando coisas inacabadas para trás.",
   },
   {
     name: "CAVALEIRO DE ESPADAS",
-    description: "arcano48.jpg",
+    description:
+      "O cavaleiro de espadas é um carta que traz a mudança em sua essência. Podem ser mudanças às quais já se espera e deseja, como pode ser o destino batendo à porta para cobrar as coisas que foram deixadas de lado e não foram resolvidas no tempo certo, por medo de se encarar as consequências. Independente da leitura, ele sempre alerta para a impulsividade, para o não agir na empolgação e acabar atingindo terrenos nebulosos por conta da falta de estratégia e sabedoria nas escolhas.",
   },
   {
     name: "RAINHA DE ESPADAS",
-    description: "arcano49.jpg",
+    description:
+      "A rainha de espadas é esperta, astuta e estratégica. Ela aparece como uma pessoa pronta a ajudá-lo com conselhos valiosos e que devem ser escutados com atenção. Trata-se de um aliado muito importante para você conseguir seguir seu caminho sem cair em armadilhas espalhadas por aqueles que o querem derrotado. Quando ela aparece no jogo, ela vem para alertar que, se utilizar somente de emoções para traçar seu plano, pode levá-lo ao fracasso da escolha. O momento é de agir com a razão e analisar todos os fatos que se apresentam, antes de seguir em frente.",
   },
   {
     name: "REI DE ESPADAS",
-    description: "arcano50.jpg",
+    description:
+      "O Rei de Espadas é uma carta que traz consigo a força do raciocínio lógico como sua maior arma para enfrentar as dificuldades que se apresentam ao longo do caminho. Influenciar as pessoas à sua volta através de atitudes e conselhos é uma das características mais marcantes dessa carta. Pode ser que ajudas inesperadas venham ao seu encontro para lançar a luz no final do túnel, ou você encontre o que precisa dentro de si mesmo, o importante aqui é perceber que a inteligência, a estratégia e a razão devem estar aguçados se quiser transpassar qualquer obstáculo.",
   },
   {
     name: "ÀS DE PAUS",
-    description: "arcano51.jpg",
+    description:
+      "O Ás de Paus marca o ponto de partida em nossa jornada através dos Paus, que é um naipe associado ao elemento Fogo. Lembre-se, paus envolvem energia criativa, intuição, paixão, determinação, ambição e expansão espiritual. E aqui estamos com o Ás, que no Tarot é sobre sucesso e novos começos. Portanto, a carta de tarot Ás de Paus significa sucesso, paixão, criatividade e, assim como os outros ases – novos começos. Ele vem com um pacote de sorte e nova energia, uma renovada sensação de ser. Com o Ás de Paus em seu tarot, é um excelente momento para criar um plano para um novo projeto e agir!",
   },
   {
     name: "2 DE PAUS",
-    description: "arcano52.jpg",
+    description:
+      "Após a nova oportunidade apresentada pelo Ás de Paus, o Dois de Paus o leva a uma encruzilhada onde você tem uma decisão a tomar. Isso o lembra de parar por um momento para equilibrar sua energia e planejar o caminho que você precisa seguir. A mensagem aqui é “o que você semear, você colherá”. Para ter sucesso, você precisará de coragem e controle para superar os obstáculos que o aguardam.",
   },
   {
     name: "3 DE PAUS",
-    description: "arcano53.jpg",
+    description:
+      "O Três de Paus é uma carta que representa a realização de projetos que há muito se vem trabalhando. Os frutos estão prontos para serem colhidos e a criatividade e a inovação é o que o moverá até a conquista dos objetivos desejados. É preciso manter os olhos abertos para não deixar passar as oportunidades que chegam de todos os cantos e aproveitar ao máximo cada uma delas para crescer, amadurecer e construir o futuro com prosperidade. ",
   },
   {
     name: "4 DE PAUS",
-    description: "arcano54.jpg",
+    description:
+      "O Quatro de Paus é uma carta de transição, de finais positivos e novos começos. Ela vem para nos lembrar da importância de celebrar as pequenas conquistas e sucessos alcançados durante o percurso, saber dar valor às coisas simples da vida e compreender que para conquistar grandes objetivos é preciso batalhar e vencer os pequenos obstáculos. Essa carta traz boas vibrações para os relacionamentos e mudanças significativas de lugar, como residência, por exemplo.",
   },
   {
     name: "5 DE PAUS",
-    description: "arcano55.jpg",
+    description:
+      "A carta de Cinco de Paus é uma carta de conflitos e batalhas por um objetivo maior. É preciso ficar atento com o que está por vir para conseguir se defender e não acabar caindo por distração ou por não estar preparado para os desafios que se aproximam. A vitória poderá ser encontrada após árduo confronto, mas não se pode descartar a possibilidade de uma derrota, por isso, é preciso se preparar. As outras cartas da leitura ajudarão a mostrar qual a área de sua vida que será mais afetada pelos conflitos. ",
   },
   {
     name: "6 DE PAUS",
-    description: "arcano56.jpg",
+    description:
+      "A carta Seis de Paus traz o sucesso e a recompensa por esforços passados se fazendo presente em um futuro próximo. Falta pouco para colher os frutos cultivados com tanto zelo e suor e aproveitar o que eles tem a lhe oferecer de melhor. Se aguarda por notícias, essa carta nos diz que elas estão perto de serem dadas e serão positivas em todos os sentidos. Apesar dos bons presságios que o Seis de Paus apresenta em sua leitura, ele também aparece para lembrar que não se deve deixar o sucesso subir à cabeça e torná-lo uma pessoa arrogante, principalmente com aqueles que estenderam a mão para ajudá-lo a chegar onde chegou.",
   },
   {
     name: "7 DE PAUS",
-    description: "arcano57.jpg",
+    description:
+      "Pequenos conflitos significativos estão à vista e será necessário destreza para conseguir transpassá-los. Não se trata de grandes confrontos, mas, mesmo assim, irá demandar uma reserva de energia que está armazenada pelos tempos mais tranquilos e leves de até então. São conflitos que podem afetar qualquer área da vida e poderão se estender por um período mais longo que o esperado, mas que serão superados graças à perseverança e força.",
   },
   {
     name: "8 DE PAUS",
-    description: "arcano58.jpg",
+    description:
+      "Esta é uma carta que traz a velocidade do progresso em sua leitura. Projetos, planos e atividades iniciadas, avançam rapidamente em direção ao sucesso. Você se verá envolvido com muitas atividades e o tempo parecerá voar aos seus olhos. Isso é uma coisa boa, se você souber aproveitar as oportunidades que surgem como flechas em seu caminho e estiver disposto a trabalhar ainda mais. Novos objetivos e metas também estão presentes quando o Oito de Paus aparece em sua leitura, todos com altas chances de serem conquistados em curto espaço de tempo. Aproveite para evoluir.",
   },
   {
     name: "9 DE PAUS",
-    description: "arcano59.jpg",
+    description:
+      "A carta Nove de Paus é uma carta de batalhas e conquistas. Por um lado, ela pode indicar lutas sendo travadas para alcançar objetivos ou defender terreno conquistado, trazendo dificuldades menos agressivas para a vida profissional e pessoal. Por outro lado, os frutos são colhidos depois de muito tempo de trabalho, proporcionando tranquilidade e conforto para a vida. Seja qual for, a força interior sempre será necessária para manter-se em pé durante esse período. ",
   },
   {
     name: "10 DE PAUS",
-    description: "arcano60.jpg",
+    description:
+      "Dez de Paus é uma carta que carrega consigo o peso da fadiga ocasionada pelo excesso de atividades ou responsabilidade. Você pode estar tentando agarrar o mundo, assumindo muitos projetos ou carregando grandes fardos, e isso está esgotando todas as suas energias. Esta carta vem para avisar que é preciso frear a velocidade e escolher o que realizará primeiro, sem medo de deixar alguma coisa para depois, para não ficar mais sobrecarregado do que está.",
   },
   {
     name: "PRINCESA DE PAUS",
-    description: "arcano61.jpg",
+    description:
+      "O Valete de Paus é uma carta cheia de vitalidade, energia ilimitada e ânsia pela busca do conhecimento. Ela representa a chegada de boas vibrações e notícias para aquele que demonstrou determinação e força ao colocar em prática projetos e atividades de sua responsabilidade. Os frutos podem demorar a serem colhidos, mas serão mais do que o esperado. Novos projetos também podem surgir no meio do caminho e com ele, novas oportunidades e aprendizados.",
   },
   {
     name: "CAVALEIRO DE PAUS",
-    description: "arcano62.jpg",
+    description:
+      "A carta Cavaleiro de Paus é sinônimo de espontaneidade e adaptabilidade a mudanças. Saber utilizar todas as armas que possui para enfrentar os desafios e problemas que aparecem durante o caminho faz do Cavaleiro uma pessoa pronta para colher conquistas e finalizar projetos bem sucedidos, graças ao esforço, determinação e coragem. Tudo acontece muito rapidamente nesta carta, por isso deve-se ter atenção para não acabar tropeçando pelo caminho.",
   },
   {
     name: "RAINHA DE PAUS",
-    description: "arcano63.jpg",
+    description:
+      "A Rainha de Paus é uma carta que traz a extroversão em sua personalidade. A habilidade em praticar atividades e realizar projetos sem a necessidade de procurar auxílio constante por acreditar em si mesmo, aflora o sentimento de independência que esta carta exala, sem que exista uma exclusão daqueles que querem bem, como amigos e familiares. Confiar e entregar ideias para aqueles de seu círculo social é comum, mas não é preciso que eles façam pela Rainha, ela possui total capacidade de agir sozinha.",
   },
   {
     name: "REI DE PAUS",
-    description: "arcano64.jpg",
+    description:
+      "O Rei de Paus traz boa sorte e prosperidade se confiar nos próprios instintos e não se entregar frente ao primeiro desafio grande que aparece à frente. A ascendência é inata ao Rei e se reflete em todas as áreas da vida enquanto estiver seguro de si e no controle do pŕoprio destino. Saber o que se quer e como agir para conquistar é o que faz do Rei um líder pronto a solucionar qualquer problema.",
   },
   {
     name: "ÀS DE OUROS",
-    description: "arcano65.jpg",
+    description:
+      "O Ás de Ouros, apresenta uma oportunidade para um novo começo, particularmente perseguindo seus sonhos materiais e financeiros. Quando ele aparecer na sua tiragem de Tarot, não deixe que nada o impeça porque a sorte e a abundância estão do seu lado. Terra é o elemento do naipe de Ouros. É um elemento de prosperidade, produtividade e estabilidade. O Ás marca o início e diz a você que as circunstâncias ao seu redor tornaram o solo fértil para plantar a semente de algo novo. Aproveite a oportunidade e use-a em seu benefício.",
   },
   {
     name: "2 DE OUROS",
-    description: "arcano66.jpg",
+    description:
+      "O significado do tarot do Dois de Ouros está intimamente ligado à multitarefa e à escolha a fazer. Com o Dois de Ouros, você se verá equilibrando com vários problemas ao mesmo tempo. Pode haver momentos em que você precise pesar opções e conciliar várias coisas ao mesmo tempo para manter as coisas avançando em harmonia. Dois de Ouros lembra você de se organizar e trazer planejamento para sua vida. Nem sempre tudo correrá de acordo e ainda haverá altos e baixos ao longo do caminho, mas você certamente chegará lá se tiver um mapa com você. Portanto, certifique-se de gerenciar seu tempo, energia e recursos o suficiente para evitar que as bolas caiam.",
   },
   {
     name: "3 DE OUROS",
-    description: "arcano67.jpg",
+    description:
+      "A carta de tarot Três de Ouros tem vários aspectos positivos associados a ela. Seu significado simboliza o trabalho em equipe, objetivos compartilhados e aprendizagem. Como todas as cartas três dos arcanos menores, elas representam os estágios iniciais da ação conjunta após a ação (Ases) e o planejamento (Dois). E como faz parte do naipe de Ouros, trata das coisas materiais do nosso dia a dia. Como todas as cartas do baralho de tarot, o Três de Ouros terá uma interpretação diferente dependendo do assunto sob investigação. Ainda assim, o caráter geral desta carta Arcanos Menores será positivo. Portanto, seja no trabalho, na saúde ou em outros aspectos de sua vida, o Três de Ouros indicará boas recompensas por seus esforços e bons relacionamentos com outras pessoas.",
   },
   {
     name: "4 DE OUROS",
-    description: "arcano68.jpg",
+    description:
+      "A carta Quatro de Ouros faz parte do grupo dos Arcanos Menores, e portanto lhe trará mensagens sobre suas ações e resultados. O Quatro de Ouros de maneira geral representa a necessidade de superar um receio de agir para alcançar seus objetivos. Ou seja, a carta te alerta para não ficar estagnado onde está. Assim, quando esta carta aparecer durante uma leitura de tarot, pode significar apego excessivo causado pelo medo do que é inseguro. Essa carta, claro, tem diversas possibilidades de leitura a partir da questão principal e do contexto em que é tirada do baralho. Porém, o Quatro de Ouros, assim como os demais Arcanos Menores, é uma carta para refletir sobre suas ações em relação a si e aos demais que o cercam. Não necessariamente o significado do Quatro de Ouros será uma reprimenda ou um aviso de que sua atitude precisa mudar, então vamos entender mais sobre essa carta.",
   },
   {
     name: "5 DE OUROS",
-    description: "arcano69.jpg",
+    description:
+      "A carta do tarot Cinco de Ouros é uma entre as cartas dos Arcanos Menores, representando para o consulente um momento de desestabilização, fragilização e enfraquecimento. Porém, é uma fase passageira e que pede força de superação e uma mente mais aberta para que isso aconteça. Por conta do naipe de Ouros, que se refere à abundância e prosperidade, a carta estará ligada a uma irresponsabilidade nas ações. Essas atitudes acabam trazendo a instabilidade em vários aspectos da vida do consulente. Isso sugere a necessidade de uma mudança de atitudes e uma reflexão sobre o que realmente queremos, para que possamos alcançar nosso pleno potencial tanto no campo profissional, financeiro e dos sentimentos.",
   },
   {
     name: "6 DE OUROS",
-    description: "arcano70.jpg",
+    description:
+      "A carta do tarot Seis de Ouros está incluída entre as cartas dos Arcanos Menores, representando para o consulente um momento de dádivas, aquisição de sabedoria e generosidade. Também em geral tem uma conotação positiva, indicando que há sempre apoio e auxílio caso necessário em sua vida. Por conta do naipe de Ouros, pode indicar ganhos materiais, recebimento de doações e auxílio financeiro. Assim, para o consulente que esteja passando por dificuldades financeiras, pode significar que sua situação irá mudar positivamente. O Seis de Ouros também pode indicar que o consulente se encontra em uma posição de poder, ou que no momento é muito respeitado pelas outras pessoas e por quem se relaciona. Além disso, quando essa carta aparece no tarot, pode significar que a pessoa está muito inclinada a ajudar os demais.",
   },
   {
     name: "7 DE OUROS",
-    description: "arcano71.jpg",
+    description:
+      "A carta do tarot Sete de Ouros está incluída entre as cartas dos Arcanos Menores, representando para o consulente um momento de recompensas pelo trabalho duro. Caso o consulente tenha centrado seus esforços em um objetivo, a carta significa que os frutos de seu esforço estão próximos de chegarem. O Sete de Ouros também pode indicar que o consulente precisa manifestar suas ideias, ambições e definir objetivos. A carta indica um bom momento para foco e ação, planejando e finalizando aquilo que você já começou, sinalizando para bons resultados adiante. Também em geral tem uma conotação de decisão iminente, caso o consulente esteja em um momento de decisão sobre quais caminhos tomar em sua vida. ",
   },
   {
     name: "8 DE OUROS",
-    description: "arcano72.jpg",
+    description:
+      "A carta Oito de Ouros é parte do grupo dos Arcanos Menores, e representará aspectos positivos no tarot. O Oito de Ouros, indica para o consulente a chegada de um período de trabalho árduo, ou que seus esforços irão trazer bons resultados. Como todas as cartas do baralho de tarot, o Oito de Ouros terá uma leitura diferenciada conforme ele for apresentado e de acordo com a pergunta do consulente, mas o caráter geral desta carta dos Arcanos Menores será de um significado positivo. Seu comprometimento valerá a pena. Assim, seja no trabalho, saúde, ou demais aspectos de sua vida, essa carta significará boas recompensas por seus esforços, e boas relações com os outros.",
   },
   {
     name: "9 DE OUROS",
-    description: "arcano73.jpg",
+    description:
+      "A carta Nove de Ouros é parte do grupo dos Arcanos Menores, e representará aspectos positivos de abundância no tarot. O Nove de Ouros, indica para o consulente a chegada de um período de sucesso, pois seu trabalho duro e autocontrole lhe permitiram a prosperidade. Como todas as cartas do baralho de tarot, o Nove de Ouros terá uma leitura diferenciada conforme ele for apresentado e de acordo com a pergunta do consulente, mas o caráter geral desta carta dos Arcanos Menores será de um significado positivo. Pois o trabalho, persistência e foco permitem agora que o consulente goze de coisas boas em sua vida.",
   },
   {
     name: "10 DE OUROS",
-    description: "arcano74.jpg",
+    description:
+      "A carta Dez de Ouros é parte do grupo dos Arcanos Menores, e representará aspectos positivos de abundância no tarot. O Dez de Ouros, indica para o consulente coisas boas nos aspectos de estabilidade e felicidade em todas as áreas da sua vida. Como todas as cartas do baralho de tarot, o Dez de Ouros terá uma leitura diferenciada conforme ele for apresentado e de acordo com a pergunta do consulente, mas o caráter geral desta carta dos Arcanos Menores será de um significado positivo. Então, de maneira geral é uma excelente carta para se tirar em uma leitura relacionada à família, aspectos financeiros e materiais.",
   },
   {
     name: "PRINCESA DE OUROS",
-    description: "arcano75.jpg",
+    description:
+      "A carta Valete de Ouros faz parte do grupo dos Arcanos Menores, e traz aspectos pontuais relacionados ao momento atual vivido pelo consulente. De maneira geral, esta carta aponta um novo estado de autoconsciência e alinhamento de objetivos. Mas como todas as cartas do baralho de tarot, o Valete de Ouros terá uma leitura diferenciada conforme ele for apresentado e de acordo com a pergunta do consulente, mas o caráter geral desta carta dos Arcanos Menores será de um significado positivo. Então, de maneira geral é uma excelente carta para se tirar em uma leitura relacionada a finanças e carreira profissional.",
   },
   {
     name: "CAVALEIRO DE OUROS",
-    description: "arcano76.jpg",
+    description:
+      "A carta Cavaleiro de Ouros faz parte do grupo dos Arcanos Menores, e traz aspectos pontuais relacionados ao momento atual vivido pelo consulente. De maneira geral, esta carta pede que você foque no que pode fazer de melhor. Mas como todas as cartas do baralho de tarot, o Cavaleiro de Ouros terá uma leitura diferenciada conforme ele for apresentado e de acordo com a pergunta do consulente, mas o caráter geral desta carta dos Arcanos Menores será de um significado positivo. Então, de maneira geral é um símbolo de perseverança e de sucesso, mas que também pode trazer um desafio para que você mude seus paradigmas e estratégias na vida.",
   },
   {
     name: "RAINHA DE OUROS",
-    description: "arcano77.jpg",
+    description:
+      "A carta Rainha de Copas faz parte do grupo dos Arcanos Menores, e como todas as cartas do baralho de tarot, a Rainha de Copas terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral ela representa um momento sensibilidade, gentileza e afeição, especialmente de figuras femininas.",
   },
   {
     name: "REI DE OUROS",
-    description: "arcano78.jpg",
+    description:
+      "A carta Rei de Ouros é parte do grupo dos Arcanos Menores, sendo uma entre as figuras da corte – juntamente com a Rainha, o Cavaleiro e o Valete. Como todas as cartas do baralho de tarot, o Rei de Ouros terá uma leitura diferenciada conforme aparecer em combinação com outras cartas, e de acordo com a pergunta do consulente. Mas de maneira geral é uma excelente carta para se tirar em uma leitura, representando o poder da perseverança e a possibilidade de recompensas.",
   },
 ];
