@@ -4,6 +4,7 @@ import { AuthorizationError } from "../errors/AuthorizationError";
 import { ConflictError } from "../errors/ConflictError";
 import { NotFoundError } from "../errors/NotFoundError";
 import { ParamsError } from "../errors/ParamsError";
+import { UnprocessableError } from "../errors/UnprocessableError";
 import {
   IDelUserInputDTO,
   ILoginInputDTO,
@@ -49,6 +50,14 @@ export class UserBusiness {
     if (userDB) {
       throw new ConflictError("Member already registered");
     }
+
+    /* const availableShares = await this.userDatabase.getAvailableShares();
+    console.log(availableShares);
+    console.log(partnership); */
+
+    /* if (availableShares < partnership) {
+      throw new UnprocessableError("This amount of shares are not available");
+    } */
 
     const id = this.idGenerator.generate();
     const hashedPassword = await this.hashManager.hash(password);

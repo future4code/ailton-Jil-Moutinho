@@ -29,7 +29,7 @@ describe("Testando a UserBusiness", () => {
     expect(response.token).toBe("token-mock");
   });
 
-    test("Return token when login is successful", async () => {
+  test("Return token when login is successful", async () => {
     const input: ILoginInputDTO = {
       nickname: "Mia",
       password: "asdfg123",
@@ -40,7 +40,7 @@ describe("Testando a UserBusiness", () => {
     expect(response.token).toBe("token-mock");
   });
 
- /*  test("Return when del user", async () => {
+  /*  test("Return when del user", async () => {
     const input: ILoginInputDTO = {
       nickname: "Mia",
       password: "asdfg123",
@@ -73,7 +73,7 @@ describe("Testando a UserBusiness", () => {
     }
   }); */
 
-    test("Usuário se cadastra com senha menor que 6 caracteres", async () => {
+  test("Usuário se cadastra com senha menor que 6 caracteres", async () => {
     expect.assertions(2);
 
     try {
@@ -95,7 +95,6 @@ describe("Testando a UserBusiness", () => {
     }
   });
 
-
   test("Usuário se cadastra com apelido já cadastrado", async () => {
     expect.assertions(2);
 
@@ -116,6 +115,26 @@ describe("Testando a UserBusiness", () => {
     }
   });
 
+  test("Usuário se cadastra com quantidade de cotas maior que as disponíveis", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: ISignupInputDTO = {
+        first_name: "Mia3",
+        last_name: "Gatuna 3",
+        nickname: "Mia3",
+        password: "acbd1234",
+        partnership: 99,
+      };
+      await userBusiness.signupUser(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(422);
+        expect(error.message).toBe("This amount of shares are not available");
+      }
+    }
+  });
+
   //Teste de Erros para Login
   test("Usuário tenta logar com senha menor que 6 caracteres", async () => {
     expect.assertions(2);
@@ -130,7 +149,8 @@ describe("Testando a UserBusiness", () => {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
         expect(error.message).toBe(
-          "Your password must have at least 6 characters");
+          "Your password must have at least 6 characters"
+        );
       }
     }
   });
@@ -170,5 +190,4 @@ describe("Testando a UserBusiness", () => {
   });
 
   //Teste de Erros para deletar usuário
-
 });

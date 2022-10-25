@@ -18,6 +18,10 @@ export interface IDelUserInputDTO {
   token: string;
 }
 
+/* export interface IAvailableSharesDB {
+  sum(`partnership`): number;
+} */
+
 export class User {
   constructor(
     private id: string,

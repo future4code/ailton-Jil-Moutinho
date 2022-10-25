@@ -17,9 +17,18 @@ export class UserDatabase extends BaseDatabase {
     return `Member ${user.getFirstName()} register successfully.`;
   };
 
+  /* public getAvailableShares = async (): Promise<number> => {
+    const totalShares: IAvailableSharesDB[] = await this.getConnection()
+      .sum("partnership")
+      .from(UserDatabase.TABLE_USERS);
+    const availableShares = 100 - totalShares[0].partnership;
+    console.log("total", totalShares, "availabelData", availableShares);
+    return availableShares;
+  }; */
+
   public getUserByNickname = async (
-    nickname: string,
-   ): Promise<IUserDB | undefined> => {
+    nickname: string
+  ): Promise<IUserDB | undefined> => {
     const usersDB: IUserDB[] = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_USERS)

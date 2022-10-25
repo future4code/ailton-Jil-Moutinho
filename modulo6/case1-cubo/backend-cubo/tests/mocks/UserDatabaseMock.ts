@@ -20,6 +20,10 @@ export class UserDatabaseMock extends BaseDatabase {
     return `Member ${user.getFirstName()} register successfully.`;
   };
 
+  public getAvailableShares = async (): Promise<number> => {
+    return 50;
+  };
+
   public getUserByNickname = async (
     nickname: string
   ): Promise<IUserDB | undefined> => {

@@ -6,9 +6,10 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "first_name": "Mia",
-    "last_name": "Miazera",
-    "partnership": 1,
+    "first_name": "Mia4",
+    "last_name": "Miazera4",
+    "nickname": "Mia4",
+    "partnership": 99,
     "password": "mia123"
 }
 
@@ -17,24 +18,23 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "first_name": "Mia",
-    "last_name": "Miazera",
-    "password": "mia123"
+    "nickname": "Mia",
+    "password": "asdfg123"
 }
 
 ### 3) Cancel partnership
 DELETE  http://localhost:3003/users/cancelMembership
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5MGUwZGMwLTE1YzItNDg2Mi05ZjNjLWQ4MDZmMWM0ZjEyZiIsImlhdCI6MTY2NDgzMzg3NSwiZXhwIjoxNjY0OTIwMjc1fQ.ncMVSzBgHoMJ4qxKtUcCXrLruvQrlbDn_zHCUii6wWs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyZWI1YWQyLWU3NjYtNDcwNi05N2M0LWQ5NzhhMmRiNDc0NCIsImlhdCI6MTY2NjY5OTAxOSwiZXhwIjoxNjY2Nzg1NDE5fQ.H5Lw0L_khEBuhwzdUMa3rh3I3snuMwk3Z31d7tJEWB0
 
 {
-    "first_name": "Mia",
-    "last_name": "Miazera"
+    "nickname": "Mia4",
+    "password": "mia123"
 }
 ###
 
 GET http://localhost:3003/users/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5MGUwZGMwLTE1YzItNDg2Mi05ZjNjLWQ4MDZmMWM0ZjEyZiIsImlhdCI6MTY2NDgzMzg3NSwiZXhwIjoxNjY0OTIwMjc1fQ.ncMVSzBgHoMJ4qxKtUcCXrLruvQrlbDn_zHCUii6wWs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NzEzYTcwLWE3OWMtNDBlMy1hYjZjLTU5ZmU2YWQxNmEzMSIsImlhdCI6MTY2NjY5ODI4OSwiZXhwIjoxNjY2Nzg0Njg5fQ.-Z8qwXYNWahY3OWoH1TOpOimXGfIu0gXL-Ext1OMjVE
 
 ############################################################################
 ### 5) Post tickets's book
