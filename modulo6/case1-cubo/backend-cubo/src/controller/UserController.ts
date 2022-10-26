@@ -17,8 +17,7 @@ export class UserController {
         nickname: req.body.nickname!,
         partnership: Number(req.body.partnership),
         password: req.body.password!
-      };
-      
+      };      
       const response = await this.userBusiness.signupUser(input);
       res.status(201).send(response);
     } catch (error: any) {

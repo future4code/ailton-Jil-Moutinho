@@ -17,14 +17,17 @@ export class UserDatabase extends BaseDatabase {
     return `Member ${user.getFirstName()} register successfully.`;
   };
 
-  /* public getAvailableShares = async (): Promise<number> => {
-    const totalShares: IAvailableSharesDB[] = await this.getConnection()
+  public getAvailableShares = async (): Promise<number> => {
+    const totalShares = await this.getConnection()
       .sum("partnership")
       .from(UserDatabase.TABLE_USERS);
-    const availableShares = 100 - totalShares[0].partnership;
+
+    const availableShares = 100 - totalShares[0]["sum(`partnership`)"];
+
     console.log("total", totalShares, "availabelData", availableShares);
+
     return availableShares;
-  }; */
+  };
 
   public getUserByNickname = async (
     nickname: string

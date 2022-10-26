@@ -51,13 +51,13 @@ export class UserBusiness {
       throw new ConflictError("Member already registered");
     }
 
-    /* const availableShares = await this.userDatabase.getAvailableShares();
+    const availableShares = await this.userDatabase.getAvailableShares();
     console.log(availableShares);
-    console.log(partnership); */
+    console.log(partnership);
 
-    /* if (availableShares < partnership) {
+    if (availableShares < partnership) {
       throw new UnprocessableError("This amount of shares are not available");
-    } */
+    }
 
     const id = this.idGenerator.generate();
     const hashedPassword = await this.hashManager.hash(password);
