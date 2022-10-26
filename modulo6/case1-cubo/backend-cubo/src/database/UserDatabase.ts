@@ -24,8 +24,6 @@ export class UserDatabase extends BaseDatabase {
 
     const availableShares = 100 - totalShares[0]["sum(`partnership`)"];
 
-    console.log("total", totalShares, "availabelData", availableShares);
-
     return availableShares;
   };
 

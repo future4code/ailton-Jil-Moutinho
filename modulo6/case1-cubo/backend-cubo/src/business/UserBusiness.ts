@@ -52,8 +52,6 @@ export class UserBusiness {
     }
 
     const availableShares = await this.userDatabase.getAvailableShares();
-    console.log(availableShares);
-    console.log(partnership);
 
     if (availableShares < partnership) {
       throw new UnprocessableError("This amount of shares are not available");
@@ -180,5 +178,16 @@ export class UserBusiness {
     }
 
     return response;
+  };
+
+  public getAvailableShares = async (token: string) => {
+    const idFromValidToken = this.authenticator.getIdByToken(token);
+
+    if (!idFromValidToken) {
+      throw new AuthenticationError();
+    };
+
+    const availableFromDB = await this.userDatabase.getAvailableShares();
+    return availableFromDB;
   };
 }

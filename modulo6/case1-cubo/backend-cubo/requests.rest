@@ -22,15 +22,16 @@ Content-Type: application/json
     "password": "asdfg123"
 }
 //asdfg123
+
 ### 3) Cancel partnership
-DELETE  http://localhost:3003/users/cancelMembership
+DELETE  http://localhost:3003/users/cancelMembershipAna
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5NzEzYTcwLWE3OWMtNDBlMy1hYjZjLTU5ZmU2YWQxNmEzMSIsImlhdCI6MTY2NjczMjMxNSwiZXhwIjoxNjY2ODE4NzE1fQ.FM1zPMBbA63KApoJ1xZxXHjpiZoh3dunc1lbhaj5ZOQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ0ZjMxZWZhLWMzNGItNDk0ZS05ODFiLTdlZmE1M2IxMDI0YyIsImlhdCI6MTY2NjgyNDkxMiwiZXhwIjoxNjY2OTExMzEyfQ.0JvTPdN4ckjiRoIfxgFu495W__w4Q9A2Cjiua8zqlA4
 
-{
-    "nickname": "Mia3"
-}
-###
-
+### 4) Get all members
 GET http://localhost:3003/users/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NjgwMTIwNiwiZXhwIjoxNjY2ODg3NjA2fQ.EciGtWChFRE4zPgEuJAV3xZUSMUqhNiyL1oyqMPMGHI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NjgyNTA1OCwiZXhwIjoxNjY2OTExNDU4fQ.nxT_Ei2pwWCYTTxAFG6EpLxfAqMBbEhmLjtjLv5J6CA
+
+### 5) Get availables shares
+GET http://localhost:3003/users/shares
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NjgxMDQ0OSwiZXhwIjoxNjY2ODk2ODQ5fQ.AHO67EHEEHwwoG81Y7JnltTx4xIOY2GpWdvwHAV_RYw

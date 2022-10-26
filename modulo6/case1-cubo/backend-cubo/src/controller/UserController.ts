@@ -52,7 +52,7 @@ export class UserController {
   public deleteUser = async (req: Request, res: Response) => {
     try {
       const user: IDelUserInputDTO = {
-        nickname: req.body.nickname!,
+        nickname: req.params.nickname!,
         token: req.headers.authorization!,
       };
       const response = await this.userBusiness.delPartnership(user);
@@ -61,4 +61,16 @@ export class UserController {
       res.status(400).send({ message: error.message });
     }
   };
+
+  public getAvailable = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization!;
+
+     const response = await this.userBusiness.getAvailableShares(token);
+      res.status(201).send({ message: response });
+    } catch (error: any) {
+      res.status(400).send({ message: error.message });
+    }
+  };
 }
+
