@@ -2,16 +2,23 @@ import React, { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../global/GlobalContext";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import Logo from "../assets/Logo.jpeg";
-import { Container, MainContainer, MemberDiv } from "./styles";
-import { GetAllShares } from "../services/requests";
+import { useProtectedPage } from "../hooks/useProtectedPage";
+import { Button } from "../constants/ButtonStyles";
+import LoadingGif from "../assets/Loading.gif";
+import { Container, MainContainer, GifDiv, RowDiv, MemberInfo } from "./styles";
+import { DelUser, GetAllShares } from "../services/requests";
 import DonutChart from "react-donut-chart";
 import { colorsGrafic } from "../constants/colors";
+import { goToHome } from "../routes/Coordinators";
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
-  const { isLoading } = useContext(GlobalContext);
+  useProtectedPage();
+  const { isLoading, nickname } = useContext(GlobalContext);
 
   let [allMembers, setAllMembers] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     GetAllShares(setAllMembers);
@@ -19,12 +26,12 @@ export function HomePage() {
 
   const Members = allMembers?.map((item) => {
     return (
-      <MemberDiv key={item?.nickname}>
-        <span>{item?.nickname}</span>
-        <span>{item?.first_name}</span>
-        <span>{item?.last_name}</span>
-        <span>{item?.partnership}%</span>
-      </MemberDiv>
+      <RowDiv key={item?.nickname}>
+        <MemberInfo>{item?.nickname}</MemberInfo>
+        <MemberInfo>{item?.first_name}</MemberInfo>
+        <MemberInfo>{item?.last_name}</MemberInfo>
+        <MemberInfo>{item?.partnership}%</MemberInfo>
+      </RowDiv>
     );
   });
 
@@ -41,14 +48,21 @@ export function HomePage() {
     }
   };
 
+  const delMembership = (nickname) => {
+    DelUser(nickname);
+    goToHome(navigate);
+  };
+
   return (
     <>
       <Header />
-      {isLoading && <img src={Logo} alt="Loading. Página carregando" />}
+      {isLoading && (
+        <GifDiv src={LoadingGif} alt="Loading. Página carregando" />
+      )}
       {!isLoading && (
         <Container>
           <MainContainer>
-            <MemberDiv>
+            <RowDiv>
               {" "}
               <span>
                 <strong>Nickname</strong>
@@ -62,12 +76,13 @@ export function HomePage() {
               <span>
                 <strong>Partnership ( % )</strong>
               </span>
-            </MemberDiv>
+            </RowDiv>
             {Members}
           </MainContainer>
           <MainContainer>
             <DonutChart
-              width={500}
+              width={450}
+              height={300}
               strokeColor={"#FFFFFF"}
               data={graficData}
               colors={colorsGrafic}
@@ -78,6 +93,8 @@ export function HomePage() {
           </MainContainer>
         </Container>
       )}
+      <br />
+      <Button onClick={() => delMembership(nickname)}>Sell shares</Button>
       <Footer />
     </>
   );

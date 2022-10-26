@@ -19,8 +19,10 @@ export const Container = styled.header`
 `;
 
 export const LogoStyles = styled.img`
-  width: 10%;
-  margin: 0 auto;
+  width: 140px;
+  margin: 1rem auto;
+  cursor: pointer;
+  border-radius: 6px;;
   @media screen and (max-width: 480px) {
     width: 34%;
   }
@@ -62,3 +64,6 @@ export const ContainIcons = styled.div`
   }
 `;
 
+export const Copy = styled.p`
+align-self: center;
+`;

@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/Logo.jpeg";
+import LogoBlack from "../assets/LogoGold.png";
 import { Container, LogoStyles } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { goToHome } from "../routes/Coordinators";
@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <Container>
       <LogoStyles
-        src={Logo}
+        src={LogoBlack}
         alt="Logo"
         onClick={() => goToHome(navigate)}
       ></LogoStyles>

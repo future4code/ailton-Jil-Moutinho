@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "../../constants/ButtonStyles";
 import useForm from "../../hooks/useForm";
 import SenhaImg2 from "../../assets/senha.png";
@@ -15,6 +15,7 @@ import {
   ImgPassword,
 } from "./styles";
 import { greyCubo } from "../../constants/colors";
+import { GlobalContext } from "../../global/GlobalContext";
 
 export default function SignUpForm() {
   const [form, onChange, clear] = useForm({
@@ -24,6 +25,8 @@ export default function SignUpForm() {
     partnership: "",
     password: "",
   });
+
+  const { setNickname } = useContext(GlobalContext);
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -47,9 +50,9 @@ export default function SignUpForm() {
       setError(true);
       window.alert("Passwords don't math");
     } else {
-        console.log(form)
       event.preventDefault();
       Signup(form, goToHome, navigate, clear);
+      setNickname(form.nickname);
       goToHome(navigate);
     }
   };

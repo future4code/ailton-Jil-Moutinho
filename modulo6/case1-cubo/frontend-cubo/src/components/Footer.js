@@ -4,8 +4,8 @@ import Insta from "../assets/instaIcon.svg";
 import In from "../assets/inIcon.svg";
 import Twitter from "../assets/twitterIcon.svg";
 import Youtube from "../assets/ytIcon.svg";
-//import Copy from "../assets/copyIcon.svg";
-import { ContainerFooter, FooterSection, ContainIcons } from "./styles";
+import CopyIcon from "../assets/CopyIcon.png";
+import { ContainerFooter, FooterSection, ContainIcons, Copy } from "./styles";
 
 export const Footer = () => {
   return (
@@ -74,7 +74,16 @@ export const Footer = () => {
         </FooterSection>
       </ContainerFooter>
       {/* <img src={} alt="Copy right simbol" /> */}
-      <p> Jil Mayumi Moutinho </p>
+      <Copy>
+        {" "}
+        Jil Mayumi Moutinho{" "}
+        <img
+          src={CopyIcon}
+          alt={
+            " Copy right icon - https://icons8.com/icon/jjDTxXrVOxo3/copyright-all-rights-reserved"
+          }
+        />
+      </Copy>
     </>
   );
 };

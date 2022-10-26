@@ -25,7 +25,6 @@ export const Signup = (body, goTo, navigate, clear) => {
   axios
     .post(`${BASE_URL}/signup`, body)
     .then((res) => {
-      console.log(res);
       localStorage.setItem("token", res.data.message.token);
       goTo(navigate);
       clear();
@@ -59,13 +58,16 @@ export const GetAllShares = async (setData) => {
     });
 };
 
-export const DelUser = (setData) => {
+export const DelUser = (nickname) => {
+  const body = {
+    nickname: nickname,
+  };
   axios
-    .delete(`${BASE_URL}active-order`, {
-      headers: { auth: token },
+    .delete(`${BASE_URL}/cancelMembership`, body, {
+      headers: { Authorization: token },
     })
     .then((res) => {
-      setData(res.data);
+      localStorage.removeItem("token");
     })
     .catch((err) => {
       console.log("deu erro");

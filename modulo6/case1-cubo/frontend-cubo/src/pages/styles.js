@@ -1,11 +1,11 @@
-import styled, { keyframes } from "styled-components";
-import { blueCubo, greyCubo } from "../constants/colors";
+import styled from "styled-components";
+import { greyCubo } from "../constants/colors";
 
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
 `;
 
@@ -15,16 +15,40 @@ export const Container = styled(MainContainer)`
   align-items: flex-start;
   padding-top: 2%;
   width: 90%;
-  /* @media screen and max{
-    
-  } */
+  margin-top: 1%;
+  overflow: hidden;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
-export const MemberDiv = styled.div`
+/* export const MemberDiv = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   border: 0.5px solid ${greyCubo};
-  width: 95%;
+  height: 300px;
   padding: 1.5%;
+`;
+ */
+export const GoRegister = styled.p`
+cursor: pointer;
+`;
+
+export const GifDiv = styled.img`
+  height: 80vh;
+  width: 100vw;
+`;
+
+export const RowDiv = styled.div`
+  display: grid;
+  grid-template-columns: 26% 26% 26% 22%;
+  color: ${greyCubo};
+  width: 95%;
+`;
+
+export const MemberInfo = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  text-align: center;
 `;
