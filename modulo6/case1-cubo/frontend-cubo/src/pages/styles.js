@@ -19,18 +19,10 @@ export const Container = styled(MainContainer)`
   overflow: hidden;
   @media screen and (max-width: 480px) {
     flex-direction: column;
+    font-size: small;
   }
 `;
 
-/* export const MemberDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0.5px solid ${greyCubo};
-  height: 300px;
-  padding: 1.5%;
-`;
- */
 export const GoRegister = styled.p`
 cursor: pointer;
 `;

@@ -6,6 +6,7 @@ export const GlobalState = (props) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [nickname, setNickname] = useState("");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,7 +17,10 @@ export const GlobalState = (props) => {
   const values = {
     isLoading,
     setIsLoading,
-    nickname, setNickname
+    nickname,
+    setNickname,
+    token,
+    setToken,
   };
 
   return <Provider value={values}>{props.children}</Provider>;

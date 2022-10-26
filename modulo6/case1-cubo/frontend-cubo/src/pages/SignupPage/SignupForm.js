@@ -26,7 +26,7 @@ export default function SignUpForm() {
     password: "",
   });
 
-  const { setNickname } = useContext(GlobalContext);
+  const { setNickname, setToken } = useContext(GlobalContext);
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -51,9 +51,8 @@ export default function SignUpForm() {
       window.alert("Passwords don't math");
     } else {
       event.preventDefault();
-      Signup(form, goToHome, navigate, clear);
+      Signup(form, goToHome, navigate, clear, setToken);
       setNickname(form.nickname);
-      goToHome(navigate);
     }
   };
 

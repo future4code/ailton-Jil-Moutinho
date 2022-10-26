@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Button } from "../../constants/ButtonStyles";
 import useForm from "../../hooks/useForm";
-import SenhaImg2 from "../../assets/senha.png";
-import SenhaImg from "../../assets/senha2.png";
-import { Login, Signup } from "../../services/requests";
+import { Login } from "../../services/requests";
 import { useNavigate } from "react-router-dom";
 import { goToHome } from "../../routes/Coordinators";
 import {
   InputStyled,
   FormContainer,
   LabelStyled,
-  ImgPassword,
 } from "../SignupPage/styles";
-import { greyCubo } from "../../constants/colors";
+import { GlobalContext } from "../../global/GlobalContext";
 
 export default function LoginForm() {
-    const [form, onChange, clear] = useForm({ email: "", password: "" });
+  const {setNickname} = useContext(GlobalContext);
+    const [form, onChange, clear] = useForm({ nickname: "", password: "" });
     const navigate = useNavigate();
   
     const onSubmitForm = (event) => {
       event.preventDefault();
+      setNickname(form.nickname);
       Login(form, goToHome, navigate, clear);
     };
 
