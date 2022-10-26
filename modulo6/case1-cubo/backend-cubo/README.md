@@ -4,6 +4,8 @@ As funcionalidades básicas são:
 
 → Criar usuário com a porcentagem societária;
 
+→ Logar no sistema;
+
 → Receber os usuários com as respectivas porcentagens societárias;
 
 → Cancelar participação societária do usuário.
