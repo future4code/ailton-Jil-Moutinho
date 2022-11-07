@@ -4,18 +4,26 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useProtectedPage } from "../hooks/useProtectedPage";
 import { Button } from "../constants/ButtonStyles";
-import { Container, MainContainer, GifDiv, RowDiv, MemberInfo } from "./styles";
+import {
+  Container,
+  MainContainer,
+  GifDiv,
+  RowDiv,
+  MemberInfo,
+  TradeContainer,
+} from "./styles";
 import {
   DelUser,
   GetAllShares,
   GetAvailableShares,
+  UpdateUser,
 } from "../services/requests";
 import LoadingGif from "../assets/Loading.gif";
 import DonutChart from "react-donut-chart";
 import { colorsGrafic } from "../constants/colors";
 import { goToLogin } from "../routes/Coordinators";
 import { useNavigate } from "react-router-dom";
-import {token} from "../constants/token"
+import { token } from "../constants/token";
 
 export function HomePage() {
   useProtectedPage();
@@ -26,10 +34,12 @@ export function HomePage() {
 
   const navigate = useNavigate();
 
+  let partnership = 0;
+
   useEffect(() => {
-  GetAllShares(setAllMembers);
-  GetAvailableShares(setAvailableShares);
-  }, [token]);
+    GetAllShares(setAllMembers);
+    GetAvailableShares(setAvailableShares);
+  }, [token, partnership]);
 
   const Members = allMembers?.map((item) => {
     return (
@@ -45,7 +55,7 @@ export function HomePage() {
   let graficData = allMembers.map((item) => {
     return {
       label: item?.nickname,
-      value: item?.partnership,
+      value: Math.round(item?.partnership),
     };
   });
 
@@ -55,6 +65,19 @@ export function HomePage() {
     if (clicked) {
       console.log(item);
     }
+  };
+
+  const handlePartnerhip = (event) => {
+    partnership = event.target.value;
+  };
+
+  const updateShares = (nickname, partnership) => {
+    const body = {
+      nickname,
+      partnership,
+    };
+    console.log("body", body);
+    UpdateUser(body, setAllMembers, setAvailableShares);
   };
 
   const delMembership = (nickname) => {
@@ -88,7 +111,7 @@ export function HomePage() {
                 <strong>Last name</strong>
               </span>
               <span>
-                <strong>Partnership ( % )</strong>
+                <strong>Partnership( % )</strong>
               </span>
             </RowDiv>
             {Members}
@@ -110,6 +133,18 @@ export function HomePage() {
         </Container>
       )}
       <br />
+      <TradeContainer>
+        <span>Trade shares</span>
+        <input
+          name="partnership"
+          placeholder="% to sell (-) or to buy (+)"
+          type="number"
+          onChange={handlePartnerhip}
+        />
+        <Button onClick={() => updateShares(nickname, partnership)}>
+          Send
+        </Button>
+      </TradeContainer>
       <Button onClick={() => delMembership(nickname)}>Sell shares</Button>
       <Button onClick={() => logout()}>Logout</Button>
       <Footer />

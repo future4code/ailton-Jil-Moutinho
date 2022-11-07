@@ -23,6 +23,16 @@ export const Container = styled(MainContainer)`
   }
 `;
 
+export const TradeContainer = styled(Container)`
+border: solid 1px gray;
+padding: 1%;
+padding-top: 1%;
+margin-top: 1%;
+align-items: center;
+width: 40%;
+gap: 3%;
+`;
+
 export const GoRegister = styled.p`
 cursor: pointer;
 `;

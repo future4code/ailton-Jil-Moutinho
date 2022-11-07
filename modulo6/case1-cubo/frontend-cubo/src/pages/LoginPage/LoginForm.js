@@ -12,13 +12,14 @@ import {
 import { GlobalContext } from "../../global/GlobalContext";
 
 export default function LoginForm() {
-  const {setNickname} = useContext(GlobalContext);
+  const {setNickname, nickname} = useContext(GlobalContext);
     const [form, onChange, clear] = useForm({ nickname: "", password: "" });
     const navigate = useNavigate();
   
     const onSubmitForm = (event) => {
       event.preventDefault();
       setNickname(form.nickname);
+      localStorage.setItem("nickname", nickname);
       Login(form, goToHome, navigate, clear);
     };
 
