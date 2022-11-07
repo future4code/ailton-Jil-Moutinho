@@ -30,18 +30,18 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ0ZjMxZWZhLWMzNGIt
 
 ### Get all members
 GET http://localhost:3003/users/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzY4NDkzOCwiZXhwIjoxNjY3NzcxMzM4fQ.6MwPm7sUbkpOzDJaHLdEB3gmCty8wf4jUXWtI6BsvPk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzgyNjU4MiwiZXhwIjoxNjY3OTEyOTgyfQ.x6fKLJdSTLg35-0BYIHO6Qs7I7Kawo03QrSxXe2U-Kc
 
 ### Get availables shares
 GET http://localhost:3003/users/shares
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzY4NDkzOCwiZXhwIjoxNjY3NzcxMzM4fQ.6MwPm7sUbkpOzDJaHLdEB3gmCty8wf4jUXWtI6BsvPk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzgyNjU4MiwiZXhwIjoxNjY3OTEyOTgyfQ.x6fKLJdSTLg35-0BYIHO6Qs7I7Kawo03QrSxXe2U-Kc
 
 ### Update user's partnership
 PUT http://localhost:3003/users/update
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzY4NDkzOCwiZXhwIjoxNjY3NzcxMzM4fQ.6MwPm7sUbkpOzDJaHLdEB3gmCty8wf4jUXWtI6BsvPk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzgyNjU4MiwiZXhwIjoxNjY3OTEyOTgyfQ.x6fKLJdSTLg35-0BYIHO6Qs7I7Kawo03QrSxXe2U-Kc
 
 {
     "nickname": "Mia",
-    "partnership": 13
+    "partnership": -1
 }
