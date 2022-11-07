@@ -9,3 +9,5 @@ As funcionalidades básicas são:
 → Receber os usuários com as respectivas porcentagens societárias;
 
 → Cancelar participação societária do usuário.
+
+→ Modificar participação societária do usuário (comprar ou vender).

@@ -9,6 +9,15 @@ export interface ISignupInputDTO extends ILoginInputDTO {
   partnership: number;
 }
 
+export interface IPartnershipInputDTO {
+  nickname: string;
+  partnership: number;
+}
+
+export interface IPartnershipControlInputDTO extends IPartnershipInputDTO {
+  token: string;
+}
+
 export interface IUserDB extends ISignupInputDTO {
   id: string;
 }
@@ -17,10 +26,6 @@ export interface IDelUserInputDTO {
   nickname: string;
   token: string;
 }
-
-/* export interface IAvailableSharesDB {
-  sum(`partnership`): number;
-} */
 
 export class User {
   constructor(

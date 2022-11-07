@@ -22,3 +22,4 @@ userRouter.post("/login", userController.login);
 userRouter.delete("/cancelMembership:nickname", userController.deleteUser);
 userRouter.get("/all", userController.getAll);
 userRouter.get("/shares", userController.getAvailable);
+userRouter.put("/update", userController.updateUser);

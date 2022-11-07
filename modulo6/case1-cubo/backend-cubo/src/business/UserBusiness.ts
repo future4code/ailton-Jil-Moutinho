@@ -8,6 +8,7 @@ import { UnprocessableError } from "../errors/UnprocessableError";
 import {
   IDelUserInputDTO,
   ILoginInputDTO,
+  IPartnershipControlInputDTO,
   ISignupInputDTO,
   User,
 } from "../models/User";
@@ -140,6 +141,45 @@ export class UserBusiness {
     return usersFromDB;
   };
 
+  public updatePartnership = async (input: IPartnershipControlInputDTO) => {
+    const { nickname, token } = input;
+    const partnership = Number(input.partnership);
+
+    if (!nickname || !token || !partnership) {
+      throw new ParamsError();
+    }
+
+    if (
+      typeof partnership !== "number" ||
+      partnership > 100 ||
+      !Number.isInteger(partnership)
+    ) {
+      throw new ParamsError(
+        "Invalid parameter as partnership percentage. Inform a integer number."
+      );
+    }
+
+    const idFromValidToken = this.authenticator.getIdByToken(token);
+    if (!idFromValidToken) {
+      throw new AuthenticationError();
+    }
+
+    const availableShares = await this.userDatabase.getAvailableShares();
+    if (availableShares < partnership) {
+      throw new UnprocessableError("This amount of shares are not available");
+    }
+
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
+    if (!userDB) {
+      throw new NotFoundError("Member with this nickname not found");
+    }
+
+    const payload = { nickname, partnership };
+    const result = await this.userDatabase.updateUserByNickname(payload);
+
+    return result;
+  };
+
   public delPartnership = async (input: IDelUserInputDTO) => {
     const { nickname, token } = input;
 
@@ -185,7 +225,7 @@ export class UserBusiness {
 
     if (!idFromValidToken) {
       throw new AuthenticationError();
-    };
+    }
 
     const availableFromDB = await this.userDatabase.getAvailableShares();
     return availableFromDB;

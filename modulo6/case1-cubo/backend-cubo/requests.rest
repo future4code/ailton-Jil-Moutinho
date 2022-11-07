@@ -1,7 +1,7 @@
 ### Endpoint de teste
 GET http://localhost:3003/ping
 
-### 1) Signup
+### Signup
 POST http://localhost:3003/users/signup
 Content-Type: application/json
 
@@ -13,7 +13,7 @@ Content-Type: application/json
     "password": "mia123"
 }
 
-### 2) Login
+### Login
 POST http://localhost:3003/users/login
 Content-Type: application/json
 
@@ -23,15 +23,25 @@ Content-Type: application/json
 }
 //asdfg123
 
-### 3) Cancel partnership
+### Cancel partnership
 DELETE  http://localhost:3003/users/cancelMembershipAna
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ0ZjMxZWZhLWMzNGItNDk0ZS05ODFiLTdlZmE1M2IxMDI0YyIsImlhdCI6MTY2NjgyNDkxMiwiZXhwIjoxNjY2OTExMzEyfQ.0JvTPdN4ckjiRoIfxgFu495W__w4Q9A2Cjiua8zqlA4
 
-### 4) Get all members
+### Get all members
 GET http://localhost:3003/users/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NjgyNTA1OCwiZXhwIjoxNjY2OTExNDU4fQ.nxT_Ei2pwWCYTTxAFG6EpLxfAqMBbEhmLjtjLv5J6CA
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzY4NDkzOCwiZXhwIjoxNjY3NzcxMzM4fQ.6MwPm7sUbkpOzDJaHLdEB3gmCty8wf4jUXWtI6BsvPk
 
-### 5) Get availables shares
+### Get availables shares
 GET http://localhost:3003/users/shares
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NjgxMDQ0OSwiZXhwIjoxNjY2ODk2ODQ5fQ.AHO67EHEEHwwoG81Y7JnltTx4xIOY2GpWdvwHAV_RYw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzY4NDkzOCwiZXhwIjoxNjY3NzcxMzM4fQ.6MwPm7sUbkpOzDJaHLdEB3gmCty8wf4jUXWtI6BsvPk
+
+### Update user's partnership
+PUT http://localhost:3003/users/update
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMyIsImlhdCI6MTY2NzY4NDkzOCwiZXhwIjoxNjY3NzcxMzM4fQ.6MwPm7sUbkpOzDJaHLdEB3gmCty8wf4jUXWtI6BsvPk
+
+{
+    "nickname": "Mia",
+    "partnership": 13
+}

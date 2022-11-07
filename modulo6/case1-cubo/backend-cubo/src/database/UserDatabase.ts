@@ -1,4 +1,4 @@
-import { IUserDB, User } from "../models/User";
+import { IPartnershipInputDTO, IUserDB, User } from "../models/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -42,6 +42,16 @@ export class UserDatabase extends BaseDatabase {
       .select("*")
       .from(UserDatabase.TABLE_USERS);
     return usersDB;
+  };
+
+  public updateUserByNickname = async (input: IPartnershipInputDTO): Promise<string> => {
+    const { nickname, partnership} = input;
+    await this.getConnection()
+      .select("*")
+      .from(UserDatabase.TABLE_USERS)
+      .where({ nickname })
+      .increment("partnership", partnership )
+    return "User partnership updated successfully";
   };
 
   public delUser = async (id: string): Promise<string> => {

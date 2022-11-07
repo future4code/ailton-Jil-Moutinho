@@ -3,6 +3,7 @@ import { UserBusiness } from "../business/UserBusiness";
 import {
   IDelUserInputDTO,
   ILoginInputDTO,
+  IPartnershipControlInputDTO,
   ISignupInputDTO,
 } from "../models/User";
 
@@ -16,8 +17,8 @@ export class UserController {
         last_name: req.body.last_name!,
         nickname: req.body.nickname!,
         partnership: Number(req.body.partnership),
-        password: req.body.password!
-      };      
+        password: req.body.password!,
+      };
       const response = await this.userBusiness.signupUser(input);
       res.status(201).send(response);
     } catch (error: any) {
@@ -42,7 +43,21 @@ export class UserController {
     try {
       const token = req.headers.authorization!;
 
-     const response = await this.userBusiness.getUsers(token);
+      const response = await this.userBusiness.getUsers(token);
+      res.status(201).send({ message: response });
+    } catch (error: any) {
+      res.status(400).send({ message: error.message });
+    }
+  };
+
+  public updateUser = async (req: Request, res: Response) => {
+    try {
+      const user: IPartnershipControlInputDTO = {
+        nickname: req.body.nickname!,
+        partnership: Number(req.body.partnership),
+        token: req.headers.authorization!,
+      };
+      const response = await this.userBusiness.updatePartnership(user);
       res.status(201).send({ message: response });
     } catch (error: any) {
       res.status(400).send({ message: error.message });
@@ -66,11 +81,10 @@ export class UserController {
     try {
       const token = req.headers.authorization!;
 
-     const response = await this.userBusiness.getAvailableShares(token);
+      const response = await this.userBusiness.getAvailableShares(token);
       res.status(201).send({ message: response });
     } catch (error: any) {
       res.status(400).send({ message: error.message });
     }
   };
 }
-
