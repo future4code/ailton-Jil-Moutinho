@@ -27,9 +27,9 @@ O sistema foi escrito em Javascript (node.js e/ou react.js).
   - Página de erro caso navegue por uma página não existente(/*).
   - Responsividade para mobile.
 
-## 🔗Link Surge
+## 🚧 🔗Link Surge
 
-- http://case-shopper.surge.sh
+- http://case-cubo.surge.sh
 
 ## 💻Como Rodar o Projeto Localmente
 
