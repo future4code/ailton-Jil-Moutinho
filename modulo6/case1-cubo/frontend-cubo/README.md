@@ -1,4 +1,4 @@
-<h2 align="center">🧊Projeto Teste Shopper 📈</h2>
+<h2 align="center"> 🧊Projeto Teste Shopper 📈 </h2>
 
 <h4 align="justify">
 Elaboração de site (frontend) com formulário de cadastro de usuário para poder realizar compras e vendas da ações de participação na empresa. 
@@ -27,7 +27,7 @@ O sistema foi escrito em Javascript (node.js e/ou react.js).
   - Página de erro caso navegue por uma página não existente(/*).
   - Responsividade para mobile.
 
-## 🚧 🔗Link Surge
+## 🔗Link Surge
 
 - http://case-cubo.surge.sh
 
