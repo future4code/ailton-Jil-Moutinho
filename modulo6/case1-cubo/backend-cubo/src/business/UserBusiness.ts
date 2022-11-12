@@ -4,9 +4,11 @@ import { AuthorizationError } from "../errors/AuthorizationError";
 import { ConflictError } from "../errors/ConflictError";
 import { NotFoundError } from "../errors/NotFoundError";
 import { ParamsError } from "../errors/ParamsError";
+import { UnprocessableError } from "../errors/UnprocessableError";
 import {
   IDelUserInputDTO,
   ILoginInputDTO,
+  IPartnershipControlInputDTO,
   ISignupInputDTO,
   User,
 } from "../models/User";
@@ -23,10 +25,10 @@ export class UserBusiness {
   ) {}
 
   public signupUser = async (input: ISignupInputDTO) => {
-    const { first_name, last_name, password } = input;
+    const { first_name, last_name, nickname, password } = input;
     const partnership = Number(input.partnership);
 
-    if (!first_name || !last_name || !password || !partnership) {
+    if (!first_name || !last_name || !nickname || !password || !partnership) {
       throw new ParamsError();
     }
 
@@ -40,17 +42,20 @@ export class UserBusiness {
       );
     }
 
-    if (typeof password !== "string" || password.length < 6) {
+    if (password.length < 6) {
       throw new ParamsError("Your password must have at least 6 characters");
     }
 
-    const userDB = await this.userDatabase.getUserByFullName(
-      first_name,
-      last_name
-    );
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
 
     if (userDB) {
       throw new ConflictError("Member already registered");
+    }
+
+    const availableShares = await this.userDatabase.getAvailableShares();
+
+    if (availableShares < partnership) {
+      throw new UnprocessableError("This amount of shares are not available");
     }
 
     const id = this.idGenerator.generate();
@@ -60,6 +65,7 @@ export class UserBusiness {
       id,
       first_name,
       last_name,
+      nickname,
       partnership,
       hashedPassword
     );
@@ -78,22 +84,18 @@ export class UserBusiness {
   };
 
   public loginUser = async (input: ILoginInputDTO) => {
-    const first_name = input.first_name;
-    const last_name = input.last_name;
+    const nickname = input.nickname;
     const password = input.password;
 
-    if (!first_name || !last_name || !password) {
+    if (!nickname || !password) {
       throw new ParamsError();
     }
 
-    if (typeof password !== "string" || password.length < 6) {
+    if (password.length < 6) {
       throw new ParamsError("Your password must have at least 6 characters");
     }
 
-    const userDB = await this.userDatabase.getUserByFullName(
-      first_name,
-      last_name
-    );
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
 
     if (!userDB) {
       throw new NotFoundError("Member not found");
@@ -103,6 +105,7 @@ export class UserBusiness {
       userDB.id,
       userDB.first_name,
       userDB.last_name,
+      userDB.nickname,
       userDB.partnership,
       userDB.password
     );
@@ -120,7 +123,7 @@ export class UserBusiness {
     const token = this.authenticator.generateToken(payload);
 
     const response = {
-      message: "you are logged in!",
+      message: "You are logged in!",
       token,
     };
 
@@ -138,10 +141,49 @@ export class UserBusiness {
     return usersFromDB;
   };
 
-  public delPartnership = async (input: IDelUserInputDTO) => {
-    const { first_name, last_name, token } = input;
+  public updatePartnership = async (input: IPartnershipControlInputDTO) => {
+    const { nickname, token } = input;
+    const partnership = Number(input.partnership);
 
-    if (!first_name || !last_name || !token) {
+    if (!nickname || !token || !partnership) {
+      throw new ParamsError();
+    }
+
+    if (
+      typeof partnership !== "number" ||
+      partnership > 100 ||
+      !Number.isInteger(partnership)
+    ) {
+      throw new ParamsError(
+        "Invalid parameter as partnership percentage. Inform a integer number."
+      );
+    }
+
+    const idFromValidToken = this.authenticator.getIdByToken(token);
+    if (!idFromValidToken) {
+      throw new AuthenticationError();
+    }
+
+    const availableShares = await this.userDatabase.getAvailableShares();
+    if (availableShares < partnership) {
+      throw new UnprocessableError("This amount of shares are not available");
+    }
+
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
+    if (!userDB) {
+      throw new NotFoundError("Member with this nickname not found");
+    }
+
+    const payload = { nickname, partnership };
+    const result = await this.userDatabase.updateUserByNickname(payload);
+
+    return result;
+  };
+
+  public delPartnership = async (input: IDelUserInputDTO) => {
+    const { nickname, token } = input;
+
+    if (!nickname || !token) {
       throw new ParamsError();
     }
 
@@ -151,10 +193,7 @@ export class UserBusiness {
       throw new AuthenticationError();
     }
 
-    const userDB = await this.userDatabase.getUserByFullName(
-      first_name,
-      last_name
-    );
+    const userDB = await this.userDatabase.getUserByNickname(nickname);
 
     if (!userDB) {
       throw new NotFoundError("Member not found");
@@ -164,6 +203,7 @@ export class UserBusiness {
       userDB.id,
       userDB.first_name,
       userDB.last_name,
+      userDB.nickname,
       userDB.partnership,
       userDB.password
     );
@@ -178,5 +218,16 @@ export class UserBusiness {
     }
 
     return response;
+  };
+
+  public getAvailableShares = async (token: string) => {
+    const idFromValidToken = this.authenticator.getIdByToken(token);
+
+    if (!idFromValidToken) {
+      throw new AuthenticationError();
+    }
+
+    const availableFromDB = await this.userDatabase.getAvailableShares();
+    return availableFromDB;
   };
 }

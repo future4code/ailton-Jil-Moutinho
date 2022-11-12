@@ -1,4 +1,4 @@
-import { IUserDB, User } from "../models/User";
+import { IPartnershipInputDTO, IUserDB, User } from "../models/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -9,6 +9,7 @@ export class UserDatabase extends BaseDatabase {
       id: user.getId(),
       first_name: user.getFirstName(),
       last_name: user.getLastName(),
+      nickname: user.getNickname(),
       partnership: user.getPartnership(),
       password: user.getPassword(),
     };
@@ -16,15 +17,23 @@ export class UserDatabase extends BaseDatabase {
     return `Member ${user.getFirstName()} register successfully.`;
   };
 
-  public getUserByFullName = async (
-    first_name: string,
-    last_name: string
+  public getAvailableShares = async (): Promise<number> => {
+    const totalShares = await this.getConnection()
+      .sum("partnership")
+      .from(UserDatabase.TABLE_USERS);
+
+    const availableShares = 100 - totalShares[0]["sum(`partnership`)"];
+
+    return availableShares;
+  };
+
+  public getUserByNickname = async (
+    nickname: string
   ): Promise<IUserDB | undefined> => {
     const usersDB: IUserDB[] = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_USERS)
-      .where({ first_name })
-      .andWhere({ last_name });
+      .where({ nickname });
     return usersDB[0];
   };
 
@@ -33,6 +42,16 @@ export class UserDatabase extends BaseDatabase {
       .select("*")
       .from(UserDatabase.TABLE_USERS);
     return usersDB;
+  };
+
+  public updateUserByNickname = async (input: IPartnershipInputDTO): Promise<string> => {
+    const { nickname, partnership} = input;
+    await this.getConnection()
+      .select("*")
+      .from(UserDatabase.TABLE_USERS)
+      .where({ nickname })
+      .increment("partnership", partnership )
+    return "User partnership updated successfully";
   };
 
   public delUser = async (id: string): Promise<string> => {

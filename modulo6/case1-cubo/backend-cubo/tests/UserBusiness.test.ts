@@ -15,10 +15,11 @@ describe("Testando a UserBusiness", () => {
   );
 
   //Success cases
-  test("Return a token when the register", async () => {
+  test("Return a token when the register is usccessfull", async () => {
     const input: ISignupInputDTO = {
       first_name: "Mia2",
       last_name: "Mia Gatona",
+      nickname: "Mia2",
       partnership: 5,
       password: "mia123",
     };
@@ -28,101 +29,119 @@ describe("Testando a UserBusiness", () => {
     expect(response.token).toBe("token-mock");
   });
 
-  /*   test("Um token é retornado quando o login é bem-sucedido", async () => {
+  test("Return token when login is successful", async () => {
     const input: ILoginInputDTO = {
-      email: "astrodev@gmail.com",
-      password: "bananinha",
+      nickname: "Mia",
+      password: "asdfg123",
     };
 
     const response = await userBusiness.loginUser(input);
-    expect(response.message).toBe("Login realizado com sucesso");
-    expect(response.token).toBe("token-mock-admin");
+    expect(response.message).toBe("You are logged in!");
+    expect(response.token).toBe("token-mock");
+  });
+
+  /*  test("Return when del user", async () => {
+    const input: ILoginInputDTO = {
+      nickname: "Mia",
+      password: "asdfg123",
+    };
+
+    const response = await userBusiness.loginUser(input);
+    expect(response.message).toBe("You are logged in!");
+    expect(response.token).toBe("token-mock");
   }); */
 
-  //Ex1 Teste de Erros para singUp
-  /*   test("Usuário se cadastra com nome menor que 3 caracteres", async () => {
+  //Teste de Erros para singUp
+  /* test("Usuário se cadastra com tipo de partnership diferente de number", async () => {
     expect.assertions(2);
 
     try {
       const input: ISignupInputDTO = {
-        email: "fulano@gmail.com",
-        name: "Fu",
-        password: "123fulano",
-      };
-      await userBusiness.signupUser(input);
-    } catch (error) {
-      if (error instanceof BaseError) {
-        expect(error.statusCode).toBe(400);
-        expect(error.message).toBe(
-          "Parâmetro 'name' inválido: mínimo de 3 caracteres"
-        );
-      }
-    }
-  }); */
-
-  /*   test("Usuário se cadastra com senha menor que 6 caracteres", async () => {
-    expect.assertions(2);
-
-    try {
-      const input: ISignupInputDTO = {
-        email: "fulano@gmail.com",
-        name: "Fulano",
+        first_name: "Mia2",
+        last_name: "Gatuna",
+        nickname: "Cachorra",
         password: "123",
+        partnership: "2",
+      };
+      await userBusiness.signupUser(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400);
+        expect(error.message).toBe("Invalid parameter as partnership percentage. Inform a integer number."
+        );
+      }
+    }
+  }); */
+
+  test("Usuário se cadastra com senha menor que 6 caracteres", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: ISignupInputDTO = {
+        first_name: "Mia2",
+        last_name: "Gatuna",
+        nickname: "Cachorra",
+        password: "123",
+        partnership: 1,
       };
       await userBusiness.signupUser(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
         expect(error.message).toBe(
-          "Parâmetro 'password' inválido: mínimo de 6 caracteres"
+          "Your password must have at least 6 characters"
         );
       }
     }
-  }); */
+  });
 
-  /*   test("Usuário se cadastra com email em formato invalido", async () => {
+  test("Usuário se cadastra com apelido já cadastrado", async () => {
     expect.assertions(2);
 
     try {
       const input: ISignupInputDTO = {
-        email: "fulanogmail.com",
-        name: "Fulano",
-        password: "fulano123",
-      };
-      await userBusiness.signupUser(input);
-    } catch (error) {
-      if (error instanceof BaseError) {
-        expect(error.statusCode).toBe(400);
-        expect(error.message).toBe("Parâmetro 'email' inválido");
-      }
-    }
-  }); */
-
-  /*   test("Usuário se cadastra com email ja cadastrado", async () => {
-    expect.assertions(2);
-
-    try {
-      const input: ISignupInputDTO = {
-        email: "mia@gmail.com",
-        name: "Mia",
-        password: "hash-mia123",
+        first_name: "Mia2",
+        last_name: "Gatuna 2",
+        nickname: "Mia",
+        password: "acbd1234",
+        partnership: 2,
       };
       await userBusiness.signupUser(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(409);
-        expect(error.message).toBe("E-mail já cadastrado");
+        expect(error.message).toBe("Member already registered");
       }
     }
-  }); */
+  });
 
-  //Ex2 Teste de Erros para Login
-  /*   test("Usuário tenta logar com senha menor que 6 caracteres", async () => {
+  test("Usuário se cadastra com quantidade de cotas maior que as disponíveis", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: ISignupInputDTO = {
+        first_name: "Mia3",
+        last_name: "Gatuna 3",
+        nickname: "Mia3",
+        password: "acbd1234",
+        partnership: 99,
+      };
+      await userBusiness.signupUser(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(422);
+        expect(error.message).toBe("This amount of shares are not available");
+      }
+    }
+  });
+
+  //Teste de Erros para Login
+  test("Usuário tenta logar com senha menor que 6 caracteres", async () => {
     expect.assertions(2);
 
     try {
       const input: ILoginInputDTO = {
-        email: "fulano@gmail.com",
+        nickname: "Mia",
         password: "123",
       };
       await userBusiness.loginUser(input);
@@ -130,53 +149,36 @@ describe("Testando a UserBusiness", () => {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400);
         expect(error.message).toBe(
-          "Parâmetro 'password' inválido: mínimo de 6 caracteres"
+          "Your password must have at least 6 characters"
         );
       }
     }
-  }); */
+  });
 
-  /*   test("Usuário tenta logar com email em formato inválido", async () => {
+  test("Usuário tenta logar com apelido não cadastrado", async () => {
     expect.assertions(2);
 
     try {
       const input: ILoginInputDTO = {
-        email: "fulanogmail.com",
-        password: "fulano123",
-      };
-      await userBusiness.loginUser(input);
-    } catch (error) {
-      if (error instanceof BaseError) {
-        expect(error.statusCode).toBe(400);
-        expect(error.message).toBe("Parâmetro 'email' inválido");
-      }
-    }
-  }); */
-
-  /*   test("Usuário tenta logar com email não cadastrado", async () => {
-    expect.assertions(2);
-
-    try {
-      const input: ILoginInputDTO = {
-        email: "fulano@gmail.com",
-        password: "fulano123",
+        nickname: "Mia4",
+        password: "mia123",
       };
       await userBusiness.loginUser(input);
     } catch (error) {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(404);
-        expect(error.message).toBe("Email não cadastrado");
+        expect(error.message).toBe("Member not found");
       }
     }
-  }); */
+  });
 
-  /*   test("Usuário tenta logar com senha incorreta", async () => {
+  test("Usuário tenta logar com senha incorreta", async () => {
     expect.assertions(2);
 
     try {
       const input: ILoginInputDTO = {
-        email: "mia@gmail.com",
-        password: "hash-MOCK",
+        nickname: "Mia",
+        password: "mia1234",
       };
       await userBusiness.loginUser(input);
     } catch (error) {
@@ -185,5 +187,7 @@ describe("Testando a UserBusiness", () => {
         expect(error.message).toBe("Invalid credentials");
       }
     }
-  }); */
+  });
+
+  //Teste de Erros para deletar usuário
 });
